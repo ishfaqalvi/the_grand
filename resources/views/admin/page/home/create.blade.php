@@ -24,16 +24,10 @@
 <div class="card wizard-content">
     <div class="card-body">
         <h4 class="card-title">Craete Home Page with Multistep</h4>
-        @if(count($languages) > 0)
         <form class="validation-wizard wizard-circle" action="{{ route('pages.store') }}" method="post" role="form" enctype="multipart/form-data">
             @csrf
             @include('admin.page.home.form') 
         </form>
-        @else
-            <div class="alert alert-info alert-rounded alert-dismissible">
-                Sorry! No language is available. To create a home page in defferent language first add a language.
-            </div>
-        @endif
     </div>
 </div>
 @endsection

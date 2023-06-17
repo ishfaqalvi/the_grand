@@ -192,9 +192,7 @@ class PageController extends Controller
     public function create_home()
     {
         $page      = new Page();
-        $ids       = Page::where('template','Home')->pluck('language_id');
-        $languages = Language::whereNotIn('id',$ids)->pluck('name','id');
-        return view('admin.page.home.create', compact('page','languages'));
+        return view('admin.page.home.create', compact('page' ));
     }
 
     /**

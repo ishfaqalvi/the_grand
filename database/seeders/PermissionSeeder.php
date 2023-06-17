@@ -28,18 +28,6 @@ class PermissionSeeder extends Seeder
                   'users-edit', 
                   'users-delete',
 
-                  'language-list', 
-                  'language-view', 
-                  'language-create', 
-                  'language-edit', 
-                  'language-delete',
-
-                  'auther-list', 
-                  'auther-view', 
-                  'auther-create', 
-                  'auther-edit', 
-                  'auther-delete',
-
                   'media-list', 
                   'media-view', 
                   'media-create', 
@@ -52,35 +40,12 @@ class PermissionSeeder extends Seeder
                   'menu-edit', 
                   'menu-delete',
 
-                  'career-list', 
-                  'career-view', 
-                  'career-create', 
-                  'career-edit', 
-                  'career-delete',
-
-                  'application-list', 
-                  'application-view', 
-                  'application-create', 
-                  'application-edit', 
-                  'application-delete',
-
                   'strings-list', 
                   'strings-view', 
                   'strings-create', 
                   'strings-edit', 
                   'strings-delete',
 
-                  'tool-list', 
-                  'tool-view', 
-                  'tool-create', 
-                  'tool-edit', 
-                  'tool-delete',
-
-                  'apiToken-list', 
-                  'apiToken-view', 
-                  'apiToken-create', 
-                  'apiToken-edit', 
-                  'apiToken-delete',
 
                   'homePage-list', 
                   'homePage-view', 
@@ -90,13 +55,6 @@ class PermissionSeeder extends Seeder
                   'homePage-publish',
                   'homePage-unPublish',
 
-                  'toolPage-list', 
-                  'toolPage-view', 
-                  'toolPage-create', 
-                  'toolPage-edit', 
-                  'toolPage-delete',
-                  'toolPage-publish',
-                  'toolPage-unPublish',
 
                   'blogPage-list', 
                   'blogPage-view', 
@@ -122,14 +80,6 @@ class PermissionSeeder extends Seeder
                   'categoryPage-publish',
                   'categoryPage-unPublish',
 
-                  'careerPage-list', 
-                  'careerPage-view', 
-                  'careerPage-create', 
-                  'careerPage-edit', 
-                  'careerPage-delete',
-                  'careerPage-publish',
-                  'careerPage-unPublish',
-
                   'contactUsPage-list', 
                   'contactUsPage-view', 
                   'contactUsPage-create', 
@@ -146,24 +96,7 @@ class PermissionSeeder extends Seeder
                   'simplePage-publish',
                   'simplePage-unPublish',
 
-                  'topic-list', 
-                  'topic-view', 
-                  'topic-create', 
-                  'topic-edit', 
-                  'topic-delete',
-
-                  'quiz-list', 
-                  'quiz-view', 
-                  'quiz-create', 
-                  'quiz-edit', 
-                  'quiz-delete',
-
-                  'question-list', 
-                  'question-view', 
-                  'question-create', 
-                  'question-edit', 
-                  'question-delete',
-
+                  
                   'comments-list', 
                   'comments-view', 
                   'comments-create', 

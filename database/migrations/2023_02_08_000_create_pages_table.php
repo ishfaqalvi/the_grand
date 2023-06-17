@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('language_id')->references('id')->on('languages')->onDelete('cascade');
             $table->foreignId('parent_id')->nullable();
             $table->foreignId('tool_id')->nullable();
             $table->string('template');

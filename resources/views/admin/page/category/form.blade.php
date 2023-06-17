@@ -5,11 +5,6 @@
 <section>
     <div class="row">
         <div class="form-group col-md-6">
-            {{ Form::label('language') }}
-            {{ Form::select('language_id', languages(), $page->language_id, ['class' => 'form-control' . ($errors->has('language_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
-            {!! $errors->first('language_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group col-md-6">
             {{ Form::label('type') }}
             {{ Form::select('category_type', ['Tool' => 'Tool','Blog'=>'Blog','Problem'=>'Problem'], $page->category_type, ['class' => 'form-control' . ($errors->has('category_type') ? ' is-invalid' : ''), 'placeholder' => '--Select--', 'required']) }}
             {!! $errors->first('category_type', '<div class="invalid-feedback">:message</div>') !!}

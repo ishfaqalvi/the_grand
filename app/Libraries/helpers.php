@@ -1,34 +1,11 @@
 <?php
 
-use App\Models\Language;
-use App\Models\Auther;
 use App\Models\Page;
 use App\Models\Menu;
-use App\Models\Career;
-use App\Models\Tool;
-use App\Models\ApiToken;
 use App\Models\Setting;
 use App\Models\DynamicString;
 
-/**
- * Get listing of a resource.
- *
- * @return \Illuminate\Http\Response
- */
-function languages()
-{
-    return Language::pluck('name','id');
-}
 
-/**
- * Get listing of a resource.
- *
- * @return \Illuminate\Http\Response
- */
-function authers()
-{
-    return Auther::pluck('name','id');
-}
 
 /**
  * Get listing of a resource.
@@ -60,15 +37,7 @@ function problemCategories()
     return Page::where([['template','Category'],['category_type','Problem']])->pluck('title','id');
 }
 
-/**
- * Get listing of a resource.
- *
- * @return \Illuminate\Http\Response
- */
-function tools()
-{
-    return Tool::pluck('title','id');
-}
+
 
 /**
  * Get listing of a resource.

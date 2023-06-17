@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
-use App\Models\Language;
 use Illuminate\Http\Request;
 
 /**
@@ -47,9 +46,8 @@ class MenuController extends Controller
     public function create()
     {
         $menu       = new Menu();
-        $languages  = Language::pluck('name','id');
         $parents    = Menu::where('type','Main')->whereNull('parent_id')->pluck('title','id');
-        return view('admin.menu.create', compact('menu','languages','parents'));
+        return view('admin.menu.create', compact('menu','parents'));
     }
 
     /**
@@ -90,10 +88,9 @@ class MenuController extends Controller
     public function edit($id)
     {
         $menu      = Menu::find($id);
-        $languages = Language::pluck('name','id');
         $parents   = Menu::where('type','Main')->whereNull('parent_id')->pluck('title','id');
 
-        return view('admin.menu.edit', compact('menu','languages','parents'));
+        return view('admin.menu.edit', compact('menu','parents'));
     }
 
     /**

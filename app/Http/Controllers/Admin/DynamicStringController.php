@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Models\DynamicString;
-use App\Models\Language;
 use Illuminate\Http\Request;
 
 /**
@@ -47,9 +46,8 @@ class DynamicStringController extends Controller
     public function create()
     {
         $dynamicString = new DynamicString();
-        $languages  = Language::pluck('name','id');
 
-        return view('admin.string.create', compact('dynamicString','languages'));
+        return view('admin.string.create', compact('dynamicString'));
     }
 
     /**
@@ -89,9 +87,8 @@ class DynamicStringController extends Controller
     public function edit($id)
     {
         $dynamicString = DynamicString::find($id);
-        $languages  = Language::pluck('name','id');
 
-        return view('admin.string.edit', compact('dynamicString','languages'));
+        return view('admin.string.edit', compact('dynamicString'));
     }
 
     /**
@@ -100,14 +97,7 @@ class DynamicStringController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function addLanguage($id)
-    {
-        $dynamicString = DynamicString::find($id);
-        $ids = DynamicString::where('key',$dynamicString->key)->pluck('language_id')->toArray();
-        $languages  = Language::whereNotIn('id',$ids)->pluck('name','id');
 
-        return view('admin.string.add', compact('dynamicString','languages'));
-    }
 
     /**
      * Update the specified resource in storage.

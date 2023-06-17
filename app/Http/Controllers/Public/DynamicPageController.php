@@ -5,10 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
-use App\Models\JobApplication;
 use App\Models\Feedback;
 use App\Models\Comment;
-use App\Models\Language;
 use App\Models\Page;
 
 class DynamicPageController extends Controller
@@ -21,10 +19,7 @@ class DynamicPageController extends Controller
      */
     public function viewHomePage()
     {
-        $page = Page::where('template','Home')->where('language_id',1)->first();
         $slug = '';
-        $language   = Language::find(1);
-        $languages  = Language::where('id','!=', 1)->get();
         if ($page) {
             return view('public.index',compact('slug','page','language','languages'));   
         }

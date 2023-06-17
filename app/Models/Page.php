@@ -31,7 +31,6 @@ class Page extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
     
     static $rules = [
-		'auther_id'   => 'required',
 		'title'       => 'required',
 		'slug'        => 'required',
 		'status'      => 'required',
@@ -46,9 +45,7 @@ class Page extends Model implements Auditable
      * @var array
      */
     protected $fillable = [
-        'language_id',
         'parent_id',
-        'tool_id',
         'template',
         'category_type',
         'title',
@@ -62,7 +59,6 @@ class Page extends Model implements Auditable
         'description',
         'content',
         'status',
-        'auther_id',
         'published_by',
         'created_by',
         'published_at',
@@ -112,30 +108,6 @@ class Page extends Model implements Auditable
     public function comments()
     {
         return $this->hasMany(Comment::class, 'page_id', 'id')->whereNull('parent_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function auther()
-    {
-        return $this->hasOne('App\Models\Auther', 'id', 'auther_id');
-    }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function language()
-    {
-        return $this->hasOne('App\Models\Language', 'id', 'language_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function tool()
-    {
-        return $this->hasOne('App\Models\Tool', 'id', 'tool_id');
     }
 
     /**

@@ -31,28 +31,6 @@ Route::controller(UserController::class)->prefix('user')->group(function () {
     Route::post('check_password','checkPassword')->name('user.checkPassword');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Language Routes
-|--------------------------------------------------------------------------
-| All route related to languages module
-*/
-Route::resource('languages', LanguageController::class);
-Route::controller(LanguageController::class)->prefix('language')->group(function () {
-	Route::post('check_code', 'checkCode')->name('languages.check_code');
-});
-
-/*
-|--------------------------------------------------------------------------
-| Auther Routes
-|--------------------------------------------------------------------------
-| All route related to auther module
-*/
-Route::resource('authers', AutherController::class);
-Route::controller(AutherController::class)->prefix('auther')->group(function () {
-	Route::post('store',		'storeLink' )->name('author.link.store');
-	Route::delete('delete/{id}','deleteLink')->name('author.link.destroy');
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -80,7 +58,6 @@ Route::resource('menus', MenuController::class);
 |--------------------------------------------------------------------------
 | All route related to career module
 */
-Route::resource('careers', CareerController::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -88,11 +65,6 @@ Route::resource('careers', CareerController::class);
 |--------------------------------------------------------------------------
 | All route related to application module
 */
-Route::controller(JobApplicationController::class)->prefix('applications')->group(function () {
-	Route::get('index',		  	'index'	 )->name('applications.index');
-	Route::get('show/{id}',		'show'	 )->name('applications.show');
-	Route::delete('delete/{id}','destroy')->name('applications.destroy');
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -106,21 +78,6 @@ Route::controller(DynamicStringController::class)->prefix('string')->group(funct
 	Route::get('language/{id}',	'addLanguage')->name('string.add');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Tools Routes
-|--------------------------------------------------------------------------
-| All route related to tool module
-*/
-Route::resource('tools', ToolController::class);
-
-/*
-|--------------------------------------------------------------------------
-| API Tokens Routes
-|--------------------------------------------------------------------------
-| All route related to api tokens
-*/
-Route::resource('api-tokens', ApiTokenController::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -140,16 +97,6 @@ Route::controller(PageController::class)->prefix('pages')->group(function(){
     	Route::get('edit/{id}',	'edit_home'  )->name('pages.home.edit'  );
     });
 
-    /*
-	|--------------------------------------------------------------------------
-	| Tool Pages Routes
-	|--------------------------------------------------------------------------
-	*/
-    Route::group(['prefix' => 'tool'], function (){
-    	Route::get('index',		'index_tool' )->name('pages.tool.index' );
-    	Route::get('create',	'create_tool')->name('pages.tool.create');
-    	Route::get('edit/{id}',	'edit_tool'  )->name('pages.tool.edit'  );
-    });
 
     /*
 	|--------------------------------------------------------------------------
@@ -184,16 +131,6 @@ Route::controller(PageController::class)->prefix('pages')->group(function(){
     	Route::get('edit/{id}',	'edit_category'  )->name('pages.category.edit'  );
     });
 
-    /*
-	|--------------------------------------------------------------------------
-	| Category Pages Routes
-	|--------------------------------------------------------------------------
-	*/
-    Route::group(['prefix' => 'career'], function (){
-    	Route::get('index',		'index_career' )->name('pages.career.index' );
-    	Route::get('create',	'create_career')->name('pages.career.create');
-    	Route::get('edit/{id}',	'edit_career'  )->name('pages.career.edit'  );
-    });
 
     /*
 	|--------------------------------------------------------------------------
@@ -258,17 +195,6 @@ Route::controller(AuditController::class)->prefix('audits')->group(function () {
 	Route::delete('destroy/{id}','destroy')->name('audit.destroy');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Questionner Routes
-|--------------------------------------------------------------------------
-| All route related to questionner managment module
-*/
-Route::group(['prefix' => 'questionner'], function (){
-	Route::resource('topics', 	TopicController::class 		)->names('topics');
-	Route::resource('quizzes', 	QuizController::class 		)->names('quizzes');
-	Route::resource('questions', QuestionController::class 	)->names('questions');
-});
 
 /*
 |--------------------------------------------------------------------------

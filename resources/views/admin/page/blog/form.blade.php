@@ -7,11 +7,6 @@
 <section>
     <div class="row">
         <div class="form-group col-md-6">
-            {{ Form::label('language') }}
-            {{ Form::select('language_id', languages(), $page->language_id, ['class' => 'form-control' . ($errors->has('language_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
-            {!! $errors->first('language_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group col-md-6">
             {{ Form::label('category') }}
             {{ Form::select('parent_id', blogCategories(), $page->parent_id, ['class' => 'form-control' . ($errors->has('parent_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
             {!! $errors->first('parent_id', '<div class="invalid-feedback">:message</div>') !!}
@@ -66,11 +61,6 @@
 <h6>SEO</h6>
 <section>
     <div class="row">
-        <div class="form-group col-md-6">
-            {{ Form::label('auther') }}
-            {{ Form::select('auther_id', authers(), $page->auther_id, ['class' => 'form-control' . ($errors->has('auther_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
-            {!! $errors->first('auther_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
         <div class="form-group col-md-6">
             {{ Form::label('metaTitle') }}
             {{ Form::text('metaTitle', $page->metaTitle, ['class' => 'form-control' . ($errors->has('metaTitle') ? ' is-invalid' : ''), 'placeholder' => 'Meta Title']) }}

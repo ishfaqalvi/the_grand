@@ -30,7 +30,6 @@
                 <tr>
                     <th>ID</th>
                     <th>Type</th>
-                    <th>Language</th>
                     <th>Title</th>
                     <th>Parent</th>
                     <th>URL</th>
@@ -43,7 +42,6 @@
                     <tr>
                         <td>{{ ++$key }}</td>
                         <td>{{ $menu->type }}</td>
-                        <td>{{ $menu->language->name }}</td>
                         <td>{{ $menu->title }}</td>
                         <td>
                             @if($menu->parent)

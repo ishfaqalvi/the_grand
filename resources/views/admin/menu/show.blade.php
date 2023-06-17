@@ -31,10 +31,6 @@
                     <td>{{ $menu->type }}</td>
                 </tr>
                 <tr>
-                    <td class="card-title">Language</td>
-                    <td>{{ $menu->language->name }}</td>
-                </tr>
-                <tr>
                     <td class="card-title">Title</td>
                     <td>{{ $menu->title }}</td>
                 </tr>

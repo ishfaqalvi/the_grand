@@ -37,15 +37,11 @@ class Menu extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['type','language_id','parent_id','title','url','order'];
+    protected $fillable = ['type','parent_id','title','url','order'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function language()
-    {
-        return $this->hasOne('App\Models\Language', 'id', 'language_id');
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

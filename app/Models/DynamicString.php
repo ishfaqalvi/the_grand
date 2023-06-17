@@ -24,7 +24,6 @@ class DynamicString extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
     
     static $rules = [
-		'language_id' => 'required',
 		'key' => 'required',
 		'value' => 'required',
     ];
@@ -36,14 +35,10 @@ class DynamicString extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['language_id','key','value'];
+    protected $fillable = ['key','value'];
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function language()
-    {
-        return $this->hasOne('App\Models\Language', 'id', 'language_id');
-    }
 }

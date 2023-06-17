@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('dynamic_strings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('language_id')->references('id')->on('languages')->onDelete('cascade');
             $table->string('key');
             $table->string('value');
             $table->timestamps();

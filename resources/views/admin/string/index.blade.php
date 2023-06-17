@@ -29,7 +29,6 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Language</th>
                     <th>Key</th>
                     <th>Value</th>
                     <th width="10px">Actions</th>
@@ -39,7 +38,6 @@
                 @foreach ($dynamicStrings as $key => $dynamicString)
                     <tr>
                         <td>{{ ++$key }}</td>
-                        <td>{{ $dynamicString->language->name }}</td>
                         <td>{{ $dynamicString->key }}</td>
                         <td>{{ $dynamicString->value }}</td>
                         <td>

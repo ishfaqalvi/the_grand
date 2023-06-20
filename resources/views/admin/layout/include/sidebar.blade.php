@@ -55,6 +55,11 @@
         </a>
     </li>
     @endcan
+    <li>
+        <a class="waves-effect waves-dark" href="{{ route('grand-sliders.index') }}" aria-expanded="false">
+            <i class="icons-Fountain-Pen"></i><span class="hide-menu">Slider</span>
+        </a>
+    </li>
     @if('homePage-list')
     <li> 
         <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">

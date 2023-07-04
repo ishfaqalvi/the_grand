@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('grand_sliders', function (Blueprint $table) {
+        Schema::create('sliders', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('image');
             $table->enum('linktype',['Internal','External']);
             $table->string('link');
             $table->integer('order');
-            $table->string('status')->default('UnPublish');
             $table->text('description');
+            $table->string('status')->default('UnPublish');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grand_sliders');
+        Schema::dropIfExists('sliders');
     }
 };

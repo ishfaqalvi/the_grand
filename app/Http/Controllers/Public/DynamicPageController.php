@@ -20,10 +20,11 @@ class DynamicPageController extends Controller
     public function viewHomePage()
     {
         $slug = '';
-        if ($page) {
-            return view('public.index',compact('slug','page','language','languages'));   
-        }
-        return view('public.errors.404',compact('slug','page','language','languages'));
+
+        // if ($page) {
+        //     return view('public.index',compact('slug','page','language','languages'));   
+        // }
+        return view('public.errors.404',compact('slug'));
     }
 
     /**

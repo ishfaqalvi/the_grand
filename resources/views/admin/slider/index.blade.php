@@ -14,7 +14,7 @@
             <li class="breadcrumb-item active">Sliders</li>
         </ol>
         @can('menu-create')
-        <a href="{{ route('grand-sliders.create') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+        <a href="{{ route('sliders.create') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
             <i class="fa fa-plus-circle"></i> Create New
         </a>
         @endcan
@@ -53,13 +53,13 @@
                                     Action
                                 </button>
                                 <div class="dropdown-menu animated lightSpeedIn dropdown-menu-end">
-                                    <a class="dropdown-item" href="{{ route('grand-sliders.show',$grandSlider->id) }}">
+                                    <a class="dropdown-item" href="{{ route('sliders.show',$grandSlider->id) }}">
                                         <i class="fa fa-fw fa-eye"></i> Show
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('grand-sliders.edit',$grandSlider->id) }}">
+                                    <a class="dropdown-item" href="{{ route('sliders.edit',$grandSlider->id) }}">
                                         <i class="fa fa-fw fa-edit"></i> Edit
                                     </a>
-                                    <form action="{{ route('grand-sliders.destroy',$grandSlider->id) }}" method="POST">
+                                    <form action="{{ route('sliders.destroy',$grandSlider->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="dropdown-item sa-confirm">

@@ -10,10 +10,10 @@
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('grand-sliders.index') }}">Slider</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('sliders.index') }}">Slider</a></li>
             <li class="breadcrumb-item active">Edit</li>
         </ol>
-        <a href="{{ route('grand-sliders.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+        <a href="{{ route('sliders.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
             <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
         </a>
     </div>
@@ -24,10 +24,10 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">Edit Slider</h4>
-        <form method="POST" action="{{ route('grand-sliders.update', $menu->id) }}" role="form" enctype="multipart/form-data" class="menu">
+        <form method="POST" action="{{ route('sliders.update', $menu->id) }}" role="form" enctype="multipart/form-data" class="menu">
             @csrf
             {{ method_field('PATCH') }}
-            @include('admin.grand-slider.form')
+            @include('admin.slider.form')
         </form>
     </div>
 </div>

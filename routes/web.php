@@ -68,13 +68,3 @@ Route::controller(DynamicPageController::class)->group(function () {
 	Route::get('/{slug1}/{slug2?}', 		'viewPage'	  )->name('viewPage');
 	
 });
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Tool Routes
-|--------------------------------------------------------------------------
-| All route related to tool functionality
-*/
-Route::namespace('\App\Http\Controllers\Public')->group(__DIR__.'/tool.php');

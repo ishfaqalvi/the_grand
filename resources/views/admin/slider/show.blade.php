@@ -10,10 +10,10 @@
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('grand-sliders.index') }}">Slider</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('sliders.index') }}">Slider</a></li>
             <li class="breadcrumb-item active">Show</li>
         </ol>
-        <a href="{{ route('grand-sliders.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+        <a href="{{ route('sliders.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
             <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
         </a>
     </div>

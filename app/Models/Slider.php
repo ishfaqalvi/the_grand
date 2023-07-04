@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class GrandSlider
+ * Class Slider
  *
  * @property $id
  * @property $title
@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class GrandSlider extends Model
+class Slider extends Model
 {
     
     static $rules = [

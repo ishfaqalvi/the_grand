@@ -13,7 +13,7 @@
                 <li class="breadcrumb-item"><a href="{{ route('menus.index') }}">Slider</a></li>
                 <li class="breadcrumb-item active">Create</li>
             </ol>
-            <a href="{{ route('grand-sliders.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+            <a href="{{ route('sliders.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
                 <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
             </a>
         </div>
@@ -24,9 +24,9 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">Create Slider</h4>
-        <form method="POST" action="{{ route('grand-sliders.store') }}" role="form" enctype="multipart/form-data" class="menu">
+        <form method="POST" action="{{ route('sliders.store') }}" role="form" enctype="multipart/form-data" class="menu">
             @csrf
-            @include('admin.grand-slider.form')
+            @include('admin.slider.form')
         </form>
     </div>
 </div>

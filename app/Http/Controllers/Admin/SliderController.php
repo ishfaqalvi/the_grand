@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\GrandSlider;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use Image;
 
 /**
- * Class GrandSliderController
+ * Class SliderController
  * @package App\Http\Controllers
  */
-class GrandSliderController extends Controller
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +19,9 @@ class GrandSliderController extends Controller
      */
     public function index()
     {
-        $grandSliders = GrandSlider::paginate();
+        $sliders = Slider::get();
 
-        return view('admin.grand-slider.index', compact('grandSliders'))
-            ->with('i', (request()->input('page', 1) - 1) * $grandSliders->perPage());
+        return view('admin.slider.index', compact('sliders'));
     }
 
     /**
@@ -32,8 +31,8 @@ class GrandSliderController extends Controller
      */
     public function create()
     {
-        $grandSlider = new GrandSlider();
-        return view('admin.grand-slider.create', compact('grandSlider'));
+        $slider = new Slider();
+        return view('admin.slider.create', compact('slider'));
     }
 
     /**
@@ -44,12 +43,12 @@ class GrandSliderController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(GrandSlider::$rules); 
-       $input = $request->all();
+        request()->validate(Slider::$rules); 
+        $input = $request->all();
         if ($image = $request->file('image')) {
             $filenamewithextension = $image->getClientOriginalName();
             $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-            $filenametostore = 'upload/images/gallery/'.time().'_'.str_replace(' ', '_','_').'.webp';
+            $filenametostore = 'upload/images/slider/'.time().'_'.str_replace(' ', '_','_').'.webp';
             if ($request->x && $request->y) {
                 $img = Image::make($image)->encode('webp', 90)->resize($request->x, $request->y);   
             }else{
@@ -58,10 +57,10 @@ class GrandSliderController extends Controller
             $img->save(public_path($filenametostore));
             $input['image'] = $filenametostore;
         }
-        $grandSlider = GrandSlider::create($input);
+        $slider = Slider::create($input);
 
-        return redirect()->route('grand-sliders.index')
-            ->with('success', 'GrandSlider created successfully.');
+        return redirect()->route('sliders.index')
+            ->with('success', 'Slider created successfully.');
     }
 
     /**
@@ -72,9 +71,9 @@ class GrandSliderController extends Controller
      */
     public function show($id)
     {
-        $grandSlider = GrandSlider::find($id);
+        $slider = Slider::find($id);
 
-        return view('admin.grand-slider.show', compact('grandSlider'));
+        return view('admin.slider.show', compact('slider'));
     }
 
     /**
@@ -85,26 +84,26 @@ class GrandSliderController extends Controller
      */
     public function edit($id)
     {
-        $grandSlider = GrandSlider::find($id);
+        $slider = Slider::find($id);
 
-        return view('admin.grand-slider.edit', compact('grandSlider'));
+        return view('admin.slider.edit', compact('slider'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  GrandSlider $grandSlider
+     * @param  Slider $Slider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GrandSlider $grandSlider)
+    public function update(Request $request, Slider $slider)
     {
-        request()->validate(GrandSlider::$rules);
+        request()->validate(Slider::$rules);
 
-        $grandSlider->update($request->all());
+        $slider->update($request->all());
 
-        return redirect()->route('grand-sliders.index')
-            ->with('success', 'GrandSlider updated successfully');
+        return redirect()->route('sliders.index')
+            ->with('success', 'Slider updated successfully');
     }
 
     /**
@@ -114,9 +113,9 @@ class GrandSliderController extends Controller
      */
     public function destroy($id)
     {
-        $grandSlider = GrandSlider::find($id)->delete();
+        $slider = Slider::find($id)->delete();
 
-        return redirect()->route('grand-sliders.index')
-            ->with('success', 'GrandSlider deleted successfully');
+        return redirect()->route('sliders.index')
+            ->with('success', 'Slider deleted successfully');
     }
 }

@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 
 @section('title','Dashboard')
-    
+
 @section('breadcrumb')
     <div class="col-md-5 align-self-center">
         <h4 class="text-themecolor">Dashboard</h4>
@@ -80,14 +80,14 @@
                     <h3 class="card-title">API Token</h3>
                     <h6 class="card-subtitle">you can check the Token</h6>
                     </div>
-                    <div class="ms-auto">    
+                    <div class="ms-auto">
                     <ul class="list-inline">
                         <li>
                             <h6 class="text-muted"><i class="fa fa-circle m-r-5 text-success"></i>Free</h6> </li>
                         <li>
                             <h6 class="text-muted"><i class="fa fa-circle m-r-5 text-primary"></i>Premium</h6> </li>
                     </ul>
-                    </div> 
+                    </div>
                 </div>
                 <div class="download-state chartist-chart" style="height:300px"></div>
             </div>
@@ -188,4 +188,10 @@
         </div>
     </div>
 </div>
+
+<a href="{{ route('subdomain.dashboard', 'demo') }}">Subdomain</a>
+<br>
+<br>
+<a href="{{ route('dashboard') }}">Main</a>
+
 @endsection

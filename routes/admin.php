@@ -1,6 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
+
+
+Route::domain('{subdomain}.' . env('APP_DOMAIN', 'websitecms.test'))->group(function () {
+    Route::get('admin/dashboard', DashboardController::class)->name('subdomain.dashboard');
+    Route::get('dashboard', function () {
+        return Redirect::to('http://websitecms.test/admin/dashboard');
+    })->name('dashboard');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -212,6 +221,6 @@ Route::controller(SettingController::class)->prefix('settings')->group(function 
 | Error Log Route
 |--------------------------------------------------------------------------
 */
-Route::get('logs', 
+Route::get('logs',
 	[\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']
 )->name('logs');

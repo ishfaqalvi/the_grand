@@ -1,19 +1,19 @@
 @extends('admin.layout.app')
 
-@section('title','Show menu')
+@section('title','Show Service')
 
 @section('breadcrumb')
 <div class="col-md-5 align-self-center">
-    <h4 class="text-themecolor">Show Slider</h4>
+    <h4 class="text-themecolor">Show Service</h4>
 </div>
 <div class="col-md-7 align-self-center text-end">
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('grand-sliders.index') }}">Slider</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('services.index') }}">Service</a></li>
             <li class="breadcrumb-item active">Show</li>
         </ol>
-        <a href="{{ route('grand-sliders.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+        <a href="{{ route('services.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
             <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
         </a>
     </div>
@@ -23,41 +23,40 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Show Slider</h4>
+        <h4 class="card-title">Show Service</h4>
         <table class="table no-border d-flex">
             <tbody>
                 <tr>
-                    <td class="card-title">Title</td>
-                    <td>{{ $grandSlider->title }}</td>
-                </tr>
-                <tr>
                     <td class="card-title">Image</td>
                     <td>
-                        <img src="{{ url('public/Image/'.$grandSlider->image) }}" style="height: 100px; width: 150px;">
+                    <img src="{{ url('public/Image/'.$service->image) }}" style="height: 100px; width: 150px;">
                     </td>
                 </tr>
-                <tr>
-                    <td class="card-title">Url</td>
-                    <td>{{ $grandSlider->url }}</td>
+                    <td class="card-title">Heading</td>
+                    <td>{{ $service->heading }}</td>
                 </tr>
                 <tr>
-                    <td class="card-title">Link</td>
-                    <td>{{ $grandSlider->link }}</td>
-                </tr>
-                <tr>
-                    <td class="card-title">Order</td>
-                    <td>{{ $grandSlider->order }}</td>
-                </tr>
-                <tr>
-                    <td class="card-title">Status</td>
-                    <td>{{ $grandSlider->status }}</td>
+                    <td class="card-title">Sub Heading</td>
+                    <td>{{ $service->sub_heading }}</td>
                 </tr>
                 <tr>
                     <td class="card-title">Description</td>
-                    <td>{{ $grandSlider->description }}</td>
+                    <td>{{ $service->description }}</td>
+                </tr>
+                <tr>
+                    <td class="card-title">Button</td>
+                    <td>{{ $service->button }}</td>
+                </tr>
+                    <td class="card-title">Order</td>
+                    <td>{{ $service->order }}</td>
+                </tr>
+                <tr>
+                    <td class="card-title">Status</td>
+                    <td>{{ $service->status }}</td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
 @endsection
+

@@ -1,23 +1,20 @@
-
 @extends('admin.layout.app')
 
-@section('title','Sliders')
+@section('title','Service')
 
 @section('breadcrumb')
 <div class="col-md-5 align-self-center">
-    <h4 class="text-themecolor">Sliders</h4>
+    <h4 class="text-themecolor">Service</h4>
 </div>
 <div class="col-md-7 align-self-center text-end">
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item active">Sliders</li>
+            <li class="breadcrumb-item active">Service</li>
         </ol>
-        
-        <a href="{{ route('grand-sliders.create') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+        <a href="{{ route('services.create') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
             <i class="fa fa-plus-circle"></i> Create New
         </a>
-
     </div>
 </div>
 @endsection
@@ -25,41 +22,41 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">{{ __('Sliders') }}</h4>
+        <h4 class="card-title">{{ __('Service') }}</h4>
         <table class="datatable table table-striped border">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Title</th>
                     <th>Image</th>
-                    <th>Order</th>
+                    <th>Heading</th>
                     <th>Description</th>
+                    <th>Status</th>
                     <th width="10px">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($grandSliders as  $key => $grandSlider)
+                @foreach($services as  $key => $service)
                     <tr>
                         <td>{{ ++$i }}</td>         
-                        <td>{{ $grandSlider->title }}</td>
                         <td>
-                            <img src="{{ url('public/Image/'.$grandSlider->image) }}" style="height: 50px; width: 150px;">
+                            <img src="{{ url('public/Image/'.$service->image) }}" style="height: 50px; width: 150px;">
                         </td>
-                        <td>{{ $grandSlider->order }}</td>
-                        <td>{{ $grandSlider->description }}</td>
+                        <td>{{ $service->heading }}</td>
+                        <td>{{ $service->description }}</td>
+                        <td>{{ $service->status }}</td>
                         <td>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Action
                                 </button>
                                 <div class="dropdown-menu animated lightSpeedIn dropdown-menu-end">
-                                    <a class="dropdown-item" href="{{ route('grand-sliders.show',$grandSlider->id) }}">
+                                    <a class="dropdown-item" href="{{ route('services.show',$service->id) }}">
                                         <i class="fa fa-fw fa-eye"></i> Show
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('grand-sliders.edit',$grandSlider->id) }}">
+                                    <a class="dropdown-item" href="{{ route('services.edit',$service->id) }}">
                                         <i class="fa fa-fw fa-edit"></i> Edit
                                     </a>
-                                    <form action="{{ route('grand-sliders.destroy',$grandSlider->id) }}" method="POST">
+                                    <form action="{{ route('services.destroy',$service->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="dropdown-item sa-confirm">
@@ -74,7 +71,7 @@
             </tbody>
         </table>
     </div>
-    {!! $grandSliders->links() !!}
+    {!! $services->links() !!}
 </div>
 @endsection
 @section('scripts')
@@ -98,3 +95,4 @@
     });
 </script>
 @endsection
+

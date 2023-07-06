@@ -60,6 +60,26 @@
             <i class="icons-Fountain-Pen"></i><span class="hide-menu">Slider</span>
         </a>
     </li>
+    <li>
+        <a class="waves-effect waves-dark" href="{{ route('faqs.index') }}" aria-expanded="false">
+            <i class="icons-Fountain-Pen"></i><span class="hide-menu">Faqs</span>
+        </a>
+    </li>
+    <li>
+        <a class="waves-effect waves-dark" href="{{ route('services.index') }}" aria-expanded="false">
+            <i class="icons-Fountain-Pen"></i><span class="hide-menu">Service</span>
+        </a>
+    </li>
+    <li>
+        <a class="waves-effect waves-dark" href="{{ route('facilities.index') }}" aria-expanded="false">
+            <i class="icons-Fountain-Pen"></i><span class="hide-menu">Facility</span>
+        </a>
+    </li>
+    <li>
+        <a class="waves-effect waves-dark" href="{{ route('contacts2.index') }}" aria-expanded="false">
+            <i class="icons-Fountain-Pen"></i><span class="hide-menu">Contact Us</span>
+        </a>
+    </li>
     @if('homePage-list')
     <li> 
         <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">

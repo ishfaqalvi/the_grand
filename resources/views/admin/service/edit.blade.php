@@ -1,19 +1,19 @@
 @extends('admin.layout.app')
 
-@section('title','Edit Slider')
+@section('title','Edit Service')
 
 @section('breadcrumb')
 <div class="col-md-5 align-self-center">
-    <h4 class="text-themecolor">Edit Slider</h4>
+    <h4 class="text-themecolor">Edit Service</h4>
 </div>
 <div class="col-md-7 align-self-center text-end">
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('grand-sliders.index') }}">Slider</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('services.index') }}">Service</a></li>
             <li class="breadcrumb-item active">Edit</li>
         </ol>
-        <a href="{{ route('grand-sliders.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+        <a href="{{ route('services.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
             <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
         </a>
     </div>
@@ -23,11 +23,11 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Edit Slider</h4>
-        <form method="POST" action="{{ route('grand-sliders.update', $grandSlider->id) }}" role="form" enctype="multipart/form-data" class="grandSlider">
+        <h4 class="card-title">Edit service</h4>
+        <form method="POST" action="{{ route('services.update', $service->id) }}" role="form" enctype="multipart/form-data" class="service">
             @csrf
             {{ method_field('PATCH') }}
-            @include('admin.grand-slider.form')
+            @include('admin.service.form')
         </form>
     </div>
 </div>
@@ -35,7 +35,7 @@
 
 @section('scripts')
 <script>
-    $(".grandSlider").validate({
+    $(".service").validate({
         errorClass: "text-danger",
         highlight: function (element, errorClass) {
             $(element).removeClass(errorClass)
@@ -53,27 +53,5 @@
             error.insertAfter(element)
         },
     });
-</script>
-<script type="text/javascript">
-    CheckMenuType();
-    function CheckMenuType(){
-        var url = document.getElementById('url');
-        var link = document.getElementById('link');
-        var value = document.getElementById("linktype").value;
-        if(value == 'Internal'){
-            link.style.display='block';
-            document.getElementById("url_field").removeAttribute("required");
-            url.style.display='none';
-        }
-        else if(value == 'External'){
-            url.style.display='block';
-            link.style.display='none';
-            document.getElementById("page_link").removeAttribute("required");
-        }
-        else{
-            url.style.display='none';
-            link.style.display='none';
-        }
-    }
 </script>
 @endsection

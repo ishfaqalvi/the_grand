@@ -29,9 +29,9 @@
         {{ Form::number('order', $grandSlider->order, ['class' => 'form-control' . ($errors->has('order') ? ' is-invalid' : ''), 'placeholder' => 'Order']) }}
         {!! $errors->first('order', '<div class="invalid-feedback">:message</div>') !!}
     </div>  
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-12">
         {{ Form::label('description') }}
-        {{ Form::text('description', $grandSlider->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'Description']) }}
+        {{ Form::textarea('description', $grandSlider->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'Description']) }}
         {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
     </div>
     <div class="box-footer mt20">

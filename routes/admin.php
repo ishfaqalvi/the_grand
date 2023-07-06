@@ -58,7 +58,11 @@ Route::resource('menus', MenuController::class);
 |--------------------------------------------------------------------------
 | All route related to career module
 */
-Route::resource('grand-sliders', GrandSliderController::class);
+Route::resource('grand-sliders', 	GrandSliderController::class);
+Route::resource('faqs',          	FaqController::class);
+Route::resource('services',			ServiceController::class);
+Route::resource('facilities',		FacilityController::class);
+Route::resource('contacts',			ContactController::class);
 /*
 |--------------------------------------------------------------------------
 | Job Application Routes

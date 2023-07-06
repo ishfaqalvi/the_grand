@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\GrandSlider;
+
+use App\Models\Service;
 use Illuminate\Http\Request;
 
-
 /**
- * Class GrandSliderController
+ * Class ServiceController
  * @package App\Http\Controllers
  */
-class GrandSliderController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +19,10 @@ class GrandSliderController extends Controller
      */
     public function index()
     {
-        $grandSliders = GrandSlider::paginate();
+        $services = Service::paginate();
 
-        return view('admin.grand-slider.index', compact('grandSliders'))
-            ->with('i', (request()->input('page', 1) - 1) * $grandSliders->perPage());
+        return view('admin.service.index', compact('services'))
+            ->with('i', (request()->input('page', 1) - 1) * $services->perPage());
     }
 
     /**
@@ -32,8 +32,8 @@ class GrandSliderController extends Controller
      */
     public function create()
     {
-        $grandSlider = new GrandSlider();
-        return view('admin.grand-slider.create', compact('grandSlider'));
+        $service = new Service();
+        return view('admin.service.create', compact('service'));
     }
 
     /**
@@ -44,7 +44,7 @@ class GrandSliderController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(GrandSlider::$rules); 
+        request()->validate(Service::$rules);
         $input = $request->all();
 
         if ($image = $request->file('image')) {
@@ -52,10 +52,10 @@ class GrandSliderController extends Controller
             $request->image->move('public/Image', $image_name);
             $input['image'] = $image_name;
         }
-        $grandSlider = GrandSlider::create($input);
+        $service = Service::create($input);
 
-        return redirect()->route('grand-sliders.index')
-            ->with('success', 'GrandSlider created successfully.');
+        return redirect()->route('services.index')
+            ->with('success', 'Service created successfully.');
     }
 
     /**
@@ -66,9 +66,9 @@ class GrandSliderController extends Controller
      */
     public function show($id)
     {
-        $grandSlider = GrandSlider::find($id);
+        $service = Service::find($id);
 
-        return view('admin.grand-slider.show', compact('grandSlider'));
+        return view('admin.service.show', compact('service'));
     }
 
     /**
@@ -79,21 +79,21 @@ class GrandSliderController extends Controller
      */
     public function edit($id)
     {
-        $grandSlider = GrandSlider::find($id);
+        $service = Service::find($id);
 
-        return view('admin.grand-slider.edit', compact('grandSlider'));
+        return view('admin.service.edit', compact('service'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  GrandSlider $grandSlider
+     * @param  Service $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GrandSlider $grandSlider)
+    public function update(Request $request, Service $service)
     {
-        request()->validate(GrandSlider::$rules);
+        request()->validate(Service::$rules);
         $input = $request->all();
 
         if ($image = $request->file('image')) {
@@ -101,9 +101,9 @@ class GrandSliderController extends Controller
             $request->image->move('public/Image', $image_name);
             $input['image'] = $image_name;
         }
-        $grandSlider->update($input);
-        return redirect()->route('grand-sliders.index')
-            ->with('success', 'GrandSlider updated successfully');
+        $service->update($input);
+        return redirect()->route('services.index')
+            ->with('success', 'Service updated successfully');
     }
 
     /**
@@ -113,9 +113,9 @@ class GrandSliderController extends Controller
      */
     public function destroy($id)
     {
-        $grandSlider = GrandSlider::find($id)->delete();
+        $service = Service::find($id)->delete();
 
-        return redirect()->route('grand-sliders.index')
-            ->with('success', 'GrandSlider deleted successfully');
+        return redirect()->route('services.index')
+            ->with('success', 'Service deleted successfully');
     }
 }

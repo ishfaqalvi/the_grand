@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Public\DynamicPageController;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

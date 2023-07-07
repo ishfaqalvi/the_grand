@@ -4,29 +4,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
     
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use App\Models\Branch;
 use App\Models\User;
-use Spatie\Permission\Models\Role;
-use DB;
 use Hash;
 use Auth;
-use Illuminate\Support\Arr;
     
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    function __construct()
-    {
-        $this->middleware('permission:users-list',  ['only' => ['index']]);
-        $this->middleware('permission:users-view',  ['only' => ['show']]);
-        $this->middleware('permission:users-create',['only' => ['create','store']]);
-        $this->middleware('permission:users-edit',  ['only' => ['edit','update']]);
-        $this->middleware('permission:users-delete',['only' => ['destroy']]);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +31,7 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        $roles = Role::pluck('name','id')->all();
+        $roles = Branch::pluck('name','id')->all();
 
         return view('admin.users.create',compact('roles','user'));
     }

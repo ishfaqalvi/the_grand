@@ -4,27 +4,19 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 
 
-Route::domain('{subdomain}.' . env('APP_DOMAIN', 'websitecms.test'))->group(function () {
-    Route::get('admin/dashboard', DashboardController::class)->name('subdomain.dashboard');
-    Route::get('dashboard', function () {
-        return Redirect::to('http://websitecms.test/admin/dashboard');
-    })->name('dashboard');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Dashboard Route
 |--------------------------------------------------------------------------
 */
-Route::get('dashboard', DashboardController::class)->name('dashboard');
+Route::get('home', DashboardController::class)->name('home');
 
 /*
 |--------------------------------------------------------------------------
-| Role Routes
+| Branches Routes
 |--------------------------------------------------------------------------
-| All route related to users roles module
 */
-Route::resource('roles', RoleController::class);
+Route::resource('branches', BranchController::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -224,3 +216,11 @@ Route::controller(SettingController::class)->prefix('settings')->group(function 
 Route::get('logs',
 	[\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']
 )->name('logs');
+
+
+Route::domain('{subdomain}.' . env('APP_DOMAIN', 'websitecms.test'))->group(function () {
+    Route::get('admin/dashboard', DashboardController::class)->name('subdomain.dashboard');
+    Route::get('dashboard', function () {
+        return Redirect::to('http://websitecms.test/admin/dashboard');
+    })->name('dashboard');
+});

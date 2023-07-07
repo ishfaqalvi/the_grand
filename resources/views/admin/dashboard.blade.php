@@ -189,9 +189,5 @@
     </div>
 </div>
 
-<a href="{{ route('subdomain.dashboard', 'demo') }}">Subdomain</a>
-<br>
-<br>
-<a href="{{ route('dashboard') }}">Main</a>
 
 @endsection

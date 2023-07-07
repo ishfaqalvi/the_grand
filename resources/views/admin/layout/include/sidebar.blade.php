@@ -1,4 +1,3 @@
-@php($url = url()->full())
 @php($user = Auth::user())
 <ul id="sidebarnav">
     <li class="user-pro">
@@ -16,24 +15,20 @@
         </ul>
     </li>
     <li>
-        <a class="waves-effect waves-dark" href="{{ route('dashboard') }}" aria-expanded="false">
+        <a class="waves-effect waves-dark" href="{{ route('home') }}" aria-expanded="false">
             <i class="icon-speedometer"></i><span class="hide-menu">Dashboard</span>
         </a>
     </li>
-    @can('roles-list')
     <li>
-        <a class="waves-effect waves-dark" href="{{ route('roles.index') }}" aria-expanded="false">
-            <i class="icons-Control"></i><span class="hide-menu">Roles</span>
+        <a class="waves-effect waves-dark" href="{{ route('branches.index') }}" aria-expanded="false">
+            <i class="icons-Control"></i><span class="hide-menu">Branches</span>
         </a>
     </li>
-    @endcan
-    @can('users-list')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('users.index') }}" aria-expanded="false">
             <i class="icons-Administrator"></i><span class="hide-menu">Users</span>
         </a>
     </li>
-    @endcan
     @can('media-list')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('media.index') }}" aria-expanded="false">
@@ -56,7 +51,7 @@
     </li>
     @endcan
     <li>
-        <a class="waves-effect waves-dark" href="{{ route('grand-sliders.index') }}" aria-expanded="false">
+        <a class="waves-effect waves-dark" href="{{ route('sliders.index') }}" aria-expanded="false">
             <i class="icons-Fountain-Pen"></i><span class="hide-menu">Slider</span>
         </a>
     </li>

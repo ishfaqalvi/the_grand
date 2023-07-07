@@ -4,10 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Carbon\Carbon;
 use App\Models\User;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
 class AdminUserSeeder extends Seeder
 {
@@ -19,14 +16,10 @@ class AdminUserSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'name'      	=> 'Super Admin',
-            'email'     	=> 'superadmin@gmail.com',
-            'password'  	=> bcrypt('password'),
+            'name'      => 'Super Admin',
+            'email'     => 'superadmin@gmail.com',
+            'password'  => 'password',
+            'type'      => 'Main'
         ]);
-
-        $role = Role::create(['name' => 'Super Admin','guard_name' => 'web']);
-
-        $role->syncPermissions(Permission::all());
-        $user->assignRole(1);
     }
 }

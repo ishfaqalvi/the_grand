@@ -9,7 +9,7 @@
 <div class="col-md-7 align-self-center text-end">
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Users</li>
         </ol>
         @can('users-create')
@@ -47,10 +47,8 @@
                         </td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            @foreach($user->roles as $role)
-                                <span class="badge rounded-pill bg-success">{{ $role->name }}</span>
-                            @endforeach
-                        </td>
+                                <span class="badge rounded-pill bg-success">{{ $user->name }}</span>
+                                                    </td>
                         <td>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

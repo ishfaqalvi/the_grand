@@ -39,7 +39,9 @@
                         <td>{{ $key }}</td>
                         <td>{{ $branch->name }}</td>
                         <td>{{ $branch->prefix }}</td>
-                        <td>{{ $branch->image }}</td>
+                        <td>
+                            <img src="{{ url('upload/images/branch/'.$branch->image) }}" style="height: 50px; width: 150px;">
+                        </td>
                         <td>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -68,4 +70,26 @@
         </table>
     </div>
 </div>
+@endsection 
+
+@section('scripts')
+<script>
+    $(function () {
+        $(".datatable").DataTable();
+        $(".sa-confirm").click(function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value === true)  $(this).closest("form").submit();
+            });
+        });
+    });
+</script>
 @endsection

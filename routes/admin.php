@@ -17,6 +17,12 @@ Route::get('home', DashboardController::class)->name('home');
 |--------------------------------------------------------------------------
 */
 Route::resource('branches', BranchController::class);
+// NEWS
+Route::resource('news', NewsController::class);
+// SERVICIES
+Route::resource('services', ServiceController::class);
+// FACILITIES
+Route::resource('facilities', FacilityController::class);
 
 /*
 |--------------------------------------------------------------------------

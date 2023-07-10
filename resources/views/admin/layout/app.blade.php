@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/fav_icon.png') }}">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('admin/icons/font-awesome/css/all.min.css'                          ) }}"/>
     <link rel="stylesheet" href="{{ asset('admin/plugins/morrisjs/morris.css'                                 ) }}"/>

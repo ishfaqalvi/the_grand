@@ -1,9 +1,13 @@
 <div class="navbar-header">
     <a target="_blank" class="navbar-brand" href="{{ route('home') }}">
         <b>
+            <img src="{{ asset('admin/images/fav_icon.png') }}" alt="homepage" class="light-logo" height="50px" />
             <!-- Light Logo icon -->
-            <img src="{{ asset('admin/images/logo.webp') }}" alt="homepage" class="light-logo" height="35px"/>
         </b>
+        <span>
+            <img src="{{ asset('admin/images/logo.png') }}" alt="homepage" class="light-logo" height="35px" />
+            <!-- Light Logo text -->    
+        </span>
     </a>
 </div>
 <div class="navbar-collapse">

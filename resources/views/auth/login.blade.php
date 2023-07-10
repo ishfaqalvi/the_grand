@@ -10,8 +10,8 @@
         <form method="POST" action="{{ route('login') }}" class="form-horizontal form-material m-t-40 text-center" id="loginform">
             @csrf
             <a href="javascript:void(0)" class="db">
-                <img src="{{ asset('admin/images/logo-icon.png') }}" alt="Home" /><br/>
-                <img src="{{ asset('admin/images/logo-text.png') }}" alt="Home" />
+                <!-- <img src="{{ asset('admin/images/logo-icon.png') }}" alt="Home" /><br/> -->
+                <img src="{{ asset('admin/images/logo-dark.png') }}" alt="Home" />
             </a>
             <div class="form-group m-t-40">
                 <div class="col-xs-12">

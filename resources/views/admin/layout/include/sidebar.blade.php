@@ -25,6 +25,21 @@
         </a>
     </li>
     <li>
+        <a class="waves-effect waves-dark" href="{{ route('services.index') }}" aria-expanded="false">
+            <i class="icons-Control"></i><span class="hide-menu">Services</span>
+        </a>
+    </li>
+    <li>
+        <a class="waves-effect waves-dark" href="{{ route('facilities.index') }}" aria-expanded="false">
+            <i class="icons-Control"></i><span class="hide-menu">Facilities</span>
+        </a>
+    </li>
+    <li>
+        <a class="waves-effect waves-dark" href="{{ route('news.index') }}" aria-expanded="false">
+            <i class="icons-Control"></i><span class="hide-menu">News</span>
+        </a>
+    </li>
+    <li>
         <a class="waves-effect waves-dark" href="{{ route('users.index') }}" aria-expanded="false">
             <i class="icons-Administrator"></i><span class="hide-menu">Users</span>
         </a>

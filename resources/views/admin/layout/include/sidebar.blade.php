@@ -30,6 +30,11 @@
         </a>
     </li>
     <li>
+        <a class="waves-effect waves-dark" href="{{ route('testimonials.index') }}" aria-expanded="false">
+            <i class="icons-Control"></i><span class="hide-menu">Testimonial</span>
+        </a>
+    </li>
+    <li>
         <a class="waves-effect waves-dark" href="{{ route('facilities.index') }}" aria-expanded="false">
             <i class="icons-Control"></i><span class="hide-menu">Facilities</span>
         </a>

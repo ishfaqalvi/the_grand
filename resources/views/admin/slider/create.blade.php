@@ -4,13 +4,13 @@
 
 @section('breadcrumb')
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Create slider</h4>
+        <h4 class="text-themecolor">Create Slider</h4>
     </div>
     <div class="col-md-7 align-self-center text-end">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb justify-content-end">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('menus.index') }}">Slider</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('sliders.index') }}">Sliders</a></li>
                 <li class="breadcrumb-item active">Create</li>
             </ol>
             <a href="{{ route('sliders.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
@@ -24,7 +24,7 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">Create Slider</h4>
-        <form method="POST" action="{{ route('sliders.store') }}" role="form" enctype="multipart/form-data" class="menu">
+        <form method="POST" action="{{ route('sliders.store') }}" role="form" enctype="multipart/form-data" class="slider">
             @csrf
             @include('admin.slider.form')
         </form>
@@ -34,7 +34,23 @@
 
 @section('scripts')
 <script>
-    $(".menu").validate({
+    $(document).ready(function() {
+        $("select[name=type]").change(function() {
+            if ($(this).val() == 'Image') {
+                $('div.imageField').show('slow');
+                $('div.videoField').hide('slow');
+            }else if ($(this).val() == 'Video'){
+                $('div.imageField').hide('slow');
+                $('div.videoField').show('slow');
+            }else{
+                $('div.videoField').hide('slow');
+                $('div.imageField').hide('slow');
+            }
+        }).trigger('change');
+    });
+</script>
+<script>
+    $(".slider").validate({
         errorClass: "text-danger",
         highlight: function (element, errorClass) {
             $(element).removeClass(errorClass)
@@ -50,29 +66,7 @@
         },
         errorPlacement: function (error, element) {
             error.insertAfter(element)
-        },
+        }
     });
-</script>
-<script type="text/javascript">
-    CheckMenuType();
-    function CheckMenuType(){
-        var url = document.getElementById('url');
-        var link = document.getElementById('link');
-        var value = document.getElementById("linktype").value;
-        if(value == 'Internal'){
-            link.style.display='block';
-            document.getElementById("url_field").removeAttribute("required");
-            url.style.display='none';
-        }
-        else if(value == 'External'){
-            url.style.display='block';
-            link.style.display='none';
-            document.getElementById("page_link").removeAttribute("required");
-        }
-        else{
-            url.style.display='none';
-            link.style.display='none';
-        }
-    }
 </script>
 @endsection

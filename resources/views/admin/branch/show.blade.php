@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title','Show menu')
+@section('title','Show Branch')
 
 @section('breadcrumb')
 <div class="col-md-5 align-self-center">
@@ -9,7 +9,7 @@
 <div class="col-md-7 align-self-center text-end">
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('branches.index') }}">Branch</a></li>
             <li class="breadcrumb-item active">Show</li>
         </ol>
@@ -31,12 +31,12 @@
                     <td>{{ $branch->name }}</td>
                 </tr>
                 <tr>
-                    <td class="card-title">Prefix</td>
-                    <td>{{ $branch->prefix }}</td>
+                    <td class="card-title">Slug</td>
+                    <td>{{ $branch->slug }}</td>
                 </tr>
                 <tr>
                     <td class="card-title">Image</td>
-                    <td>{{ $branch->image }}</td>
+                    <td><img src="{{ asset($branch->image) }}" width="100%"></td>
                 </tr>
             </tbody>
         </table>

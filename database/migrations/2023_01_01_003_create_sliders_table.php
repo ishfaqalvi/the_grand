@@ -15,9 +15,16 @@ return new class extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('branch_id')
+                ->nullable()
+                ->references('id')
+                ->on('branches')
+                ->onDelete('cascade');
+            $table->string('type');
             $table->string('title');
-            $table->text('description');
-            $table->string('image');
+            $table->string('sub_title');
+            $table->string('image')->nullable();
+            $table->string('video')->nullable();
             $table->enum('linktype',['Internal','External']);
             $table->string('link');
             $table->integer('order');

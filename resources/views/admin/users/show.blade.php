@@ -31,15 +31,11 @@
             <div class="form-group d-flex flex-column">
                 <h5>User Information</h5>
                 <strong>Name:</strong>
-                {{ $user->name }}
+                {{ $user->name }}</br></br>
                 <strong>Email:</strong>
-                {{ $user->email }}
-            </div>
-            <div class="form-group d-flex flex-column">
-                <h5>User Roles</h5>
-                @foreach($user->roles as $role)
-                    <span class="badge rounded-pill bg-success mt-1">{{ $role->name }}</span>
-                @endforeach
+                {{ $user->email }}</br></br>
+                <strong>Branch:</strong>
+                {{ $user->branch->name }}
             </div>
         </div>
     </div>

@@ -49,6 +49,24 @@ class User extends Authenticatable implements Auditable
     ];
 
     /**
+     * Set the image attribute.
+     *
+     * @param  string  $value
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    public function setImageAttribute($image)
+    {
+        if ($image) {
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $image->move('upload/images/profile/', $filename);
+            $name = "upload/images/profile/".$filename;
+            $this->attributes['image'] = $filename;
+        }else{
+            unset($this->attributes['image']);
+        }
+    }
+
+    /**
      * The set and get attributes.
      *
      * @var array

@@ -9,7 +9,7 @@
 <div class="col-md-7 align-self-center text-end">
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('users.index') }}">User</a></li>
             <li class="breadcrumb-item active">Create</li>
         </ol>
@@ -24,10 +24,14 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">Create User</h4>
+        @if(count(branches())> 0)
         <form method="POST" action="{{ route('users.store') }}" class="user" role="form" enctype="multipart/form-data">
             @csrf
             @include('admin.users.form')
         </form>
+        @else
+        <div class="alert alert-info">Opps! Their is no branch available. So You can first add a new <a href="{{ route('branches.create') }}">Branch</a> and then create user. </div>
+        @endif
     </div>
 </div>
 @endsection

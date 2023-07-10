@@ -5,9 +5,7 @@ use App\Http\Controllers\Controller;
     
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use App\Models\Branch;
 use App\Models\User;
-use Hash;
 use Auth;
     
 class UserController extends Controller
@@ -19,7 +17,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::get();
+        $users = User::whereNotNull('branch_id')->get();
         return view('admin.users.index',compact('users'));
     }
     
@@ -31,9 +29,8 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        $roles = Branch::pluck('name','id')->all();
 
-        return view('admin.users.create',compact('roles','user'));
+        return view('admin.users.create',compact('user'));
     }
     
     /**
@@ -49,13 +46,10 @@ class UserController extends Controller
             'email'             => 'required|email|unique:users,email',
             'password'          => 'required|same:confirm_password',
             'confirm_password'  => 'required|same:password',
-            'roles'             => 'required'
+            'branch_id'         => 'required'
         ]);
-    
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
-        $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+        $request['type'] = 'Branch';
+        $user = User::create($request->all());
     
         return redirect()->route('users.index')->with('success','User created successfully');
     }
@@ -81,10 +75,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name','id')->all();
-        $userRole = $user->roles->pluck('name','id')->all();
     
-        return view('admin.users.edit',compact('user','roles','userRole'));
+        return view('admin.users.edit',compact('user'));
     }
     
     /**
@@ -97,24 +89,19 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$user->id,
-            'password' => 'same:confirm-password',
-            'roles' => 'required'
+            'name'      => 'required',
+            'email'     => 'required|email|unique:users,email,'.$user->id,
+            'password'  => 'same:confirm-password',
+            'branch_id' => 'required'
         ]);
     
         $input = $request->all();
         if(!empty($input['password'])){ 
-            $input['password'] = Hash::make($input['password']);
+            $input['password'] = $input['password'];
         }else{
             $input = Arr::except($input,array('password'));    
         }
-    
-        $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
-        $user->assignRole($request->input('roles'));
     
         return redirect()->route('users.index')->with('success','User updated successfully');
     }
@@ -162,18 +149,9 @@ class UserController extends Controller
         $input = $request->all();
 
         if (!empty($input['new_password'])) {
-            $input['password'] = Hash::make($input['new_password']);
+            $input['password'] = $input['new_password'];
         }else {
             $input = Arr::except($input, array('password'));
-        }
-        if($image = $request->file('image')){
-            $filename = time().'.'.$image->getClientOriginalExtension();
-            $image->move('upload/images/profile/', $filename);
-            $name = "upload/images/profile/".$filename;
-            $input['image'] = $name;
-        }
-        else{
-            unset($input['image']);
         }
         Auth()->user()->update($input);
         

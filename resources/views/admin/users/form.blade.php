@@ -20,9 +20,9 @@
         {!! $errors->first('confirm_password', '<div class="invalid-feedback">:message</div>') !!}
     </div>
     <div class="form-group col-lg-12">
-        {{ Form::label('roles') }}
-        {{ Form::select('roles[]', $roles, $user->roles, ['class' => 'form-control select2 m-b-10 select2-multiple' . ($errors->has('roles') ? ' is-invalid' : ''), 'data-placeholder' => '--Select--','multiple','required']) }}
-        {!! $errors->first('roles', '<div class="invalid-feedback">:message</div>') !!}
+        {{ Form::label('branch') }}
+        {{ Form::select('branch_id', branches(), $user->branch_id, ['class' => 'form-control' . ($errors->has('branch_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
+        {!! $errors->first('branch_id', '<div class="invalid-feedback">:message</div>') !!}
     </div>
 </div>
 <div class="row">

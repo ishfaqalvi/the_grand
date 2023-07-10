@@ -43,14 +43,7 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-
-        if ($image = $request->file('image')) {
-            $image_name = $request->file('image')->getClientOriginalName();
-            $request->image->move('upload/images/branch/', $image_name);
-            $input['image'] = $image_name;
-        }
-        $branch = Branch::create($input);
+        $branch = Branch::create($request->all());
 
         return redirect()->route('branches.index')
             ->with('success', 'Branch created successfully.');
@@ -91,15 +84,7 @@ class BranchController extends Controller
      */
     public function update(Request $request, Branch $branch)
     {
-        request()->validate(Branch::$rules);
-        $input = $request->all();
-
-        if ($image = $request->file('image')) {
-            $image_name = $request->file('image')->getClientOriginalName();
-            $request->image->move('public/Image', $image_name);
-            $input['image'] = $image_name;
-        }
-        $branch->update($input);
+        $branch->update($request->all());
 
         return redirect()->route('branches.index')
             ->with('success', 'Branch updated successfully');

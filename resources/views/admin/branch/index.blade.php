@@ -9,7 +9,7 @@
 <div class="col-md-7 align-self-center text-end">
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
             <li class="breadcrumb-item active">Branches</li>
         </ol>
         <a href="{{ route('branches.create') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
@@ -28,7 +28,7 @@
                 <tr>
                     <th>No</th>              
                     <th>Name</th>
-                    <th>Prefix</th>
+                    <th>Slug</th>
                     <th>Image</th>
                     <th width="10px">Actions</th>
                 </tr>
@@ -36,34 +36,13 @@
             <tbody>
                 @foreach ($branches as $key => $branch)
                     <tr>
-                        <td>{{ $key }}</td>
+                        <td>{{ ++$key }}</td>
                         <td>{{ $branch->name }}</td>
-                        <td>{{ $branch->prefix }}</td>
+                        <td>{{ $branch->slug }}</td>
                         <td>
-                            <img src="{{ url('upload/images/branch/'.$branch->image) }}" style="height: 50px; width: 150px;">
+                            <img src="{{ asset($branch->image) }}" style="height: 50px; width: 150px;">
                         </td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Action
-                                </button>
-                                <div class="dropdown-menu animated lightSpeedIn dropdown-menu-end">
-                                    <a class="dropdown-item" href="{{ route('branches.show',$branch->id) }}">
-                                        <i class="fa fa-fw fa-eye"></i> Show
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('branches.edit',$branch->id) }}">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                    <form action="{{ route('branches.destroy',$branch->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="dropdown-item sa-confirm">
-                                            <i class="fa fa-fw fa-trash"></i> Delete
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </td>
+                        <td>@include('admin.branch.actions')</td>
                     </tr>
                 @endforeach
             </tbody>

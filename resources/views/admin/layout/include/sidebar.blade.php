@@ -15,13 +15,13 @@
         </ul>
     </li>
     <li>
-        <a class="waves-effect waves-dark" href="{{ route('home') }}" aria-expanded="false">
+        <a class="waves-effect waves-dark" href="{{ route('dashboard') }}" aria-expanded="false">
             <i class="icon-speedometer"></i><span class="hide-menu">Dashboard</span>
         </a>
     </li>
     <li>
         <a class="waves-effect waves-dark" href="{{ route('branches.index') }}" aria-expanded="false">
-            <i class="icons-Control"></i><span class="hide-menu">Branches</span>
+            <i class="ti-layout-grid2"></i><span class="hide-menu">Branches</span>
         </a>
     </li>
     <li>
@@ -29,13 +29,11 @@
             <i class="icons-Administrator"></i><span class="hide-menu">Users</span>
         </a>
     </li>
-    @can('media-list')
     <li>
-        <a class="waves-effect waves-dark" href="{{ route('media.index') }}" aria-expanded="false">
-            <i class="icons-Camera-2"></i><span class="hide-menu">Media</span>
+        <a class="waves-effect waves-dark" href="{{ route('sliders.index') }}" aria-expanded="false">
+            <i class="ti-layout-media-right-alt"></i><span class="hide-menu">Slider</span>
         </a>
     </li>
-    @endcan
     @can('menu-list')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('menus.index') }}" aria-expanded="false">

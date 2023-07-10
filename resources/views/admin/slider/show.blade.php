@@ -1,6 +1,8 @@
 @extends('admin.layout.app')
 
-@section('title','Show menu')
+@section('title')
+    {{ $slider->title ?? "Show Slider" }}
+@endsection
 
 @section('breadcrumb')
 <div class="col-md-5 align-self-center">
@@ -10,7 +12,7 @@
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('sliders.index') }}">Slider</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('sliders.index') }}">Sliders</a></li>
             <li class="breadcrumb-item active">Show</li>
         </ol>
         <a href="{{ route('sliders.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
@@ -24,38 +26,51 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">Show Slider</h4>
-        <table class="table no-border d-flex">
-            <tbody>
-                <tr>
-                    <td class="card-title">Title</td>
-                    <td>{{ $grandSlider->title }}</td>
-                </tr>
-                <tr>
-                    <td class="card-title">Image</td>
-                    <td>{{ $grandSlider->image }}</td>
-                </tr>
-                <tr>
-                    <td class="card-title">Url</td>
-                    <td>{{ $grandSlider->url }}</td>
-                </tr>
-                <tr>
-                    <td class="card-title">Link</td>
-                    <td>{{ $grandSlider->link }}</td>
-                </tr>
-                <tr>
-                    <td class="card-title">Order</td>
-                    <td>{{ $grandSlider->order }}</td>
-                </tr>
-                <tr>
-                    <td class="card-title">Status</td>
-                    <td>{{ $grandSlider->status }}</td>
-                </tr>
-                <tr>
-                    <td class="card-title">Description</td>
-                    <td>{{ $grandSlider->description }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <strong>Type:</strong>
+                {{ $slider->type }}
+            </div>
+            <div class="form-group col-md-12">
+                <strong>Title:</strong>
+                {{ $slider->title }}
+            </div>
+            <div class="form-group col-md-12">
+                <strong>Sub Title:</strong>
+                {{ $slider->sub_title }}
+            </div>
+            <div class="form-group col-md-12">
+                <strong>Linktype:</strong>
+                {{ $slider->linktype }}
+            </div>
+            <div class="form-group col-md-12">
+                <strong>Link:</strong>
+                {{ $slider->link }}
+            </div>
+            <div class="form-group col-md-12">
+                <strong>Order:</strong>
+                {{ $slider->order }}
+            </div>
+            <div class="form-group col-md-12">
+                <strong>Branch:</strong>
+                {{ $slider->branch_id }}
+            </div>
+            <div class="form-group col-md-12">
+                <strong>Status:</strong>
+                {{ $slider->status }}
+            </div>
+            <div class="form-group col-md-12">
+                @if($slider->type == 'Image')
+                    <strong>Image:</strong>
+                    <img src="{{ url($slider->image) }}" width="100%">
+                @else
+                    <strong>Video:</strong>
+                    <video width="100%" controls>
+                        <source src="{{ url($slider->video) }}" type="video/mp4">
+                    </video>
+                @endif
+            </div>
+        </div>  
     </div>
 </div>
 @endsection

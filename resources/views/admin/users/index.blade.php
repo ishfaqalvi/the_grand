@@ -12,11 +12,9 @@
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Users</li>
         </ol>
-        @can('users-create')
         <a href="{{ route('users.create') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
             <i class="fa fa-plus-circle"></i> Create New
         </a>
-        @endcan
     </div>
 </div>
 @endsection
@@ -31,14 +29,14 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Roles</th>
+                    <th>Branch</th>
                     <th width="10px">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($users as  $key => $user)
                     <tr>
-                        <td>{{ $user->id }}</td>
+                        <td>{{ ++$key }}</td>
                         <td>
                             <a href="javascript:void(0)">
                                 <img src="{{ asset($user->image) }}" alt="user" width="40" class="img-circle" />
@@ -46,37 +44,8 @@
                             </a>
                         </td>
                         <td>{{ $user->email }}</td>
-                        <td>
-                                <span class="badge rounded-pill bg-success">{{ $user->name }}</span>
-                                                    </td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Action
-                                </button>
-                                <div class="dropdown-menu animated lightSpeedIn dropdown-menu-end">
-                                    @can('users-view')
-                                    <a class="dropdown-item" href="{{ route('users.show',$user->id) }}">
-                                        <i class="fa fa-fw fa-eye"></i> Show
-                                    </a>
-                                    @endcan
-                                    @can('users-edit')
-                                    <a class="dropdown-item" href="{{ route('users.edit',$user->id) }}">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                    @endcan
-                                    @can('users-delete')
-                                    <form action="{{ route('users.destroy',$user->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="dropdown-item sa-confirm">
-                                            <i class="fa fa-fw fa-trash"></i> Delete
-                                        </button>
-                                    </form>
-                                    @endcan
-                                </div>
-                            </div>
-                        </td>
+                        <td>{{ $user->branch->name }}</td>
+                        <td>@include('admin.users.actions')</td>
                     </tr>
                 @endforeach
             </tbody>

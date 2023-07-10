@@ -1,11 +1,10 @@
-
 @extends('admin.layout.app')
 
-@section('title','Sliders')
+@section('title','Slider')
 
 @section('breadcrumb')
 <div class="col-md-5 align-self-center">
-    <h4 class="text-themecolor">Sliders</h4>
+    <h4 class="text-themecolor">Slider Managment</h4>
 </div>
 <div class="col-md-7 align-self-center text-end">
     <div class="d-flex justify-content-end align-items-center">
@@ -13,11 +12,9 @@
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
             <li class="breadcrumb-item active">Sliders</li>
         </ol>
-        @can('menu-create')
         <a href="{{ route('sliders.create') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
             <i class="fa fa-plus-circle"></i> Create New
         </a>
-        @endcan
     </div>
 </div>
 @endsection
@@ -30,53 +27,32 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Title</th>
-                    <th>Image</th>
+                    <th>Type</th>
+                    <th>Title</th>      
                     <th>Order</th>
-                    <th>Description</th>
+                    <th>Branch</th>
+                    <th>Status</th>
                     <th width="10px">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($grandSliders as  $key => $grandSlider)
+                @foreach ($sliders as $key => $slider)
                     <tr>
-                        <td>{{ ++$i }}</td>         
-                        <td>{{ $grandSlider->title }}</td>
-                        <td>
-                            <img style="width: 100%; display: block;" src="{{asset('upload/images/gallery/'.$grandSlider->image)}}" alt="image"/><div class="mask">
-                        </td>
-                        <td>{{ $grandSlider->order }}</td>
-                        <td>{{ $grandSlider->description }}</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Action
-                                </button>
-                                <div class="dropdown-menu animated lightSpeedIn dropdown-menu-end">
-                                    <a class="dropdown-item" href="{{ route('sliders.show',$grandSlider->id) }}">
-                                        <i class="fa fa-fw fa-eye"></i> Show
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('sliders.edit',$grandSlider->id) }}">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                    <form action="{{ route('sliders.destroy',$grandSlider->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="dropdown-item sa-confirm">
-                                            <i class="fa fa-fw fa-trash"></i> Delete
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </td>
+                        <td>{{ ++$key }}</td>
+                        <td>{{ $slider->type }}</td>
+                        <td>{{ $slider->title }}</td>
+                        <td>{{ $slider->order }}</td>
+                        <td>{{ $slider->branch?->name }}</td>
+                        <td>{{ $slider->status }}</td>
+                        <td>@include('admin.slider.actions')</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-    {!! $grandSliders->links() !!}
-</div>
+</div> 
 @endsection
+
 @section('scripts')
 <script>
     $(function () {
@@ -91,6 +67,42 @@
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value === true)  $(this).closest("form").submit();
+            });
+        });
+    });
+</script>
+<script>
+    $(function () {
+        $(".publish-confirm").click(function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This slide will be displayed on website after Publish!",
+                type: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Publish it!'
+            }).then((result) => {
+                if (result.value === true)  $(this).closest("form").submit();
+            });
+        });
+    });
+</script>
+<script>
+    $(function () {
+        $(".unpublish-confirm").click(function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This slide will not displayed on website after this!",
+                type: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, UnPublish it!'
             }).then((result) => {
                 if (result.value === true)  $(this).closest("form").submit();
             });

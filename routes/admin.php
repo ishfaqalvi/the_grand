@@ -3,13 +3,19 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 
+// Route::domain('{subdomain}.' . env('APP_DOMAIN', 'websitecms.test'))->group(function () {
+//     Route::get('admin/home', DashboardController::class)->name('subdomain.dashboard');
+//     Route::get('home', function () {
+//         return Redirect::to('http://websitecms.test/admin/home');
+//     })->name('dashboard');
+// });
 
 /*
 |--------------------------------------------------------------------------
 | Dashboard Route
 |--------------------------------------------------------------------------
 */
-Route::get('home', DashboardController::class)->name('home');
+Route::get('dashboard', DashboardController::class)->name('dashboard');
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +28,6 @@ Route::resource('branches', BranchController::class);
 |--------------------------------------------------------------------------
 | User Routes
 |--------------------------------------------------------------------------
-| All route related to users module
 */
 Route::resource('users', UserController::class);
 Route::controller(UserController::class)->prefix('user')->group(function () {
@@ -31,6 +36,13 @@ Route::controller(UserController::class)->prefix('user')->group(function () {
     Route::post('check_email', 	 'checkEmail'	)->name('user.checkEmail');
     Route::post('check_password','checkPassword')->name('user.checkPassword');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Slider Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('sliders', SliderController::class);
 
 
 /*
@@ -53,13 +65,7 @@ Route::controller(GalleryController::class)->prefix('media')->group(function () 
 */
 Route::resource('menus', MenuController::class);
 
-/*
-|--------------------------------------------------------------------------
-| Career Routes
-|--------------------------------------------------------------------------
-| All route related to career module
-*/
-Route::resource('sliders', SliderController::class);
+
 /*
 |--------------------------------------------------------------------------
 | Job Application Routes
@@ -218,9 +224,4 @@ Route::get('logs',
 )->name('logs');
 
 
-Route::domain('{subdomain}.' . env('APP_DOMAIN', 'websitecms.test'))->group(function () {
-    Route::get('admin/dashboard', DashboardController::class)->name('subdomain.dashboard');
-    Route::get('dashboard', function () {
-        return Redirect::to('http://websitecms.test/admin/dashboard');
-    })->name('dashboard');
-});
+

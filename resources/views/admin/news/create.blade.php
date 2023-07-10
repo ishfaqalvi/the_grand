@@ -3,21 +3,21 @@
 @section('title','Create News')
 
 @section('breadcrumb')
-    <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Create News</h4>
+<div class="col-md-5 align-self-center">
+    <h4 class="text-themecolor">Create News</h4>
+</div>
+<div class="col-md-7 align-self-center text-end">
+    <div class="d-flex justify-content-end align-items-center">
+        <ol class="breadcrumb justify-content-end">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('news.index') }}">News</a></li>
+            <li class="breadcrumb-item active">Create</li>
+        </ol>
+        <a href="{{ route('news.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+            <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
+        </a>
     </div>
-    <div class="col-md-7 align-self-center text-end">
-        <div class="d-flex justify-content-end align-items-center">
-            <ol class="breadcrumb justify-content-end">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('news.index') }}">News</a></li>
-                <li class="breadcrumb-item active">Create</li>
-            </ol>
-            <a href="{{ route('news.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
-                <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
-            </a>
-        </div>
-    </div>
+</div>
 @endsection
 
 @section('content')
@@ -53,19 +53,4 @@
         },
     });
 </script>
-<script>
-    $(document).ready(function() {
-        $("select[name=type]").change(function() {
-            if ($(this).val() == 'Main') {
-                $('div.parent').show('slow');
-            }else{
-                $('div.parent').hide('slow');
-            }
-        }).trigger('change');
-    });
-</script>
 @endsection
-
-
-
-

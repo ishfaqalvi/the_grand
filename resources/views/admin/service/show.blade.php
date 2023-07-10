@@ -28,7 +28,7 @@
             <tbody>
                 <tr>
                     <td class="card-title">Image</td>
-                    <td><img src="{{ url('upload/images/services/'.$service->image) }}" style="height: 90px; width: 150px;"></td>
+                    <td><img src="{{ url($service->image) }}" style="height: 90px; width: 150px;"></td>
                 </tr>
                 <tr>
                     <td class="card-title">Heading</td>
@@ -39,25 +39,24 @@
                     <td>{{ $service->sub_heading }}</td>
                 </tr>
                 <tr>
-                    <td class="card-title">Button</td>
-                    <td>{{ $service->button }}</td>
-                </tr>
-                <tr>
-                    <td class="card-title">Description</td>
-                    <td>{{ $service->description }}</td>
+                    <td class="card-title">Link</td>
+                    <td>{{ $service->link }}</td>
                 </tr>
                 <tr>
                     <td class="card-title">Order</td>
                     <td>{{ $service->order }}</td>
                 </tr>
-                
                 <tr>
                     <td class="card-title">Branch</td>
-                    <td>{{ $service->branch->name }}</td>
+                    <td>{{ $service->branch?->name }}</td>
                 </tr>
                 <tr>
                     <td class="card-title">Status</td>
                     <td>{{ $service->status }}</td>
+                </tr>
+                <tr>
+                    <td class="card-title">Description</td>
+                    <td>{{ $service->description }}</td>
                 </tr>
             </tbody>
         </table>

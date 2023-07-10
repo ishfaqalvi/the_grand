@@ -71,10 +71,6 @@
                 if (result.value === true)  $(this).closest("form").submit();
             });
         });
-    });
-</script>
-<script>
-    $(function () {
         $(".publish-confirm").click(function (event) {
             event.preventDefault();
             Swal.fire({
@@ -89,10 +85,6 @@
                 if (result.value === true)  $(this).closest("form").submit();
             });
         });
-    });
-</script>
-<script>
-    $(function () {
         $(".unpublish-confirm").click(function (event) {
             event.preventDefault();
             Swal.fire({

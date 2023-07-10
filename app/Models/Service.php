@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Image;
 
 /**
  * Class Service
@@ -27,14 +28,11 @@ class Service extends Model
 {
     
     static $rules = [
-		'branch_id' => 'required',
-		'image' => 'required',
-		'heading' => 'required',
+		'heading'     => 'required',
 		'sub_heading' => 'required',
-		'button' => 'required',
+		'link'        => 'required',
 		'description' => 'required',
-		'order' => 'required',
-		'status' => 'required',
+		'order'       => 'required',
     ];
 
     protected $perPage = 20;
@@ -44,8 +42,27 @@ class Service extends Model
      *
      * @var array
      */
-    protected $fillable = ['branch_id','image','heading','sub_heading','button','description','order','status'];
+    protected $fillable = ['branch_id','image','heading','sub_heading','link','description','order','status'];
 
+    /**
+     * Set the image attribute.
+     *
+     * @param  string  $value
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    public function setImageAttribute($image)
+    {
+        if ($image) {
+            $filenamewithextension = $image->getClientOriginalName();
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+            $filenametostore = 'upload/images/services/'.time().'.webp';
+            $img = Image::make($image)->encode('webp', 90);   
+            $img->save(public_path($filenametostore));
+            $this->attributes['image'] = $filenametostore;
+        }else{
+            unset($this->attributes['image']);
+        }
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

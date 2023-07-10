@@ -40,34 +40,13 @@
                 @foreach($news as  $key => $news)
                     <tr class="align-items-center">
                         <td>{{ ++$i }}</td>  
-                        <td><img src="{{ url('upload/images/news/'.$news->image) }}" style="height: 40px; width: 75px;"></td>
+                        <td><img src="{{ url($news->image) }}" style="height: 40px; width: 75px;"></td>
                         <td>{{ $news->heading }}</td>
                         <td>{{ $news->date }}</td>
                         <td>{{ $news->order }}</td>
-                        <td>{{ $news->branch->name }}</td>
+                        <td>{{ $news->branch?->name }}</td>
                         <td>{{ $news->status }}</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Action
-                                </button>
-                                <div class="dropdown-menu animated lightSpeedIn dropdown-menu-end">
-                                    <a class="dropdown-item" href="{{ route('news.show',$news->id) }}">
-                                        <i class="fa fa-fw fa-eye"></i> Show
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('news.edit',$news->id) }}">
-                                        <i class="fa fa-fw fa-edit"></i> Edit
-                                    </a>
-                                    <form action="{{ route('news.destroy',$news->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="dropdown-item sa-confirm">
-                                            <i class="fa fa-fw fa-trash"></i> Delete
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </td>
+                        <td>@include('admin.news.actions')</td>
                     </tr>
                 @endforeach
             </tbody>
@@ -89,6 +68,34 @@
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value === true)  $(this).closest("form").submit();
+            });
+        });
+        $(".publish-confirm").click(function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This new will be displayed on website after this!",
+                type: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Publish it!'
+            }).then((result) => {
+                if (result.value === true)  $(this).closest("form").submit();
+            });
+        });
+        $(".unpublish-confirm").click(function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This new will not displayed on website after this!",
+                type: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, UnPublish it!'
             }).then((result) => {
                 if (result.value === true)  $(this).closest("form").submit();
             });

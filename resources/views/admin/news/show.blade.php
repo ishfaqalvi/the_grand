@@ -28,7 +28,7 @@
             <tbody>
                 <tr>
                     <td class="card-title">Image</td>
-                    <td><img src="{{ url('upload/images/news/'.$news->image) }}" style="height: 90px; width: 150px;"></td>
+                    <td><img src="{{ url($news->image) }}" style="height: 90px; width: 150px;"></td>
                 </tr>
                 <tr>
                     <td class="card-title">Heading</td>
@@ -57,7 +57,7 @@
                 
                 <tr>
                     <td class="card-title">Branch</td>
-                    <td>{{ $news->branch->name }}</td>
+                    <td>{{ $news->branch?->name }}</td>
                 </tr>
                 <tr>
                     <td class="card-title">Status</td>

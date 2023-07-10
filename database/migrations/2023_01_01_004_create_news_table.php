@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('branch_id')->references('id')->on('branches')->onDelete('cascade')->nullable();
+            $table->foreignId('branch_id')->nullable()->references('id')->on('branches')->onDelete('cascade');
             $table->string('heading');
             $table->string('sub_heading');
             $table->string('image');
             $table->date('date');
             $table->string('url');
-            $table->longText('description');
+            $table->text('description');
             $table->integer('order')->default(1);
             $table->string('status')->default('UnPublish');
             $table->timestamps();

@@ -25,21 +25,6 @@
         </a>
     </li>
     <li>
-        <a class="waves-effect waves-dark" href="{{ route('services.index') }}" aria-expanded="false">
-            <i class="icons-Control"></i><span class="hide-menu">Services</span>
-        </a>
-    </li>
-    <li>
-        <a class="waves-effect waves-dark" href="{{ route('facilities.index') }}" aria-expanded="false">
-            <i class="icons-Control"></i><span class="hide-menu">Facilities</span>
-        </a>
-    </li>
-    <li>
-        <a class="waves-effect waves-dark" href="{{ route('news.index') }}" aria-expanded="false">
-            <i class="icons-Control"></i><span class="hide-menu">News</span>
-        </a>
-    </li>
-    <li>
         <a class="waves-effect waves-dark" href="{{ route('users.index') }}" aria-expanded="false">
             <i class="icons-Administrator"></i><span class="hide-menu">Users</span>
         </a>
@@ -47,6 +32,21 @@
     <li>
         <a class="waves-effect waves-dark" href="{{ route('sliders.index') }}" aria-expanded="false">
             <i class="ti-layout-media-right-alt"></i><span class="hide-menu">Slider</span>
+        </a>
+    </li>
+    <li>
+        <a class="waves-effect waves-dark" href="{{ route('services.index') }}" aria-expanded="false">
+            <i class="icons-Wrench"></i><span class="hide-menu">Services</span>
+        </a>
+    </li>
+    <li>
+        <a class="waves-effect waves-dark" href="{{ route('facilities.index') }}" aria-expanded="false">
+            <i class="icons-Building"></i><span class="hide-menu">Facilities</span>
+        </a>
+    </li>
+    <li>
+        <a class="waves-effect waves-dark" href="{{ route('news.index') }}" aria-expanded="false">
+            <i class="icons-Newspaper"></i><span class="hide-menu">News</span>
         </a>
     </li>
     @can('menu-list')

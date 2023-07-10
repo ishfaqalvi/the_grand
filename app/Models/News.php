@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Image;
 
 /**
  * Class News
@@ -28,15 +29,12 @@ class News extends Model
 {
     
     static $rules = [
-		'branch_id' => 'required',
-		'heading' => 'required',
+		'heading'     => 'required',
 		'sub_heading' => 'required',
-		'image' => 'required',
-		'date' => 'required',
-		'url' => 'required',
+		'date'        => 'required',
+		'url'         => 'required',
 		'description' => 'required',
-		'order' => 'required',
-		'status' => 'required',
+		'order'       => 'required'
     ];
 
     protected $perPage = 20;
@@ -48,6 +46,25 @@ class News extends Model
      */
     protected $fillable = ['branch_id','heading','sub_heading','image','date','url','description','order','status'];
 
+    /**
+     * Set the image attribute.
+     *
+     * @param  string  $value
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    public function setImageAttribute($image)
+    {
+        if ($image) {
+            $filenamewithextension = $image->getClientOriginalName();
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+            $filenametostore = 'upload/images/news/'.time().'.webp';
+            $img = Image::make($image)->encode('webp', 90);   
+            $img->save(public_path($filenametostore));
+            $this->attributes['image'] = $filenametostore;
+        }else{
+            unset($this->attributes['image']);
+        }
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -56,6 +73,4 @@ class News extends Model
     {
         return $this->hasOne('App\Models\Branch', 'id', 'branch_id');
     }
-    
-
 }

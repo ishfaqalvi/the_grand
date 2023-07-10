@@ -33,8 +33,7 @@ class NewsController extends Controller
     public function create()
     {
         $news = new News();
-        $branches = Branch::pluck('name','id');
-        return view('admin.news.create', compact('news','branches'));
+        return view('admin.news.create', compact('news'));
     }
 
     /**
@@ -46,14 +45,7 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         request()->validate(News::$rules);
-        $input = $request->all();
-
-        if ($image = $request->file('image')) {
-            $image_name = $request->file('image')->getClientOriginalName();
-            $request->image->move('upload/images/news/', $image_name);
-            $input['image'] = $image_name;
-        }
-        $news = News::create($input);
+        $news = News::create($request->all());
 
         return redirect()->route('news.index')
             ->with('success', 'News created successfully.');
@@ -81,8 +73,7 @@ class NewsController extends Controller
     public function edit($id)
     {
         $news = News::find($id);
-        $branches = Branch::pluck('name','id');
-        return view('admin.news.edit', compact('news','branches'));
+        return view('admin.news.edit', compact('news'));
     }
 
     /**
@@ -94,15 +85,7 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        request()->validate(News::$rules);
-        $input = $request->all();
-
-        if ($image = $request->file('image')) {
-            $image_name = $request->file('image')->getClientOriginalName();
-            $request->image->move('upload/images/news/', $image_name);
-            $input['image'] = $image_name;
-        }
-        $news->update($input);
+        $news->update($request->all());
 
         return redirect()->route('news.index')
             ->with('success', 'News updated successfully');

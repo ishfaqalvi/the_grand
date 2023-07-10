@@ -21,11 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('type');
             $table->string('image')->default('upload/images/profile/avatar.jpg');
-            $table->foreignId('branch_id')
-                ->nullable()
-                ->references('id')
-                ->on('branches')
-                ->onDelete('cascade');
+            $table->foreignId('branch_id')->nullable()->references('id')->on('branches')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

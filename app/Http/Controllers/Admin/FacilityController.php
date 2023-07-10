@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-
-use App\Models\Facility;
-use App\Models\Branch;
 use Illuminate\Http\Request;
+use App\Models\Facility;
 
 /**
  * Class FacilityController
@@ -34,8 +32,7 @@ class FacilityController extends Controller
     public function create()
     {
         $facility = new Facility();
-        $branches = Branch::pluck('name','id');
-        return view('admin.facility.create', compact('facility','branches'));
+        return view('admin.facility.create', compact('facility'));
     }
 
     /**
@@ -76,8 +73,7 @@ class FacilityController extends Controller
     public function edit($id)
     {
         $facility = Facility::find($id);
-        $branches = Branch::pluck('name','id');
-        return view('admin.facility.edit', compact('facility','branches'));
+        return view('admin.facility.edit', compact('facility'));
     }
 
     /**
@@ -89,8 +85,6 @@ class FacilityController extends Controller
      */
     public function update(Request $request, Facility $facility)
     {
-        request()->validate(Facility::$rules);
-
         $facility->update($request->all());
 
         return redirect()->route('facilities.index')

@@ -25,12 +25,10 @@ class Facility extends Model
 {
     
     static $rules = [
-		'branch_id' => 'required',
-		'icon' => 'required',
-		'title' => 'required',
+		'icon'        => 'required',
+		'title'       => 'required',
 		'description' => 'required',
-		'order' => 'required',
-		'status' => 'required',
+		'order'       => 'required'
     ];
 
     protected $perPage = 20;
@@ -50,6 +48,4 @@ class Facility extends Model
     {
         return $this->hasOne('App\Models\Branch', 'id', 'branch_id');
     }
-    
-
 }

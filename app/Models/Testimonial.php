@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Image;
 
 /**
  * Class Testimonial
@@ -25,12 +26,9 @@ class Testimonial extends Model
 {
     
     static $rules = [
-		'branch_id' => 'required',
-		'name' => 'required',
-		'image' => 'required',
+		'name'    => 'required',
 		'message' => 'required',
-		'order' => 'required',
-		'status' => 'required',
+		'order'   => 'required'
     ];
 
     protected $perPage = 20;
@@ -42,6 +40,25 @@ class Testimonial extends Model
      */
     protected $fillable = ['branch_id','name','image','message','order','status'];
 
+    /**
+     * Set the image attribute.
+     *
+     * @param  string  $value
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    public function setImageAttribute($image)
+    {
+        if ($image) {
+            $filenamewithextension = $image->getClientOriginalName();
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+            $filenametostore = 'upload/images/testimonial/'.time().'.webp';
+            $img = Image::make($image)->encode('webp', 90);   
+            $img->save(public_path($filenametostore));
+            $this->attributes['image'] = $filenametostore;
+        }else{
+            unset($this->attributes['image']);
+        }
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -50,6 +67,4 @@ class Testimonial extends Model
     {
         return $this->hasOne('App\Models\Branch', 'id', 'branch_id');
     }
-    
-
 }

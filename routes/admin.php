@@ -19,21 +19,6 @@ Route::get('dashboard', DashboardController::class)->name('dashboard');
 
 /*
 |--------------------------------------------------------------------------
-| Branches Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('branches', 		BranchController::class);
-// NEWS
-Route::resource('news', 			NewsController::class);
-// SERVICIES
-Route::resource('services', 		ServiceController::class);
-// FACILITIES
-Route::resource('facilities', 		FacilityController::class);
-// TESTIMONIALS
-Route::resource('testimonials', 	TestimonialController::class);
-
-/*
-|--------------------------------------------------------------------------
 | User Routes
 |--------------------------------------------------------------------------
 */
@@ -51,6 +36,41 @@ Route::controller(UserController::class)->prefix('user')->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::resource('sliders', SliderController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Branches Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('branches', BranchController::class);
+
+/*
+|--------------------------------------------------------------------------
+| News Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('news', NewsController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Services Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('services', ServiceController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Facilities Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('facilities', FacilityController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Testimonials Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('testimonials', TestimonialController::class);
 
 
 /*

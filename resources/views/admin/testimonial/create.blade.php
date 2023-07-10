@@ -53,16 +53,5 @@
         },
     });
 </script>
-<script>
-    $(document).ready(function() {
-        $("select[name=type]").change(function() {
-            if ($(this).val() == 'Main') {
-                $('div.parent').show('slow');
-            }else{
-                $('div.parent').hide('slow');
-            }
-        }).trigger('change');
-    });
-</script>
 @endsection
 

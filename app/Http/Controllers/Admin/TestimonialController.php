@@ -20,10 +20,9 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $testimonials = Testimonial::paginate();
+        $testimonials = Testimonial::get();
 
-        return view('admin.testimonial.index', compact('testimonials'))
-            ->with('i', (request()->input('page', 1) - 1) * $testimonials->perPage());
+        return view('admin.testimonial.index', compact('testimonials'));
     }
 
     /**
@@ -34,8 +33,7 @@ class TestimonialController extends Controller
     public function create()
     {
         $testimonial = new Testimonial();
-        $branches = Branch::pluck('name','id');
-        return view('admin.testimonial.create', compact('testimonial','branches'));
+        return view('admin.testimonial.create', compact('testimonial'));
     }
 
     /**
@@ -47,14 +45,7 @@ class TestimonialController extends Controller
     public function store(Request $request)
     {
         request()->validate(Testimonial::$rules);
-        $input = $request->all();
-
-        if ($image = $request->file('image')) {
-            $image_name = $request->file('image')->getClientOriginalName();
-            $request->image->move('upload/images/testimonials/', $image_name);
-            $input['image'] = $image_name;
-        }
-        $testimonial = Testimonial::create($input);
+        $testimonial = Testimonial::create($request->all());
 
         return redirect()->route('testimonials.index')
             ->with('success', 'Testimonial created successfully.');
@@ -82,8 +73,7 @@ class TestimonialController extends Controller
     public function edit($id)
     {
         $testimonial = Testimonial::find($id);
-        $branches = Branch::pluck('name','id');
-        return view('admin.testimonial.edit', compact('testimonial','branches'));
+        return view('admin.testimonial.edit', compact('testimonial'));
     }
 
     /**
@@ -95,15 +85,7 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, Testimonial $testimonial)
     {
-       
-        $input = $request->all();
-
-        if ($image = $request->file('image')) {
-            $image_name = $request->file('image')->getClientOriginalName();
-            $request->image->move('upload/images/testimonials/', $image_name);
-            $input['image'] = $image_name;
-        }
-        $testimonial->update($input);
+        $testimonial->update($request->all());
 
         return redirect()->route('testimonials.index')
             ->with('success', 'Testimonial updated successfully');

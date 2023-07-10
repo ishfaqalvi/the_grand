@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('branch_id')->references('id')->on('branches')->onDelete('cascade')->nullable();
+            $table->foreignId('branch_id')->nullable()->references('id')->on('branches')->onDelete('cascade');
             $table->string('name');
             $table->string('image');
             $table->longText('message');

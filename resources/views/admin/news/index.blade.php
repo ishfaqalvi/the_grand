@@ -76,7 +76,7 @@
             event.preventDefault();
             Swal.fire({
                 title: 'Are you sure?',
-                text: "This new will be displayed on website after this!",
+                text: "This news will be displayed on website after this!",
                 type: 'info',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -90,7 +90,7 @@
             event.preventDefault();
             Swal.fire({
                 title: 'Are you sure?',
-                text: "This new will not displayed on website after this!",
+                text: "This news will not displayed on website after this!",
                 type: 'info',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

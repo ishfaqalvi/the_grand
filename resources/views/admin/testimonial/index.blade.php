@@ -39,13 +39,13 @@
             <tbody>
                 @foreach ($testimonials as $key => $testimonial)
                     <tr>
-                        <td>{{ ++$i }}</td>
+                        <td>{{ ++$key }}</td>
                         
                         <td>{{ $testimonial->name }}</td>
-                        <td><img src="{{ url('upload/images/testimonials/'.$testimonial->image) }}" style="height: 40px; width: 70px;"></td>
+                        <td><img src="{{ url($testimonial->image) }}" style="height: 40px; width: 70px;"></td>
                         <td>{{ $testimonial->message }}</td>
                         <td>{{ $testimonial->order }}</td>                    
-                        <td>{{ $testimonial->branch->name }}</td>
+                        <td>{{ $testimonial->branch?->name }}</td>
                         <td>{{ $testimonial->status }}</td>
                         <td>@include('admin.testimonial.actions')</td>
                     </tr>
@@ -74,15 +74,11 @@
                 if (result.value === true)  $(this).closest("form").submit();
             });
         });
-    });
-</script>
-<script>
-    $(function () {
         $(".publish-confirm").click(function (event) {
             event.preventDefault();
             Swal.fire({
                 title: 'Are you sure?',
-                text: "This slide will be displayed on website after Publish!",
+                text: "This testimonial will be displayed on website after Publish!",
                 type: 'info',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -92,15 +88,11 @@
                 if (result.value === true)  $(this).closest("form").submit();
             });
         });
-    });
-</script>
-<script>
-    $(function () {
         $(".unpublish-confirm").click(function (event) {
             event.preventDefault();
             Swal.fire({
                 title: 'Are you sure?',
-                text: "This slide will not displayed on website after this!",
+                text: "This testimonial will not displayed on website after this!",
                 type: 'info',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

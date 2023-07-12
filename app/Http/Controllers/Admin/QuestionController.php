@@ -22,6 +22,7 @@ class QuestionController extends Controller
         $questions = Question::userBased()->paginate();
 
         return view('admin.question.index', compact('questions'))
+            ->with('i', (request()->input('page', 1) - 1) * $questions->perPage());
     }
 
     /**

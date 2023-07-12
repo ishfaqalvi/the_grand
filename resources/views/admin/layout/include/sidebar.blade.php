@@ -71,16 +71,16 @@
             <i class="icons-Fountain-Pen"></i><span class="hide-menu">Slider</span>
         </a>
     </li>
-    <li> 
+    <li>
         <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
             <i class="icons-Books"></i><span class="hide-menu">Pages</span>
         </a>
         <ul aria-expanded="false" class="collapse">
-            <li><a href="{{ route('pages.home.index')}}">Home</a></li>
-            <li><a href="{{ route('pages.blog.index')}}">Blog</a></li>
-            <li><a href="{{ route('pages.category.index')}}">Category</a></li>
-            <li><a href="{{ route('pages.contact_us.index')}}">Contact Us</a></li>
-            <li><a href="{{ route('pages.simple.index')}}">Simple</a></li>
+            <li><a href="{{ route('pages.home.index') }}">Home</a></li>
+            <li><a href="{{ route('pages.imagegallery.index') }}">Image Gallery</a></li>
+            <li><a href="{{ route('pages.videogallery.index') }}">Video Gallery</a></li>
+            <li><a href="{{ route('pages.faq.index') }}">FAQS</a></li>
+            <li><a href="{{ route('pages.contactus.index') }}">Contact Us</a></li>
         </ul>
     </li>
     @can('comments-list')
@@ -111,7 +111,7 @@
         </a>
     </li>
     @endcan
-    @can('log-list') 
+    @can('log-list')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('logs') }}" aria-expanded="false" target="_blank">
             <i class="icons-Calendar-4"></i><span class="hide-menu">Logs</span>
@@ -124,4 +124,3 @@
         </a>
     </li>
 </ul>
-        

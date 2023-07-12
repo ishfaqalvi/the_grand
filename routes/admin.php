@@ -137,6 +137,7 @@ Route::controller(PageController::class)->prefix('pages')->group(function(){
     	Route::get('index',		'index_home' )->name('pages.home.index' );
     	Route::get('create',	'create_home')->name('pages.home.create');
     	Route::get('edit/{id}',	'edit_home'  )->name('pages.home.edit'  );
+    	Route::get('show/{id}',	'show_home'  )->name('pages.home.show'  );
     });
 
 
@@ -145,10 +146,11 @@ Route::controller(PageController::class)->prefix('pages')->group(function(){
 	| Blog Pages Routes
 	|--------------------------------------------------------------------------
 	*/
-    Route::group(['prefix' => 'blog'], function (){
-    	Route::get('index',		'index_blog' )->name('pages.blog.index' );
-    	Route::get('create',	'create_blog')->name('pages.blog.create');
-    	Route::get('edit/{id}',	'edit_blog'  )->name('pages.blog.edit'  );
+    Route::group(['prefix' => 'image-gallery'], function (){
+    	Route::get('index',		'index_image_gallery' )->name('pages.imagegallery.index' );
+    	Route::get('create',	'create_image_gallery')->name('pages.imagegallery.create');
+    	Route::get('edit/{id}',	'edit_image_gallery'  )->name('pages.imagegallery.edit'  );
+    	Route::get('show/{id}',	'show_image_gallery'  )->name('pages.imagegallery.show'  );
     });
 
     /*
@@ -156,10 +158,11 @@ Route::controller(PageController::class)->prefix('pages')->group(function(){
 	| Problem Pages Routes
 	|--------------------------------------------------------------------------
 	*/
-    Route::group(['prefix' => 'problem'], function (){
-    	Route::get('index',		'index_problem' )->name('pages.problem.index' );
-    	Route::get('create',	'create_problem')->name('pages.problem.create');
-    	Route::get('edit/{id}',	'edit_problem'  )->name('pages.problem.edit'  );
+    Route::group(['prefix' => 'video-gallery'], function (){
+    	Route::get('index',		'index_video_gallery' )->name('pages.videogallery.index' );
+    	Route::get('create',	'create_video_gallery')->name('pages.videogallery.create');
+    	Route::get('edit/{id}',	'edit_video_gallery'  )->name('pages.videogallery.edit'  );
+    	Route::get('show/{id}',	'show_video_gallery'  )->name('pages.videogallery.show'  );
     });
 
     /*
@@ -179,10 +182,11 @@ Route::controller(PageController::class)->prefix('pages')->group(function(){
 	| Contact Us Pages Routes
 	|--------------------------------------------------------------------------
 	*/
-    Route::group(['prefix' => 'contact_us'], function (){
-    	Route::get('index',		'index_contact_us' )->name('pages.contact_us.index' );
-    	Route::get('create',	'create_contact_us')->name('pages.contact_us.create');
-    	Route::get('edit/{id}',	'edit_contact_us'  )->name('pages.contact_us.edit'  );
+    Route::group(['prefix' => 'contact-us'], function (){
+    	Route::get('index',		'index_contact_us' )->name('pages.contactus.index' );
+    	Route::get('create',	'create_contact_us')->name('pages.contactus.create');
+    	Route::get('edit/{id}',	'edit_contact_us'  )->name('pages.contactus.edit'  );
+    	Route::get('show/{id}',	'show_contact_us'  )->name('pages.contactus.show'  );
     });
 
     /*
@@ -190,10 +194,11 @@ Route::controller(PageController::class)->prefix('pages')->group(function(){
 	| Simple Pages Routes
 	|--------------------------------------------------------------------------
 	*/
-    Route::group(['prefix' => 'simple'], function (){
-    	Route::get('index',		'index_simple' )->name('pages.simple.index' );
-    	Route::get('create',	'create_simple')->name('pages.simple.create');
-    	Route::get('edit/{id}',	'edit_simple'  )->name('pages.simple.edit'  );
+    Route::group(['prefix' => 'faq'], function (){
+    	Route::get('index',		'index_faq' )->name('pages.faq.index' );
+    	Route::get('create',	'create_faq')->name('pages.faq.create');
+    	Route::get('edit/{id}',	'edit_faq'  )->name('pages.faq.edit'  );
+    	Route::get('show/{id}',	'show_faq'  )->name('pages.faq.show'  );
     });
 
     /*

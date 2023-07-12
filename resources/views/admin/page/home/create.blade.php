@@ -14,7 +14,7 @@
                 <li class="breadcrumb-item active">Create</li>
             </ol>
             <a href="{{ route('pages.home.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
-                <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
+                <i class="fas fa-arrow-left"></i> {{ __('Back') }}
             </a>
         </div>
     </div>
@@ -24,16 +24,16 @@
 <div class="card wizard-content">
     <div class="card-body">
         <h4 class="card-title">Craete Home Page with Multistep</h4>
-        <form class="validation-wizard wizard-circle" action="{{ route('pages.store') }}" method="post" role="form" enctype="multipart/form-data">
+        <form class="" action="{{ route('pages.store') }}" method="post" role="form" enctype="multipart/form-data">
             @csrf
-            @include('admin.page.home.form') 
+            @include('admin.page.home.form')
         </form>
     </div>
 </div>
 @endsection
 
 @section('scripts')
-<script>
+{{-- <script>
     $(document).ready(function() {
         // To drage and drop image file in image field
         $('.dropify').dropify();
@@ -52,8 +52,8 @@
             });
         }
     });
-</script>
-<script>
+</script> --}}
+{{-- <script>
     var form = $(".validation-wizard").show();
     var _token = $("input[name='_token']").val();
     $(".validation-wizard").steps({
@@ -116,5 +116,5 @@
             },
         },
     })
-</script>
+</script> --}}
 @endsection

@@ -1,20 +1,20 @@
 @extends('admin.layout.app')
 
-@section('title','Create Contact_us Page')
+@section('title','Create FAQS')
 
 @section('breadcrumb')
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Create Contact_us Page</h4>
+        <h4 class="text-themecolor">Create FAQS</h4>
     </div>
     <div class="col-md-7 align-self-center text-end">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb justify-content-end">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('pages.contact_us.index') }}">Contact_us</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('pages.faq.index') }}">FAQS</a></li>
                 <li class="breadcrumb-item active">Create</li>
             </ol>
-            <a href="{{ route('pages.contact_us.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
-                <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
+            <a href="{{ route('pages.faq.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+                <i class="fas fa-arrow-left"></i> {{ __('Back') }}
             </a>
         </div>
     </div>
@@ -23,17 +23,17 @@
 @section('content')
 <div class="card wizard-content">
     <div class="card-body">
-        <h4 class="card-title">Craete Contact US Page with Multistep</h4>
+        <h4 class="card-title">Craete FAQS with Multistep</h4>
         <form class="validation-wizard wizard-circle" action="{{ route('pages.store') }}" method="post" role="form" enctype="multipart/form-data">
             @csrf
-            @include('admin.page.contact_us.form') 
+            @include('admin.page.faq.form')
         </form>
     </div>
 </div>
 @endsection
 
 @section('scripts')
-<script>
+{{-- <script>
     $(document).ready(function() {
         // To generate a auto slug from title field
         $("input[name=title]").bind('keyup change input', function() {
@@ -119,5 +119,5 @@
             },
         },
     })
-</script>
+</script> --}}
 @endsection

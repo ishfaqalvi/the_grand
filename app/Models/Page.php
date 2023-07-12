@@ -29,7 +29,7 @@ use Image;
 class Page extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
-    
+
     static $rules = [
 		'title'       => 'required',
 		'slug'        => 'required',
@@ -52,6 +52,7 @@ class Page extends Model implements Auditable
         'canonical',
         'metaTitle',
         'metaDescription',
+        'description',
         'og_tags',
         'schemas',
         'content',

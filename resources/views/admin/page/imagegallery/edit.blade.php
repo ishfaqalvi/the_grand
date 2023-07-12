@@ -1,20 +1,20 @@
 @extends('admin.layout.app')
 
-@section('title','Create Problem')
+@section('title','Update Image Gallery')
 
 @section('breadcrumb')
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Create Problem</h4>
+        <h4 class="text-themecolor">Update Image Gallery</h4>
     </div>
     <div class="col-md-7 align-self-center text-end">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb justify-content-end">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('pages.problem.index') }}">Problem</a></li>
-                <li class="breadcrumb-item active">Create</li>
+                <li class="breadcrumb-item"><a href="{{ route('pages.imagegallery.index') }}">Image Gallery</a></li>
+                <li class="breadcrumb-item active">Edit</li>
             </ol>
-            <a href="{{ route('pages.problem.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
-                <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
+            <a href="{{ route('pages.imagegallery.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+                <i class="fas fa-arrow-left"></i> {{ __('Back') }}
             </a>
         </div>
     </div>
@@ -23,15 +23,15 @@
 @section('content')
 <div class="card wizard-content">
     <div class="card-body">
-        <h4 class="card-title">Craete Problem Page with Multistep</h4>
-        <form class="validation-wizard wizard-circle" action="{{ route('pages.store') }}" method="post" role="form" enctype="multipart/form-data">
+        <h4 class="card-title">Update Image Gallery with Multistep</h4>
+        <form method="POST" action="{{ route('pages.update', $page->id) }}" class="validation-wizard wizard-circle" role="form" enctype="multipart/form-data">
+            {{ method_field('PATCH') }}
             @csrf
-            @include('admin.page.problem.form') 
+            @include('admin.page.imagegallery.form')
         </form>
     </div>
 </div>
 @endsection
-
 @section('scripts')
 <script>
     $(document).ready(function() {
@@ -75,6 +75,7 @@
 <script>
     var form = $(".validation-wizard").show();
     var _token = $("input[name='_token']").val();
+    var id = {{ $page->id }};
     $(".validation-wizard").steps({
         headerTag: "h6",
         bodyTag: "section",
@@ -118,6 +119,7 @@
                     type: "POST",
                     data: {
                         _token:_token,
+                        id:id,
                         language_id: function() {
                             return $("select[name='language_id']").find(":selected").val();
                         },
@@ -126,13 +128,13 @@
                         }
                     },
                 }
-            },
+            }
         },
         messages:{
             slug:{
                 required: "Please enter a unique slug for this page.",
                 remote: jQuery.validator.format("{0} is already taken.")
-            },
+            }
         },
     })
 </script>

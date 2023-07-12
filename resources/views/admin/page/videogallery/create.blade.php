@@ -1,20 +1,20 @@
 @extends('admin.layout.app')
 
-@section('title','Update Contact_us Page')
+@section('title','Create Video Gallery')
 
 @section('breadcrumb')
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Edit Contact_us Page</h4>
+        <h4 class="text-themecolor">Create Video Gallery</h4>
     </div>
     <div class="col-md-7 align-self-center text-end">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb justify-content-end">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('pages.contact_us.index') }}">Contact_us</a></li>
-                <li class="breadcrumb-item active">Edit</li>
+                <li class="breadcrumb-item"><a href="{{ route('pages.videogallery.index') }}">Video Gallery</a></li>
+                <li class="breadcrumb-item active">Create</li>
             </ol>
-            <a href="{{ route('pages.contact_us.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
-                <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
+            <a href="{{ route('pages.videogallery.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+                <i class="fas fa-arrow-left"></i> {{ __('Back') }}
             </a>
         </div>
     </div>
@@ -23,22 +23,38 @@
 @section('content')
 <div class="card wizard-content">
     <div class="card-body">
-        <h4 class="card-title">Update Contact_us Page with Multistep</h4>
-        <form method="POST" action="{{ route('pages.update', $page->id) }}" class="validation-wizard wizard-circle" role="form" enctype="multipart/form-data">
-            {{ method_field('PATCH') }}
+        <h4 class="card-title">Craete Video Gallery Page with Multistep</h4>
+        <form class="validation-wizard wizard-circle" action="{{ route('pages.store') }}" method="post" role="form" enctype="multipart/form-data">
             @csrf
-            @include('admin.page.contact_us.form') 
+            @include('admin.page.videogallery.form')
         </form>
     </div>
 </div>
 @endsection
+
 @section('scripts')
-<script>
+{{-- <script>
     $(document).ready(function() {
         // To generate a auto slug from title field
         $("input[name=title]").bind('keyup change input', function() {
             let val = $(this).val().toLowerCase();
             $('input[name=slug]').val(val.replaceAll(" ", "-"));
+        });
+        // To drage and drop image file in image field
+        $('.dropify').dropify();
+        // To multiselect in related tools section
+        $('#pre-selected-options').multiSelect();
+        $('#optgroup').multiSelect({
+            selectableOptgroup: true
+        });
+        $('#public-methods').multiSelect();
+        $('#select-all').click(function () {
+            $('#public-methods').multiSelect('select_all');
+            return false;
+        });
+        $('#deselect-all').click(function () {
+            $('#public-methods').multiSelect('deselect_all');
+            return false;
         });
         // To add content with tiny editor in content section
         if ($("#textarea").length > 0) {
@@ -59,7 +75,6 @@
 <script>
     var form = $(".validation-wizard").show();
     var _token = $("input[name='_token']").val();
-    var id = {{ $page->id }};
     $(".validation-wizard").steps({
         headerTag: "h6",
         bodyTag: "section",
@@ -103,7 +118,6 @@
                     type: "POST",
                     data: {
                         _token:_token,
-                        id:id,
                         language_id: function() {
                             return $("select[name='language_id']").find(":selected").val();
                         },
@@ -112,14 +126,14 @@
                         }
                     },
                 }
-            }
+            },
         },
         messages:{
             slug:{
                 required: "Please enter a unique slug for this page.",
                 remote: jQuery.validator.format("{0} is already taken.")
-            }
+            },
         },
     })
-</script>
+</script> --}}
 @endsection

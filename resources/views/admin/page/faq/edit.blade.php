@@ -1,20 +1,20 @@
 @extends('admin.layout.app')
 
-@section('title','Update Simple Page')
+@section('title','Update FAQS')
 
 @section('breadcrumb')
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Edit Simple Page</h4>
+        <h4 class="text-themecolor">Edit FAQS</h4>
     </div>
     <div class="col-md-7 align-self-center text-end">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb justify-content-end">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('pages.simple.index') }}">Simple Page</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('pages.faq.index') }}">FAQS</a></li>
                 <li class="breadcrumb-item active">Edit</li>
             </ol>
-            <a href="{{ route('pages.simple.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
-                <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
+            <a href="{{ route('pages.faq.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+                <i class="fas fa-arrow-left"></i> {{ __('Back') }}
             </a>
         </div>
     </div>
@@ -23,11 +23,11 @@
 @section('content')
 <div class="card wizard-content">
     <div class="card-body">
-        <h4 class="card-title">Update Simple Page with Multistep</h4>
+        <h4 class="card-title">Update FAQS with Multistep</h4>
         <form method="POST" action="{{ route('pages.update', $page->id) }}" class="validation-wizard wizard-circle" role="form" enctype="multipart/form-data">
             {{ method_field('PATCH') }}
             @csrf
-            @include('admin.page.simple.form') 
+            @include('admin.page.faq.form')
         </form>
     </div>
 </div>

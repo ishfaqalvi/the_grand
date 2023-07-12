@@ -15,25 +15,17 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('parent_id')->nullable();
-            $table->foreignId('tool_id')->nullable();
+            $table->foreignId('branch_id')->nullable()->references('id')->on('branches')->onDelete('cascade');
             $table->string('template');
-            $table->string('category_type')->nullable();
             $table->text('title');
             $table->text('slug');
-            $table->string('image')->nullable();
             $table->text('canonical')->nullable();
             $table->text('metaTitle')->nullable();
             $table->text('metaDescription')->nullable();
             $table->text('og_tags')->nullable();
             $table->text('schemas')->nullable();
             $table->text('description')->nullable();
-            $table->longtext('content')->nullable();
             $table->enum('status',['Publish','UnPublish'])->default('UnPublish');
-            $table->foreignId('auther_id')->nullable();
-            $table->foreignId('published_by')->nullable();
-            $table->foreignId('created_by')->references('id')->on('users')->onDelete('cascade');
-            $table->date('published_at')->nullable();
             $table->timestamps();
         });
     }

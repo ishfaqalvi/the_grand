@@ -20,7 +20,7 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $testimonials = Testimonial::get();
+        $testimonials = Testimonial::userBased()->get();
 
         return view('admin.testimonial.index', compact('testimonials'));
     }

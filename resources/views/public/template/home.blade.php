@@ -1,102 +1,162 @@
-<!--header-ads-->
-<div class="container p-5">
-    <div class="d-flex h-25 justify-content-center align-items-center">
-        <p>Header Ads</p>
-    </div>
-</div>
-<!--Sticky icons-->
-@include('public.layout.include.sticky_icons')
-<div class="row px-lg-5">
-    <div class="col-lg-9 col-md-12">
-        <div class="row main-content px-3 py-5">
-            <div class="col-12 d-flex flex-column justify-content-center align-items-center">
-                <h1 class="main-heading">{{ $page->title }}</h1>
-                <p class="text-center p-3">{{ $page->description }}</p>    
-            </div>
-            @if ($errors->any())
-                <div class="alert alert-danger" role="alert">
-                    <ul class="mb-0">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+<!-- Slider -->
+<header class="header slider-fade">
+    <div class="owl-carousel owl-theme">
+        <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
+        <div class="text-center item bg-img" data-overlay-dark="2" data-background="img/slider/2.jpg">
+            <div class="v-middle caption">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                            <span>
+                                <i class="star-rating"></i>
+                                <i class="star-rating"></i>
+                                <i class="star-rating"></i>
+                                <i class="star-rating"></i>
+                                <i class="star-rating"></i>
+                            </span>
+                            <h4>Luxury Hotel & Best Resort</h4>
+                            <h1>Enjoy a Luxury Experience</h1>
+                            <div class="butn-light mt-30 mb-30"> <a href="#" data-scroll-nav="1"><span>Rooms & Suites</span></a> </div>
+                        </div>
+                    </div>
                 </div>
-            @endif
-            
-            <!--Tool Content here-->
-            @include('public.tool.'.$page->tool->blade)
-            <!--Tool Content here-->
-
-            <!--Tool Result Inluce here-->
-            @include('public.template.include.tool_result')
-            <!--Tool Result Inluce here-->
-
-            <div class="col-12 mt-5">
-                <div class="row gx-2 gy-2 cal-cards">
-                    @foreach(toolPages($language->id) as $tool)
-                    <div class="col-md-4">
-                        <div class="card border-0 rounded-0 pl-5">
-                            <div class="card-body p-2 d-flex align-items-center">
-                                <div>
-                                    <img src="{{ asset($tool->image) }}">
+            </div>
+        </div>
+        <div class="text-center item bg-img" data-overlay-dark="2" data-background="img/slider/3.jpg">
+            <div class="v-middle caption">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                            <span>
+                                <i class="star-rating"></i>
+                                <i class="star-rating"></i>
+                                <i class="star-rating"></i>
+                                <i class="star-rating"></i>
+                                <i class="star-rating"></i>
+                            </span>
+                            <h4>Unique Place to Relax & Enjoy</h4>
+                            <h1>The Perfect Base For You</h1>
+                            <div class="butn-light mt-30 mb-30"> <a href="#" data-scroll-nav="1"><span>Rooms & Suites</span></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center item bg-img" data-overlay-dark="3" data-background="img/slider/1.jpg">
+            <div class="v-middle caption">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 offset-md-1">
+                            <span>
+                                <i class="star-rating"></i>
+                                <i class="star-rating"></i>
+                                <i class="star-rating"></i>
+                                <i class="star-rating"></i>
+                                <i class="star-rating"></i>
+                            </span>
+                            <h4>The Ultimate Luxury Experience</h4>
+                            <h1>Enjoy The Best Moments of Life</h1>
+                            <div class="butn-light mt-30 mb-30"> <a href="#" data-scroll-nav="1"><span>Rooms & Suites</span></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- About -->
+<section class="about section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
+                <span>
+                    <i class="star-rating"></i>
+                    <i class="star-rating"></i>
+                    <i class="star-rating"></i>
+                    <i class="star-rating"></i>
+                    <i class="star-rating"></i>
+                </span>
+                <div class="section-subtitle">The Cappa Luxury Hotel</div>
+                <div class="section-title">Enjoy a Luxury Experience</div>
+                <p>Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat. Donec in quis the pellentesque velit. Donec id velit ac arcu posuere blane.</p>
+                <p>Hotel ut nisl quam nestibulum ac quam nec odio elementum sceisue the aucan ligula. Orci varius natoque penatibus et magnis dis parturient monte nascete ridiculus mus nellentesque habitant morbine.</p>
+                <!-- call -->
+                <div class="reservations">
+                    <div class="icon"><span class="flaticon-call"></span></div>
+                    <div class="text">
+                        <p>Reservation</p> <a href="tel:855-100-4444">855 100 4444</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
+                <img src="img/rooms/8.jpg" alt="" class="mt-90 mb-30">
+            </div>
+            <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
+                <img src="img/rooms/2.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Rooms -->
+<<section class="rooms1 section-padding bg-darkblack" data-scroll-index="1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-subtitle">The Cappa Luxury Hotel</div>
+                <div class="section-title">Rooms & Suites</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="bradford.html">
+                    <div class="item">
+                        <div class="position-re o-hidden"> <img src="img/rooms/4.jpg" alt=""> </div> <span class="category">Main Branch</span>
+                        <div class="con">
+                            <!-- <h6><a href="room-details.html">300$ / Night</a></h6> -->
+                            <h5>Bradford</h5>
+                            <div class="line"></div>
+                            <div class="row facilities">
+                                <div class="col col-md-7">
+                                    <!-- <ul>
+                                        <li><i class="flaticon-bed"></i></li>
+                                        <li><i class="flaticon-bath"></i></li>
+                                        <li><i class="flaticon-breakfast"></i></li>
+                                        <li><i class="flaticon-towel"></i></li>
+                                    </ul> -->
                                 </div>
-                                <div class="ps-2">
-                                    <a href="{{ url(urlGenerate($tool->slug,$language->id)) }}">
-                                        <p class="inner-heading">{{ $tool->title }}</p>
-                                    </a>
+                                <div class="col col-md-5 text-end">
+                                    <div class="permalink">Details <i class="ti-arrow-right"></i></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endforeach
-                </div> 
-            </div>  
-        </div>
-        <!--Content-->
-        <div class="content-container row justify-content-between px-3 py-5 mt-5">
-            <div class="col-lg-5 col-md-5 mb-3">
-                <h5 class="tab-heading">{{ __(dynamicString('table_of_contents',$language->id)) }}</h5>
-                <div class="tab-content" id="table-of-contents">
-                </div>
+                </a>
             </div>
-            <div class="col-md-5">
-                <div class="tabs mt-3">
-                    <h5 class="tab-heading">{{ __(dynamicString('widget_heading',$language->id)) }}</h5>
-                    <p>{{ __(dynamicString('widget_description',$language->id)) }}</p>
-                    <div class="d-flex justify-content-center">
-                        <button type="button" class="tab-btn">{{ __(dynamicString('get_code',$language->id)) }}</button>
+            <div class="col-md-6">
+                <a href="dewsbury.html">
+                    <div class="item">
+                        <div class="position-re o-hidden"> <img src="img/rooms/7.jpg" alt=""> </div> <span class="category">Second Branch</span>
+                        <div class="con">
+                            <!-- <h6><a href="room-details.html">150$ / Night</a></h6> -->
+                            <h5>Dewsbury</h5>
+                            <div class="line"></div>
+                            <div class="row facilities">
+                                <div class="col col-md-7">
+                                    <!-- <ul>
+                                        <li><i class="flaticon-bed"></i></li>
+                                        <li><i class="flaticon-bath"></i></li>
+                                        <li><i class="flaticon-breakfast"></i></li>
+                                        <li><i class="flaticon-towel"></i></li>
+                                    </ul> -->
+                                </div>
+                                <div class="col col-md-5 text-end">
+                                    <div class="permalink">Details <i class="ti-arrow-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="tabs mt-3">
-                    <h5 class="tab-heading">{{ __(dynamicString('feedback_heading',$language->id)) }}</h5>
-                    <p>{{ __(dynamicString('feedback_description',$language->id)) }}</p>
-                    <div class="d-flex justify-content-center">
-                        <button type="button" class="tab-btn" data-toggle="modal" data-target="#feedback">
-                            {{ __(dynamicString('feedback_heading',$language->id)) }}
-                        </button>
-                    </div>
-                </div>
-                <div class="tabs mt-3">
-                    <h5 class="tab-heading">{{ __(dynamicString('App_link_heading',$language->id)) }}</h5>
-                    <p>{{ __(dynamicString('App_link_description',$language->id)) }}</p>
-                    <div class="d-flex align-items-center justify-content-around app-link">
-                        <a href="{{ url(settings('playstore_link')) }}" target="_blank" type="button" class="tab-btn d-flex align-items-center justify-content-center">
-                            <img class="me-2" src="{{ asset('public/images/Group 11.webp') }}"/>{{ __(dynamicString('play_store',$language->id)) }}</a>
-                        <a href="{{ url(settings('app_store_link')) }}" target="_blank" type="button" class="tab-btn d-flex align-items-center justify-content-center">
-                            <img class="me-2" src="{{ asset('public/images/Group 30.webp') }}"/>{{ __(dynamicString('app_store',$language->id)) }}</a>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
-        <div class="row page-text p-3 mt-5">
-            <div class="page-content">{!! $page->content !!}</div>
-        </div>
-        <!-- Author Section -->
-        @include('public.template.include.auther')
-        <!--Comment-section-->
-        @include('public.template.include.comments')
     </div>
-    <div class="col-lg-3">
-        Advertisment
-    </div>
-</div>
+</section>

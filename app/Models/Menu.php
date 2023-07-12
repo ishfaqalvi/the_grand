@@ -40,8 +40,16 @@ class Menu extends Model implements Auditable
     protected $fillable = ['type','parent_id','title','url','order'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * Menu scope a query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
      */
+    public function scopeUserBased($query)
+    {
+        if (auth()->user()->type == 'Branch') {
+            $query->where('branch_id', auth()->user()->branch_id);
+        }
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

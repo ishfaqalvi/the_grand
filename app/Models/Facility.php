@@ -40,6 +40,17 @@ class Facility extends Model
      */
     protected $fillable = ['branch_id','icon','title','description','order','status'];
 
+    /**
+     * Facility scope a query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeUserBased($query)
+    {
+        if (auth()->user()->type == 'Branch') {
+            $query->where('branch_id', auth()->user()->branch_id);
+        }
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

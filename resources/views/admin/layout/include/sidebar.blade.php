@@ -54,13 +54,11 @@
             <i class="icons-Control"></i><span class="hide-menu">Testimonial</span>
         </a>
     </li>
-    @can('menu-list')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('menus.index') }}" aria-expanded="false">
             <i class="icons-Bulleted-List"></i><span class="hide-menu">Menu</span>
         </a>
     </li>
-    @endcan
     @can('strings-list')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('dynamic-strings.index') }}" aria-expanded="false">
@@ -73,30 +71,18 @@
             <i class="icons-Fountain-Pen"></i><span class="hide-menu">Slider</span>
         </a>
     </li>
-    @if('homePage-list')
     <li> 
         <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
             <i class="icons-Books"></i><span class="hide-menu">Pages</span>
         </a>
         <ul aria-expanded="false" class="collapse">
-            @can('homePage-list')
             <li><a href="{{ route('pages.home.index')}}">Home</a></li>
-            @endcan
-            @can('blogPage-list')
             <li><a href="{{ route('pages.blog.index')}}">Blog</a></li>
-            @endcan
-            @can('categoryPage-list')
             <li><a href="{{ route('pages.category.index')}}">Category</a></li>
-            @endcan
-            @can('contactUsPage-list')
             <li><a href="{{ route('pages.contact_us.index')}}">Contact Us</a></li>
-            @endcan
-            @can('simplePage-list')
             <li><a href="{{ route('pages.simple.index')}}">Simple</a></li>
-            @endcan
         </ul>
     </li>
-    @endif
     @can('comments-list')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('comments.index') }}" aria-expanded="false">

@@ -56,15 +56,7 @@ Route::controller(DynamicPageController::class)->group(function(){
 | Dynamic Pages Routes
 |--------------------------------------------------------------------------
 */
-Route::group(['prefix'=>'lang'],function(){
-    Route::get('/{slug1}/{slug2}', function ($slug1, $slug2) {
-    	return Redirect::to($slug1.'/'.$slug2, 301);
-	});
-
-});
-
 Route::controller(DynamicPageController::class)->group(function () {
-	Route::get('/', 					'viewHomePage')->name('home');
-	Route::get('/{slug1}/{slug2?}', 		'viewPage'	  )->name('viewPage');
-	
+	Route::get('/', 			'viewHomePage')->name('home');
+	Route::get('/{slug}', 		'viewPage'	  )->name('viewPage');
 });

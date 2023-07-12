@@ -1,62 +1,59 @@
-<footer class="footer d-flex justify-content-center mt-5 p-3">
-    <div class="row">
-        <div class="col-lg-4 footer-logo p-5">
-            <a href="{{ route('home') }}"><img src="{{ asset(settings('footer_logo')) }}"/></a>
-            <p class="mt-3">{{ dynamicString('footer_description',$language->id) }}</p>
-        </div>
-        <div class="col-lg-2 footer-menu">
-            <a class="footer-heading" href="#">{{ dynamicString('footer_heading_1',$language->id) }}</a>
-            <ul class="mt-2">
-                @foreach($language->moreMenus as $item)
-                    <li><a href="{{ url(urlGenerate($item->url,$language->id)) }}">{{ $item->title }}</a></li>
-                @endforeach
-            </ul>
-        </div>
-        <div class="col-lg-2 footer-menu">
-            <a class="footer-heading" href="#">{{ dynamicString('footer_heading_2',$language->id) }}</a>
-            <ul class="mt-2">
-                @foreach($language->aboutMenus as $item)
-                    <li><a href="{{ url(urlGenerate($item->url,$language->id)) }}">{{ $item->title }}</a></li>
-                @endforeach
-            </ul>
-        </div>
-        <div class="col-lg-2 footer-menu">
-            <a class="footer-heading" href="#">{{ dynamicString('footer_heading_3',$language->id) }}</a>
-            <ul class="mt-2">
-                @foreach($language->contactMenus as $item)
-                    <li><a href="{{ url(urlGenerate($item->url,$language->id)) }}">{{ $item->title }}</a></li>
-                @endforeach
-            </ul>
-        </div>
-        <div class="col-lg-2 d-flex flex-column align-items-center footer-menu">
-            <div class="dropdown">
-                <a class="btn-light dropdown-toggle footer-lang" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ $language->name }}
-                </a>
-                <ul class="dropdown-menu">
-                    @foreach($languages as $row)
-                        <li>
-                            <a class="dropdown-item" href="{{ route('viewPage',[$row->code, $slug]) }}">
-                                {{ $row->name }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
+<footer class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-column footer-about">
+                        <h3 class="footer-title">About Hotel</h3>
+                        <p class="footer-about-text">Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.</p>
+
+                        <div class="footer-language"> <i class="lni ti-world"></i>
+                            <select onchange="location = this.value;">
+                                <option value="http://duruthemes.com/">English</option>
+                                <option value="http://duruthemes.com/">German</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 offset-md-1">
+                    <div class="footer-column footer-explore clearfix">
+                        <h3 class="footer-title">Explore</h3>
+                        <ul class="footer-explore-list list-unstyled">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="bradford.html">Bradford</a></li>
+                            <li><a href="dewsbury.html">Dewsbury</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-column footer-contact">
+                        <h3 class="footer-title">Contact</h3>
+                        <p class="footer-contact-text">1616 Broadway NY, New York 10001<br>United States of America</p>
+                        <div class="footer-contact-info">
+                            <p class="footer-contact-phone"><span class="flaticon-call"></span> 855 100 4444</p>
+                            <p class="footer-contact-mail">info@thegrandbanquet.com</p>
+                        </div>
+                        <div class="footer-about-social-list">
+                            <a href="#"><i class="ti-instagram"></i></a>
+                            <a href="#"><i class="ti-twitter"></i></a>
+                            <a href="#"><i class="ti-youtube"></i></a>
+                            <a href="#"><i class="ti-facebook"></i></a>
+                            <a href="#"><i class="ti-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="mt-2">{{ dynamicString('connect_heading',$language->id) }}</p>
-            <div class="social-icons d-flex mt-4">
-                <a href="{{ url(settings('facebook_link')) }}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="{{ url(settings('twitter_link')) }}" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-                <a href="{{ url(settings('instagram_link')) }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">e
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-bottom-inner">
+                        <p class="footer-bottom-copy-right">© Copyright 2023 by <a href="#">DuruThemes.com</a></p>
+                    </div>
+                </div>
             </div>
-            <a href="{{ url(settings('bazigate_website_url')) }}" class="btn channel-link mt-3" target="_blank">
-                <img src="{{ asset('public/images/Group 23.webp') }}"/>{{ dynamicString('footer_button',$language->id) }}
-            </a>
         </div>
     </div>
 </footer>
-<div class="row justify-content-center align-items-center p-3">
-    <a href="{{ url(settings('copyright_link')) }}" class="copy-right d-flex align-items-center justify-content-center">
-        {{ dynamicString('copyright_heading',$language->id) }}
-    </a>
-</div>

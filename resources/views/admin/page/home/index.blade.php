@@ -12,11 +12,9 @@
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                 <li class="breadcrumb-item active">{{ __('Home Page') }}</li>
             </ol>
-            @can('homePage-create')
             <a href="{{ route('pages.home.create') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
                 <i class="fa fa-plus-circle"></i> Create New
             </a>
-            @endcan
         </div>
     </div>
 @endsection

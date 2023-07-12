@@ -19,11 +19,10 @@ class DynamicPageController extends Controller
      */
     public function viewHomePage()
     {
-        $slug = '';
-
-        // if ($page) {
-        //     return view('public.index',compact('slug','page','language','languages'));   
-        // }
+        $page = Page::where('template','Home')->first();
+        if ($page) {
+            return view('public.index',compact('page'));   
+        }
         return view('public.errors.404',compact('slug'));
     }
 
@@ -32,7 +31,7 @@ class DynamicPageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function viewPage($slug1, $slug2 = null)
+    public function viewPage($slug1)
     {
         $checkLanguage = Language::where('code',$slug1)->first();
         /**

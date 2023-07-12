@@ -17,23 +17,9 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
-    {
-        $this->middleware('permission:menu-list',  ['only' => ['index']]);
-        $this->middleware('permission:menu-view',  ['only' => ['show']]);
-        $this->middleware('permission:menu-create',['only' => ['create','store']]);
-        $this->middleware('permission:menu-edit',  ['only' => ['edit','update']]);
-        $this->middleware('permission:menu-delete',['only' => ['destroy']]);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $menus = Menu::get();
+        $menus = Menu::userBased()->get();
 
         return view('admin.menu.index', compact('menus'));
     }

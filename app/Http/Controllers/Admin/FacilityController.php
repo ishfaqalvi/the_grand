@@ -18,10 +18,9 @@ class FacilityController extends Controller
      */
     public function index()
     {
-        $facilities = Facility::paginate();
+        $facilities = Facility::userBased()->get();
 
-        return view('admin.facility.index', compact('facilities'))
-            ->with('i', (request()->input('page', 1) - 1) * $facilities->perPage());
+        return view('admin.facility.index', compact('facilities'));
     }
 
     /**

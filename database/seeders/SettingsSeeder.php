@@ -18,11 +18,11 @@ class SettingsSeeder extends Seeder
         DB::table('settings')->insert([
             [
                 'key' 	=> 'header_logo',
-                'value' => 'upload/images/settings/logo (1)_1681111194.webp',
+                'value' => 'upload/images/settings/logo.png',
             ],
             [
-                'key' 	=> 'footer_logo',
-                'value' => 'upload/images/settings/logo (1)_1681111194.webp',
+                'key' 	=> 'page_title_icon',
+                'value' => 'upload/images/settings/favicon.png',
             ],
             [
                 'key'   => 'bazigate_website_url',

@@ -45,6 +45,18 @@ class Service extends Model
     protected $fillable = ['branch_id','image','heading','sub_heading','link','description','order','status'];
 
     /**
+     * Service scope a query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeUserBased($query)
+    {
+        if (auth()->user()->type == 'Branch') {
+            $query->where('branch_id', auth()->user()->branch_id);
+        }
+    }
+
+    /**
      * Set the image attribute.
      *
      * @param  string  $value

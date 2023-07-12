@@ -1,55 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>@yield('title')</title>
-	<link 
-		rel="icon" 
-		type="image/x-icon" 
-		href="{{ asset(settings('page_title_icon')) }}"/>
-    <link 
-    	rel 		  = "stylesheet" 
-    	href 		  = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
-    <link 
-    	href 		  = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" 
-    	rel 		  = "stylesheet" 
-    	integrity 	  = "sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"/>
-    <link 
-    	rel 		  = "stylesheet" 
-    	href 		  = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/fontawesome.min.css" 
-    	integrity 	  = "sha512-cHxvm20nkjOUySu7jdwiUxgGy11vuVPE9YeK89geLMLMMEOcKFyS2i+8wo0FOwyQO/bL8Bvq1KMsqK4bbOsPnA==" 
-    	crossorigin   = "anonymous" 
-    	referrerpolicy= "no-referrer"/>
-    <link 
-    	rel 		  = "stylesheet" 
-    	href 		  = "{{ asset('public/css/style.css') }}"/>
-
+    <link rel="shortcut icon" href="{{ asset(settings('page_title_icon')) }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
+    <link rel="stylesheet" href="{{ asset('public/css/plugins.css') }}" />
+    <link rel="stylesheet" href="{{ asset('public/css/style.css') }}"/>
     @yield('head')
 </head>
 <body>
-
+    <!-- Preloader -->
+    <div class="preloader-bg"></div>
+    <div id="preloader">
+        <div id="preloader-status">
+            <div class="preloader-position loader"> <span></span> </div>
+        </div>
+    </div>
+    <!-- Progress scroll totop -->
+    <div class="progress-wrap cursor-pointer">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
 	@yield('content')
 
-    <script src     = "{{ asset('public/js/jquery.min.js') }}"></script>
-	<script 
-		src 		= "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" 
-		integrity 	= "sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" 
-		crossorigin = "anonymous">
-	</script>
-	<script 
-		src 		= "https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" 
-		integrity 	= "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
-		crossorigin = "anonymous">
-	</script>
-	<script 
-		src 		= "https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" 
-		integrity   = "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
-		crossorigin = "anonymous">
-	</script>
-    <script src     = "{{ asset('public/js/script.js') }}"></script>
-
+    <!-- jQuery -->
+    <script src="{{ asset('public/js/jquery-3.6.3.min.js        ') }}"></script>
+    <script src="{{ asset('public/js/jquery-migrate-3.0.0.min.js') }}"></script>
+    <script src="{{ asset('public/js/modernizr-2.6.2.min.js     ') }}"></script>
+    <script src="{{ asset('public/js/imagesloaded.pkgd.min.js   ') }}"></script>
+    <script src="{{ asset('public/js/jquery.isotope.v3.0.2.js   ') }}"></script>
+    <script src="{{ asset('public/js/pace.js                    ') }}"></script>
+    <script src="{{ asset('public/js/popper.min.js              ') }}"></script>
+    <script src="{{ asset('public/js/bootstrap.min.js           ') }}"></script>
+    <script src="{{ asset('public/js/scrollIt.min.js            ') }}"></script>
+    <script src="{{ asset('public/js/jquery.waypoints.min.js    ') }}"></script>
+    <script src="{{ asset('public/js/owl.carousel.min.js        ') }}"></script>
+    <script src="{{ asset('public/js/jquery.stellar.min.js      ') }}"></script>
+    <script src="{{ asset('public/js/jquery.magnific-popup.js   ') }}"></script>
+    <script src="{{ asset('public/js/YouTubePopUp.js            ') }}"></script>
+    <script src="{{ asset('public/js/select2.js                 ') }}"></script>
+    <script src="{{ asset('public/js/datepicker.js              ') }}"></script>
+    <script src="{{ asset('public/js/smooth-scroll.min.js       ') }}"></script>
+    <script src="{{ asset('public/js/custom.js                  ') }}"></script>
 
     {!! settings('google_search_console_code') !!}
 

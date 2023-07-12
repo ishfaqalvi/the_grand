@@ -45,84 +45,36 @@ class Page extends Model implements Auditable
      * @var array
      */
     protected $fillable = [
-        'parent_id',
+        'branch_id',
         'template',
-        'category_type',
         'title',
         'slug',
-        'image',
         'canonical',
         'metaTitle',
         'metaDescription',
         'og_tags',
         'schemas',
-        'description',
         'content',
-        'status',
-        'published_by',
-        'created_by',
-        'published_at',
+        'status'
     ];
 
-    // public function setImageAttribute($image)
-    // {
-    //     if ($image) {
-    //         $filenamewithextension = $image->getClientOriginalName();
-    //         $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-    //         $filenametostore = 'upload/images/pages/'.time().'.webp';
-    //         $img = Image::make($image)->encode('webp', 90);   
-    //         $img->save(public_path($filenametostore));
-    //         $this->attributes['image'] = $filenametostore;
-    //     }else{
-    //         unset($this->attributes['image']);
-    //     }
-    // }
-
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * Page scope a query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
      */
-    public function parent()
+    public function scopeUserBased($query)
     {
-        return $this->hasOne(Page::class, 'id', 'parent_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function childs()
-    {
-        return $this->hasMany(Page::class, 'parent_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function relatedPages()
-    {
-        return $this->hasMany(RelatedPage::class, 'page_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function comments()
-    {
-        return $this->hasMany(Comment::class, 'page_id', 'id')->whereNull('parent_id');
+        if (auth()->user()->type == 'Branch') {
+            $query->where('branch_id', auth()->user()->branch_id);
+        }
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function createdBy()
+    public function branch()
     {
-        return $this->hasOne('App\Models\User', 'id', 'created_by');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function publishedBy()
-    {
-        return $this->hasOne('App\Models\User', 'id', 'published_by');
+        return $this->hasOne('App\Models\Branch', 'id', 'branch_id');
     }
 }

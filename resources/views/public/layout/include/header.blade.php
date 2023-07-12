@@ -1,53 +1,90 @@
-<header class="header">
-    <nav class="container-fluid navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="{{ asset(settings('header_logo')) }}" width="130px" alt="Site logo"/>
-            </a>
-            <button class="navbar-toggler" type="button " data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="fa-solid fa-bars"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-                <ul class="navbar-nav">
-                    @foreach($language->mainMenus as $menu)
-                        @if($menu->childItems()->count() > 0)
-                            <li class="nav-item dropdown menu">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ $menu->title }}
-                                </a>
-                                <div class="dropdown-menu p-3" aria-labelledby="navbarDropdown">
-                                    @foreach($menu->childItems as $item)
-                                        <a class="dropdown-item" href="{{ url(urlGenerate($item->url,$language->id)) }}">{{ $item->title }}</a>
-                                        <div class="dropdown-divider"></div>
-                                    @endforeach
-                                </div>
-                            </li>
-                        @else
-                            <li class="nav-item menu">
-                                <a class="nav-link" href="{{ url(urlGenerate($menu->url,$language->id)) }}">
-                                    {{ $menu->title }}
-                                </a>
-                            </li>
-                        @endif
-                    @endforeach
-                </ul>
-                <div class="right-menu d-flex">
-                    <div class="dropdown lang-menu">
-                        <a class="btn-light dropdown-toggle lang-list p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ $language->name }}
-                        </a>
-                        <ul class="dropdown-menu">
-                            @foreach($languages as $language)
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('viewPage',[$language->code, $slug]) }}">
-                                        {{ $language->name }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
+<header class="cappa-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Logo -->
+            <div class="col-6 col-md-6 cappa-logo-wrap">
+                <a href="index.html" class="cappa-logo"><img src="{{ asset(settings('header_logo')) }}" alt=""></a>
+            </div>
+            <!-- Menu Burger -->
+            <div class="col-6 col-md-6 text-right cappa-wrap-burger-wrap"> <a href="#" class="cappa-nav-toggle cappa-js-cappa-nav-toggle"><i></i></a> </div>
+        </div>
+    </div>
+</header>
+<div class="cappa-wrap">
+    <div class="cappa-wrap-inner rooms1">
+        <nav class="cappa-menu">          
+            <ul>
+                <li>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="section-subtitle">The Cappa Luxury Hotel</div>
+                            <div class="section-title">Rooms & Suites</div>
+                        </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="bradford.html">
+                                <div class="item">
+                                    <div class="position-re o-hidden"> <img src="{{ asset('public/img/rooms/4.jpg') }}" alt=""> </div> <span class="category">Main Branch</span>
+                                    <div class="con">
+                                        <!-- <h6><a href="room-details.html">300$ / Night</a></h6> -->
+                                        <h5>Bradford</h5>
+                                        <div class="line"></div>
+                                        <div class="row facilities">
+                                            <div class="col col-md-7">
+                                                <!-- <ul>
+                                                    <li><i class="flaticon-bed"></i></li>
+                                                    <li><i class="flaticon-bath"></i></li>
+                                                    <li><i class="flaticon-breakfast"></i></li>
+                                                    <li><i class="flaticon-towel"></i></li>
+                                                </ul> -->
+                                            </div>
+                                            <div class="col col-md-5 text-end">
+                                                <div class="permalink">Details <i class="ti-arrow-right"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-12">
+                            <a href="dewsbury.html">
+                                <div class="item">
+                                    <div class="position-re o-hidden"> <img src="{{ asset('public/img/rooms/7.jpg') }}" alt=""> </div> <span class="category">Second Branch</span>
+                                    <div class="con">
+                                        <!-- <h6><a href="room-details.html">150$ / Night</a></h6> -->
+                                        <h5>Dewsbury</h5>
+                                        <div class="line"></div>
+                                        <div class="row facilities">
+                                            <div class="col col-md-7">
+                                                <!-- <ul>
+                                                    <li><i class="flaticon-bed"></i></li>
+                                                    <li><i class="flaticon-bath"></i></li>
+                                                    <li><i class="flaticon-breakfast"></i></li>
+                                                    <li><i class="flaticon-towel"></i></li>
+                                                </ul> -->
+                                            </div>
+                                            <div class="col col-md-5 text-end">
+                                                <div class="permalink">Details <i class="ti-arrow-right"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="cappa-menu-footer">
+            <div class="reservation">
+                <a href="tel:8551004444">
+                    <div class="icon d-flex justify-content-center align-items-center">
+                        <i class="flaticon-call"></i>
+                    </div>
+                    <div class="call">Reservation<br><span>855 100 4444</span></div>
+                </a>
             </div>
         </div>
-    </nav>
-</header>
+    </div>
+</div>

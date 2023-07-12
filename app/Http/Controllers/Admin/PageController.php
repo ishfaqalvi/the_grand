@@ -21,81 +21,9 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
-    {
-        $this->middleware('permission:homePage-list',           ['only' => ['index_home']]);
-        $this->middleware('permission:homePage-view',           ['only' => ['show']]);
-        $this->middleware('permission:homePage-create',         ['only' => ['create_home','store']]);
-        $this->middleware('permission:homePage-edit',           ['only' => ['edit_home','update']]);
-        $this->middleware('permission:homePage-delete',         ['only' => ['destroy']]);
-        $this->middleware('permission:homePage-publish',        ['only' => ['publish']]);
-        $this->middleware('permission:homePage-unPublish',      ['only' => ['unpublish']]);
-
-        $this->middleware('permission:toolPage-list',           ['only' => ['index_tool']]);
-        $this->middleware('permission:toolPage-view',           ['only' => ['show']]);
-        $this->middleware('permission:toolPage-create',         ['only' => ['create_tool','store']]);
-        $this->middleware('permission:toolPage-edit',           ['only' => ['edit_tool','update']]);
-        $this->middleware('permission:toolPage-delete',         ['only' => ['destroy']]);
-        $this->middleware('permission:toolPage-publish',        ['only' => ['publish']]);
-        $this->middleware('permission:toolPage-unPublish',      ['only' => ['unpublish']]);
-
-        $this->middleware('permission:blogPage-list',           ['only' => ['index_blog']]);
-        $this->middleware('permission:blogPage-view',           ['only' => ['show']]);
-        $this->middleware('permission:blogPage-create',         ['only' => ['create_blog','store']]);
-        $this->middleware('permission:blogPage-edit',           ['only' => ['edit_blog','update']]);
-        $this->middleware('permission:blogPage-delete',         ['only' => ['destroy']]);
-        $this->middleware('permission:blogPage-publish',        ['only' => ['publish']]);
-        $this->middleware('permission:blogPage-unPublish',      ['only' => ['unpublish']]);
-
-        $this->middleware('permission:problemPage-list',        ['only' => ['index_problem']]);
-        $this->middleware('permission:problemPage-view',        ['only' => ['show']]);
-        $this->middleware('permission:problemPage-create',      ['only' => ['create_problem','store']]);
-        $this->middleware('permission:problemPage-edit',        ['only' => ['edit_problem','update']]);
-        $this->middleware('permission:problemPage-delete',      ['only' => ['destroy']]);
-        $this->middleware('permission:problemPage-publish',     ['only' => ['publish']]);
-        $this->middleware('permission:problemPage-unPublish',   ['only' => ['unpublish']]);
-
-        $this->middleware('permission:categoryPage-list',       ['only' => ['index_category']]);
-        $this->middleware('permission:categoryPage-view',       ['only' => ['show']]);
-        $this->middleware('permission:categoryPage-create',     ['only' => ['create_category','store']]);
-        $this->middleware('permission:categoryPage-edit',       ['only' => ['edit_category','update']]);
-        $this->middleware('permission:categoryPage-delete',     ['only' => ['destroy']]);
-        $this->middleware('permission:categoryPage-publish',    ['only' => ['publish']]);
-        $this->middleware('permission:categoryPage-unPublish',  ['only' => ['unpublish']]);
-
-        $this->middleware('permission:careerPage-list',         ['only' => ['index_career']]);
-        $this->middleware('permission:careerPage-view',         ['only' => ['show']]);
-        $this->middleware('permission:careerPage-create',       ['only' => ['create_career','store']]);
-        $this->middleware('permission:careerPage-edit',         ['only' => ['edit_career','update']]);
-        $this->middleware('permission:careerPage-delete',       ['only' => ['destroy']]);
-        $this->middleware('permission:careerPage-publish',      ['only' => ['publish']]);
-        $this->middleware('permission:careerPage-unPublish',    ['only' => ['unpublish']]);
-
-        $this->middleware('permission:contactUsPage-list',      ['only' => ['index_contact_us']]);
-        $this->middleware('permission:contactUsPage-view',      ['only' => ['show']]);
-        $this->middleware('permission:contactUsPage-create',    ['only' => ['create_contact_us','store']]);
-        $this->middleware('permission:contactUsPage-edit',      ['only' => ['edit_contact_us','update']]);
-        $this->middleware('permission:contactUsPage-delete',    ['only' => ['destroy']]);
-        $this->middleware('permission:contactUsPage-publish',   ['only' => ['publish']]);
-        $this->middleware('permission:contactUsPage-unPublish', ['only' => ['unpublish']]);
-
-        $this->middleware('permission:simplePage-list',         ['only' => ['index_simple']]);
-        $this->middleware('permission:simplePage-view',         ['only' => ['show']]);
-        $this->middleware('permission:simplePage-create',       ['only' => ['create_simple','store']]);
-        $this->middleware('permission:simplePage-edit',         ['only' => ['edit_simple','update']]);
-        $this->middleware('permission:simplePage-delete',       ['only' => ['destroy']]);
-        $this->middleware('permission:simplePage-publish',      ['only' => ['publish']]);
-        $this->middleware('permission:simplePage-unPublish',    ['only' => ['unpublish']]);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index_home()
     {
-        $pages = Page::where('template','Home')->get();
+        $pages = Page::where('template','Home')->userBased()->get();
 
         return view('admin.page.home.index', compact('pages'));
     }

@@ -18,7 +18,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::get();
+        $services = Service::userBased()->get();
 
         return view('admin.service.index', compact('services'));
     }

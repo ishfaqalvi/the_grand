@@ -1,20 +1,20 @@
 @extends('admin.layout.app')
 
-@section('title','Create Simple Page')
+@section('title','Create Image Gallery')
 
 @section('breadcrumb')
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Create Simple Page</h4>
+        <h4 class="text-themecolor">Create Image Gallery</h4>
     </div>
     <div class="col-md-7 align-self-center text-end">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb justify-content-end">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('pages.simple.index') }}">Simple Page</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('pages.image_gallery.index') }}">Image Gallery</a></li>
                 <li class="breadcrumb-item active">Create</li>
             </ol>
-            <a href="{{ route('pages.simple.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
-                <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
+            <a href="{{ route('pages.image_gallery.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+                <i class="fas fa-arrow-left"></i> {{ __('Back') }}
             </a>
         </div>
     </div>
@@ -23,22 +23,38 @@
 @section('content')
 <div class="card wizard-content">
     <div class="card-body">
-        <h4 class="card-title">Craete Simple Page with Multistep</h4>
+        <h4 class="card-title">Craete Image Gallery Page with Multistep</h4>
         <form class="validation-wizard wizard-circle" action="{{ route('pages.store') }}" method="post" role="form" enctype="multipart/form-data">
             @csrf
-            @include('admin.page.simple.form') 
+            @include('admin.page.imagegallery.form')
         </form>
     </div>
 </div>
 @endsection
 
 @section('scripts')
-<script>
+{{-- <script>
     $(document).ready(function() {
         // To generate a auto slug from title field
         $("input[name=title]").bind('keyup change input', function() {
             let val = $(this).val().toLowerCase();
             $('input[name=slug]').val(val.replaceAll(" ", "-"));
+        });
+        // To drage and drop image file in image field
+        $('.dropify').dropify();
+        // To multiselect in related tools section
+        $('#pre-selected-options').multiSelect();
+        $('#optgroup').multiSelect({
+            selectableOptgroup: true
+        });
+        $('#public-methods').multiSelect();
+        $('#select-all').click(function () {
+            $('#public-methods').multiSelect('select_all');
+            return false;
+        });
+        $('#deselect-all').click(function () {
+            $('#public-methods').multiSelect('deselect_all');
+            return false;
         });
         // To add content with tiny editor in content section
         if ($("#textarea").length > 0) {
@@ -119,5 +135,5 @@
             },
         },
     })
-</script>
+</script> --}}
 @endsection

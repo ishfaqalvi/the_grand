@@ -1,8 +1,8 @@
 {{ Form::hidden('created_by', Auth::user()->id) }}
-{{ Form::hidden('template', 'Home') }}
+{{ Form::hidden('template', 'VideoGallery') }}
 {{ Form::hidden('slug', '/') }}
-{{ Form::hidden('x', '40') }}
-{{ Form::hidden('y', '40') }}
+{{ Form::hidden('x', '356') }}
+{{ Form::hidden('y', '215') }}
 
 <section>
     <div class="row">

@@ -1,5 +1,5 @@
 {{ Form::hidden('created_by', Auth::user()->id) }}
-{{ Form::hidden('template', 'Home') }}
+{{ Form::hidden('template', 'ContactUs') }}
 {{ Form::hidden('slug', '/') }}
 {{ Form::hidden('x', '40') }}
 {{ Form::hidden('y', '40') }}

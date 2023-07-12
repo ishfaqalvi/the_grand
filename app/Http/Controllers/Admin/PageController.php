@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Page;
-use App\Models\Language;
-use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Auth;
 use Image;
+use Carbon\Carbon;
+use App\Models\Page;
+use App\Models\Branch;
+use App\Models\Language;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 /**
  * Class PageController
@@ -45,11 +46,11 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index_blog()
+    public function index_image_gallery()
     {
-        $pages = Page::where('template','Blog')->get();
+        $pages = Page::where('template','ImageGallery')->get();
 
-        return view('admin.page.blog.index', compact('pages'));
+        return view('admin.page.imagegallery.index', compact('pages'));
     }
 
     /**
@@ -57,11 +58,11 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index_problem()
+    public function index_video_gallery()
     {
-        $pages = Page::where('template','Problem')->get();
+        $pages = Page::where('template','VideoGallery')->get();
 
-        return view('admin.page.problem.index', compact('pages'));
+        return view('admin.page.videogallery.index', compact('pages'));
     }
 
     /**
@@ -95,9 +96,9 @@ class PageController extends Controller
      */
     public function index_contact_us()
     {
-        $pages = Page::where('template','Contact_us')->get();
+        $pages = Page::where('template','ContactUs')->get();
 
-        return view('admin.page.contact_us.index', compact('pages'));
+        return view('admin.page.contactus.index', compact('pages'));
     }
 
     /**
@@ -105,11 +106,11 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index_simple()
+    public function index_faq()
     {
-        $pages = Page::where('template','Simple')->get();
+        $pages = Page::where('template','FAQ')->get();
 
-        return view('admin.page.simple.index', compact('pages'));
+        return view('admin.page.faq.index', compact('pages'));
     }
 
     /**
@@ -120,7 +121,8 @@ class PageController extends Controller
     public function create_home()
     {
         $page      = new Page();
-        return view('admin.page.home.create', compact('page' ));
+        $branches  = Branch::pluck('name','id');
+        return view('admin.page.home.create', compact('page', 'branches'));
     }
 
     /**
@@ -131,7 +133,7 @@ class PageController extends Controller
     public function create_tool()
     {
         $page = new Page();
-        
+
         return view('admin.page.tool.create', compact('page'));
     }
 
@@ -140,12 +142,11 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create_blog()
+    public function create_image_gallery()
     {
         $page = new Page();
-        $relatedBlogs = Page::where('template','Blog')->pluck('title','id');
-        
-        return view('admin.page.blog.create', compact('page','relatedBlogs'));
+        $branches  = Branch::pluck('name','id');
+        return view('admin.page.imagegallery.create', compact('page', 'branches'));
     }
 
     /**
@@ -153,11 +154,11 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create_problem()
+    public function create_video_gallery()
     {
         $page = new Page();
-        $relatedProblems = Page::where('template','Problem')->pluck('title','id');
-        return view('admin.page.problem.create', compact('page','relatedProblems'));
+        $branches  = Branch::pluck('name','id');
+        return view('admin.page.videogallery.create', compact('page', 'branches'));
     }
 
     /**
@@ -168,7 +169,7 @@ class PageController extends Controller
     public function create_category()
     {
         $page = new Page();
-        
+
         return view('admin.page.category.create', compact('page'));
     }
 
@@ -180,7 +181,7 @@ class PageController extends Controller
     public function create_career()
     {
         $page = new Page();
-        
+
         return view('admin.page.career.create', compact('page'));
     }
 
@@ -192,8 +193,9 @@ class PageController extends Controller
     public function create_contact_us()
     {
         $page = new Page();
-        
-        return view('admin.page.contact_us.create', compact('page'));
+        $branches  = Branch::pluck('name','id');
+
+        return view('admin.page.contactus.create', compact('page' , 'branches'));
     }
 
     /**
@@ -201,11 +203,12 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create_simple()
+    public function create_faq()
     {
         $page = new Page();
-        
-        return view('admin.page.simple.create', compact('page'));
+        $branches  = Branch::pluck('name','id');
+
+        return view('admin.page.faq.create', compact('page' , 'branches'));
     }
 
     /**
@@ -233,7 +236,7 @@ class PageController extends Controller
                 $page->relatedPages()->create(['parent_id' => $id]);
             }
         }
-        
+
         return redirect()->route('pages.'.strtolower($page->template).'.index')
             ->with('success', 'Page created successfully.');
     }
@@ -247,8 +250,10 @@ class PageController extends Controller
     public function edit_home($id)
     {
         $page      = Page::find($id);
-        $languages = Language::pluck('name','id');
-        return view('admin.page.home.edit', compact('page','languages'));
+        $branches  = Branch::pluck('name','id');
+        // $languages = Language::pluck('name','id');
+        // return view('admin.page.home.edit', compact('page','languages'));
+        return view('admin.page.home.edit', compact('page', 'branches'));
     }
 
     /**
@@ -270,11 +275,11 @@ class PageController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit_blog($id)
+    public function edit_image_gallery($id)
     {
         $page = Page::find($id);
-        $relatedBlogs = Page::where('template','Blog')->where('id' ,'!=', $id)->pluck('title','id');
-        return view('admin.page.blog.edit', compact('page','relatedBlogs'));
+        $branches  = Branch::pluck('name','id');
+        return view('admin.page.imagegallery.edit', compact('page','branches'));
     }
 
     /**
@@ -283,11 +288,11 @@ class PageController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit_problem($id)
+    public function edit_video_gallery($id)
     {
         $page = Page::find($id);
-        $relatedProblems = Page::where('template','Problem')->where('id' ,'!=', $id)->pluck('title','id');
-        return view('admin.page.problem.edit', compact('page','relatedProblems'));
+        $branches  = Branch::pluck('name','id');
+        return view('admin.page.videogallery.edit', compact('page','branches'));
     }
 
     /**
@@ -325,8 +330,9 @@ class PageController extends Controller
     public function edit_contact_us($id)
     {
         $page = Page::find($id);
+        $branches  = Branch::pluck('name','id');
 
-        return view('admin.page.contact_us.edit', compact('page'));
+        return view('admin.page.contactus.edit', compact('page' , 'branches'));
     }
 
     /**
@@ -335,11 +341,47 @@ class PageController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit_simple($id)
+    public function edit_faq($id)
     {
         $page = Page::find($id);
+        $branches  = Branch::pluck('name','id');
 
-        return view('admin.page.simple.edit', compact('page'));
+        return view('admin.page.faq.edit', compact('page' , 'branches'));
+    }
+
+    public function show_contact_us($id)
+    {
+        $page = Page::with('branch')->find($id);
+
+        return view('admin.page.contactus.show', compact('page'));
+    }
+
+    public function show_faq($id)
+    {
+        $page = Page::with('branch')->find($id);
+
+        return view('admin.page.faq.show', compact('page'));
+    }
+
+    public function show_image_gallery($id)
+    {
+        $page = Page::with('branch')->find($id);
+
+        return view('admin.page.imagegallery.show', compact('page'));
+    }
+
+    public function show_video_gallery($id)
+    {
+        $page = Page::with('branch')->find($id);
+
+        return view('admin.page.videogallery.show', compact('page'));
+    }
+
+    public function show_home($id)
+    {
+        $page = Page::with('branch')->find($id);
+
+        return view('admin.page.home.show', compact('page'));
     }
 
     /**
@@ -363,15 +405,6 @@ class PageController extends Controller
             unset($input['image']);
         }
         $page->update($input);
-        foreach ($page->relatedPages as $relatedpage) {
-            $relatedpage->delete();
-        }
-        
-        if($request->relatedPages){
-            foreach ($request->relatedPages as $id) {
-                $page->relatedPages()->create(['parent_id' => $id]);
-            }
-        }
         return redirect()->route('pages.'.strtolower($page->template).'.index')
             ->with('success', 'Page updated successfully');
     }
@@ -437,7 +470,7 @@ class PageController extends Controller
     public function checkSlug(Request $request)
     {
         if ($request->id) {
-            $page = Page::where('id','!==',$request->id)->where([['slug', $request->slug],['language_id',$request->language_id]])->first(); 
+            $page = Page::where('id','!==',$request->id)->where([['slug', $request->slug],['language_id',$request->language_id]])->first();
         }else{
             $page = Page::where([['slug', $request->slug],['language_id',$request->language_id]])->first();
         }

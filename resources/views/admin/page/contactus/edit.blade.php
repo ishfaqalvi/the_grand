@@ -1,20 +1,20 @@
 @extends('admin.layout.app')
 
-@section('title','Update Blog')
+@section('title','Update Contact Us Page')
 
 @section('breadcrumb')
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Update Blog</h4>
+        <h4 class="text-themecolor">Edit Contact Us Page</h4>
     </div>
     <div class="col-md-7 align-self-center text-end">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb justify-content-end">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('pages.blog.index') }}">Blog</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('pages.contactus.index') }}">Contact Us</a></li>
                 <li class="breadcrumb-item active">Edit</li>
             </ol>
-            <a href="{{ route('pages.blog.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
-                <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
+            <a href="{{ route('pages.contactus.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+                <i class="fas fa-arrow-left"></i> {{ __('Back') }}
             </a>
         </div>
     </div>
@@ -23,11 +23,11 @@
 @section('content')
 <div class="card wizard-content">
     <div class="card-body">
-        <h4 class="card-title">Update Blog with Multistep</h4>
+        <h4 class="card-title">Update Contact Us Page with Multistep</h4>
         <form method="POST" action="{{ route('pages.update', $page->id) }}" class="validation-wizard wizard-circle" role="form" enctype="multipart/form-data">
             {{ method_field('PATCH') }}
             @csrf
-            @include('admin.page.blog.form') 
+            @include('admin.page.contactus.form')
         </form>
     </div>
 </div>
@@ -39,22 +39,6 @@
         $("input[name=title]").bind('keyup change input', function() {
             let val = $(this).val().toLowerCase();
             $('input[name=slug]').val(val.replaceAll(" ", "-"));
-        });
-        // To drage and drop image file in image field
-        $('.dropify').dropify();
-        // To multiselect in related tools section
-        $('#pre-selected-options').multiSelect();
-        $('#optgroup').multiSelect({
-            selectableOptgroup: true
-        });
-        $('#public-methods').multiSelect();
-        $('#select-all').click(function () {
-            $('#public-methods').multiSelect('select_all');
-            return false;
-        });
-        $('#deselect-all').click(function () {
-            $('#public-methods').multiSelect('deselect_all');
-            return false;
         });
         // To add content with tiny editor in content section
         if ($("#textarea").length > 0) {

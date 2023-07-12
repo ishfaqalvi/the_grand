@@ -15,7 +15,7 @@
         {{ Form::label('image') }}
         {{ Form::file('image', ['class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'placeholder' => 'Image', $service->image ? '' : 'required','accept'=> 'image/png,image/jpg,image/jpeg']) }}
         {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
-        <small class="form-control-feedback"> Example: (Image upload .....) </small>
+        <small class="form-control-feedback"> Example: ( Image upload size width='570px' & height='380px' ) </small>
         @if(isset($service->image) &&  $service->image != NULL)
         <img src="{{ asset($service->image) }}" width="100%">
         @endif

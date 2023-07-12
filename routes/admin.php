@@ -72,6 +72,13 @@ Route::resource('facilities', FacilityController::class);
 */
 Route::resource('testimonials', TestimonialController::class);
 
+/*
+|--------------------------------------------------------------------------
+| Questions Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('questions', QuestionController::class);
+
 
 /*
 |--------------------------------------------------------------------------

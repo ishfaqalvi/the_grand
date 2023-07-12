@@ -9,7 +9,7 @@
         {{ Form::label('image') }}
         {{ Form::file('image', ['class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'placeholder' => 'Image',$testimonial->image ? '' : 'required','accept'=> 'image/png,image/jpg,image/jpeg']) }}
         {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
-        <small class="form-control-feedback"> Example: (Image upload .....) </small>
+        <small class="form-control-feedback"> Example: ( Image upload size width='70px' & height='70px' ) </small>
         @if(isset($testimonial->image) &&  $testimonial->image != NULL)
         <img src="{{ asset($testimonial->image) }}" width="100%">
         @endif

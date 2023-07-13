@@ -32,7 +32,7 @@
     -->
     @include('public.template.home')
 
-    @elseif($page->template =='Tool')
+    @elseif($page->template =='Image')
     <!--
     |--------------------------------------------------------------------------
     | Tool page template include here
@@ -40,7 +40,7 @@
     -->
     @include('public.template.tool')
 
-    @elseif($page->template =='Blog')
+    @elseif($page->template =='Video')
     <!--
     |--------------------------------------------------------------------------
     | Blog page template include here
@@ -48,45 +48,16 @@
     -->
     @include('public.template.blog')
 
-    @elseif($page->template =='Problem')
-    <!--
-    |--------------------------------------------------------------------------
-    | Problem page template include here
-    |--------------------------------------------------------------------------
-    -->
-    @include('public.template.problem')
-
-    @elseif($page->template =='Category')
-    <!--
-    |--------------------------------------------------------------------------
-    | Category page template include here
-    |--------------------------------------------------------------------------
-    -->
-    @include('public.template.category')
-
-    @elseif($page->template =='Career')
-    <!--
-    |--------------------------------------------------------------------------
-    | Career page template include here
-    |--------------------------------------------------------------------------
-    -->
-    @include('public.template.career')
-
-    @elseif($page->template =='Contact_us')
+    @elseif($page->template =='FAQs')
+    
+    @include('public.template.blog')    
+    @else
     <!--
     |--------------------------------------------------------------------------
     | Contact US page template include here
     |--------------------------------------------------------------------------
     -->
     @include('public.template.contact_us')
-
-    @else
-    <!--
-    |--------------------------------------------------------------------------
-    | Other all simple pages template include here
-    |--------------------------------------------------------------------------
-    -->
-    @include('public.template.simple')
     @endif 
     
     <!--

@@ -23,7 +23,7 @@ class DynamicPageController extends Controller
         if ($page) {
             return view('public.index',compact('page'));   
         }
-        return view('public.errors.404',compact('slug'));
+        return view('public.errors.404');
     }
 
     /**

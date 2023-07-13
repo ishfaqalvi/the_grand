@@ -10,13 +10,15 @@
                         </div>
                     </div>
                     <div class="row">
+                        @foreach(branchList() as $branch)
                         <div class="col-md-12">
                             <a href="bradford.html">
                                 <div class="item">
-                                    <div class="position-re o-hidden"> <img src="img/rooms/4.jpg" alt=""> </div> <span class="category">Main Branch</span>
+                                    <div class="position-re o-hidden"> <img src="{{ asset($branch->image) }}" alt=""> </div> 
+                                    <span class="category">Main Branch</span>
                                     <div class="con">
                                         <!-- <h6><a href="room-details.html">300$ / Night</a></h6> -->
-                                        <h5>Bradford</h5>
+                                        <h5>{{ $branch->name }}</h5>
                                         <div class="line"></div>
                                         <div class="row facilities">
                                             <div class="col col-md-7">
@@ -35,31 +37,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-md-12">
-                            <a href="dewsbury.html">
-                                <div class="item">
-                                    <div class="position-re o-hidden"> <img src="img/rooms/7.jpg" alt=""> </div> <span class="category">Second Branch</span>
-                                    <div class="con">
-                                        <!-- <h6><a href="room-details.html">150$ / Night</a></h6> -->
-                                        <h5>Dewsbury</h5>
-                                        <div class="line"></div>
-                                        <div class="row facilities">
-                                            <div class="col col-md-7">
-                                                <!-- <ul>
-                                                    <li><i class="flaticon-bed"></i></li>
-                                                    <li><i class="flaticon-bath"></i></li>
-                                                    <li><i class="flaticon-breakfast"></i></li>
-                                                    <li><i class="flaticon-towel"></i></li>
-                                                </ul> -->
-                                            </div>
-                                            <div class="col col-md-5 text-end">
-                                                <div class="permalink">Details <i class="ti-arrow-right"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        @endforeach
                     </div>
                 </li>
             </ul>

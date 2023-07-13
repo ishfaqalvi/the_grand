@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Branch;
+use App\Models\Slider;
+
 use App\Models\Page;
 use App\Models\Menu;
 use App\Models\Setting;
@@ -12,10 +15,31 @@ use App\Models\DynamicString;
  *
  * @return \Illuminate\Http\Response
  */
-function toolCategories()
+function branchList()
 {
-    return Page::where([['template','Category'],['category_type','Tool']])->pluck('title','id');
+    return Branch::get();
 }
+
+/**
+ * Get listing of a resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+function sliderList()
+{
+    return Slider::where('status','Publish')->get();
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Get listing of a resource.

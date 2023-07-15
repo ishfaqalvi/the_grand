@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
+            $table->enum('type',['Main Branch', 'Sub Branch']);
             $table->string('name');
             $table->string('url');
-            $table->string('image');
+            $table->string('thumbnail');
             $table->timestamps();
         });
     }

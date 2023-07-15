@@ -21,10 +21,12 @@
 @endsection
 
 @section('content')
-<div class="card">
+<div class="card ">
+    <div class="card-header bg-info">
+        <h4 class="m-b-0 text-white">Edit Branch</h4>
+    </div>
     <div class="card-body">
-        <h4 class="card-title">Edit Branch</h4>
-        <form method="POST" action="{{ route('branches.update', $branch->id) }}" role="form" enctype="multipart/form-data" class="$branch-">
+        <form method="POST" action="{{ route('branches.update', $branch->id) }}" role="form" enctype="multipart/form-data" class="branch form-horizontal">
             @csrf
             {{ method_field('PATCH') }}
             @include('admin.branch.form')
@@ -35,7 +37,7 @@
 
 @section('scripts')
 <script>
-    $(".$branch-").validate({
+    $(".branch").validate({
         errorClass: "text-danger",
         highlight: function (element, errorClass) {
             $(element).removeClass(errorClass)
@@ -54,26 +56,46 @@
         },
     });
 </script>
-<script type="text/javascript">
-    CheckMenuType();
-    function CheckMenuType(){
-        var url = document.getElementById('url');
-        var link = document.getElementById('link');
-        var value = document.getElementById("linktype").value;
-        if(value == 'Internal'){
-            link.style.display='block';
-            document.getElementById("url_field").removeAttribute("required");
-            url.style.display='none';
-        }
-        else if(value == 'External'){
-            url.style.display='block';
-            link.style.display='none';
-            document.getElementById("page_link").removeAttribute("required");
-        }
-        else{
-            url.style.display='none';
-            link.style.display='none';
-        }
-    }
+<script>
+    $(document).ready(function() {
+        // Basic
+        $('.dropify').dropify();
+
+        // Translated
+        $('.dropify-fr').dropify({
+            messages: {
+                default: 'Glissez-déposez un fichier ici ou cliquez',
+                replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                remove: 'Supprimer',
+                error: 'Désolé, le fichier trop volumineux'
+            }
+        });
+
+        // Used events
+        var drEvent = $('#input-file-events').dropify();
+
+        drEvent.on('dropify.beforeClear', function(event, element) {
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+
+        drEvent.on('dropify.afterClear', function(event, element) {
+            alert('File deleted');
+        });
+
+        drEvent.on('dropify.errors', function(event, element) {
+            console.log('Has Errors');
+        });
+
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function(e) {
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
+    });
 </script>
 @endsection

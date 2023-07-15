@@ -31,12 +31,16 @@
                     <td>{{ $branch->name }}</td>
                 </tr>
                 <tr>
-                    <td class="card-title">Slug</td>
-                    <td>{{ $branch->slug }}</td>
+                    <td class="card-title">Name</td>
+                    <td>{{ $branch->name }}</td>
                 </tr>
                 <tr>
-                    <td class="card-title">Image</td>
-                    <td><img src="{{ asset($branch->image) }}" width="100%"></td>
+                    <td class="card-title">Slug</td>
+                    <td>{{ $branch->url }}</td>
+                </tr>
+                <tr>
+                    <td class="card-title">Thumbnail</td>
+                    <td><img src="{{ asset($branch->thumbnail) }}" width="100%"></td>
                 </tr>
             </tbody>
         </table>

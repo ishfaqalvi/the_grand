@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
         $this->call(SliderSeeder::class);
         $this->call(PageSeeder::class);
         $this->call(GallerySeeder::class);
-        $this->call(MenuSeeder::class);
+        // $this->call(MenuSeeder::class);
         $this->call(FeedbackSeeder::class);
-        $this->call(SettingsSeeder::class);
+        // $this->call(SettingsSeeder::class);
         $this->call(DynamicStringSeeder::class);
     }
 }

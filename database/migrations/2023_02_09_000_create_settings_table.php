@@ -14,8 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('settings', function (Blueprint $table) {
-            $table->string('key')->unique();
-            $table->text('value');
+            $table->id();
+            $table->unsignedBigInteger('branch_id');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->string('key');
+            $table->text('value')->nullable();
             $table->timestamps();
         });
     }

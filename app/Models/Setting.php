@@ -10,11 +10,12 @@ class Setting extends Model
     use HasFactory;
 
     static $rules = [
+        'branch_id' => 'required',
         'key' 		=> 'required',
         'value' 	=> 'required',
     ];
 
-    protected $fillable = ['key', 'value'];
+    protected $fillable = ['branch_id','key', 'value'];
 
     static function get($key) {
     	return self::where('key', $key)->pluck('value')->first();

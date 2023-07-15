@@ -16,8 +16,21 @@ class BranchSeeder extends Seeder
     public function run()
     {
         DB::table('branches')->insert([
-        	['name' => 'Bradfoard', 'slug' => 'bradfoard','image' => 'upload/images/branches/4.jpg'],
-        	['name' => 'Dewsbury', 	'slug' => 'dewsbury','image' => 'upload/images/branches/7.jpg']
+        	[
+                'type'      => 'Main Branch',
+                'name'      => 'Main',      
+                'url'       => 'main',      
+                'thumbnail' => 'upload/images/branches/4.jpg'],
+            [
+                'type'      => 'Sub Branch',
+                'name'      => 'Bradfoard', 
+                'url'       => 'bradfoard', 
+                'thumbnail' => 'upload/images/branches/4.jpg'],
+        	[
+                'type'      => 'Sub Branch',
+                'name'      => 'Dewsbury', 	
+                'url'       => 'dewsbury',  
+                'thumbnail' => 'upload/images/branches/7.jpg']
         ]);
     }
 }

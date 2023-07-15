@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Branch;
+use App\Models\Setting;
+use Image;
 
 /**
  * Class BranchController
@@ -44,6 +46,22 @@ class BranchController extends Controller
     public function store(Request $request)
     {
         $branch = Branch::create($request->all());
+        $input = $request->settings;
+        if($request->hasFile('settings')) {
+            foreach ($request->file('settings') as $key => $file) {
+                $filenamewithextension = $file->getClientOriginalName();
+                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+                $filenametostore = 'upload/images/settings/'.time().'.webp';
+                $img = Image::make($file)->encode('webp', 90)->resize(160, 38);   
+                $img->save(public_path($filenametostore));
+                $input['logo'] = $filenametostore;
+            }
+        }else{
+            unset($input['logo']);
+        }
+        foreach($input as $key => $value){
+            $branch->settings()->create(['key' => $key, 'value' => $value]);
+        }
 
         return redirect()->route('branches.index')
             ->with('success', 'Branch created successfully.');
@@ -85,7 +103,27 @@ class BranchController extends Controller
     public function update(Request $request, Branch $branch)
     {
         $branch->update($request->all());
-
+        $input = $request->settings;
+        if($request->hasFile('settings')) {
+            foreach ($request->file('settings') as $key => $file) {
+                $filenamewithextension = $file->getClientOriginalName();
+                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+                $filenametostore = 'upload/images/settings/'.time().'.webp';
+                $img = Image::make($file)->encode('webp', 90)->resize(160, 38);   
+                $img->save(public_path($filenametostore));
+                $input['logo'] = $filenametostore;
+            }
+        }else{
+            unset($input['logo']);
+        }
+        foreach($input as $key => $value){
+            $check_record = $branch->settings()->where('key', $key)->first();
+            if ($check_record) {
+                $check_record->update(['value' => $value]);
+            }else{
+                $branch->settings()->create(['key' => $key, 'value' => $value]);
+            }
+        }
         return redirect()->route('branches.index')
             ->with('success', 'Branch updated successfully');
     }

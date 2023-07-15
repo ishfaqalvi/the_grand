@@ -115,9 +115,11 @@ function urlGenerate($slug, $lang)
  *
  * @return \Illuminate\Http\Response
  */
-function settings($key)
+function settings($id, $key)
 {
-    return Setting::get($key);
+    $row = Setting::where(['branch_id' => $id, 'key' => $key])->first();   
+    $row ? $value = $row->value : $value = '';
+    return $value;
 }
 
 /**

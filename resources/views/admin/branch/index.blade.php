@@ -26,10 +26,11 @@
         <table class="datatable table table-striped border">
             <thead>
                 <tr>
-                    <th>No</th>              
+                    <th>No</th>             
+                    <th>Type</th>             
                     <th>Name</th>
-                    <th>Slug</th>
-                    <th>Image</th>
+                    <th>Url</th>
+                    <th>Thumbnail</th>
                     <th width="10px">Actions</th>
                 </tr>
             </thead>
@@ -37,10 +38,11 @@
                 @foreach ($branches as $key => $branch)
                     <tr>
                         <td>{{ ++$key }}</td>
+                        <td>{{ $branch->type }}</td>
                         <td>{{ $branch->name }}</td>
-                        <td>{{ $branch->slug }}</td>
+                        <td>{{ $branch->url }}</td>
                         <td>
-                            <img src="{{ asset($branch->image) }}" style="height: 50px; width: 150px;">
+                            <img src="{{ asset($branch->thumbnail) }}" style="height: 50px; width: 150px;">
                         </td>
                         <td>@include('admin.branch.actions')</td>
                     </tr>

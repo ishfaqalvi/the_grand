@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\Admin\BranchController;
+use App\Http\Controllers\Admin\BranchSettingController;
 
 // Route::domain('{subdomain}.' . env('APP_DOMAIN', 'websitecms.test'))->group(function () {
 //     Route::get('admin/home', DashboardController::class)->name('subdomain.dashboard');
@@ -43,6 +45,13 @@ Route::resource('sliders', SliderController::class);
 |--------------------------------------------------------------------------
 */
 Route::resource('branches', BranchController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Branches Settings Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('branch-settings', BranchSettingController::class);
 
 /*
 |--------------------------------------------------------------------------

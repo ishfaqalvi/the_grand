@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->enum('type',['Main','More','About','Contact','404']);
+            $table->enum('type',['Header','Footer']);
             $table->foreignId('parent_id')->nullable();
             $table->string('title');
             $table->string('url');

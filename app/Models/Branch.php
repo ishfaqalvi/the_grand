@@ -24,7 +24,7 @@ class Branch extends Model
     
     static $rules = [
 		'name' => 'required',
-		'slug' => 'required',
+		'url'  => 'required',
 		'image'=> 'required'
     ];
 

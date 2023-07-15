@@ -21,8 +21,7 @@ class NewsController extends Controller
     {
         $news = News::userBased()->get();
 
-        return view('admin.news.index', compact('news'))
-            ->with('i', (request()->input('page', 1) - 1) * $news->perPage());
+        return view('admin.news.index', compact('news'));
     }
 
     /**

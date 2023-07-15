@@ -25,6 +25,11 @@
         </a>
     </li>
     <li>
+        <a class="waves-effect waves-dark" href="{{ route('branch-settings.index') }}" aria-expanded="false">
+            <i class="ti-settings"></i><span class="hide-menu">Branch Settings</span>
+        </a>
+    </li>
+    <li>
         <a class="waves-effect waves-dark" href="{{ route('users.index') }}" aria-expanded="false">
             <i class="icons-Administrator"></i><span class="hide-menu">Users</span>
         </a>

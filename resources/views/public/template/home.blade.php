@@ -75,11 +75,11 @@
         <div class="row">
             @foreach(branchList() as $branch)
             <div class="col-md-6">
-                <a href="bradford.html">
+                <a href="{{ route('subdomain', $branch->slug) }}">
                     <div class="item">
                         <div class="position-re o-hidden">
                             <img src="{{ asset($branch->image) }}" alt="">
-                        </div> 
+                        </div>
                         <span class="category">Main Branch</span>
                         <div class="con">
                             <h5>{{ $branch->name }}</h5>

@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Public;
-use App\Http\Controllers\Controller;
-
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Http\Request;
-use App\Models\Feedback;
-use App\Models\Comment;
 use App\Models\Page;
+
+use App\Models\Branch;
+use App\Models\Comment;
+use App\Models\Feedback;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 class DynamicPageController extends Controller
 {
@@ -21,7 +22,7 @@ class DynamicPageController extends Controller
     {
         $page = Page::where('template','Home')->first();
         if ($page) {
-            return view('public.index',compact('page'));   
+            return view('public.index',compact('page'));
         }
         return view('public.errors.404');
     }
@@ -140,5 +141,14 @@ class DynamicPageController extends Controller
         Comment::create($request->all());
         $parameters = ['commentMessage' => settings('comment_message')];
         return redirect()->back()->with($parameters);
+    }
+
+    public function viewSubdomainPage($subdomain)
+    {
+        $branch = Branch::where('slug',$subdomain)->first();
+        if ($branch) {
+            return $subdomain;
+        }
+        return "404";
     }
 }

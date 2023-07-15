@@ -64,7 +64,7 @@
     </div>
 </section>
 <!-- Rooms -->
-<<section class="rooms1 section-padding bg-darkblack" data-scroll-index="1">
+<section class="rooms1 section-padding bg-darkblack" data-scroll-index="1">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

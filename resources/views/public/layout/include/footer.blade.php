@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <div class="container">e
+        <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="footer-bottom-inner">

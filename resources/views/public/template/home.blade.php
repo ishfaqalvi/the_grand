@@ -75,10 +75,10 @@
         <div class="row">
             @foreach(branchList() as $branch)
             <div class="col-md-6">
-                <a href="{{ route('subdomain', $branch->slug) }}">
+                <a href="{{ $branch->url == '/' ? route('home') : route('subdomain', $branch->url) }}">
                     <div class="item">
                         <div class="position-re o-hidden">
-                            <img src="{{ asset($branch->image) }}" alt="">
+                            <img src="{{ asset($branch->thumbnail) }}" alt="">
                         </div>
                         <span class="category">Main Branch</span>
                         <div class="con">

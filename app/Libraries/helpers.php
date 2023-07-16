@@ -30,6 +30,18 @@ function sliderList()
     return Slider::where('status','Publish')->get();
 }
 
+/**
+ * Get value of a resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+function settings($id = null, $key = null)
+{
+    $row = Setting::where(['branch_id' => $id, 'key' => $key])->first();   
+    $row ? $value = $row->value : $value = '';
+    return $value;
+}
+
 
 
 
@@ -108,18 +120,6 @@ function urlGenerate($slug, $lang)
         $url = $language->code .'/'. $slug;
     }
     return $url;
-}
-
-/**
- * Get listing of a resource.
- *
- * @return \Illuminate\Http\Response
- */
-function settings($id, $key)
-{
-    $row = Setting::where(['branch_id' => $id, 'key' => $key])->first();   
-    $row ? $value = $row->value : $value = '';
-    return $value;
 }
 
 /**

@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
         // $this->call(MenuSeeder::class);
         $this->call(FeedbackSeeder::class);
         // $this->call(SettingsSeeder::class);
-        $this->call(DynamicStringSeeder::class);
+        // $this->call(DynamicStringSeeder::class);
     }
 }

@@ -20,7 +20,7 @@ class DynamicPageController extends Controller
      */
     public function viewHomePage()
     {
-        $page = Page::where('template','Home')->first();
+        $page = Page::where([['template','Home'],['branch_id', 1]])->first();
         if ($page) {
             return view('public.index',compact('page'));
         }
@@ -145,7 +145,7 @@ class DynamicPageController extends Controller
 
     public function viewSubdomainPage($subdomain)
     {
-        $branch = Branch::where('slug',$subdomain)->first();
+        $branch = Branch::where('url',$subdomain)->first();
         if ($branch) {
             return $subdomain;
         }

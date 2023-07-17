@@ -25,11 +25,6 @@
         </a>
     </li>
     <li>
-        <a class="waves-effect waves-dark" href="{{ route('branch-settings.index') }}" aria-expanded="false">
-            <i class="ti-settings"></i><span class="hide-menu">Branch Settings</span>
-        </a>
-    </li>
-    <li>
         <a class="waves-effect waves-dark" href="{{ route('users.index') }}" aria-expanded="false">
             <i class="icons-Administrator"></i><span class="hide-menu">Users</span>
         </a>
@@ -37,6 +32,16 @@
     <li>
         <a class="waves-effect waves-dark" href="{{ route('sliders.index') }}" aria-expanded="false">
             <i class="ti-layout-media-right-alt"></i><span class="hide-menu">Slider</span>
+        </a>
+    </li>
+    <li>
+        <a class="waves-effect waves-dark" href="{{ route('menus.index') }}" aria-expanded="false">
+            <i class="icons-Bulleted-List"></i><span class="hide-menu">Menu</span>
+        </a>
+    </li>
+    <li>
+        <a class="waves-effect waves-dark" href="{{ route('pages.index') }}" aria-expanded="false">
+            <i class="icons-Books"></i><span class="hide-menu">Pages</span>
         </a>
     </li>
     <li>
@@ -59,11 +64,7 @@
             <i class="icons-Control"></i><span class="hide-menu">Testimonial</span>
         </a>
     </li>
-    <li>
-        <a class="waves-effect waves-dark" href="{{ route('menus.index') }}" aria-expanded="false">
-            <i class="icons-Bulleted-List"></i><span class="hide-menu">Menu</span>
-        </a>
-    </li>
+    
     @can('strings-list')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('dynamic-strings.index') }}" aria-expanded="false">
@@ -71,23 +72,7 @@
         </a>
     </li>
     @endcan
-    <li>
-        <a class="waves-effect waves-dark" href="{{ route('sliders.index') }}" aria-expanded="false">
-            <i class="icons-Fountain-Pen"></i><span class="hide-menu">Slider</span>
-        </a>
-    </li>
-    <li>
-        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-            <i class="icons-Books"></i><span class="hide-menu">Pages</span>
-        </a>
-        <ul aria-expanded="false" class="collapse">
-            <li><a href="{{ route('pages.home.index') }}">Home</a></li>
-            <li><a href="{{ route('pages.imagegallery.index') }}">Image Gallery</a></li>
-            <li><a href="{{ route('pages.videogallery.index') }}">Video Gallery</a></li>
-            <li><a href="{{ route('pages.faq.index') }}">FAQS</a></li>
-            <li><a href="{{ route('pages.contactus.index') }}">Contact Us</a></li>
-        </ul>
-    </li>
+    
     @can('comments-list')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('comments.index') }}" aria-expanded="false">

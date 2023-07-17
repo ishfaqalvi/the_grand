@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('feedbacks', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('message');
+            $table->foreignId('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->enum('type',['Header','Footer']);
+            $table->foreignId('parent_id')->nullable();
+            $table->string('title');
+            $table->string('url');
+            $table->integer('order');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedbacks');
+        Schema::dropIfExists('menus');
     }
 };

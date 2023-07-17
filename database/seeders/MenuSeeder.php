@@ -16,28 +16,93 @@ class MenuSeeder extends Seeder
     public function run()
     {
         DB::table('menus')->insert([
-        	['type' => 'Main', 'title'=>'Math Calculators',    'parent_id' => Null, 'url'=>'', 'order'=>'1'],
-        	['type' => 'Main', 'title'=>'Calculus',		  	   'parent_id' => Null, 'url'=>'', 'order'=>'2'],
-        	['type' => 'Main', 'title'=>'Derivative',		   'parent_id' => Null, 'url'=>'', 'order'=>'3'],
-        	['type' => 'Main', 'title'=>'Derivative Rule',	   'parent_id' => Null, 'url'=>'', 'order'=>'4'],
-            ['type' => 'Main', 'title'=>'Integral Calculator', 'parent_id' => '1',  'url'=>'', 'order'=>'1'],
-            ['type' => 'More', 'title'=>'Integral Calculator', 'parent_id' => Null, 'url'=>'', 'order'=>'1'],
-            ['type' => 'More', 'title'=>'Calculus',            'parent_id' => Null, 'url'=>'', 'order'=>'2'],
-            ['type' => 'More', 'title'=>'Derivative Rule',     'parent_id' => Null, 'url'=>'', 'order'=>'3'],
-            ['type' => 'More', 'title'=>'Derivative Formulas', 'parent_id' => Null, 'url'=>'', 'order'=>'4'],
-            ['type' => 'About', 'title'=>'About Us',           'parent_id' => Null, 'url'=>'', 'order'=>'1'],
-            ['type' => 'About', 'title'=>'Contact Us',         'parent_id' => Null, 'url'=>'', 'order'=>'2'],
-            ['type' => 'About', 'title'=>'Privacy Policy',     'parent_id' => Null, 'url'=>'', 'order'=>'3'],
-            ['type' => 'About', 'title'=>'Term of Conditions', 'parent_id' => Null, 'url'=>'', 'order'=>'4'],
-            ['type' => 'About', 'title'=>'Careers',            'parent_id' => Null, 'url'=>'', 'order'=>'5'],
-        	['type' => 'Contact', 'title'=>'Report a Problem', 'parent_id' => Null, 'url'=>'', 'order'=>'1'],
-        	['type' => 'Contact', 'title'=>'Send Feedback',	   'parent_id' => Null, 'url'=>'', 'order'=>'2'],
-        	['type' => 'Contact', 'title'=>'Contact Us',	   'parent_id' => Null, 'url'=>'', 'order'=>'3'],
-        	['type' => 'Contact', 'title'=>'Write for Us',	   'parent_id' => Null, 'url'=>'', 'order'=>'4'],
-            ['type' => '404', 'title'=>'Calculators',	   'parent_id' => Null, 'url'=>'', 'order'=>'1'],
-            ['type' => '404', 'title'=>'Resources',	   'parent_id' => Null, 'url'=>'', 'order'=>'2'],
-            ['type' => '404', 'title'=>'Calculus',	   'parent_id' => Null, 'url'=>'', 'order'=>'3'],
-            ['type' => '404', 'title'=>'Insights',	   'parent_id' => Null, 'url'=>'', 'order'=>'4'],
+        	[
+                'branch_id' => '2', 
+                'type'      => 'Header', 
+                'title'     => 'Home',    
+                'parent_id' => Null, 
+                'url'       => '', 
+                'order'     => '1'
+            ],
+        	[
+                'branch_id' => '2', 
+                'type'      => 'Header', 
+                'title'     => 'Gallery',		  	   
+                'parent_id' => Null, 
+                'url'       => '', 
+                'order'     =>'2'
+            ],
+        	[
+                'branch_id' => '2', 
+                'type'      => 'Header', 
+                'title'     => 'Image',		   
+                'parent_id' => '2', 
+                'url'       => '', 
+                'order'     => '1'
+            ],
+        	[
+                'branch_id' => '2', 
+                'type'      => 'Header', 
+                'title'     => 'Video',	   
+                'parent_id' => '2', 
+                'url'       => '', 
+                'order'     => '2'],
+            [
+                'branch_id' => '2', 
+                'type'      => 'Header', 
+                'title'     => 'FAQS', 
+                'parent_id' => Null,  
+                'url'       => '', 
+                'order'     => '3'
+            ],
+            [
+                'branch_id' => '2', 
+                'type'      => 'Header', 
+                'title'     => 'Contact', 
+                'parent_id' => Null, 
+                'url'       =>'', 
+                'order'     =>'4'
+            ],
+            [
+                'branch_id' => '2', 
+                'type'      => 'Footer', 
+                'title'     => 'Home',    
+                'parent_id' => Null, 
+                'url'       => '', 
+                'order'     => '1'
+            ],
+            [
+                'branch_id' => '2', 
+                'type'      => 'Footer', 
+                'title'     => 'Image Gallery',        
+                'parent_id' => Null, 
+                'url'       => '', 
+                'order'     => '2'
+            ],
+            [
+                'branch_id' => '2', 
+                'type'      => 'Footer', 
+                'title'     => 'Video Gallery',    
+                'parent_id' => Null, 
+                'url'       => '', 
+                'order'     => '3'
+            ],
+            [
+                'branch_id' => '2', 
+                'type'      => 'Footer', 
+                'title'     => 'FAQS', 
+                'parent_id' => Null,  
+                'url'       => '', 
+                'order'     => '4'
+            ],
+            [
+                'branch_id' => '2', 
+                'type'      => 'Footer', 
+                'title'     => 'Contact', 
+                'parent_id' => Null, 
+                'url'       =>'', 
+                'order'     =>'5'
+            ],
         ]);
     }
 }

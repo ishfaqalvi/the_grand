@@ -31,9 +31,8 @@ class MenuController extends Controller
      */
     public function create()
     {
-        $menu       = new Menu();
-        $parents    = Menu::where('type','Main')->whereNull('parent_id')->pluck('title','id');
-        return view('admin.menu.create', compact('menu','parents'));
+        $menu = new Menu();
+        return view('admin.menu.create', compact('menu'));
     }
 
     /**
@@ -73,10 +72,8 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        $menu      = Menu::find($id);
-        $parents   = Menu::where('type','Main')->whereNull('parent_id')->pluck('title','id');
-
-        return view('admin.menu.edit', compact('menu','parents'));
+        $menu = Menu::find($id);
+        return view('admin.menu.edit', compact('menu'));
     }
 
     /**

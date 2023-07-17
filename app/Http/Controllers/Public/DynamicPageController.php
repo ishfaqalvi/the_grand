@@ -22,7 +22,26 @@ class DynamicPageController extends Controller
     {
         $page = Page::where([['template','Home'],['branch_id', 1]])->first();
         if ($page) {
-            return view('public.index',compact('page'));
+            return view('public.template.maindomain.index',compact('page'));
+        } 
+        return view('public.errors.404');
+    }
+
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function viewSubdomainHomePage($subdomain)
+    {
+        $branch = Branch::where('url',$subdomain)->first();
+        if ($branch) {
+            $page = $branch->pages()->where('template','Home')->first();
+            if ($page) {
+                return view('public.template.subdomain.index',compact('page'));
+            } 
+            return view('public.errors.404');
         }
         return view('public.errors.404');
     }
@@ -141,14 +160,5 @@ class DynamicPageController extends Controller
         Comment::create($request->all());
         $parameters = ['commentMessage' => settings('comment_message')];
         return redirect()->back()->with($parameters);
-    }
-
-    public function viewSubdomainPage($subdomain)
-    {
-        $branch = Branch::where('url',$subdomain)->first();
-        if ($branch) {
-            return $subdomain;
-        }
-        return "404";
     }
 }

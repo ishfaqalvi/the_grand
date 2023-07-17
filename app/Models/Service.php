@@ -28,7 +28,8 @@ class Service extends Model
 {
     
     static $rules = [
-		'heading'     => 'required',
+		'page_id'     => 'required',
+        'heading'     => 'required',
 		'sub_heading' => 'required',
 		'link'        => 'required',
 		'description' => 'required',
@@ -42,7 +43,7 @@ class Service extends Model
      *
      * @var array
      */
-    protected $fillable = ['branch_id','image','heading','sub_heading','link','description','order','status'];
+    protected $fillable = ['page_id','image','heading','sub_heading','link','description','order','status'];
 
     /**
      * Service scope a query
@@ -79,10 +80,8 @@ class Service extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function branch()
+    public function page()
     {
-        return $this->hasOne('App\Models\Branch', 'id', 'branch_id');
+        return $this->hasOne('App\Models\Page', 'id', 'page_id');
     }
-    
-
 }

@@ -114,6 +114,4 @@ class Slider extends Model
     {
         return $this->hasOne('App\Models\Branch', 'id', 'branch_id');
     }
-    
-
 }

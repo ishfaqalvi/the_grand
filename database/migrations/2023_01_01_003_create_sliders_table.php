@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('branch_id')->nullable()->references('id')->on('branches')->onDelete('cascade');
+            $table->foreignId('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->string('type');
             $table->string('title');
             $table->string('sub_title');

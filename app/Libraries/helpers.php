@@ -25,9 +25,9 @@ function branchList()
  *
  * @return \Illuminate\Http\Response
  */
-function sliderList()
+function sliderList($id)
 {
-    return Slider::where('status','Publish')->get();
+    return Slider::where([['branch_id',$id],['status','Publish']])->get();
 }
 
 /**
@@ -42,26 +42,37 @@ function settings($id = null, $key = null)
     return $value;
 }
 
-
-
-
-
-
-
-
-
-
-
+/**
+ * Get listing of a resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+function headerMenus($id)
+{
+    return Menu::where([['branch_id',$id],['type','Header']])->whereNull('parent_id')->get();
+}
 
 /**
  * Get listing of a resource.
  *
  * @return \Illuminate\Http\Response
  */
-function blogCategories()
+function footerMenus($id)
 {
-    return Page::where([['template','Category'],['category_type','Blog']])->pluck('title','id');
+    return Menu::where([['branch_id',$id],['type','Footer']])->get();
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Get listing of a resource.

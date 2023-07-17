@@ -17,11 +17,26 @@ class PageSeeder extends Seeder
     {
         DB::table('pages')->insert([
         	[
+                'branch_id' => '1',
         		'template' 	=> 'Home',
         		'title' 	=> 'Home Page',
         		'slug' 		=> 'home',
                 'metaTitle' => 'The Cappa Luxury Hotel'
-        	]
+        	],
+            [
+                'branch_id' => '2',
+                'template'  => 'Home',
+                'title'     => 'Home Page',
+                'slug'      => 'home',
+                'metaTitle' => 'The Cappa Luxury Hotel'
+            ],
+            [
+                'branch_id' => '2',
+                'template'  => 'Home',
+                'title'     => 'Home Page',
+                'slug'      => 'home',
+                'metaTitle' => 'The Cappa Luxury Hotel'
+            ]
         ]);
     }
 }

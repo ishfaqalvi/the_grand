@@ -13,13 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('branch_id')->references('id')->on('branches')->onDelete('cascade');
-            $table->string('title');
-            $table->text('description');
-            $table->integer('order')->default(1);
-            $table->string('status')->default('UnPublish');
+            $table->string('template');
+            $table->text('title');
+            $table->text('slug');
+            $table->text('metaTitle')->nullable();
+            $table->text('metaDescription')->nullable();
+            $table->text('og_tags')->nullable();
+            $table->text('schemas')->nullable();
+            $table->text('description')->nullable();
+            $table->enum('status',['Publish','UnPublish'])->default('UnPublish');
             $table->timestamps();
         });
     }
@@ -31,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('pages');
     }
 };

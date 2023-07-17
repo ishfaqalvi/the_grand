@@ -24,10 +24,11 @@ class Menu extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
     
     static $rules = [
-		'type' => 'required',
-		'title' => 'required',
-		'url' => 'required',
-		'order' => 'required',
+		'branch_id' => 'required',
+        'type'      => 'required',
+		'title'     => 'required',
+		'url'       => 'required',
+		'order'     => 'required',
     ];
 
     protected $perPage = 20;
@@ -37,7 +38,7 @@ class Menu extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['type','parent_id','title','url','order'];
+    protected $fillable = ['branch_id','type','parent_id','title','url','order'];
 
     /**
      * Menu scope a query
@@ -49,6 +50,14 @@ class Menu extends Model implements Auditable
         if (auth()->user()->type == 'Branch') {
             $query->where('branch_id', auth()->user()->branch_id);
         }
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function branch()
+    {
+        return $this->hasOne('App\Models\Branch', 'id', 'branch_id');
     }
 
     /**

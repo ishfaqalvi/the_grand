@@ -17,6 +17,7 @@ class SliderSeeder extends Seeder
     {
         DB::table('sliders')->insert([
         	[
+                'branch_id' => '1',
         		'type' 		=> 'Image',
         		'title' 	=> 'Luxury Hotel & Best Resort',
         		'sub_title' => 'Enjoy a Luxury Experience',
@@ -27,6 +28,7 @@ class SliderSeeder extends Seeder
         		'status' 	=> 'Publish'
         	],
         	[
+                'branch_id' => '1',
         		'type' 		=> 'Image',
         		'title' 	=> 'Unique Place to Relax & Enjoy',
         		'sub_title' => 'The Perfect Base For You',
@@ -37,6 +39,7 @@ class SliderSeeder extends Seeder
         		'status' 	=> 'Publish'
         	],
         	[
+                'branch_id' => '2',
         		'type' 		=> 'Image',
         		'title' 	=> 'The Ultimate Luxury Experience',
         		'sub_title' => 'Enjoy The Best Moments of Life',
@@ -47,6 +50,7 @@ class SliderSeeder extends Seeder
         		'status' 	=> 'Publish'
         	],
         	[
+                'branch_id' => '2',
         		'type' 		=> 'Image',
         		'title' 	=> 'Unique Place to Relax & Enjoy',
         		'sub_title' => 'The Perfect Base For You',

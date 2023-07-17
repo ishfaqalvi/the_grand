@@ -27,6 +27,10 @@
         <table class="table no-border d-flex">
             <tbody>
                 <tr>
+                    <td class="card-title">Branch</td>
+                    <td>{{ $menu->branch->name }}</td>
+                </tr>
+                <tr>
                     <td class="card-title">Type</td>
                     <td>{{ $menu->type }}</td>
                 </tr>
@@ -49,7 +53,7 @@
                         <table class="datatable table table-striped border">
                             <thead>
                                 <tr>
-                                    <th>Language</th>
+                                    <th>Branch</th>
                                     <th>Title</th>
                                     <th>URL</th>
                                     <th>Order</th>
@@ -58,7 +62,7 @@
                             <tbody>
                                 @foreach($menu->childItems as $key => $child)
                                     <tr>
-                                        <td>{{ $child->language->name }}</td>
+                                        <td>{{ $child->branch->name }}</td>
                                         <td>{{ $child->title }}</td>
                                         <td>{{ $child->url }}</td>
                                         <td>{{ $child->order }}</td>

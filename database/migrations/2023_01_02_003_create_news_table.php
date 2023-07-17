@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->foreignId('branch_id')->references('id')->on('branches')->onDelete('cascade');
-            $table->string('title');
+            $table->string('heading');
+            $table->string('sub_heading');
+            $table->string('image');
+            $table->date('date');
+            $table->string('url');
             $table->text('description');
             $table->integer('order')->default(1);
             $table->string('status')->default('UnPublish');
@@ -31,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('news');
     }
 };

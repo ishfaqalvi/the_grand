@@ -48,13 +48,6 @@ Route::resource('branches', BranchController::class);
 
 /*
 |--------------------------------------------------------------------------
-| Branches Settings Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('branch-settings', BranchSettingController::class);
-
-/*
-|--------------------------------------------------------------------------
 | News Routes
 |--------------------------------------------------------------------------
 */
@@ -109,118 +102,20 @@ Route::controller(GalleryController::class)->prefix('media')->group(function () 
 */
 Route::resource('menus', MenuController::class);
 
-
-/*
-|--------------------------------------------------------------------------
-| Job Application Routes
-|--------------------------------------------------------------------------
-| All route related to application module
-*/
-
-/*
-|--------------------------------------------------------------------------
-| String Routes
-|--------------------------------------------------------------------------
-| All route related to strings managment module
-*/
-Route::resource('dynamic-strings', DynamicStringController::class);
-Route::controller(DynamicStringController::class)->prefix('string')->group(function () {
-	Route::post('check_key',	'checkKey')->name('string.check_key');
-	Route::get('language/{id}',	'addLanguage')->name('string.add');
-});
-
-
 /*
 |--------------------------------------------------------------------------
 | Pages Routes
 |--------------------------------------------------------------------------
-| All route related to page managment module
 */
-Route::controller(PageController::class)->prefix('pages')->group(function(){
-	/*
-	|--------------------------------------------------------------------------
-	| Home Pages Routes
-	|--------------------------------------------------------------------------
-	*/
-	Route::group(['prefix' => 'home'], function (){
-    	Route::get('index',		'index_home' )->name('pages.home.index' );
-    	Route::get('create',	'create_home')->name('pages.home.create');
-    	Route::get('edit/{id}',	'edit_home'  )->name('pages.home.edit'  );
-    	Route::get('show/{id}',	'show_home'  )->name('pages.home.show'  );
-    });
-
-
-    /*
-	|--------------------------------------------------------------------------
-	| Blog Pages Routes
-	|--------------------------------------------------------------------------
-	*/
-    Route::group(['prefix' => 'image-gallery'], function (){
-    	Route::get('index',		'index_image_gallery' )->name('pages.imagegallery.index' );
-    	Route::get('create',	'create_image_gallery')->name('pages.imagegallery.create');
-    	Route::get('edit/{id}',	'edit_image_gallery'  )->name('pages.imagegallery.edit'  );
-    	Route::get('show/{id}',	'show_image_gallery'  )->name('pages.imagegallery.show'  );
-    });
-
-    /*
-	|--------------------------------------------------------------------------
-	| Problem Pages Routes
-	|--------------------------------------------------------------------------
-	*/
-    Route::group(['prefix' => 'video-gallery'], function (){
-    	Route::get('index',		'index_video_gallery' )->name('pages.videogallery.index' );
-    	Route::get('create',	'create_video_gallery')->name('pages.videogallery.create');
-    	Route::get('edit/{id}',	'edit_video_gallery'  )->name('pages.videogallery.edit'  );
-    	Route::get('show/{id}',	'show_video_gallery'  )->name('pages.videogallery.show'  );
-    });
-
-    /*
-	|--------------------------------------------------------------------------
-	| Category Pages Routes
-	|--------------------------------------------------------------------------
-	*/
-    Route::group(['prefix' => 'category'], function (){
-    	Route::get('index',		'index_category' )->name('pages.category.index' );
-    	Route::get('create',	'create_category')->name('pages.category.create');
-    	Route::get('edit/{id}',	'edit_category'  )->name('pages.category.edit'  );
-    });
-
-
-    /*
-	|--------------------------------------------------------------------------
-	| Contact Us Pages Routes
-	|--------------------------------------------------------------------------
-	*/
-    Route::group(['prefix' => 'contact-us'], function (){
-    	Route::get('index',		'index_contact_us' )->name('pages.contactus.index' );
-    	Route::get('create',	'create_contact_us')->name('pages.contactus.create');
-    	Route::get('edit/{id}',	'edit_contact_us'  )->name('pages.contactus.edit'  );
-    	Route::get('show/{id}',	'show_contact_us'  )->name('pages.contactus.show'  );
-    });
-
-    /*
-	|--------------------------------------------------------------------------
-	| Simple Pages Routes
-	|--------------------------------------------------------------------------
-	*/
-    Route::group(['prefix' => 'faq'], function (){
-    	Route::get('index',		'index_faq' )->name('pages.faq.index' );
-    	Route::get('create',	'create_faq')->name('pages.faq.create');
-    	Route::get('edit/{id}',	'edit_faq'  )->name('pages.faq.edit'  );
-    	Route::get('show/{id}',	'show_faq'  )->name('pages.faq.show'  );
-    });
-
-    /*
-	|--------------------------------------------------------------------------
-	| General Page Routes
-	|--------------------------------------------------------------------------
-	*/
-    Route::post('store', 			'store'		)->name('pages.store'		);
-    Route::patch('update/{page}', 	'update'	)->name('pages.update'		);
-    Route::delete('delete/{id}', 	'destroy'	)->name('pages.destroy'		);
-    Route::post('check_slug',	 	'checkSlug'	)->name('pages.check_slug'	);
-    Route::patch('publish/{page}',	'publish'	)->name('pages.publish'		);
-    Route::patch('unpublish/{page}','unpublish'	)->name('pages.unpublish'	);
+Route::controller(PageController::class)->prefix('pages')->as('pages.')->group(function () {
+    Route::get('index',             'index'    )->name('index'      );
+    Route::get('create',            'create'   )->name('create'     );
+    Route::post('store',            'store'    )->name('store'      );
+    Route::get('show/{id}',         'show'     )->name('show'       );
+    Route::get('edit/{id}',         'edit'     )->name('edit'       );
+    Route::patch('update/{page}',   'update'   )->name('update'     );
+    Route::delete('destroy/{id}',   'destroy'  )->name('destroy'    );
+    Route::post('checkSlug',        'checkSlug')->name('check_slug' );
 });
 
 /*

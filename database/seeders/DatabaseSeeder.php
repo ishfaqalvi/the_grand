@@ -17,11 +17,13 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminUserSeeder::class);
         $this->call(BranchSeeder::class);
         $this->call(SliderSeeder::class);
+        $this->call(MenuSeeder::class);
         $this->call(PageSeeder::class);
+        $this->call(SettingsSeeder::class);
+        
         $this->call(GallerySeeder::class);
-        // $this->call(MenuSeeder::class);
         $this->call(FeedbackSeeder::class);
-        // $this->call(SettingsSeeder::class);
+        
         // $this->call(DynamicStringSeeder::class);
     }
 }

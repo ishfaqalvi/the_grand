@@ -62,4 +62,11 @@ class Branch extends Model
     public function settings() {
         return $this->hasMany(Setting::class, 'branch_id','id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function pages() {
+        return $this->hasMany(Page::class, 'branch_id','id');
+    }
 }

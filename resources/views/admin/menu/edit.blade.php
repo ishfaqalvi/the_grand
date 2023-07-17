@@ -57,7 +57,7 @@
 <script>
     $(document).ready(function() {
         $("select[name=type]").change(function() {
-            if ($(this).val() == 'Main') {
+            if ($(this).val() == 'Header') {
                 $('div.parent').show('slow');
             }else{
                 $('div.parent').hide('slow');

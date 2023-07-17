@@ -78,4 +78,12 @@ class Page extends Model implements Auditable
     {
         return $this->hasOne('App\Models\Branch', 'id', 'branch_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function services()
+    {
+        return $this->hasMany('App\Models\Service', 'id', 'page_id');
+    }
 }

@@ -25,7 +25,8 @@ class Facility extends Model
 {
     
     static $rules = [
-		'icon'        => 'required',
+		'page_id'     => 'required',
+        'icon'        => 'required',
 		'title'       => 'required',
 		'description' => 'required',
 		'order'       => 'required'
@@ -38,7 +39,7 @@ class Facility extends Model
      *
      * @var array
      */
-    protected $fillable = ['branch_id','icon','title','description','order','status'];
+    protected $fillable = ['page_id','icon','title','description','order','status'];
 
     /**
      * Facility scope a query
@@ -48,15 +49,16 @@ class Facility extends Model
     public function scopeUserBased($query)
     {
         if (auth()->user()->type == 'Branch') {
-            $query->where('branch_id', auth()->user()->branch_id);
+            $ids = auth()->user()->branch->pages()->where('template','Home')->pluck('id');
+            $query->whereIn('page_id', $ids);
         }
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function branch()
+    public function page()
     {
-        return $this->hasOne('App\Models\Branch', 'id', 'branch_id');
+        return $this->hasOne('App\Models\Page', 'id', 'page_id');
     }
 }

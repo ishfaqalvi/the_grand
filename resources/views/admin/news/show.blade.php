@@ -54,10 +54,13 @@
                     <td class="card-title">Order</td>
                     <td>{{ $news->order }}</td>
                 </tr>
-                
+                <tr>
+                    <td class="card-title">Page</td>
+                    <td>{{ $news->page->title }}</td>
+                </tr>
                 <tr>
                     <td class="card-title">Branch</td>
-                    <td>{{ $news->branch?->name }}</td>
+                    <td>{{ $news->page->branch->name }}</td>
                 </tr>
                 <tr>
                     <td class="card-title">Status</td>

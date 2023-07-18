@@ -30,6 +30,7 @@
                     <th>Icon</th>
                     <th>Title</th>
                     <th>Order</th>                      
+                    <th>Page</th>
                     <th>Branch</th>
                     <th>Status</th>
                     <th width="10px">Actions</th>
@@ -38,11 +39,12 @@
             <tbody>
                 @foreach($facilities as  $key => $facility)
                     <tr class="align-items-center">
-                        <td>{{ ++$i }}</td>  
+                        <td>{{ ++$key }}</td>  
                         <td>{{ $facility->icon }}</td>
                         <td>{{ $facility->title }}</td>
                         <td>{{ $facility->order }}</td>
-                        <td>{{ $facility->branch?->name }}</td>
+                        <td>{{ $facility->page->title }}</td>
+                        <td>{{ $facility->page->branch->name }}</td>
                         <td>{{ $facility->status }}</td>
                         <td>@include('admin.facility.actions')</td>
                     </tr>

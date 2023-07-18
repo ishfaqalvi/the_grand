@@ -34,13 +34,6 @@ Route::controller(UserController::class)->prefix('user')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Slider Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('sliders', SliderController::class);
-
-/*
-|--------------------------------------------------------------------------
 | Branches Routes
 |--------------------------------------------------------------------------
 */
@@ -48,10 +41,33 @@ Route::resource('branches', BranchController::class);
 
 /*
 |--------------------------------------------------------------------------
-| News Routes
+| Slider Routes
 |--------------------------------------------------------------------------
 */
-Route::resource('news', NewsController::class);
+Route::resource('sliders', SliderController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Menu Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('menus', MenuController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Pages Routes
+|--------------------------------------------------------------------------
+*/
+Route::controller(PageController::class)->prefix('pages')->as('pages.')->group(function () {
+    Route::get('index',             'index'    )->name('index'      );
+    Route::get('create',            'create'   )->name('create'     );
+    Route::post('store',            'store'    )->name('store'      );
+    Route::get('show/{id}',         'show'     )->name('show'       );
+    Route::get('edit/{id}',         'edit'     )->name('edit'       );
+    Route::patch('update/{page}',   'update'   )->name('update'     );
+    Route::delete('destroy/{id}',   'destroy'  )->name('destroy'    );
+    Route::post('checkSlug',        'checkSlug')->name('check_slug' );
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +82,15 @@ Route::resource('services', ServiceController::class);
 |--------------------------------------------------------------------------
 */
 Route::resource('facilities', FacilityController::class);
+
+/*
+|--------------------------------------------------------------------------
+| News Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('news', NewsController::class);
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -94,29 +119,9 @@ Route::controller(GalleryController::class)->prefix('media')->group(function () 
 	Route::delete('delete/{id}','destroy')->name('media.destroy');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Menu Routes
-|--------------------------------------------------------------------------
-| All route related to menu module
-*/
-Route::resource('menus', MenuController::class);
 
-/*
-|--------------------------------------------------------------------------
-| Pages Routes
-|--------------------------------------------------------------------------
-*/
-Route::controller(PageController::class)->prefix('pages')->as('pages.')->group(function () {
-    Route::get('index',             'index'    )->name('index'      );
-    Route::get('create',            'create'   )->name('create'     );
-    Route::post('store',            'store'    )->name('store'      );
-    Route::get('show/{id}',         'show'     )->name('show'       );
-    Route::get('edit/{id}',         'edit'     )->name('edit'       );
-    Route::patch('update/{page}',   'update'   )->name('update'     );
-    Route::delete('destroy/{id}',   'destroy'  )->name('destroy'    );
-    Route::post('checkSlug',        'checkSlug')->name('check_slug' );
-});
+
+
 
 /*
 |--------------------------------------------------------------------------

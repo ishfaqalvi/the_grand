@@ -43,8 +43,12 @@
                     <td>{{ $facility->order }}</td>
                 </tr>
                 <tr>
+                    <td class="card-title">Page</td>
+                    <td>{{ $facility->page->title }}</td>
+                </tr>
+                <tr>
                     <td class="card-title">Branch</td>
-                    <td>{{ $facility->branch?->name }}</td>
+                    <td>{{ $facility->page->branch->name }}</td>
                 </tr>
                 <tr>
                     <td class="card-title">Status</td>

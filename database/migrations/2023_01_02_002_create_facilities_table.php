@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->foreignId('page_id')->references('id')->on('pages')->onDelete('cascade');
             $table->string('icon');
             $table->string('title');
             $table->text('description');

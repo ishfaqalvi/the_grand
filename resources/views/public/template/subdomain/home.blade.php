@@ -183,82 +183,45 @@
                 <div class="section-title">Hotel Services</div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
-                <div class="img left">
-                    <a href="restaurant.html"><img src="img/restaurant/1.jpg" alt=""></a>
-                </div>
-            </div>
-            <div class="col-md-6 p-0 bg-darkblack valign animate-box" data-animate-effect="fadeInRight">
-                <div class="content">
-                    <div class="cont text-left">
-                        <div class="info">
-                            <h6>Discover</h6>
+        @foreach($page->services as $key => $service)
+            @if ($key % 2 == 0)
+                <div class="row">
+                    <div class="col-md-6 bg-darkblack p-0 order2 valign animate-box" data-animate-effect="fadeInLeft">
+                        <div class="content">
+                            <div class="cont text-left">
+                                <div class="info"><h6>{{ $service->sub_heading }}</h6></div>
+                                <h4>{{ $service->heading }}</h4>
+                                <p>{{ $service->description }}</p>
+                                <div class="butn-dark"> <a href="{{ asset($service->link) }}"><span>Learn More</span></a> </div>
+                            </div>
                         </div>
-                        <h4>The Restaurant</h4>
-                        <p>Restaurant inilla duiman at elit finibus viverra nec a lacus themo the nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru the ivite dianne onen nivami acsestion augue artine.</p>
-                        <div class="butn-dark"> <a href="restaurant.html"><span>Learn More</span></a> </div>
+                    </div>
+                    <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
+                        <div class="img">
+                            <a href="{{ asset($service->link) }}"><img src="{{ asset($service->image) }}" alt=""></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 bg-darkblack p-0 order2 valign animate-box" data-animate-effect="fadeInLeft">
-                <div class="content">
-                    <div class="cont text-left">
-                        <div class="info">
-                            <h6>Experiences</h6>
+            @else 
+                <div class="row">
+                    <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
+                        <div class="img left">
+                            <a href="{{ asset($service->link) }}"><img src="{{ asset($service->image) }}" alt=""></a>
                         </div>
-                        <h4>Spa Center</h4>
-                        <p>Spa center inilla duiman at elit finibus viverra nec a lacus themo the nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru the ivite dianne onen nivami acsestion augue artine.</p>
-                        <div class="butn-dark"> <a href="spa-wellness.html"><span>Learn More</span></a> </div>
+                    </div>
+                    <div class="col-md-6 p-0 bg-darkblack valign animate-box" data-animate-effect="fadeInRight">
+                        <div class="content">
+                            <div class="cont text-left">
+                                <div class="info"><h6>{{ $service->sub_heading }}</h6></div>
+                                <h4>{{ $service->heading }}</h4>
+                                <p>{{ $service->description }}</p>
+                                <div class="butn-dark"> <a href="{{ asset($service->link) }}"><span>Learn More</span></a> </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
-                <div class="img">
-                    <a href="spa-wellness.html"><img src="img/spa/3.jpg" alt=""></a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
-                <div class="img left">
-                    <a href="spa-wellness.html"><img src="img/spa/2.jpg" alt=""></a>
-                </div>
-            </div>
-            <div class="col-md-6 p-0 bg-darkblack valign animate-box" data-animate-effect="fadeInRight">
-                <div class="content">
-                    <div class="cont text-left">
-                        <div class="info">
-                            <h6>Modern</h6>
-                        </div>
-                        <h4>Fitness Center</h4>
-                        <p>Restaurant inilla duiman at elit finibus viverra nec a lacus themo the nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru the ivite dianne onen nivami acsestion augue artine.</p>
-                        <div class="butn-dark"> <a href="spa-wellness.html"><span>Learn More</span></a> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 bg-darkblack p-0 order2 valign animate-box" data-animate-effect="fadeInLeft">
-                <div class="content">
-                    <div class="cont text-left">
-                        <div class="info">
-                            <h6>Experiences</h6>
-                        </div>
-                        <h4>The Health Club & Pool</h4>
-                        <p>The health club & pool at elit finibus viverra nec a lacus themo the nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru the ivite dianne onen nivami acsestion augue artine.</p>
-                        <div class="butn-dark"> <a href="spa-wellness.html"><span>Learn More</span></a> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
-                <div class="img">
-                    <a href="spa-wellness.html"><img src="img/spa/1.jpg" alt=""></a>
-                </div>
-            </div>
-        </div>
+            @endif
+        @endforeach
     </div>
 </section>
 <!-- Testiominals -->
@@ -385,54 +348,16 @@
             </div>
         </div>
         <div class="row">
+            @foreach($page->facilities as $key => $facility)
             <div class="col-md-4">
                 <div class="single-facility animate-box" data-animate-effect="fadeInUp">
-                    <span class="flaticon-world"></span>
-                    <h5>Pick Up & Drop</h5>
-                    <p>We’ll pick up from airport while you comfy on your ride, mus nellentesque habitant.</p>
-                    <div class="facility-shape"> <span class="flaticon-world"></span> </div>
+                    <span class="{{ $facility->icon }}"></span>
+                    <h5>{{ $facility->title }}</h5>
+                    <p>{{ $facility->description }}</p>
+                    <div class="facility-shape"> <span class="{{ $facility->icon }}"></span> </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="single-facility animate-box" data-animate-effect="fadeInUp">
-                    <span class="flaticon-car"></span>
-                    <h5>Parking Space</h5>
-                    <p>Fusce tincidunt nis ace park norttito sit amet space, mus nellentesque habitant.</p>
-                    <div class="facility-shape"> <span class="flaticon-car"></span> </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="single-facility animate-box" data-animate-effect="fadeInUp">
-                    <span class="flaticon-bed"></span>
-                    <h5>Room Service</h5>
-                    <p>Room tincidunt nis ace park norttito sit amet space, mus nellentesque habitant.</p>
-                    <div class="facility-shape"> <span class="flaticon-bed"></span> </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="single-facility animate-box" data-animate-effect="fadeInUp">
-                    <span class="flaticon-swimming"></span>
-                    <h5>Swimming Pool</h5>
-                    <p>Swimming pool tincidunt nise ace park norttito sit space, mus nellentesque habitant.</p>
-                    <div class="facility-shape"> <span class="flaticon-swimming"></span> </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="single-facility animate-box" data-animate-effect="fadeInUp">
-                    <span class="flaticon-wifi"></span>
-                    <h5>Fibre Internet</h5>
-                    <p>Wifi tincidunt nis ace park norttito sit amet space, mus nellentesque habitant.</p>
-                    <div class="facility-shape"> <span class="flaticon-wifi"></span> </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="single-facility animate-box" data-animate-effect="fadeInUp">
-                    <span class="flaticon-breakfast"></span>
-                    <h5>Breakfast</h5>
-                    <p>Eat tincidunt nisa ace park norttito sit amet space, mus nellentesque habitant</p>
-                    <div class="facility-shape"> <span class="flaticon-breakfast"></span> </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -448,97 +373,23 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="owl-carousel owl-theme">
+                    @foreach($page->news as $key => $news)
                     <div class="item">
-                        <a href="post.html">
-                            <div class="position-re o-hidden"> <img src="img/news/1.jpg" alt="">
+                        <a href="{{ asset($news->url) }}">
+                            <div class="position-re o-hidden"> <img src="{{ asset($news->image) }}" alt="">
                                 <div class="date">
                                     <span>Dec</span> <i>02</i>
                                 </div>
                             </div>
                             <div class="con"> <span class="category">
-                                    Restaurant
+                                    {{ $news->sub_heading}}
                                 </span>
-                                <h5>Historic restaurant renovated</h5>
-                                <p class="text-secondary mb-0">Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.</p>
+                                <h5>{{ $news->heading}}</h5>
+                                <p class="text-secondary mb-0">{{ $news->description}}</p>
                             </div>
                         </a>
                     </div>
-                    <div class="item">
-                        <a href="post.html"> 
-                            <div class="position-re o-hidden"> <img src="img/news/2.jpg" alt="">
-                                <div class="date">
-                                    <span>Dec</span> <i>04</i> 
-                                </div>
-                            </div>
-                            <div class="con"> <span class="category">
-                                    Spa
-                                </span>
-                                <h5>Benefits of Spa Treatments</h5>
-                                <p class="text-secondary mb-0">Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="post.html">
-                            <div class="position-re o-hidden"> <img src="img/news/1.jpg" alt="">
-                                <div class="date">
-                                    <span>Dec</span> <i>02</i>
-                                </div>
-                            </div>
-                            <div class="con"> <span class="category">
-                                    Restaurant
-                                </span>
-                                <h5>Historic restaurant renovated</h5>
-                                <p class="text-secondary mb-0">Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="post.html"> 
-                            <div class="position-re o-hidden"> <img src="img/news/2.jpg" alt="">
-                                <div class="date">
-                                    <span>Dec</span> <i>04</i> 
-                                </div>
-                            </div>
-                            <div class="con"> <span class="category">
-                                    Spa
-                                </span>
-                                <h5>Benefits of Spa Treatments</h5>
-                                <p class="text-secondary mb-0">Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.</p>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="item">
-                        <a href="post.html">
-                            <div class="position-re o-hidden"> <img src="img/news/1.jpg" alt="">
-                                <div class="date">
-                                    <span>Dec</span> <i>02</i>
-                                </div>
-                            </div>
-                            <div class="con"> <span class="category">
-                                    Restaurant
-                                </span>
-                                <h5>Historic restaurant renovated</h5>
-                                <p class="text-secondary mb-0">Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="post.html"> 
-                            <div class="position-re o-hidden"> <img src="img/news/2.jpg" alt="">
-                                <div class="date">
-                                    <span>Dec</span> <i>04</i> 
-                                </div>
-                            </div>
-                            <div class="con"> <span class="category">
-                                    Spa
-                                </span>
-                                <h5>Benefits of Spa Treatments</h5>
-                                <p class="text-secondary mb-0">Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.</p>
-                            </div>
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

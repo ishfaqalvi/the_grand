@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->foreignId('page_id')->references('id')->on('pages')->onDelete('cascade');
             $table->string('heading');
             $table->string('sub_heading');
             $table->string('image');

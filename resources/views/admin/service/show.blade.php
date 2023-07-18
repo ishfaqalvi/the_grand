@@ -47,8 +47,8 @@
                     <td>{{ $service->order }}</td>
                 </tr>
                 <tr>
-                    <td class="card-title">Branch</td>
-                    <td>{{ $service->branch?->name }}</td>
+                    <td class="card-title">Page</td>
+                    <td>{{ $service->page->title }}</td>
                 </tr>
                 <tr>
                     <td class="card-title">Status</td>

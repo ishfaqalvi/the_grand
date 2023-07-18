@@ -53,7 +53,8 @@ class Service extends Model
     public function scopeUserBased($query)
     {
         if (auth()->user()->type == 'Branch') {
-            $query->where('branch_id', auth()->user()->branch_id);
+            $ids = auth()->user()->branch->pages()->where('template','Home')->pluck('id');
+            $query->whereIn('page_id', $ids);
         }
     }
 
@@ -69,7 +70,7 @@ class Service extends Model
             $filenamewithextension = $image->getClientOriginalName();
             $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
             $filenametostore = 'upload/images/services/'.time().'.webp';
-            $img = Image::make($image)->encode('webp', 90);   
+            $img = Image::make($image)->encode('webp', 90)->resize(570,380);   
             $img->save(public_path($filenametostore));
             $this->attributes['image'] = $filenametostore;
         }else{

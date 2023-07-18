@@ -31,6 +31,7 @@
                     <th>Heading</th>
                     <th>Date</th>
                     <th>Order</th>                      
+                    <th>Page</th>
                     <th>Branch</th>
                     <th>Status</th>
                     <th width="10px">Actions</th>
@@ -39,12 +40,13 @@
             <tbody>
                 @foreach($news as  $key => $news)
                     <tr class="align-items-center">
-                        <td>{{ ++$i }}</td>  
+                        <td>{{ ++$key }}</td>  
                         <td><img src="{{ url($news->image) }}" style="height: 40px; width: 75px;"></td>
                         <td>{{ $news->heading }}</td>
                         <td>{{ $news->date }}</td>
                         <td>{{ $news->order }}</td>
-                        <td>{{ $news->branch?->name }}</td>
+                        <td>{{ $news->page->title }}</td>
+                        <td>{{ $news->page->branch->name }}</td>
                         <td>{{ $news->status }}</td>
                         <td>@include('admin.news.actions')</td>
                     </tr>

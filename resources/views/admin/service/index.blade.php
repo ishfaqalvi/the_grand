@@ -30,6 +30,7 @@
                     <th>Image</th>
                     <th>Heading</th>
                     <th>Order</th>                      
+                    <th>Page</th>
                     <th>Branch</th>
                     <th>Status</th>
                     <th width="10px">Actions</th>
@@ -39,10 +40,11 @@
                 @foreach($services as  $key => $service)
                     <tr class="align-items-center">
                         <td>{{ ++$key }}</td>  
-                        <td><img src="{{ url($service->image) }}" style="height: 40px; width: 75px;"></td>
+                        <td><img src="{{ asset($service->image) }}" style="height: 40px; width: 75px;"></td>
                         <td>{{ $service->heading }}</td>
                         <td>{{ $service->order }}</td>
-                        <td>{{ $service->branch?->name }}</td>
+                        <td>{{ $service->page->title }}</td>
+                        <td>{{ $service->page->branch->name }}</td>
                         <td>{{ $service->status }}</td>
                         <td>@include('admin.service.actions')</td>
                     </tr>

@@ -84,6 +84,22 @@ class Page extends Model implements Auditable
      */
     public function services()
     {
-        return $this->hasMany('App\Models\Service', 'id', 'page_id');
+        return $this->hasMany('App\Models\Service', 'page_id', 'id')->where('status','Publish');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function facilities()
+    {
+        return $this->hasMany('App\Models\Facility', 'page_id', 'id')->where('status','Publish');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function news()
+    {
+        return $this->hasMany('App\Models\News', 'page_id', 'id')->where('status','Publish');
     }
 }

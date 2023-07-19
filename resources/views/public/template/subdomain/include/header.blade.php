@@ -11,7 +11,7 @@
             <ul class="navbar-nav ms-auto">
                 @foreach(headerMenus($page->branch_id) as $menu)
                     @if(count($menu->childItems) > 0)
-                    <li class="nav-item dropdown"> 
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">{{ $menu->title }} <i class="ti-angle-down"></i></a>
                         <ul class="dropdown-menu">
                             @foreach($menu->childItems as $item)

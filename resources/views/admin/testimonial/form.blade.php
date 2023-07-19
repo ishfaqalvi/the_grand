@@ -1,4 +1,13 @@
 <div class="row">
+    @if(auth()->user()->type == 'Main')
+    <div class="form-group col-md-6">
+        {{ Form::label('branch') }}
+        {{ Form::select('branch_id', branches(), $testimonial->branch_id, ['class' => 'form-control' . ($errors->has('branch_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
+        {!! $errors->first('branch_id', '<div class="invalid-feedback">:message</div>') !!}
+    </div>
+    @else
+        {{ Form::hidden('branch_id', auth()->user()->branch_id) }}
+    @endif
     <div class="form-group col-md-6">
         {{ Form::label('name') }}
         {{ Form::text('name', $testimonial->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name','required']) }}
@@ -11,7 +20,7 @@
         {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
         <small class="form-control-feedback"> Example: ( Image upload size width='70px' & height='70px' ) </small>
         @if(isset($testimonial->image) &&  $testimonial->image != NULL)
-        <img src="{{ asset($testimonial->image) }}" width="100%">
+        <img src="{{ asset($testimonial->image) }}" max-width="100%">
         @endif
     </div>
     <div class="form-group col-md-6">
@@ -19,12 +28,6 @@
         {{ Form::number('order', $testimonial->order, ['class' => 'form-control' . ($errors->has('order') ? ' is-invalid' : ''), 'placeholder' => 'Order','required', 'min'=>'0']) }}
         {!! $errors->first('order', '<div class="invalid-feedback">:message</div>') !!}
         <small class="form-control-feedback"> Example: (1 , 2 , 3, 4 , .....) </small>
-    </div>
-    <div class="form-group col-md-6">
-        {{ Form::label('branch') }}
-        {{ Form::select('branch_id', branches(), $testimonial->branch_id, ['class' => 'form-control' . ($errors->has('branch_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--']) }}
-        {!! $errors->first('branch_id', '<div class="invalid-feedback">:message</div>') !!}
-        <small class="form-control-feedback"> Example: ( Select Branch Name ) </small>
     </div>
     <div class="form-group col-md-12">
         {{ Form::label('message') }}

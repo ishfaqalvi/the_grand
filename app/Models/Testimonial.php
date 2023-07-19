@@ -26,9 +26,10 @@ class Testimonial extends Model
 {
     
     static $rules = [
-		'name'    => 'required',
-		'message' => 'required',
-		'order'   => 'required'
+		'branch_id'=> 'required',
+        'name'     => 'required',
+		'message'  => 'required',
+		'order'    => 'required'
     ];
 
     protected $perPage = 20;
@@ -52,7 +53,7 @@ class Testimonial extends Model
             $filenamewithextension = $image->getClientOriginalName();
             $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
             $filenametostore = 'upload/images/testimonial/'.time().'.webp';
-            $img = Image::make($image)->encode('webp', 90);   
+            $img = Image::make($image)->encode('webp', 90)->resize(70,70);   
             $img->save(public_path($filenametostore));
             $this->attributes['image'] = $filenametostore;
         }else{

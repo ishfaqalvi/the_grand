@@ -28,7 +28,7 @@
             <tbody>
                 <tr>
                     <td class="card-title">Image</td>
-                    <td><img src="{{ url('upload/images/testimonials/'.$testimonial->image) }}" style="height: 90px; width: 150px;"></td>
+                    <td><img src="{{ asset($testimonial->image) }}" ></td>
                 </tr>
                 <tr>
                     <td class="card-title">Name</td>

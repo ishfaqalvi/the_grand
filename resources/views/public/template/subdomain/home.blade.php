@@ -53,10 +53,10 @@
                 </div>
             </div>
             <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
-                <img src="img/rooms/8.jpg" alt="" class="mt-90 mb-30">
+                <img src="{{ asset('public/img/rooms/8.jpg') }}" alt="" class="mt-90 mb-30">
             </div>
             <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
-                <img src="img/rooms/2.jpg" alt="">
+                <img src="{{ asset('public/img/rooms/2.jpg') }}" alt="">
             </div>
         </div>
     </div>
@@ -74,20 +74,12 @@
             <div class="col-md-6">
                 <a href="image_gallery.html">
                     <div class="item">
-                        <div class="position-re o-hidden"> <img src="img/rooms/4.jpg" alt=""> </div> <span class="category">>Main Branch</span>
+                        <div class="position-re o-hidden"> <img src="{{ asset('public/img/rooms/4.jpg') }}" alt=""> </div> <span class="category">>Main Branch</span>
                         <div class="con">
-                            <!-- <h6><a href="room-details.html">300$ / Night</a></h6> -->
                             <h5>Ballroom</h5>
                             <div class="line"></div>
                             <div class="row facilities">
-                                <div class="col col-md-7">
-                                    <!-- <ul>
-                                        <li><i class="flaticon-bed"></i></li>
-                                        <li><i class="flaticon-bath"></i></li>
-                                        <li><i class="flaticon-breakfast"></i></li>
-                                        <li><i class="flaticon-towel"></i></li>
-                                    </ul> -->
-                                </div>
+                                <div class="col col-md-7"></div>
                                 <div class="col col-md-5 text-end">
                                     <div class="permalink">Details <i class="ti-arrow-right"></i></div>
                                 </div>
@@ -99,20 +91,12 @@
             <div class="col-md-6">
                 <a href="video_gallery.html">
                     <div class="item">
-                        <div class="position-re o-hidden"> <img src="img/rooms/7.jpg" alt=""> </div> <span class="category">Second Branch</span>
+                        <div class="position-re o-hidden"> <img src="{{ asset('public/img/rooms/7.jpg') }}" alt=""> </div> <span class="category">Second Branch</span>
                         <div class="con">
-                            <!-- <h6><a href="room-details.html">150$ / Night</a></h6> -->
                             <h5>Mehndi</h5>
                             <div class="line"></div>
                             <div class="row facilities">
-                                <div class="col col-md-7">
-                                    <!-- <ul>
-                                        <li><i class="flaticon-bed"></i></li>
-                                        <li><i class="flaticon-bath"></i></li>
-                                        <li><i class="flaticon-breakfast"></i></li>
-                                        <li><i class="flaticon-towel"></i></li>
-                                    </ul> -->
-                                </div>
+                                <div class="col col-md-7"></div>
                                 <div class="col col-md-5 text-end">
                                     <div class="permalink">Details <i class="ti-arrow-right"></i></div>
                                 </div>
@@ -124,20 +108,12 @@
             <div class="col-md-6">
                 <a href="image_gallery.html">
                     <div class="item">
-                        <div class="position-re o-hidden"> <img src="img/rooms/4.jpg" alt=""> </div> <span class="category">>Thired Branch</span>
+                        <div class="position-re o-hidden"> <img src="{{ asset('public/img/rooms/4.jpg') }}" alt=""> </div> <span class="category">>Thired Branch</span>
                         <div class="con">
-                            <!-- <h6><a href="room-details.html">300$ / Night</a></h6> -->
                             <h5>Baraat</h5>
                             <div class="line"></div>
                             <div class="row facilities">
-                                <div class="col col-md-7">
-                                    <!-- <ul>
-                                        <li><i class="flaticon-bed"></i></li>
-                                        <li><i class="flaticon-bath"></i></li>
-                                        <li><i class="flaticon-breakfast"></i></li>
-                                        <li><i class="flaticon-towel"></i></li>
-                                    </ul> -->
-                                </div>
+                                <div class="col col-md-7"></div>
                                 <div class="col col-md-5 text-end">
                                     <div class="permalink">Details <i class="ti-arrow-right"></i></div>
                                 </div>
@@ -149,20 +125,12 @@
             <div class="col-md-6">
                 <a href="video_gallery.html">
                     <div class="item">
-                        <div class="position-re o-hidden"> <img src="img/rooms/7.jpg" alt=""> </div> <span class="category">Forth Branch</span>
+                        <div class="position-re o-hidden"> <img src="{{ asset('public/img/rooms/7.jpg') }}" alt=""> </div> <span class="category">Forth Branch</span>
                         <div class="con">
-                            <!-- <h6><a href="room-details.html">150$ / Night</a></h6> -->
                             <h5>Waleema</h5>
                             <div class="line"></div>
                             <div class="row facilities">
-                                <div class="col col-md-7">
-                                    <!-- <ul>
-                                        <li><i class="flaticon-bed"></i></li>
-                                        <li><i class="flaticon-bath"></i></li>
-                                        <li><i class="flaticon-breakfast"></i></li>
-                                        <li><i class="flaticon-towel"></i></li>
-                                    </ul> -->
-                                </div>
+                                <div class="col col-md-7"></div>
                                 <div class="col col-md-5 text-end">
                                     <div class="permalink">Details <i class="ti-arrow-right"></i></div>
                                 </div>
@@ -186,24 +154,6 @@
         @foreach($page->services as $key => $service)
             @if ($key % 2 == 0)
                 <div class="row">
-                    <div class="col-md-6 bg-darkblack p-0 order2 valign animate-box" data-animate-effect="fadeInLeft">
-                        <div class="content">
-                            <div class="cont text-left">
-                                <div class="info"><h6>{{ $service->sub_heading }}</h6></div>
-                                <h4>{{ $service->heading }}</h4>
-                                <p>{{ $service->description }}</p>
-                                <div class="butn-dark"> <a href="{{ asset($service->link) }}"><span>Learn More</span></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
-                        <div class="img">
-                            <a href="{{ asset($service->link) }}"><img src="{{ asset($service->image) }}" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            @else 
-                <div class="row">
                     <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
                         <div class="img left">
                             <a href="{{ asset($service->link) }}"><img src="{{ asset($service->image) }}" alt=""></a>
@@ -220,13 +170,31 @@
                         </div>
                     </div>
                 </div>
+            @else
+                <div class="row">
+                    <div class="col-md-6 bg-darkblack p-0 order2 valign animate-box" data-animate-effect="fadeInLeft">
+                        <div class="content">
+                            <div class="cont text-left">
+                                <div class="info"><h6>{{ $service->sub_heading }}</h6></div>
+                                <h4>{{ $service->heading }}</h4>
+                                <p>{{ $service->description }}</p>
+                                <div class="butn-dark"> <a href="{{ asset($service->link) }}"><span>Learn More</span></a> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
+                        <div class="img">
+                            <a href="{{ asset($service->link) }}"><img src="{{ asset($service->image) }}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
             @endif
         @endforeach
     </div>
 </section>
 <!-- Testiominals -->
 <section class="testimonials">
-    <div class="background bg-img bg-fixed section-padding pb-0" data-background="img/slider/2.jpg" data-overlay-dark="3">
+    <div class="background bg-img bg-fixed section-padding pb-0" data-background="{{ asset('public/img/slider/2.jpg') }}" data-overlay-dark="3">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -237,36 +205,25 @@
                             <div class="line"></div>
                         </div>
                         <div class="owl-carousel owl-theme">
+                            @foreach(testimonials($page->branch_id) as $testimonial)
                             <div class="item">
-                                <span class="quote"><img src="img/quot.png" alt=""></span>
-                                <p>Hotel dapibus asue metus the nec feusiate eraten miss hendreri net ve ante the lemon sanleo nectan feugiat erat hendrerit necuis ve ante otel inilla duiman at finibus viverra neca the sene on satien the miss drana inc fermen norttito sit space, mus nellentesque habitan.</p>
+                                <span class="quote"><img src="{{ asset('public/img/quot.png') }}" alt=""></span>
+                                <p>{{ $testimonial->message }}</p>
                                 <div class="info">
-                                    <div class="author-img"> <img src="img/team/4.jpg" alt=""> </div>
-                                    <div class="cont"> <span><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i></span>
-                                        <h6>Emily Brown</h6> <span>Guest review</span>
+                                    <div class="author-img"> <img src="{{ asset($testimonial->image) }}" alt=""> </div>
+                                    <div class="cont"> 
+                                        <span>
+                                            <i class="star-rating"></i>
+                                            <i class="star-rating"></i>
+                                            <i class="star-rating"></i>
+                                            <i class="star-rating"></i>
+                                            <i class="star-rating"></i>
+                                        </span>
+                                        <h6>{{ $testimonial->name }}</h6> <span>Guest review</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <span class="quote"><img src="img/quot.png" alt=""></span>
-                                <p>Hotel dapibus asue metus the nec feusiate eraten miss hendreri net ve ante the lemon sanleo nectan feugiat erat hendrerit necuis ve ante otel inilla duiman at finibus viverra neca the sene on satien the miss drana inc fermen norttito sit space, mus nellentesque habitan.</p>
-                                <div class="info">
-                                    <div class="author-img"> <img src="img/team/1.jpg" alt=""> </div>
-                                    <div class="cont"> <span><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i></span>
-                                        <h6>Nolan White</h6> <span>Guest review</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <span class="quote"><img src="img/quot.png" alt=""></span>
-                                <p>Hotel dapibus asue metus the nec feusiate eraten miss hendreri net ve ante the lemon sanleo nectan feugiat erat hendrerit necuis ve ante otel inilla duiman at finibus viverra neca the sene on satien the miss drana inc fermen norttito sit space, mus nellentesque habitan.</p>
-                                <div class="info">
-                                    <div class="author-img"> <img src="img/team/5.jpg" alt=""> </div>
-                                    <div class="cont"> <span><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i></span>
-                                        <h6>Olivia Martin</h6> <span>Guest review</span>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -282,50 +239,6 @@
                                     <div class="col-md-12">
                                         <p class="text-secondary">Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.</p>
                                     </div>
-                                   <!-- <div class="col-md-12">
-                                        <div class="input1_wrapper">
-                                            <label>Check in</label>
-                                            <div class="input1_inner">
-                                                <input type="text" class="form-control input datepicker" placeholder="Check in">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="input1_wrapper">
-                                            <label>Check out</label>
-                                            <div class="input1_inner">
-                                                <input type="text" class="form-control input datepicker" placeholder="Check out">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="select1_wrapper">
-                                            <label>Adults</label>
-                                            <div class="select1_inner">
-                                                <select class="select2 select" style="width: 100%">
-                                                    <option value="0">Adults</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="select1_wrapper">
-                                            <label>Children</label>
-                                            <div class="select1_inner">
-                                                <select class="select2 select" style="width: 100%">
-                                                    <option value="0">Children</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                     <div class="col-md-12">
                                         <button type="submit" class="btn-form1-submit mt-15">Check Availability</button>
                                     </div>
@@ -397,7 +310,7 @@
 </section>
 <!-- Testiominals -->
 <section class="testimonials">
-    <div class="background bg-img bg-fixed section-padding pb-0" data-background="img/slider/2.jpg" data-overlay-dark="3">
+    <div class="background bg-img bg-fixed section-padding pb-0" data-background="{{ asset('public/img/slider/2.jpg') }}" data-overlay-dark="3">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
@@ -408,36 +321,25 @@
                             <div class="line"></div>
                         </div>
                         <div class="owl-carousel owl-theme">
+                            @foreach(testimonials($page->branch_id) as $testimonial)
                             <div class="item">
-                                <span class="quote"><img src="img/quot.png" alt=""></span>
-                                <p>Hotel dapibus asue metus the nec feusiate eraten miss hendreri net ve ante the lemon sanleo nectan feugiat erat hendrerit necuis ve ante otel inilla duiman at finibus viverra neca the sene on satien the miss drana inc fermen norttito sit space, mus nellentesque habitan.</p>
+                                <span class="quote"><img src="{{ asset('public/img/quot.png') }}" alt=""></span>
+                                <p>{{ $testimonial->message }}</p>
                                 <div class="info">
-                                    <div class="author-img"> <img src="img/team/4.jpg" alt=""> </div>
-                                    <div class="cont"> <span><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i></span>
-                                        <h6>Emily Brown</h6> <span>Guest review</span>
+                                    <div class="author-img"> <img src="{{ asset($testimonial->image) }}" alt=""> </div>
+                                    <div class="cont"> 
+                                        <span>
+                                            <i class="star-rating"></i>
+                                            <i class="star-rating"></i>
+                                            <i class="star-rating"></i>
+                                            <i class="star-rating"></i>
+                                            <i class="star-rating"></i>
+                                        </span>
+                                        <h6>{{ $testimonial->name }}</h6> <span>Guest review</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <span class="quote"><img src="img/quot.png" alt=""></span>
-                                <p>Hotel dapibus asue metus the nec feusiate eraten miss hendreri net ve ante the lemon sanleo nectan feugiat erat hendrerit necuis ve ante otel inilla duiman at finibus viverra neca the sene on satien the miss drana inc fermen norttito sit space, mus nellentesque habitan.</p>
-                                <div class="info">
-                                    <div class="author-img"> <img src="img/team/1.jpg" alt=""> </div>
-                                    <div class="cont"> <span><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i></span>
-                                        <h6>Nolan White</h6> <span>Guest review</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <span class="quote"><img src="img/quot.png" alt=""></span>
-                                <p>Hotel dapibus asue metus the nec feusiate eraten miss hendreri net ve ante the lemon sanleo nectan feugiat erat hendrerit necuis ve ante otel inilla duiman at finibus viverra neca the sene on satien the miss drana inc fermen norttito sit space, mus nellentesque habitan.</p>
-                                <div class="info">
-                                    <div class="author-img"> <img src="img/team/5.jpg" alt=""> </div>
-                                    <div class="cont"> <span><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i><i class="star-rating"></i></span>
-                                        <h6>Olivia Martin</h6> <span>Guest review</span>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -461,7 +363,7 @@
             <div class="col-md-8">
                 <div class="owl-carousel owl-theme">
                     <div class="pricing-card">
-                        <img src="img/pricing/1.jpg" alt="">
+                        <img src="{{ asset('public/img/pricing/1.jpg') }}" alt="">
                         <div class="desc">
                             <div class="name">Call Us</div>
                             <p class="text-secondary">Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.</p>
@@ -474,7 +376,7 @@
                         </div>
                     </div>
                     <div class="pricing-card">
-                        <img src="img/pricing/2.jpg" alt="">
+                        <img src="{{ asset('public/img/pricing/2.jpg') }}" alt="">
                         <div class="desc">
                             <div class="name">Reservation</div>
                             <p class="text-secondary">Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.</p>

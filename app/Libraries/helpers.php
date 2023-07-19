@@ -2,10 +2,12 @@
 
 use App\Models\Branch;
 use App\Models\Slider;
-
-use App\Models\Page;
-use App\Models\Menu;
 use App\Models\Setting;
+use App\Models\Menu;
+use App\Models\Testimonial;
+
+
+
 use App\Models\DynamicString;
 
 
@@ -62,27 +64,26 @@ function footerMenus($id)
     return Menu::where([['branch_id',$id],['type','Footer']])->get();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * Get listing of a resource.
  *
  * @return \Illuminate\Http\Response
  */
-function problemCategories()
+function testimonials($id)
 {
-    return Page::where([['template','Category'],['category_type','Problem']])->pluck('title','id');
+    return Testimonial::where([['branch_id',$id],['status','Publish']])->orderBy('order')->get();
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -23,7 +23,7 @@ class DynamicPageController extends Controller
         $page = Page::where([['template','Home'],['branch_id', 1]])->first();
         if ($page) {
             return view('public.template.maindomain.index',compact('page'));
-        } 
+        }
         return view('public.errors.404');
     }
 
@@ -35,12 +35,12 @@ class DynamicPageController extends Controller
      */
     public function viewSubdomainHomePage($subdomain)
     {
-        $branch = Branch::where('url',$subdomain)->first();
+        $branch = Branch::where('name',$subdomain)->first();
         if ($branch) {
             $page = $branch->pages()->where('template','Home')->first();
             if ($page) {
                 return view('public.template.subdomain.index',compact('page'));
-            } 
+            }
             return view('public.errors.404');
         }
         return view('public.errors.404');

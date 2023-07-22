@@ -66,6 +66,11 @@
             <i class="icons-Control"></i><span class="hide-menu">Testimonial</span>
         </a>
     </li>
+    <li>
+        <a class="waves-effect waves-dark" href="{{ route('categories.index') }}" aria-expanded="false">
+            <i class="icons-Control"></i><span class="hide-menu">Category</span>
+        </a>
+    </li>
     
     @can('strings-list')
     <li>

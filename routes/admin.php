@@ -107,6 +107,12 @@ Route::resource('testimonials', TestimonialController::class);
 */
 Route::resource('questions', QuestionController::class);
 
+/*
+|--------------------------------------------------------------------------
+| Category Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('categories', CategoryController::class);
 
 /*
 |--------------------------------------------------------------------------

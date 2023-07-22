@@ -26,9 +26,10 @@ class DatabaseSeeder extends Seeder
         $this->call(FacilitySeeder::class);
         $this->call(NewsSeeder::class);
         $this->call(TestimonialSeeder::class);
+        $this->call(TestimonialSeeder::class);
+        $this->call(CategorySeeder::class);
         
         $this->call(GallerySeeder::class);
-        $this->call(FeedbackSeeder::class);
         
         // $this->call(DynamicStringSeeder::class);
     }

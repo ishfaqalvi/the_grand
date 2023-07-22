@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('heading');
             $table->string('sub_heading');
             $table->string('link');
+            $table->string('button_title');
             $table->text('description');
             $table->integer('order')->default(1);
             $table->string('status')->default('UnPublish');

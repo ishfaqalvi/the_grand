@@ -1,17 +1,26 @@
-<form method="POST" action="{{ route('pages.settings') }}" class="form-horizontal form-bordered branches" role="form" enctype="multipart/form-data">
+<form method="POST" action="{{ route('pages.settings') }}" class="form-horizontal form-bordered testimonial" role="form" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="tab" value="branches">
+    <input type="hidden" name="tab" value="testimonial">
     <input type="hidden" name="settable_type" value="Page">
     <input type="hidden" name="settable_id" value="{{ $page->id }}">
     <div class="form-body">
         <div class="form-group row">
+            <label class="control-label text-end col-md-3 mt-3">Background Image</label>
+            <div class="col-md-9 mt-3">
+                @php($home_testimonial_bg_image = $settings['home_testimonial_bg_image']) 
+                {{ Form::file('home_testimonial_bg_image', ['class' => 'form-control dropify' . ($errors->has('home_testimonial_bg_image') ? ' is-invalid' : ''), $home_testimonial_bg_image ? '': 'required','accept'=> 'image/png,image/jpg,image/jpeg','data-default-file' => $home_testimonial_bg_image != '' ? asset($home_testimonial_bg_image) : '']) }}
+                {!! $errors->first('home_testimonial_bg_image', '<div class="invalid-feedback">:message</div>') !!}
+                <small class="form-control-feedback"> Logo size(width = 1920 , height = 1200)</small>
+                <input type="hidden" name="size[home_testimonial_bg_image][x]" value="1920">
+                <input type="hidden" name="size[home_testimonial_bg_image][y]" value="1200">
+            </div>
             <label class="control-label text-end col-md-3 mt-3">Title</label>
             <div class="col-md-9 mt-3">
-                {{ Form::text('values[home_branches_title]', $settings['home_branches_title'], ['class' => 'form-control','required']) }}
+                {{ Form::text('values[home_testimonial_title]', $settings['home_testimonial_title'], ['class' => 'form-control','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Sub Title</label>
             <div class="col-md-9 mt-3">
-                {{ Form::text('values[home_branches_sub_title]', $settings['home_branches_sub_title'], ['class' => 'form-control','required']) }}
+                {{ Form::text('values[home_testimonial_sub_title]', $settings['home_testimonial_sub_title'], ['class' => 'form-control','required']) }}
             </div>
         </div>
     </div>
@@ -30,7 +39,7 @@
 </form>
 @section('scripts')
 <script>
-    $(".branches").validate({
+    $(".testimonial").validate({
         errorClass: "text-danger",
         highlight: function (element, errorClass) {
             $(element).removeClass(errorClass)

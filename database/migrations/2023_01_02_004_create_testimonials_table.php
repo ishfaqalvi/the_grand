@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->string('name');
+            $table->integer('stars');
+            $table->string('auther');
             $table->string('image');
             $table->longText('message');
             $table->integer('order')->default(1);

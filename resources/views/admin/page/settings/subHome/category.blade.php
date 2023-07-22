@@ -1,17 +1,17 @@
-<form method="POST" action="{{ route('pages.settings') }}" class="form-horizontal form-bordered branches" role="form" enctype="multipart/form-data">
+<form method="POST" action="{{ route('pages.settings') }}" class="form-horizontal form-bordered category" role="form" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="tab" value="branches">
+    <input type="hidden" name="tab" value="category">
     <input type="hidden" name="settable_type" value="Page">
     <input type="hidden" name="settable_id" value="{{ $page->id }}">
     <div class="form-body">
         <div class="form-group row">
             <label class="control-label text-end col-md-3 mt-3">Title</label>
             <div class="col-md-9 mt-3">
-                {{ Form::text('values[home_branches_title]', $settings['home_branches_title'], ['class' => 'form-control','required']) }}
+                {{ Form::text('values[home_category_title]', $settings['home_category_title'], ['class' => 'form-control','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Sub Title</label>
             <div class="col-md-9 mt-3">
-                {{ Form::text('values[home_branches_sub_title]', $settings['home_branches_sub_title'], ['class' => 'form-control','required']) }}
+                {{ Form::text('values[home_category_sub_title]', $settings['home_category_sub_title'], ['class' => 'form-control','required']) }}
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
 </form>
 @section('scripts')
 <script>
-    $(".branches").validate({
+    $(".category").validate({
         errorClass: "text-danger",
         highlight: function (element, errorClass) {
             $(element).removeClass(errorClass)

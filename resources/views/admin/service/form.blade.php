@@ -33,6 +33,12 @@
         <small class="form-control-feedback"> Example: (Page link .....) </small>
     </div>
     <div class="form-group col-md-6">
+        {{ Form::label('button_title') }}
+        {{ Form::text('button_title', $service->button_title, ['class' => 'form-control' . ($errors->has('button_title') ? ' is-invalid' : ''), 'placeholder' => 'Button Title','required']) }}
+        {!! $errors->first('button_title', '<div class="invalid-feedback">:message</div>') !!}
+        <small class="form-control-feedback"> Example: (Service Button Title .....) </small>
+    </div>
+    <div class="form-group col-md-6">
         {{ Form::label('order') }}
         {{ Form::number('order', $service->order, ['class' => 'form-control' . ($errors->has('order') ? ' is-invalid' : ''), 'placeholder' => 'Order','required']) }}
         {!! $errors->first('order', '<div class="invalid-feedback">:message</div>') !!}

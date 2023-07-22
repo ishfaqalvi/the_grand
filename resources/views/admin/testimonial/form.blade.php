@@ -12,7 +12,19 @@
         {{ Form::label('name') }}
         {{ Form::text('name', $testimonial->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name','required']) }}
         {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
-        <small class="form-control-feedback"> Example: ( date 01/13/2023 ) </small>
+        <small class="form-control-feedback"> Example: ( ) </small>
+    </div>
+    <div class="form-group col-md-6">
+        {{ Form::label('auther') }}
+        {{ Form::text('auther', $testimonial->auther, ['class' => 'form-control' . ($errors->has('auther') ? ' is-invalid' : ''), 'placeholder' => 'Auther','required']) }}
+        {!! $errors->first('auther', '<div class="invalid-feedback">:message</div>') !!}
+        <small class="form-control-feedback"> Example: ( ) </small>
+    </div>
+    <div class="form-group col-md-6">
+        {{ Form::label('stars') }}
+        {{ Form::number('stars', $testimonial->stars, ['class' => 'form-control' . ($errors->has('stars') ? ' is-invalid' : ''), 'placeholder' => 'Stars','required','min' => '1']) }}
+        {!! $errors->first('stars', '<div class="invalid-feedback">:message</div>') !!}
+        <small class="form-control-feedback"> Example: ( ) </small>
     </div>
     <div class="form-group col-md-6">
         {{ Form::label('image') }}

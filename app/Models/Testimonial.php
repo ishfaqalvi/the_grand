@@ -28,6 +28,8 @@ class Testimonial extends Model
     static $rules = [
 		'branch_id'=> 'required',
         'name'     => 'required',
+        'stars'    => 'required',
+        'auther'   => 'required',
 		'message'  => 'required',
 		'order'    => 'required'
     ];
@@ -39,7 +41,7 @@ class Testimonial extends Model
      *
      * @var array
      */
-    protected $fillable = ['branch_id','name','image','message','order','status'];
+    protected $fillable = ['branch_id','name','stars','auther','image','message','order','status'];
 
     /**
      * Set the image attribute.

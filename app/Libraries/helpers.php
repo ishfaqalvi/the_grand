@@ -5,10 +5,11 @@ use App\Models\Slider;
 use App\Models\Setting;
 use App\Models\Menu;
 use App\Models\Testimonial;
+use App\Models\Category;
 
 use Illuminate\Support\Arr;
 
-use App\Models\DynamicString;
+
 
 
 /**
@@ -86,6 +87,16 @@ function footerMenus($id)
  *
  * @return \Illuminate\Http\Response
  */
+function categories($id)
+{
+    return Category::where([['branch_id',$id],['status','Publish']])->orderBy('order')->get();
+}
+
+/**
+ * Get listing of a resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
 function testimonials($id)
 {
     return Testimonial::where([['branch_id',$id],['status','Publish']])->orderBy('order')->get();
@@ -104,15 +115,7 @@ function testimonials($id)
 
 
 
-/**
- * Get listing of a resource.
- *
- * @return \Illuminate\Http\Response
- */
-function careers()
-{
-    return Career::where('status','Publish')->orderBy('order','asc')->get();
-}
+
 
 /**
  * Get listing of a resource.
@@ -293,12 +296,60 @@ function pagekeys()
         'home_branches_title'         => '',
         'home_branches_sub_title'     => '',
 
+        'home_category_title'         => '',
+        'home_category_sub_title'     => '',
+
+        'home_service_title'          => '',
+        'home_service_sub_title'      => '',
+
+        'home_booking_bg_image'       => '',
+        'home_booking_title'          => '',
+        'home_booking_sub_title'      => '',
+        'home_booking_card_title'     => '',
+        'home_booking_card_sub_title' => '',
+        'home_booking_card_btn_title' => '',
+        'home_booking_card_btn_url'   => '',
+        'home_booking_card_desc'      => '',
+
+        'home_facilities_title'       => '',
+        'home_facilities_sub_title'   => '',
+
+        'home_news_title'             => '',
+        'home_news_sub_title'         => '',
+
+        'home_testimonial_bg_image'   => '',
+        'home_testimonial_title'      => '',
+        'home_testimonial_sub_title'  => '',
+
+        'home_contact_us_title'             => '',
+        'home_contact_us_sub_title'         => '',
+        'home_contact_us_btn_title'         => '',
+        'home_contact_us_btn_url'           => '',
+        'home_contact_us_desc'              => '',
+        'home_contact_us_card1_image'       => '',
+        'home_contact_us_card1_title'       => '',
+        'home_contact_us_card1_phone_title' => '',
+        'home_contact_us_card1_phone'       => '',
+        'home_contact_us_card1_desc'        => '',
+        'home_contact_us_card2_image'       => '',
+        'home_contact_us_card2_title'       => '',
+        'home_contact_us_card2_btn_title'   => '',
+        'home_contact_us_card2_btn_url'     => '',
+        'home_contact_us_card2_desc'        => '',
+
         'home_sections_pageloader'    => '',
         'home_sections_scrollprogress'=> '',
         'home_sections_navigation'    => '',
         'home_sections_slider'        => '',
         'home_sections_about'         => '',
         'home_sections_branches'      => '',
+        'home_sections_category'      => '',
+        'home_sections_service'       => '',
+        'home_sections_booking'       => '',
+        'home_sections_facilities'    => '',
+        'home_sections_news'          => '',
+        'home_sections_testimonial'   => '',
+        'home_sections_contact_us'   => '',
         'home_sections_footer'        => '',
         'home_sections_copyright'     => '',
     ];

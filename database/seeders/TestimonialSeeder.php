@@ -19,6 +19,8 @@ class TestimonialSeeder extends Seeder
         	[
         		'branch_id'=> '2',
         		'name'     => 'Emily Brown',
+                'stars'    => '5',
+                'auther'   => 'Guest Review',
         		'image'    => 'upload/images/testimonial/1.jpg',
         		'order'    => '1',
         		'status'   => 'Publish',
@@ -27,6 +29,8 @@ class TestimonialSeeder extends Seeder
         	[
         		'branch_id'=> '2',
         		'name'     => 'Nolan White',
+                'stars'    => '5',
+                'auther'   => 'Guest Review',
         		'image'    => 'upload/images/testimonial/2.jpg',
         		'order'    => '2',
         		'status'   => 'Publish',
@@ -35,6 +39,8 @@ class TestimonialSeeder extends Seeder
         	[
         		'branch_id'=> '2',
         		'name'     => 'Emily Brown',
+                'stars'    => '5',
+                'auther'   => 'Guest Review',
         		'image'    => 'upload/images/testimonial/3.jpg',
         		'order'    => '3',
         		'status'   => 'Publish',

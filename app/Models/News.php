@@ -67,6 +67,11 @@ class News extends Model
         }
     }
 
+    // public function getDateAttribute($value)
+    // {
+        
+    // }
+
     /**
      * News scope a query
      * @param  \Illuminate\Database\Eloquent\Builder  $query

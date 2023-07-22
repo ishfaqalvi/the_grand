@@ -214,7 +214,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="footer-column footer-about">
-                        <h3 class="footer-title">{{ $branchSetting['footer_first_lable'] }}About Hotel</h3>
+                        <h3 class="footer-title">{{ $branchSetting['footer_first_lable'] }}</h3>
                         <p class="footer-about-text">{{ $branchSetting['footer_description'] }}</p>
                     </div>
                 </div>

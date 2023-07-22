@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('link');
             $table->string('label');
+            $table->string('link_title');
             $table->integer('order');
             $table->string('status')->default('UnPublish');
             $table->timestamps();

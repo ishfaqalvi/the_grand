@@ -26,8 +26,8 @@
         <h6 class="card-subtitle">Use section tab to setup page settings</h6>
         @if($page->branch->type == 'Main Branch' && $page->template == 'Home')
             @include('admin.page.settings.mainHome.index')
-        @else
-
+        @elseif($page->branch->type == 'Sub Branch' && $page->template == 'Home')
+            @include('admin.page.settings.subHome.index')
         @endif
     </div>
 </div>

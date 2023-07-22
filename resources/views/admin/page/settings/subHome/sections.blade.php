@@ -25,9 +25,33 @@
             <div class="col-md-9 mt-3">
                 {{ Form::select('values[home_sections_about]',['Show' => 'Show','Hide' => 'Hide'], $settings['home_sections_about'] != '' ? $settings['home_sections_about'] : 'Show', ['class' => 'form-control','required']) }}
             </div>
-            <label class="control-label text-end col-md-3 mt-3">Branches</label>
+            <label class="control-label text-end col-md-3 mt-3">Category</label>
             <div class="col-md-9 mt-3">
-                {{ Form::select('values[home_sections_branches]',['Show' => 'Show','Hide' => 'Hide'], $settings['home_sections_branches'] != '' ? $settings['home_sections_branches'] : 'Show', ['class' => 'form-control','required']) }}
+                {{ Form::select('values[home_sections_category]',['Show' => 'Show','Hide' => 'Hide'], $settings['home_sections_category'] != '' ? $settings['home_sections_category'] : 'Show', ['class' => 'form-control','required']) }}
+            </div>
+            <label class="control-label text-end col-md-3 mt-3">Service</label>
+            <div class="col-md-9 mt-3">
+                {{ Form::select('values[home_sections_service]',['Show' => 'Show','Hide' => 'Hide'], $settings['home_sections_service'] != '' ? $settings['home_sections_service'] : 'Show', ['class' => 'form-control','required']) }}
+            </div>
+            <label class="control-label text-end col-md-3 mt-3">Booking</label>
+            <div class="col-md-9 mt-3">
+                {{ Form::select('values[home_sections_booking]',['Show' => 'Show','Hide' => 'Hide'], $settings['home_sections_booking'] != '' ? $settings['home_sections_booking'] : 'Show', ['class' => 'form-control','required']) }}
+            </div>
+            <label class="control-label text-end col-md-3 mt-3">Facilities</label>
+            <div class="col-md-9 mt-3">
+                {{ Form::select('values[home_sections_facilities]',['Show' => 'Show','Hide' => 'Hide'], $settings['home_sections_facilities'] != '' ? $settings['home_sections_facilities'] : 'Show', ['class' => 'form-control','required']) }}
+            </div>
+            <label class="control-label text-end col-md-3 mt-3">News</label>
+            <div class="col-md-9 mt-3">
+                {{ Form::select('values[home_sections_news]',['Show' => 'Show','Hide' => 'Hide'], $settings['home_sections_news'] != '' ? $settings['home_sections_news'] : 'Show', ['class' => 'form-control','required']) }}
+            </div>
+            <label class="control-label text-end col-md-3 mt-3">Testimonial</label>
+            <div class="col-md-9 mt-3">
+                {{ Form::select('values[home_sections_testimonial]',['Show' => 'Show','Hide' => 'Hide'], $settings['home_sections_testimonial'] != '' ? $settings['home_sections_testimonial'] : 'Show', ['class' => 'form-control','required']) }}
+            </div>
+            <label class="control-label text-end col-md-3 mt-3">Contact Us</label>
+            <div class="col-md-9 mt-3">
+                {{ Form::select('values[home_sections_contact_us]',['Show' => 'Show','Hide' => 'Hide'], $settings['home_sections_contact_us'] != '' ? $settings['home_sections_contact_us'] : 'Show', ['class' => 'form-control','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Footer</label>
             <div class="col-md-9 mt-3">

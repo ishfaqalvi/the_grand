@@ -32,6 +32,7 @@ class Service extends Model
         'heading'     => 'required',
 		'sub_heading' => 'required',
 		'link'        => 'required',
+        'button_title'=> 'required',
 		'description' => 'required',
 		'order'       => 'required',
     ];
@@ -43,7 +44,7 @@ class Service extends Model
      *
      * @var array
      */
-    protected $fillable = ['page_id','image','heading','sub_heading','link','description','order','status'];
+    protected $fillable = ['page_id','image','heading','sub_heading','link','button_title','description','order','status'];
 
     /**
      * Service scope a query

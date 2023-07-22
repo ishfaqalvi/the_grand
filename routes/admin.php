@@ -67,6 +67,7 @@ Route::controller(PageController::class)->prefix('pages')->as('pages.')->group(f
     Route::patch('update/{page}',   'update'   )->name('update'     );
     Route::delete('destroy/{id}',   'destroy'  )->name('destroy'    );
     Route::post('checkSlug',        'checkSlug')->name('check_slug' );
+    Route::post('settings',         'settings' )->name('settings'   );
 });
 
 /*

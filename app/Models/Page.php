@@ -49,7 +49,6 @@ class Page extends Model implements Auditable
         'template',
         'title',
         'slug',
-        'canonical',
         'metaTitle',
         'metaDescription',
         'description',
@@ -101,5 +100,13 @@ class Page extends Model implements Auditable
     public function news()
     {
         return $this->hasMany('App\Models\News', 'page_id', 'id')->where('status','Publish');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function settings()
+    {
+        return $this->morphMany(Setting::class, 'settable');
     }
 }

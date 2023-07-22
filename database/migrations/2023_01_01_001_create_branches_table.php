@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->enum('type',['Main Branch', 'Sub Branch']);
             $table->string('name');
+            $table->string('label');
             $table->string('url');
+            $table->string('url_title');
             $table->string('thumbnail');
             $table->timestamps();
         });

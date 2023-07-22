@@ -21,11 +21,9 @@
 @endsection
 
 @section('content')
-<div class="card ">
-    <div class="card-header bg-info">
-        <h4 class="m-b-0 text-white">Edit Branch</h4>
-    </div>
+<div class="card">
     <div class="card-body">
+        <h4 class="card-title">Edit Branch</h4>
         <form method="POST" action="{{ route('branches.update', $branch->id) }}" role="form" enctype="multipart/form-data" class="branch form-horizontal">
             @csrf
             {{ method_field('PATCH') }}

@@ -28,7 +28,8 @@
                 <tr>
                     <th>No</th>
                     <th>Type</th>
-                    <th>Title</th>      
+                    <th>Title</th> 
+                    <th>Button Text</th>     
                     <th>Order</th>
                     <th>Branch</th>
                     <th>Status</th>
@@ -41,8 +42,9 @@
                         <td>{{ ++$key }}</td>
                         <td>{{ $slider->type }}</td>
                         <td>{{ $slider->title }}</td>
+                        <td>{{ $slider->button_text }}</td>
                         <td>{{ $slider->order }}</td>
-                        <td>{{ $slider->branch?->name }}</td>
+                        <td>{{ $slider->branch->name }}</td>
                         <td>{{ $slider->status }}</td>
                         <td>@include('admin.slider.actions')</td>
                     </tr>

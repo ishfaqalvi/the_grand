@@ -19,17 +19,23 @@ class BranchSeeder extends Seeder
         	[
                 'type'      => 'Main Branch',
                 'name'      => 'Main',      
-                'url'       => 'main',      
+                'label'     => 'Main Branch',      
+                'url'       => '/',      
+                'url_title' => 'Details',      
                 'thumbnail' => 'upload/images/branches/4.jpg'],
             [
                 'type'      => 'Sub Branch',
                 'name'      => 'Bradfoard', 
-                'url'       => 'bradfoard', 
+                'label'     => 'First Branch', 
+                'url'       => 'http://bradfoard.websitecms.test/', 
+                'url_title' => 'Details', 
                 'thumbnail' => 'upload/images/branches/4.jpg'],
         	[
                 'type'      => 'Sub Branch',
                 'name'      => 'Dewsbury', 	
-                'url'       => 'dewsbury',  
+                'label'     => 'Second Branch',  
+                'url'       => 'http://dewsbury.websitecms.test/',  
+                'url_title' => 'Details',  
                 'thumbnail' => 'upload/images/branches/7.jpg']
         ]);
     }

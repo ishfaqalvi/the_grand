@@ -31,7 +31,7 @@ class PageSeeder extends Seeder
                 'metaTitle' => 'The Cappa Luxury Hotel'
             ],
             [
-                'branch_id' => '2',
+                'branch_id' => '3',
                 'template'  => 'Home',
                 'title'     => 'Home Page',
                 'slug'      => 'home',

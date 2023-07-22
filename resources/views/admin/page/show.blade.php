@@ -1,18 +1,18 @@
 @extends('admin.layout.app')
 
-@section('title','Show Home')
+@section('title','Show Page')
 
 @section('breadcrumb')
 <div class="col-md-5 align-self-center">
-    <h4 class="text-themecolor">{{ __('Show Home') }}</h4>
+    <h4 class="text-themecolor">{{ __('Show Page') }}</h4>
 </div>
 <div class="col-md-7 align-self-center text-end">
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-            <li class="breadcrumb-item active">{{ __('Show Home') }}</li>
+            <li class="breadcrumb-item active">{{ __('Page') }}</li>
         </ol>
-        <a href="{{ route('pages.home.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+        <a href="{{ route('pages.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
             <i class="fas fa-arrow-left"></i> {{ __('Back') }}
         </a>
     </div>
@@ -21,18 +21,14 @@
 
 @section('content')
 <div class="card">
-    <div class="card-body">
-        <h4 class="card-title">{{ __('Show Home') }}</h4>
+    <div class="card-body p-b-0">
+        <h4 class="card-title">{{ __('Show Page') }}</h4>
+        <h6 class="card-subtitle">Use section tab to setup page settings</h6>
+        @if($page->branch->type == 'Main Branch' && $page->template == 'Home')
+            @include('admin.page.settings.mainHome.index')
+        @else
 
-        <strong>Branch Name:</strong> {{ $page->branch?->name ?? '' }}
-        <br>
-        <strong>Title:</strong> {{ $page->title }}
-        <br>
-        <strong>Slug:</strong> {{ $page->slug }}
-        <br>
-        <strong>Description:</strong> {{ $page->description }}
-        <br>
-        <strong>Status:</strong> {{ $page->status }}
+        @endif
     </div>
 </div>
 @endsection

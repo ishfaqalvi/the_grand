@@ -6,11 +6,39 @@ use App\Models\Setting;
 use App\Models\Menu;
 use App\Models\Testimonial;
 
-
+use Illuminate\Support\Arr;
 
 use App\Models\DynamicString;
 
 
+/**
+ * Get listing of a resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+function branchSettings($id = null)
+{
+    $mainArray = branchkeys();
+    foreach(Setting::branch($id)->get() as $row){
+        Arr::set($mainArray, $row->key, $row->value);
+    }
+    return $mainArray;
+}
+
+/**
+ * Get listing of a resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+function pageSettings($id)
+{
+    $mainArray = pagekeys();
+    foreach(Setting::page($id)->get() as $row)
+    {
+        Arr::set($mainArray, $row->key, $row->value);
+    }
+    return $mainArray;
+}
 
 /**
  * Get listing of a resource.
@@ -19,7 +47,7 @@ use App\Models\DynamicString;
  */
 function branchList()
 {
-    return Branch::get();
+    return Branch::where('type','Sub Branch')->get();
 }
 
 /**
@@ -32,17 +60,6 @@ function sliderList($id)
     return Slider::where([['branch_id',$id],['status','Publish']])->get();
 }
 
-/**
- * Get value of a resource.
- *
- * @return \Illuminate\Http\Response
- */
-function settings($id = null, $key = null)
-{
-    $row = Setting::where(['branch_id' => $id, 'key' => $key])->first();   
-    $row ? $value = $row->value : $value = '';
-    return $value;
-}
 
 /**
  * Get listing of a resource.
@@ -219,19 +236,70 @@ function sympyApproximatorAPI($variable, $expression, $digits)
 }
 
 /**
- * Get HTML of a resource.
+ * Get array of a resource.
  *
  * @return \Illuminate\Http\Response
  */
-function file_get_contents_curl($url)
+function branchkeys()
 {
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    $data = curl_exec($ch);
-    curl_close($ch);
-    return $data;
+    return [
+        'navigation_logo'           => '',    
+        'navigation_title'          => '',
+        'navigation_sub_title'      => '',
+        'navigation_contact_lablel' => '',
+        'navigation_contact_number' => '',
+        'footer_first_lable'        => '',
+        'footer_second_lable'       => '',
+        'footer_third_lable'        => '',
+        'footer_description'        => '',
+        'footer_address'            => '',
+        'footer_phone_number'       => '',
+        'footer_email'              => '',
+        'footer_instagram_link'     => '',
+        'footer_twitter_link'       => '',
+        'footer_youtube_link'       => '',
+        'footer_facebook_link'      => '',
+        'footer_pinterest_link'     => '',
+        'copyright_text'            => '',
+        'copyright_link_title'      => '',
+        'copyright_link'            => '',
+        'google_search_console_code'=> '',
+        'google_analytics_code'     => '',
+        'clarity_code'              => ''
+    ];
+}
+
+/**
+ * Get array of a resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+function pagekeys()
+{
+    return [
+        'home_slider_type'            => '',
+        'home_slider_autoPlay'        => '',
+        'home_slider_speed'           => '',
+
+        'home_about_first_image'      => '',    
+        'home_about_second_image'     => '',
+        'home_about_title'            => '',
+        'home_about_sub_title'        => '',
+        'home_about_contact_label'    => '',
+        'home_about_contact_number'   => '',
+        'home_about_stars'            => '',
+        'home_about_description'      => '',
+
+        'home_branches_title'         => '',
+        'home_branches_sub_title'     => '',
+
+        'home_sections_pageloader'    => '',
+        'home_sections_scrollprogress'=> '',
+        'home_sections_navigation'    => '',
+        'home_sections_slider'        => '',
+        'home_sections_about'         => '',
+        'home_sections_branches'      => '',
+        'home_sections_footer'        => '',
+        'home_sections_copyright'     => '',
+    ];
 }

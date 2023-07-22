@@ -9,19 +9,31 @@ class Setting extends Model
 {
     use HasFactory;
 
-    static $rules = [
-        'branch_id' => 'required',
-        'key' 		=> 'required',
-        'value' 	=> 'required',
-    ];
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['settable_type','settable_id','key','value'];
 
-    protected $fillable = ['branch_id','key', 'value'];
-
-    static function get($key) {
-    	return self::where('key', $key)->pluck('value')->first();
+    /**
+     * Branch scope a query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeBranch($query, $id = null)
+    {
+        $brach = isset($id) ? $id : auth()->user()->branch_id;
+        $query->where([['settable_type', 'Branch'],['settable_id',$brach]]);
     }
 
-    static function set($data) {
-        return Setting::upsert( $data, ['key'], ['value']);
+    /**
+     * Branch scope a query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopePage($query, $id)
+    {
+        $query->where([['settable_type', 'Page'],['settable_id',$id]]);
     }
 }

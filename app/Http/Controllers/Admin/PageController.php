@@ -7,6 +7,7 @@ use Image;
 use Carbon\Carbon;
 use App\Models\Page;
 use App\Models\Branch;
+use App\Models\Setting;
 use App\Models\Language;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -71,11 +72,12 @@ class PageController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $page = Page::find($id);
-
-        return view('admin.page.show', compact('page'));
+        $active_tab = $request->tab ? $request->tab : 'navigation';
+        $settings = pageSettings($id);
+        return view('admin.page.show', compact('page','active_tab','settings'));
     }
 
     /**
@@ -116,5 +118,54 @@ class PageController extends Controller
             $page = Page::where([['slug', $request->slug],['branch_id',$request->branch_id]])->first();
         }
         if($page){ echo "false"; }else{ echo "true";}
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function settings(Request $request)
+    {
+        $input = $request->all();
+        if ($request->values) {
+            foreach($_POST['values'] as $key => $value){
+                $input['key'] = $key;
+                $input['value'] = $value;
+                $check_record = Setting::where([
+                    ['settable_type', $request->settable_type],
+                    ['settable_id', $request->settable_id],
+                    ['key', $key]
+                ])->first();
+                if ($check_record) {
+                    $check_record->update(['value' => $value]);
+                }else{
+                    Setting::create($input);
+                }
+            }
+        }
+        foreach($request->file() as $key => $file){
+            if ($image = $request->file($key)) 
+            {
+                $name = 'upload/images/pages/settings/'.time().$image->getClientOriginalName();
+                $img = Image::make($image)->resize($input['size'][$key]['x'] , $input['size'][$key]['y'])->save(public_path($name));
+            }
+            $input['key'] = $key;
+            $input['value'] = $name;
+            $check_record = Setting::where([
+                ['settable_type', $request->settable_type],
+                ['settable_id', $request->settable_id],
+                ['key', $key]
+            ])->first();
+            if ($check_record) {
+                $check_record->update(['value'=> $name]);
+            }else{
+                Setting::create($input);
+            }
+        }
+        $active_tab = $request->tab;
+        $id = $request->settable_id;
+        return redirect()->route('pages.show',[$id,'tab' => $active_tab])->with('success', 'Page Setting updated successfully.');
     }
 }

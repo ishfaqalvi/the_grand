@@ -19,6 +19,7 @@
             <i class="icon-speedometer"></i><span class="hide-menu">Dashboard</span>
         </a>
     </li>
+    @if(auth()->user()->type == 'Main')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('branches.index') }}" aria-expanded="false">
             <i class="ti-layout-grid2"></i><span class="hide-menu">Branches</span>
@@ -29,6 +30,7 @@
             <i class="icons-Administrator"></i><span class="hide-menu">Users</span>
         </a>
     </li>
+    @endif
     <li>
         <a class="waves-effect waves-dark" href="{{ route('sliders.index') }}" aria-expanded="false">
             <i class="ti-layout-media-right-alt"></i><span class="hide-menu">Slider</span>
@@ -87,13 +89,11 @@
         </a>
     </li>
     @endcan
-    @can('settings-list')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('settings.index') }}" aria-expanded="false">
             <i class="ti-settings"></i><span class="hide-menu">Settings</span>
         </a>
     </li>
-    @endcan
     @can('audit-list')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('audit.index') }}" aria-expanded="false">

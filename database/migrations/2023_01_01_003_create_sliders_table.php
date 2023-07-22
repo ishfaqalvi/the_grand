@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('video')->nullable();
             $table->enum('linktype',['Internal','External']);
             $table->string('link');
+            $table->string('button_text');
+            $table->integer('stars');
             $table->integer('order');
             $table->string('status')->default('UnPublish');
             $table->timestamps();

@@ -5,27 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>@yield('title')</title>
-    <link rel="shortcut icon" href="{{ asset(settings('page_title_icon')) }}" />
+    <link rel="shortcut icon" href="{{ asset('public/img/fav_icon.png') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
     <link rel="stylesheet" href="{{ asset('public/css/plugins.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/css/style.css') }}"/>
     @yield('head')
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader-bg"></div>
-    <div id="preloader">
-        <div id="preloader-status">
-            <div class="preloader-position loader"> <span></span> </div>
-        </div>
-    </div>
-    <!-- Progress scroll totop -->
-    <div class="progress-wrap cursor-pointer">
-        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-        </svg>
-    </div>
-
     <!--
     |--------------------------------------------------------------------------
     | Page Header include here
@@ -53,11 +39,12 @@
     <script src="{{ asset('public/js/smooth-scroll.min.js       ') }}"></script>
     <script src="{{ asset('public/js/custom.js                  ') }}"></script>
 
-    {!! settings('google_search_console_code') !!}
+    {!! $branchSetting['google_search_console_code'] !!}
 
-    {!! settings('google_analytics_code') !!}
+    {!! $branchSetting['google_analytics_code'] !!}
     
-    {!! settings('clarity_code') !!}
+    {!! $branchSetting['clarity_code'] !!}
+    
     @yield('tool_scripts')
 	
     @yield('scripts')

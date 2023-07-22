@@ -29,8 +29,9 @@
                     <th>No</th>             
                     <th>Type</th>             
                     <th>Name</th>
+                    <th>Label</th>
                     <th>Url</th>
-                    <th>Thumbnail</th>
+                    <th>Url Title</th>
                     <th width="10px">Actions</th>
                 </tr>
             </thead>
@@ -40,10 +41,9 @@
                         <td>{{ ++$key }}</td>
                         <td>{{ $branch->type }}</td>
                         <td>{{ $branch->name }}</td>
+                        <td>{{ $branch->label }}</td>
                         <td>{{ $branch->url }}</td>
-                        <td>
-                            <img src="{{ asset($branch->thumbnail) }}" style="height: 50px; width: 150px;">
-                        </td>
+                        <td>{{ $branch->url_title }}</td>
                         <td>@include('admin.branch.actions')</td>
                     </tr>
                 @endforeach

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('branch_id');
-            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->string('settable_type');
+            $table->unsignedBigInteger('settable_id');
             $table->string('key');
             $table->text('value')->nullable();
             $table->timestamps();

@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 use App\Models\Setting;
-use Artisan;
 use Image;
 
 
@@ -16,20 +14,11 @@ class SettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
-    {
-        $this->middleware('permission:tool-list',  ['only' => ['index']]);
-        $this->middleware('permission:tool-create',['only' => ['create','save']]);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
-        return view('admin.settings.index');
+        $request->tab ? $active_tab =$request->tab : $active_tab ='navigation';
+        $settings = branchSettings();
+        return view('admin.settings.index', compact('active_tab','settings'));
     }
 
     /**
@@ -40,30 +29,43 @@ class SettingController extends Controller
      */
     public function save(Request $request)
     {
-        $data = array();
+        $input = $request->all();
         if ($request->values) {
             foreach($_POST['values'] as $key => $value){
-                $data[] = array(
-                    'key'   => $key,
-                    'value' => $value
-                );
+                $input['key'] = $key;
+                $input['value'] = $value;
+                $check_record = Setting::where([
+                    ['settable_type', $request->settable_type],
+                    ['settable_id', $request->settable_id],
+                    ['key', $key]
+                ])->first();
+                if ($check_record) {
+                    $check_record->update(['value' => $value]);
+                }else{
+                    Setting::create($input);
+                }
             }
         }
         foreach($request->file() as $key => $file){
             if ($image = $request->file($key)) 
             {
-                $filenamewithextension = $image->getClientOriginalName();
-                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-                $filenametostore = 'upload/images/settings/'.$filename.'_'.time().'.webp';
-                // $img = Image::make($image)->encode('webp', 90)->resize(100 , 200)->save(public_path($filenametostore));
-                $img = Image::make($image)->encode('webp', 90)->save(public_path($filenametostore));
+                $name = 'upload/images/settings/'.time().$image->getClientOriginalName();
+                $img = Image::make($image)->resize($input['size'][$key]['x'] , $input['size'][$key]['y'])->save(public_path($name));
             }
-            $data[] = array(
-                'key'    => $key,
-                'value'  => $filenametostore
-            );
+            $input['key'] = $key;
+            $input['value'] = $name;
+            $check_record = Setting::where([
+                ['settable_type', $request->settable_type],
+                ['settable_id', $request->settable_id],
+                ['key', $key]
+            ])->first();
+            if ($check_record) {
+                $check_record->update(['value'=> $name]);
+            }else{
+                Setting::create($input);
+            }
         }
-        Setting::set($data);
-        return redirect()->back()->with('success', 'Setting updated successfully.');
+        $active_tab = $request->tab;
+        return redirect()->route('settings.index',['tab' => $active_tab])->with('success', 'Setting updated successfully.');
     }
 }

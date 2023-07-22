@@ -21,11 +21,9 @@
 @endsection
 
 @section('content')
-<div class="card ">
-    <div class="card-header bg-info">
-        <h4 class="m-b-0 text-white">Create Branch</h4>
-    </div>
+<div class="card">
     <div class="card-body">
+        <h4 class="card-title">Create Branch</h4>
         <form method="POST" action="{{ route('branches.store') }}" role="form" enctype="multipart/form-data" class="branch form-horizontal">
             @csrf
             @include('admin.branch.form')

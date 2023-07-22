@@ -16,6 +16,30 @@ class MenuSeeder extends Seeder
     public function run()
     {
         DB::table('menus')->insert([
+            [
+                'branch_id' => '1', 
+                'type'      => 'Footer', 
+                'title'     => 'Home',    
+                'parent_id' => Null, 
+                'url'       => '', 
+                'order'     => '1'
+            ],
+            [
+                'branch_id' => '1', 
+                'type'      => 'Footer', 
+                'title'     => 'Bradford',              
+                'parent_id' => Null, 
+                'url'       => '', 
+                'order'     =>'2'
+            ],
+            [
+                'branch_id' => '1', 
+                'type'      => 'Footer', 
+                'title'     => 'Dewsbury',        
+                'parent_id' => Null, 
+                'url'       => '', 
+                'order'     => '3'
+            ],
         	[
                 'branch_id' => '2', 
                 'type'      => 'Header', 
@@ -36,7 +60,7 @@ class MenuSeeder extends Seeder
                 'branch_id' => '2', 
                 'type'      => 'Header', 
                 'title'     => 'Image',		   
-                'parent_id' => '2', 
+                'parent_id' => '5', 
                 'url'       => '', 
                 'order'     => '1'
             ],
@@ -44,7 +68,7 @@ class MenuSeeder extends Seeder
                 'branch_id' => '2', 
                 'type'      => 'Header', 
                 'title'     => 'Video',	   
-                'parent_id' => '2', 
+                'parent_id' => '5', 
                 'url'       => '', 
                 'order'     => '2'],
             [

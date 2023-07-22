@@ -30,12 +30,14 @@ class Slider extends Model
 {
     
     static $rules = [
-		'type'      => 'required',
-		'title'     => 'required',
-		'sub_title' => 'required',
-		'linktype'  => 'required',
-		'link'      => 'required',
-		'order'     => 'required',
+		'type'       => 'required',
+		'title'      => 'required',
+		'sub_title'  => 'required',
+		'linktype'   => 'required',
+		'link'       => 'required',
+        'button_text'=> 'required',
+        'stars'      => 'required',
+		'order'      => 'required',
     ];
 
     protected $perPage = 20;
@@ -54,6 +56,8 @@ class Slider extends Model
         'video',
         'linktype',
         'link',
+        'button_text',
+        'stars',
         'order',
         'status'
     ];
@@ -67,12 +71,9 @@ class Slider extends Model
     public function setImageAttribute($image)
     {
         if ($image) {
-            $filenamewithextension = $image->getClientOriginalName();
-            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-            $filenametostore = 'upload/images/sliders/'.time().'.webp';
-            $img = Image::make($image)->encode('webp', 90);   
-            $img->save(public_path($filenametostore));
-            $this->attributes['image'] = $filenametostore;
+            $name = 'upload/images/sliders/'.time().$image->getClientOriginalName();
+            $img = Image::make($image)->resize(1920, 1200)->save(public_path($name));
+            $this->attributes['image'] = $name;
         }else{
             unset($this->attributes['image']);
         }

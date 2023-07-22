@@ -23,8 +23,11 @@ class Branch extends Model
 {
     
     static $rules = [
-		'name' => 'required',
-		'url'  => 'required',
+		'type'      => 'required',
+        'name'      => 'required',
+        'label'     => 'required',
+		'url'       => 'required',
+        'url_title' => 'required',
     ];
 
     protected $perPage = 20;
@@ -34,7 +37,7 @@ class Branch extends Model
      *
      * @var array
      */
-    protected $fillable = ['type','name','url','thumbnail'];
+    protected $fillable = ['type','name','label','url','url_title','thumbnail'];
 
     /**
      * Set the image attribute.
@@ -45,12 +48,9 @@ class Branch extends Model
     public function setThumbnailAttribute($image)
     {
         if ($image) {
-            $filenamewithextension = $image->getClientOriginalName();
-            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-            $filenametostore = 'upload/images/branches/'.time().'.webp';
-            $img = Image::make($image)->encode('webp', 90)->resize(545, 360);   
-            $img->save(public_path($filenametostore));
-            $this->attributes['thumbnail'] = $filenametostore;
+            $name = 'upload/images/branches/'.time().$image->getClientOriginalName();
+            $img = Image::make($image)->resize(545, 360)->save(public_path($name));
+            $this->attributes['thumbnail'] = $name;
         }else{
             unset($this->attributes['thumbnail']);
         }
@@ -59,8 +59,9 @@ class Branch extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function settings() {
-        return $this->hasMany(Setting::class, 'branch_id','id');
+    public function settings()
+    {
+        return $this->morphMany(Setting::class, 'settable');
     }
 
     /**

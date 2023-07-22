@@ -35,6 +35,10 @@
                     <td>{{ $branch->name }}</td>
                 </tr>
                 <tr>
+                    <td class="card-title">Label</td>
+                    <td>{{ $branch->label }}</td>
+                </tr>
+                <tr>
                     <td class="card-title">Slug</td>
                     <td>{{ $branch->url }}</td>
                 </tr>

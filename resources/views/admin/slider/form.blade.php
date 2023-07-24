@@ -54,13 +54,13 @@
     </div>
     <div class="col-5">
         <div class="form-group col-md-12 imageField">
-        {{ Form::label('image') }}
-        {{ Form::file('image', ['class' => 'form-control dropify' . ($errors->has('image') ? ' is-invalid' : ''), $slider->image ? '': 'required','accept'=> 'image/png,image/jpg,image/jpeg','data-default-file' => isset($slider->image) ? asset($slider->image) : '', 'data-height' => '400']) }}
-    </div>
-    <div class="form-group col-md-12 videoField" style="display: none;">
-        {{ Form::label('video') }}
-        {{ Form::file('video', ['class' => 'form-control dropify' . ($errors->has('video') ? ' is-invalid' : ''), $slider->video ? '': 'required','accept'=> '.mp4','data-default-file' => isset($slider->video) ? asset($slider->video) : '', 'data-height' => '450']) }}
-    </div>
+            {{ Form::label('image') }}
+            {{ Form::file('image', ['class' => 'form-control dropify' . ($errors->has('image') ? ' is-invalid' : ''), $slider->image ? '': 'required','accept'=> 'image/png,image/jpg,image/jpeg','data-default-file' => isset($slider->image) ? asset($slider->image) : '', 'data-height' => '400']) }}
+        </div>
+        <div class="form-group col-md-12 videoField" style="display: none;">
+            {{ Form::label('video') }}
+            {{ Form::file('video', ['class' => 'form-control dropify' . ($errors->has('video') ? ' is-invalid' : ''), $slider->video ? '': 'required','accept'=> '.mp4','data-default-file' => isset($slider->video) ? asset($slider->video) : '', 'data-height' => '450']) }}
+        </div>
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>

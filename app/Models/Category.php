@@ -29,7 +29,6 @@ class Category extends Model
     static $rules = [
 		'branch_id' => 'required',
 		'title' => 'required',
-		'image' => 'required',
 		'link' => 'required',
 		'label' => 'required',
 		'order' => 'required',
@@ -42,7 +41,7 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['branch_id','title','image','link','label','order','status'];
+    protected $fillable = ['branch_id','title','image','link','link_title','label','order','status'];
 
     /**
      * Service scope a query
@@ -65,12 +64,10 @@ class Category extends Model
     public function setImageAttribute($image)
     {
         if ($image) {
-            $filenamewithextension = $image->getClientOriginalName();
-            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-            $filenametostore = 'upload/images/services/'.time().'.webp';
-            $img = Image::make($image)->encode('webp', 90)->resize(570,380);   
-            $img->save(public_path($filenametostore));
-            $this->attributes['image'] = $filenametostore;
+            $name = 'upload/images/category/'.time().$image->getClientOriginalName();
+            $img = Image::make($image)->resize(570,380);   
+            $img->save(public_path($name));
+            $this->attributes['image'] = $name;
         }else{
             unset($this->attributes['image']);
         }
@@ -83,6 +80,4 @@ class Category extends Model
     {
         return $this->hasOne('App\Models\Branch', 'id', 'branch_id');
     }
-    
-
 }

@@ -57,8 +57,8 @@ Route::controller(DynamicPageController::class)->group(function(){
 |--------------------------------------------------------------------------
 */
 Route::domain('{subdomain}.' . env('APP_DOMAIN', 'websitecms.test'))->group(function () {
-    Route::get('/', [DynamicPageController::class, 'viewSubdomainHomePage'])->name('subdomain');
-    // Route::get('/{slug}', 		'viewPage'	  )->name('viewPage');
+    Route::get('/', 		[DynamicPageController::class, 'viewSubdomainHomePage' ])->name('subdomain');
+    Route::get('/{slug}', 	[DynamicPageController::class, 'viewSubdomainOtherPage'])->name('subdomainPage');
 });
 
 Route::domain(env('APP_DOMAIN', 'websitecms.test'))->group(function () {

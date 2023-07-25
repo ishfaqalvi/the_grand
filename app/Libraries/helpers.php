@@ -6,6 +6,7 @@ use App\Models\Setting;
 use App\Models\Menu;
 use App\Models\Testimonial;
 use App\Models\Category;
+use App\Models\Question;
 
 use Illuminate\Support\Arr;
 
@@ -102,30 +103,30 @@ function testimonials($id)
     return Testimonial::where([['branch_id',$id],['status','Publish']])->orderBy('order')->get();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * Get listing of a resource.
  *
  * @return \Illuminate\Http\Response
  */
-function toolPages($lang)
+function questions($id)
 {
-    return Page::whereIn('template',['Tool','Home'])->where('language_id',$lang)->get();
+    return Question::where([['branch_id',$id],['status','Publish']])->orderBy('order')->get();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  * Get listing of a resource.
@@ -352,5 +353,89 @@ function pagekeys()
         'home_sections_contact_us'   => '',
         'home_sections_footer'        => '',
         'home_sections_copyright'     => '',
+
+
+
+
+        'faq_banner_bg_image'       => '',
+        'faq_banner_heading'        => '',
+        'faq_banner_sub_heading'    => '',
+
+        'faq_testimonial_bg_image'  => '',
+        'faq_testimonial_title'     => '',
+        'faq_testimonial_sub_title' => '',
+
+        'faq_contact_us_title'             => '',
+        'faq_contact_us_sub_title'         => '',
+        'faq_contact_us_btn_title'         => '',
+        'faq_contact_us_btn_url'           => '',
+        'faq_contact_us_desc'              => '',
+        'faq_contact_us_card1_image'       => '',
+        'faq_contact_us_card1_title'       => '',
+        'faq_contact_us_card1_phone_title' => '',
+        'faq_contact_us_card1_phone'       => '',
+        'faq_contact_us_card1_desc'        => '',
+        'faq_contact_us_card2_image'       => '',
+        'faq_contact_us_card2_title'       => '',
+        'faq_contact_us_card2_btn_title'   => '',
+        'faq_contact_us_card2_btn_url'     => '',
+        'faq_contact_us_card2_desc'        => '',
+
+        'faq_sections_pageloader'    => '',
+        'faq_sections_scrollprogress'=> '',
+        'faq_sections_navigation'    => '',
+        'faq_sections_banner'        => '',
+        'faq_sections_questions'         => '',
+        'faq_sections_testimonial'      => '',
+        'faq_sections_contact_us'   => '',
+        'faq_sections_footer'        => '',
+        'faq_sections_copyright'     => '',
+
+
+
+
+
+        'contact_banner_bg_image'       => '',
+        'contact_banner_heading'        => '',
+        'contact_banner_sub_heading'    => '',
+
+        'contact_contactUs_title'  => '',
+        'contact_contactUs_desc'     => '',
+        'contact_contactUs_phone_label' => '',
+        'contact_contactUs_phone_number' => '',
+        'contact_contactUs_email_label' => '',
+        'contact_contactUs_email' => '',
+        'contact_contactUs_address_label' => '',
+        'contact_contactUs_address' => '',
+
+        'contact_form_title' => '',
+        'contact_form_btn_title' => '',
+        'contact_form_palceholder_name' => '',
+        'contact_form_palceholder_email' => '',
+        'contact_form_palceholder_number' => '',
+        'contact_form_palceholder_subject' => '',
+        'contact_form_palceholder_message' => '',
+
+        'contact_google_map_url' => '',
+
+        'contact_booking_bg_image'       => '',
+        'contact_booking_title'          => '',
+        'contact_booking_sub_title'      => '',
+        'contact_booking_card_title'     => '',
+        'contact_booking_card_sub_title' => '',
+        'contact_booking_card_btn_title' => '',
+        'contact_booking_card_btn_url'   => '',
+        'contact_booking_card_desc'      => '',
+        'contact_sections_pageloader'    => '',
+        'contact_sections_scrollprogress'=> '',
+        'contact_sections_navigation'    => '',
+        'contact_sections_banner'        => '',
+        'contact_sections_contactUs'         => '',
+        'contact_sections_form'      => '',
+        'contact_sections_map'      => '',
+        'contact_sections_booking'   => '',
+        'contact_sections_footer'        => '',
+        'contact_sections_copyright'     => '',
+
     ];
 }

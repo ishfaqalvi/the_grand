@@ -55,59 +55,19 @@ class DynamicPageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function viewPage($slug1)
+    public function viewSubdomainOtherPage($subdomain, $slug)
     {
-        $checkLanguage = Language::where('code',$slug1)->first();
-        /**
-         * If home page with language
-         */
-        if ($checkLanguage && !isset($slug2)) {
-            if ($checkLanguage->code == 'en') {
-                return Redirect::to('/', 301);
+        $page = Page::where('slug',$slug)->first();
+        if ($page) {
+            if ($page->template != 'Home') {
+                $branchSetting = branchSettings($page->branch_id);
+                $pageSetting   = pageSettings($page->id);
+                return view('public.template.subIndex',compact('page','branchSetting','pageSetting'));
+            }else{
+                return redirect()->route('subdomain');    
             }
-            $language = $checkLanguage;
-            $languages= Language::where('id','!=', $language->id)->get();
-            $slug     = '';
-            $page     = Page::where([['template','Home'],['language_id',$language->id]])->first();
-            if ($page) {
-                return view('public.index',compact('slug','page','language','languages'));
-            }return view('public.errors.404',compact('slug','page','language','languages'));
-        }
-
-        /**
-         * If other than home page with language
-         */
-        elseif ($checkLanguage && isset($slug2)) {
-            $language = $checkLanguage;
-            if ($language->code == 'en') {
-                return Redirect::to($slug2, 301);
-            }
-            $languages= Language::where('id','!=', $language->id)->get();
-            $slug     = $slug2;
-            $page     = Page::where([['slug',$slug2],['language_id',$language->id]])->first();
-            if ($page) {
-                return view('public.index',compact('slug','page','language','languages'));
-            }return view('public.errors.404',compact('slug','page','language','languages'));
-        }
-
-        /**
-         * If other than home page with out language
-         */
-        else{
-            if (isset($slug1) && isset($slug2)) {
-                return Redirect::to($slug2, 301);
-            }
-            $language = Language::find(1);
-            $languages= Language::where('id','!=', $language->id)->get();
-            $slug = $slug1;
-            $page = Page::where([['slug',$slug1],['language_id',$language->id]])->first();
-            if ($page) {
-                if ($page->template == 'Home') {
-                    return Redirect::to('/', 301);
-                    return redirect()->route('home');
-                }
-                return view('public.index',compact('slug','page','language','languages'));
-            }return view('public.errors.404',compact('slug','page','language','languages'));
+        }else{
+            return redirect()->route('subdomain');
         }
     }
 

@@ -1,12 +1,11 @@
 @extends('public.layout.app')
 
-@section('title'){{$page->metaTitle ?? 'The Cappa Luxury Hotel'}}@endsection
+@section('title'){{ $page->metaTitle }}@endsection
 
 @section('head')
     <meta name="description"content="{{ $page->metaDescription }}"/>
     <meta name="robots"     content="{{ $page->status == 'UnPublish' ? 'noindex, nofollow' : 'index, follow' }}">
-    <link rel ="stylesheet" href   ="{{ asset('public/css/test.css') }}" />
-    
+
     <!-- Open Graph general -->
     {!! $page->og_tags !!}
     <!-- Open Graph general -->
@@ -17,44 +16,53 @@
 @endsection
 
 @section('content')
-    
+    <!--
+    |--------------------------------------------------------------------------
+    | Page Header include here
+    |--------------------------------------------------------------------------
+    -->
+    @include('public.template.maindomain.include.header')
+
     @if($page->template =='Home')
     <!--
     |--------------------------------------------------------------------------
     | Home page template include here
     |--------------------------------------------------------------------------
     -->
-    @include('public.template.subdomain.home')
+    @include('public.template.maindomain.home')
 
     @elseif($page->template =='Image')
     <!--
     |--------------------------------------------------------------------------
-    | Image Gallery page template include here
+    | Tool page template include here
     |--------------------------------------------------------------------------
     -->
-    @include('public.template.subdomain.imageGallery')
+    @include('public.template.tool')
 
     @elseif($page->template =='Video')
     <!--
     |--------------------------------------------------------------------------
-    | Video Gallery page template include here
+    | Blog page template include here
     |--------------------------------------------------------------------------
     -->
-    @include('public.template.subdomain.videoGallery')
-    <!--
-    |--------------------------------------------------------------------------
-    | FAQS page template include here
-    |--------------------------------------------------------------------------
-    -->
-    @elseif($page->template =='FAQS')
+    @include('public.template.blog')
+
+    @elseif($page->template =='FAQs')
     
-    @include('public.template.subdomain.faq')    
+    @include('public.template.blog')    
     @else
     <!--
     |--------------------------------------------------------------------------
     | Contact US page template include here
     |--------------------------------------------------------------------------
     -->
-    @include('public.template.subdomain.contact')
-    @endif
+    @include('public.template.contact_us')
+    @endif 
+    
+    <!--
+    |--------------------------------------------------------------------------
+    | Page Footer include here
+    |--------------------------------------------------------------------------
+    -->
+    @include('public.template.maindomain.include.footer')
 @endsection

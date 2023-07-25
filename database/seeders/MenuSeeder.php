@@ -21,7 +21,7 @@ class MenuSeeder extends Seeder
                 'type'      => 'Footer', 
                 'title'     => 'Home',    
                 'parent_id' => Null, 
-                'url'       => '', 
+                'url'       => '/', 
                 'order'     => '1'
             ],
             [
@@ -29,7 +29,7 @@ class MenuSeeder extends Seeder
                 'type'      => 'Footer', 
                 'title'     => 'Bradford',              
                 'parent_id' => Null, 
-                'url'       => '', 
+                'url'       => 'bradford', 
                 'order'     =>'2'
             ],
             [
@@ -37,7 +37,7 @@ class MenuSeeder extends Seeder
                 'type'      => 'Footer', 
                 'title'     => 'Dewsbury',        
                 'parent_id' => Null, 
-                'url'       => '', 
+                'url'       => 'dewsbury', 
                 'order'     => '3'
             ],
         	[
@@ -45,7 +45,7 @@ class MenuSeeder extends Seeder
                 'type'      => 'Header', 
                 'title'     => 'Home',    
                 'parent_id' => Null, 
-                'url'       => '', 
+                'url'       => '/', 
                 'order'     => '1'
             ],
         	[
@@ -54,14 +54,14 @@ class MenuSeeder extends Seeder
                 'title'     => 'Gallery',		  	   
                 'parent_id' => Null, 
                 'url'       => '', 
-                'order'     =>'2'
+                'order'     => '2'
             ],
         	[
                 'branch_id' => '2', 
                 'type'      => 'Header', 
                 'title'     => 'Image',		   
                 'parent_id' => '5', 
-                'url'       => '', 
+                'url'       => 'image-gallery', 
                 'order'     => '1'
             ],
         	[
@@ -69,14 +69,14 @@ class MenuSeeder extends Seeder
                 'type'      => 'Header', 
                 'title'     => 'Video',	   
                 'parent_id' => '5', 
-                'url'       => '', 
+                'url'       => 'video-gallery', 
                 'order'     => '2'],
             [
                 'branch_id' => '2', 
                 'type'      => 'Header', 
                 'title'     => 'FAQS', 
                 'parent_id' => Null,  
-                'url'       => '', 
+                'url'       => 'faqs', 
                 'order'     => '3'
             ],
             [
@@ -84,15 +84,15 @@ class MenuSeeder extends Seeder
                 'type'      => 'Header', 
                 'title'     => 'Contact', 
                 'parent_id' => Null, 
-                'url'       =>'', 
-                'order'     =>'4'
+                'url'       => 'contact-us', 
+                'order'     => '4'
             ],
             [
                 'branch_id' => '2', 
                 'type'      => 'Footer', 
                 'title'     => 'Home',    
                 'parent_id' => Null, 
-                'url'       => '', 
+                'url'       => '/', 
                 'order'     => '1'
             ],
             [
@@ -100,7 +100,7 @@ class MenuSeeder extends Seeder
                 'type'      => 'Footer', 
                 'title'     => 'Image Gallery',        
                 'parent_id' => Null, 
-                'url'       => '', 
+                'url'       => 'image-gallery', 
                 'order'     => '2'
             ],
             [
@@ -108,7 +108,7 @@ class MenuSeeder extends Seeder
                 'type'      => 'Footer', 
                 'title'     => 'Video Gallery',    
                 'parent_id' => Null, 
-                'url'       => '', 
+                'url'       => 'video-gallery', 
                 'order'     => '3'
             ],
             [
@@ -116,7 +116,7 @@ class MenuSeeder extends Seeder
                 'type'      => 'Footer', 
                 'title'     => 'FAQS', 
                 'parent_id' => Null,  
-                'url'       => '', 
+                'url'       => 'faqs', 
                 'order'     => '4'
             ],
             [
@@ -124,8 +124,8 @@ class MenuSeeder extends Seeder
                 'type'      => 'Footer', 
                 'title'     => 'Contact', 
                 'parent_id' => Null, 
-                'url'       =>'', 
-                'order'     =>'5'
+                'url'       => 'contact-us', 
+                'order'     => '5'
             ],
         ]);
     }

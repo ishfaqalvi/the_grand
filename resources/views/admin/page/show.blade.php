@@ -28,6 +28,10 @@
             @include('admin.page.settings.mainHome.index')
         @elseif($page->branch->type == 'Sub Branch' && $page->template == 'Home')
             @include('admin.page.settings.subHome.index')
+        @elseif($page->branch->type == 'Sub Branch' && $page->template == 'FAQS')
+            @include('admin.page.settings.faq.index')
+        @else
+            @include('admin.page.settings.contact.index')
         @endif
     </div>
 </div>

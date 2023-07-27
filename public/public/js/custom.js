@@ -33,8 +33,8 @@
 $(function () {
     "use strict";
     var wind = $(window);
-    
-    
+    console.log(websiteLogo);
+
     // ScrollIt
     $.scrollIt({
         upKey: 38, // key code to navigate to the next section
@@ -45,7 +45,7 @@ $(function () {
         onPageChange: null, // function(pageIndex) that is called when page is changed
         topOffset: -70 // offste (in px) for fixed top navigation
     });
-    
+
     
     // Logo & Menu scroll sticky
     $(window).scroll(function () {
@@ -56,13 +56,13 @@ $(function () {
         if (st > 150) {
             if (!navbar.hasClass('scrolled')) {
                 navbar.addClass('scrolled');
-                logo.attr('src', 'img/logo.png');
+                logo.attr('src', websiteLogo);
             }
         }
         if (st < 150) {
             if (navbar.hasClass('scrolled')) {
                 navbar.removeClass('scrolled sleep')
-                logo.attr('src', 'img/logo.png');
+                logo.attr('src', websiteLogo);
             }
         }
         if (st > 350) {

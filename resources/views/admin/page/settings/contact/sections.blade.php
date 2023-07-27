@@ -31,7 +31,7 @@
             </div>
             <label class="control-label text-end col-md-3 mt-3">Booking</label>
             <div class="col-md-9 mt-3">
-                {{ Form::select('values[contact_sections_booking]',['Show' => 'Show','Hide' => 'Hide'], $settings['contact_sections_contact_us'] != '' ? $settings['contact_sections_booking'] : 'Show', ['class' => 'form-control','required']) }}
+                {{ Form::select('values[contact_sections_booking]',['Show' => 'Show','Hide' => 'Hide'], $settings['contact_sections_booking'] != '' ? $settings['contact_sections_booking'] : 'Show', ['class' => 'form-control','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Footer</label>
             <div class="col-md-9 mt-3">

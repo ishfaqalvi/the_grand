@@ -1,27 +1,39 @@
 <div class="row">
-    <div class="form-group col-lg-12">
-        {{ Form::label('title') }}
-        {{ Form::text('title', '', ['class' => 'form-control' . ($errors->has('title') ? ' is-invalid' : ''), 'placeholder' => 'Title','required']) }}
-        {!! $errors->first('title', '<div class="invalid-feedback">:message</div>') !!}
+    @if(auth()->user()->type == 'Main')
+    <div class="form-group col-md-6">
+        {{ Form::label('branch') }}
+        {{ Form::select('branch_id', branches(), '', ['class' => 'form-control' . ($errors->has('branch_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
+        {!! $errors->first('branch_id', '<div class="invalid-feedback">:message</div>') !!}
     </div>
-    <div class="form-group col-lg-12">
-        {{ Form::label('image name') }}
-        {{ Form::text('name', '', ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Image Name','required']) }}
-        {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+    <div class="form-group col-md-6">
+        {{ Form::label('category') }}
+        {{ Form::select('category_id', categories(), '', ['class' => 'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
+        {!! $errors->first('category_id', '<div class="invalid-feedback">:message</div>') !!}
     </div>
-    <div class="form-group col-lg-12">
+    @else
+    {{ Form::hidden('branch_id', auth()->user()->branch_id) }}
+    <div class="form-group col-md-6">
+        {{ Form::label('category') }}
+        {{ Form::select('category_id', categories(auth()->user()->branch_id), '', ['class' => 'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'required']) }}
+        {!! $errors->first('category_id', '<div class="invalid-feedback">:message</div>') !!}
+    </div>
+    @endif
+    <div class="form-group col-md-6">
+        {{ Form::label('type') }}
+        {{ Form::select('type', ['Image' => 'Image','Video' => 'Video'], 'Image', ['class' => 'form-control' . ($errors->has('type') ? ' is-invalid' : ''), 'required']) }}
+        {!! $errors->first('type', '<div class="invalid-feedback">:message</div>') !!}
+    </div>
+    <div class="form-group videoLinkField" style="display: none;">
+        {{ Form::label('video_link') }}
+        {{ Form::url('video_link', '', ['class' => 'form-control' . ($errors->has('video_link') ? ' is-invalid' : '')]) }}
+        {!! $errors->first('video_link', '<div class="invalid-feedback">:message</div>') !!}
+    </div>
+    <div class="form-group imageField">
         {{ Form::label('image') }}
-        {{ Form::file('image', ['class' => 'form-control' . ($errors->has('image') ? ' is-invalid' : ''), 'placeholder' => 'Image','required','accept'=> 'image/png,image/jpg,image/jpeg']) }}
-        {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
+        {{ Form::file('image', ['class' => 'form-control dropify' . ($errors->has('image') ? ' is-invalid' : ''), 'accept'=> 'image/png,image/jpg,image/jpeg','data-default-file' => isset($slider->image) ? asset($slider->image) : '', 'data-height' => '400']) }}
     </div>
-    <div class="form-group col-lg-6">
-        {{ Form::label('width') }}
-        {{ Form::number('x', '',['class' => 'form-control' . ($errors->has('x') ? ' is-invalid' : ''), 'placeholder' => 'Width','min'=>'1','max'=>'1900']) }}
-        {!! $errors->first('x', '<div class="invalid-feedback">:message</div>') !!}
-    </div>
-    <div class="form-group col-lg-6">
-        {{ Form::label('height') }}
-        {{ Form::number('y', '',['class' => 'form-control' . ($errors->has('y') ? ' is-invalid' : ''), 'placeholder' => 'Height','min'=>'1','max'=>'1000']) }}
-        {!! $errors->first('y', '<div class="invalid-feedback">:message</div>') !!}
+    <div class="form-group videoField" style="display: none;">
+        {{ Form::label('video_thumbnail') }}
+        {{ Form::file('video_thumbnail', ['class' => 'form-control dropify' . ($errors->has('video') ? ' is-invalid' : ''), 'accept'=> 'image/png,image/jpg,image/jpeg', 'data-height' => '450']) }}
     </div>
 </div>

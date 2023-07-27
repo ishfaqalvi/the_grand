@@ -3,7 +3,7 @@
 use App\Models\Branch;
 use App\Models\Menu;
 use App\Models\Page;
-use App\Models\DynamicString;
+use App\Models\Category;
 
 /**
  * Get listing of a resource.
@@ -43,4 +43,19 @@ function homePages()
     	$pages = Page::where('template','Home')->pluck('title','id');
     }
     return $pages;
+}
+
+/**
+ * Get listing of a resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+function categories($id =null)
+{
+    if ($id) {
+        $categories = Category::where([['branch_id',$id],['status','Publish']])->pluck('title','id');
+    }else{
+        $categories = Category::where('status','Publish')->pluck('title','id');
+    }
+    return $categories;
 }

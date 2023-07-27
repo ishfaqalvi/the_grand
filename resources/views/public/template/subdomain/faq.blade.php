@@ -21,7 +21,7 @@
     <div class="container">
         <!-- Logo -->
         <div class="logo-wrapper">
-            <a class="logo" href="index.html">
+            <a class="logo" href="/">
                 <img src="{{ asset($branchSetting['navigation_logo']) }}" class="logo-img" alt="">
             </a>
         </div>

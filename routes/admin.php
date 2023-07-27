@@ -5,13 +5,6 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\BranchSettingController;
 
-// Route::domain('{subdomain}.' . env('APP_DOMAIN', 'websitecms.test'))->group(function () {
-//     Route::get('admin/home', DashboardController::class)->name('subdomain.dashboard');
-//     Route::get('home', function () {
-//         return Redirect::to('http://websitecms.test/admin/home');
-//     })->name('dashboard');
-// });
-
 /*
 |--------------------------------------------------------------------------
 | Dashboard Route
@@ -91,8 +84,6 @@ Route::resource('facilities', FacilityController::class);
 */
 Route::resource('news', NewsController::class);
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Testimonials Routes
@@ -118,46 +109,34 @@ Route::resource('categories', CategoryController::class);
 |--------------------------------------------------------------------------
 | Media Routes
 |--------------------------------------------------------------------------
-| All route related to media module
 */
-Route::controller(GalleryController::class)->prefix('media')->group(function () {
-	Route::get('index',		  	'index'	 )->name('media.index');
-	Route::post('store',		'store'	 )->name('media.store');
-	Route::delete('delete/{id}','destroy')->name('media.destroy');
+Route::controller(GalleryController::class)->prefix('gallery')->as('galleries.')->group(function () {
+	Route::get('index',		  	'index'	 )->name('index');
+	Route::post('store',		'store'	 )->name('store');
+	Route::delete('delete/{id}','destroy')->name('destroy');
 });
 
-
-
-
-
 /*
 |--------------------------------------------------------------------------
-| Feedback Routes
+| Contacts Routes
 |--------------------------------------------------------------------------
-| All route related to feedback managment module
 */
-Route::resource('feedbacks', FeedbackController::class);
-
-/*
-|--------------------------------------------------------------------------
-| Comment Routes
-|--------------------------------------------------------------------------
-| All route related to comments managment module
-*/
-Route::resource('comments', CommentController::class);
+Route::controller(ContactController::class)->prefix('contacts')->as('contacts.')->group(function () {
+    Route::get('index',          'index'  )->name('index'  );
+    Route::get('show/{id}',      'show'   )->name('show'   );
+    Route::delete('destroy/{id}','destroy')->name('destroy');
+});
 
 /*
 |--------------------------------------------------------------------------
 | Audit Routes
 |--------------------------------------------------------------------------
-| All route related to audit managment module
 */
 Route::controller(AuditController::class)->prefix('audits')->group(function () {
 	Route::get('index', 		 'index')->name('audit.index');
 	Route::get('show/{id}', 	 'show')->name('audit.show');
 	Route::delete('destroy/{id}','destroy')->name('audit.destroy');
 });
-
 
 /*
 |--------------------------------------------------------------------------

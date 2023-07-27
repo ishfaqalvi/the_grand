@@ -86,7 +86,7 @@
         <div class="row align-items-center">
             <!-- Logo -->
             <div class="col-6 col-md-6 cappa-logo-wrap">
-                <a href="{{ route('home') }}" class="cappa-logo">
+                <a href="/" class="cappa-logo">
                     <img src="{{ asset($branchSetting['navigation_logo']) }}" alt="">
                 </a>
             </div>

@@ -21,7 +21,7 @@
     <div class="container">
         <!-- Logo -->
         <div class="logo-wrapper">
-            <a class="logo" href="index.html">
+            <a class="logo" href="/">
                 <img src="{{ asset($branchSetting['navigation_logo']) }}" class="logo-img" alt="">
             </a>
         </div>
@@ -141,7 +141,7 @@
             </div>
         </div>
         <div class="row">
-            @foreach(categories($page->branch_id) as $category)
+            @foreach(categoryList($page->branch_id) as $category)
             <div class="col-md-6">
                 <a href="{{ asset($category->link) }}">
                     <div class="item">

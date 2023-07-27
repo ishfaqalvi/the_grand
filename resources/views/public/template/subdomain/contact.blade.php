@@ -21,7 +21,7 @@
     <div class="container">
         <!-- Logo -->
         <div class="logo-wrapper">
-            <a class="logo" href="index.html">
+            <a class="logo" href="/">
                 <img src="{{ asset($branchSetting['navigation_logo']) }}" class="logo-img" alt="">
             </a>
         </div>
@@ -120,14 +120,30 @@
             @if($pageSetting['contact_sections_form'] == 'Show')
             <div class="col-md-5 mb-30 offset-md-1">
                 <h3>{{ $pageSetting['contact_form_title'] }}</h3>
-                <form method="post" class="contact__form" action="mail.php">
+                <form method="post"  action="{{ route('contactUs.store')}}">
+                    @csrf
+                    <!-- form error -->
+                    @if ($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <!-- form message -->
+                    @if(Session::get('contactMessage') == 'success')
                     <div class="row">
                         <div class="col-12">
-                            <div class="alert alert-success contact__msg" style="display: none" role="alert"> Your message was sent successfully. </div>
+                            <div class="alert alert-success contact__msg" role="alert">
+                                {{ $pageSetting['contact_form_return_message'] ?? 'Message Sent Successfully.' }}
+                            </div>
                         </div>
                     </div>
+                    @endif
                     <!-- form elements -->
+                    <input type="hidden" name="branch_id" value="{{ $page->branch_id }}">
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <input name="name" type="text" placeholder="{{ $pageSetting['contact_form_palceholder_name'] }} *" required>
@@ -136,7 +152,7 @@
                             <input name="email" type="email" placeholder="{{ $pageSetting['contact_form_palceholder_email'] }} *" required>
                         </div>
                         <div class="col-md-6 form-group">
-                            <input name="phone" type="text" placeholder="{{ $pageSetting['contact_form_palceholder_number'] }} *" required>
+                            <input name="number" type="text" placeholder="{{ $pageSetting['contact_form_palceholder_number'] }} *" required>
                         </div>
                         <div class="col-md-6 form-group">
                             <input name="subject" type="text" placeholder="{{ $pageSetting['contact_form_palceholder_subject'] }} *" required>

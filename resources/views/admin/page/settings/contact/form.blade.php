@@ -33,6 +33,10 @@
             <div class="col-md-9 mt-3">
                 {{ Form::text('values[contact_form_palceholder_message]', $settings['contact_form_palceholder_message'], ['class' => 'form-control','required']) }}
             </div>
+            <label class="control-label text-end col-md-3 mt-3">On Submitt Message</label>
+            <div class="col-md-9 mt-3">
+                {{ Form::text('values[contact_form_return_message]', $settings['contact_form_return_message'], ['class' => 'form-control','required']) }}
+            </div>
         </div>
     </div>
     <div class="form-actions">

@@ -7,11 +7,9 @@ use App\Models\Menu;
 use App\Models\Testimonial;
 use App\Models\Category;
 use App\Models\Question;
+use App\Models\Gallery;
 
 use Illuminate\Support\Arr;
-
-
-
 
 /**
  * Get listing of a resource.
@@ -88,7 +86,7 @@ function footerMenus($id)
  *
  * @return \Illuminate\Http\Response
  */
-function categories($id)
+function categoryList($id)
 {
     return Category::where([['branch_id',$id],['status','Publish']])->orderBy('order')->get();
 }
@@ -113,30 +111,14 @@ function questions($id)
     return Question::where([['branch_id',$id],['status','Publish']])->orderBy('order')->get();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * Get listing of a resource.
  *
  * @return \Illuminate\Http\Response
  */
-function hreflang($slug)
+function images($id)
 {
-    $ids = Page::where('slug',$slug)->pluck('language_id');
-    return Language::whereIn('id',$ids)->get();
+    return Gallery::where([['type','Image'],['category_id',$id]])->get();
 }
 
 /**
@@ -144,99 +126,9 @@ function hreflang($slug)
  *
  * @return \Illuminate\Http\Response
  */
-function urlGenerate($slug, $lang)
+function videos($id)
 {
-    if ($lang == 1) {
-        $url = $slug;
-    }else{
-        $language = Language::find($lang);
-        $url = $language->code .'/'. $slug;
-    }
-    return $url;
-}
-
-/**
- * Get result of a resource.
- *
- * @return \Illuminate\Http\Response
- */
-function dynamicString($key,$lang)
-{
-    $checkRecord = DynamicString::where([['key',$key],['language_id',$lang]])->first();
-    if ($checkRecord) {
-        $value = $checkRecord->value;
-    }else{
-        $default = DynamicString::where([['key',$key],['language_id',1]])->first();
-        $default ? $value = $default->value : $value = '';
-    }
-    return $value;
-}
-
-/**
- * Get responce from a third party API resource.
- *
- * @return \Illuminate\Http\Response
- */
-function getApiTokenIds()
-{
-    $ids = array();
-    foreach (ApiToken::get() as $token) {
-        if ($token->limit > ($token->web_utilize + $token->app_utilize)) { $ids[] = $token->id; }
-    } return $ids;
-}
-
-/**
- * Get responce from a third party API resource.
- *
- * @return \Illuminate\Http\Response
- */
-function wolframalphaAPI($equation)
-{
-    $token = ApiToken::whereIn('id',getApiTokenIds())->inRandomOrder()->first();
-    $equation = urlencode($equation);
-    $response = Http::get("http://api.wolframalpha.com/v2/query?appid=". $token->code ."&input=" . $equation . "&output=json&podstate=Step-by-step+solution&podstate=Step-by-step&podstate=Show+all+steps");
-    $token->increment('web_utilize');
-    $result = $response->json();
-    return $result['queryresult']['pods'];
-}
-
-/**
- * Get responce from a other API resource.
- *
- * @return \Illuminate\Http\Response
- */
-function sympyStepAPI($variable, $equation)
-{
-    $responce = file_get_contents_curl("http://sympy.calculatored.com/card/intsteps?variable=" . $variable . "&expression=" . $equation);
-    $responce = stripcslashes($responce);
-    $responce = substr($responce, strpos($responce, "output") + 10);
-    $responce = Str::replaceLast('"}', '', $responce);
-    return $responce;
-}
-
-/**
- * Get responce from a other API resource.
- *
- * @return \Illuminate\Http\Response
- */
-function sympyAnswerAPI($variable, $equation)
-{
-    $answer = file_get_contents_curl("http://sympy.calculatored.com/card/integral_alternate_fake?variable=" . $variable . "&expression=" . $equation);
-    $getanswer = json_decode($answer, true);
-    $responce = explode(',', $getanswer['value']);
-    return $responce;
-}
-
-/**
- * Get responce from a other API resource.
- *
- * @return \Illuminate\Http\Response
- */
-function sympyApproximatorAPI($variable, $expression, $digits)
-{
-    $responce = file_get_contents_curl("https://sympy.calculatored.com/card/approximator?variable=" . $variable . "&expression=" . $expression . "&digits=" . $digits);
-    $responce = json_decode($responce, true);
-    return $responce['output'];
+    return Gallery::where([['type','Video'],['category_id',$id]])->get();
 }
 
 /**
@@ -415,6 +307,7 @@ function pagekeys()
         'contact_form_palceholder_number' => '',
         'contact_form_palceholder_subject' => '',
         'contact_form_palceholder_message' => '',
+        'contact_form_return_message' => '',
 
         'contact_google_map_url' => '',
 
@@ -426,6 +319,7 @@ function pagekeys()
         'contact_booking_card_btn_title' => '',
         'contact_booking_card_btn_url'   => '',
         'contact_booking_card_desc'      => '',
+
         'contact_sections_pageloader'    => '',
         'contact_sections_scrollprogress'=> '',
         'contact_sections_navigation'    => '',
@@ -436,6 +330,82 @@ function pagekeys()
         'contact_sections_booking'   => '',
         'contact_sections_footer'        => '',
         'contact_sections_copyright'     => '',
+
+
+
+        'img_banner_bg_image'       => '',
+        'img_banner_heading'        => '',
+        'img_banner_sub_heading'    => '',
+
+        'img_image_heading'        => '',
+        'img_image_sub_heading'    => '',
+
+        'img_testimonial_bg_image'  => '',
+        'img_testimonial_title'     => '',
+        'img_testimonial_sub_title' => '',
+
+        'img_contact_us_title'             => '',
+        'img_contact_us_sub_title'         => '',
+        'img_contact_us_btn_title'         => '',
+        'img_contact_us_btn_url'           => '',
+        'img_contact_us_desc'              => '',
+        'img_contact_us_card1_image'       => '',
+        'img_contact_us_card1_title'       => '',
+        'img_contact_us_card1_phone_title' => '',
+        'img_contact_us_card1_phone'       => '',
+        'img_contact_us_card1_desc'        => '',
+        'img_contact_us_card2_image'       => '',
+        'img_contact_us_card2_title'       => '',
+        'img_contact_us_card2_btn_title'   => '',
+        'img_contact_us_card2_btn_url'     => '',
+        'img_contact_us_card2_desc'        => '',
+
+        'img_sections_pageloader'    => '',
+        'img_sections_scrollprogress'=> '',
+        'img_sections_navigation'    => '',
+        'img_sections_banner'        => '',
+        'img_sections_images'        => '',
+        'img_sections_testimonial'   => '',
+        'img_sections_contact_us'    => '',
+        'img_sections_footer'        => '',
+        'img_sections_copyright'     => '',
+
+        'video_banner_bg_image'       => '',
+        'video_banner_heading'        => '',
+        'video_banner_sub_heading'    => '',
+
+        'video_videos_heading'        => '',
+        'video_videos_sub_heading'    => '',
+
+        'video_testimonial_bg_image'  => '',
+        'video_testimonial_title'     => '',
+        'video_testimonial_sub_title' => '',
+
+        'video_contact_us_title'             => '',
+        'video_contact_us_sub_title'         => '',
+        'video_contact_us_btn_title'         => '',
+        'video_contact_us_btn_url'           => '',
+        'video_contact_us_desc'              => '',
+        'video_contact_us_card1_image'       => '',
+        'video_contact_us_card1_title'       => '',
+        'video_contact_us_card1_phone_title' => '',
+        'video_contact_us_card1_phone'       => '',
+        'video_contact_us_card1_desc'        => '',
+        'video_contact_us_card2_image'       => '',
+        'video_contact_us_card2_title'       => '',
+        'video_contact_us_card2_btn_title'   => '',
+        'video_contact_us_card2_btn_url'     => '',
+        'video_contact_us_card2_desc'        => '',
+
+        'video_sections_pageloader'    => '',
+        'video_sections_scrollprogress'=> '',
+        'video_sections_navigation'    => '',
+        'video_sections_banner'        => '',
+        'video_sections_videos'        => '',
+        'video_sections_testimonial'   => '',
+        'video_sections_contact_us'    => '',
+        'video_sections_footer'        => '',
+        'video_sections_copyright'     => '',
 
     ];
 }

@@ -1,14 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Public;
-use App\Models\Page;
 
-use App\Models\Branch;
-use App\Models\Comment;
-use App\Models\Feedback;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+use App\Models\Contact;
+use App\Models\Branch;
+use App\Models\Page;
 
 class DynamicPageController extends Controller
 {
@@ -77,52 +75,17 @@ class DynamicPageController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function jobApplicationStore(Request $request)
+    public function contactUsStore(Request $request)
     {
         $request->validate([
-            'career_id' => 'required',
+            'branch_id' => 'required',
             'name'      => 'required',
             'email'     => 'required',
-            'attachment'=> "required|mimetypes:application/pdf|max:10000"
+            'number'    => 'required',
+            'subject'   => 'required',
+            'message'   => 'required'
         ]);
-        JobApplication::create($request->all());
-        $parameters = ['jobApplicationMessage' => settings('job_application_message'),'application_id' => $request->career_id];
-        return redirect()->back()->with($parameters);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function feedbackStore(Request $request)
-    {
-        $request->validate([
-            'name'    => 'required',
-            'email'   => 'required',
-            'message' => "required"
-        ]);
-        Feedback::create($request->all());
-        $parameters = ['feedbackMessage' => settings('feadback_message')];
-        return redirect()->back()->with($parameters);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function commentStore(Request $request)
-    {
-        $request->validate([
-            'name'    => 'required',
-            'email'   => 'required',
-            'message' => "required"
-        ]);
-        Comment::create($request->all());
-        $parameters = ['commentMessage' => settings('comment_message')];
-        return redirect()->back()->with($parameters);
+        Contact::create($request->all());
+        return redirect()->back()->with(['contactMessage' => 'success']);
     }
 }

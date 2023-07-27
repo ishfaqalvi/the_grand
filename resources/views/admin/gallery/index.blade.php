@@ -12,61 +12,47 @@
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                 <li class="breadcrumb-item active">{{ __('Gallery') }}</li>
             </ol>
-            @can('media-create')
             <a data-bs-toggle="modal" data-bs-target="#addImage" type="button" class="btn btn-info d-none d-sm-block text-white m-l-15">
-                <i class="fa fa-plus-circle"></i> Add Image
+                <i class="fa fa-plus-circle"></i> Upload File
             </a>
-            @endcan
         </div>
     </div>
 @endsection
 @section('content')
-<div class="row el-element-overlay">
-    @foreach ($galleries as $gallery)
-        <div class="col-lg-3 col-md-6">
-            <div class="card">
-                <div class="el-card-item">
-                    <div class="el-card-avatar el-overlay-1">
-                        <img src="{{ asset($gallery->image) }}" style="height: 200px !important;"alt="user"/>
-                        <div class="el-overlay">
-                            <ul class="el-info">
-                                @can('media-view')
-                                <li>
-                                    <a class="btn default btn-outline image-popup-vertical-fit" href="{{ asset($gallery->image) }}">
-                                        <i class="icon-magnifier"></i>
-                                    </a>
-                                </li>
-                                @endcan
-                                @can('media-delete')
-                                <li>
-                                    <form action="{{ route('media.destroy',$gallery->id) }}" method="POST" id="delete_{{ $gallery->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
-                                    <a href="{{ route('media.destroy', $gallery->id) }}" class="btn default btn-outline sa-confirm" onclick="event.preventDefault(); document.getElementById('delete_'+{{ $gallery->id }}).submit();">
-                                        <i class="far fa-trash-alt"></i>
-                                    </a>
-                                </li>
-                                @endcan
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="el-card-content">
-                        <h4 class="box-title">{{ $gallery->title }}</h4>
-                        <p>{{ $gallery->image }}</p>
-                    </div>
-                </div>
+<div class="card">
+    <div class="card-body p-b-0">
+        <h4 class="card-title">Gallery</h4>
+        <ul class="nav nav-tabs customtab2" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#image" role="tab">
+                    <span class="hidden-sm-up"><i class="ti-home"></i></span>
+                    <span class="hidden-xs-down">Image</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#footer" role="tab">
+                    <span class="hidden-sm-up"><i class="ti-home"></i></span>
+                    <span class="hidden-xs-down">Video</span>
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active p-20" id="image" role="tabpanel">
+                @include('admin.gallery.image')
+            </div>
+            <div class="tab-pane p-20" id="footer" role="tabpanel">
+                @include('admin.gallery.video')
             </div>
         </div>
-    @endforeach
+    </div>
 </div>
-<div id="addImage" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div id="addImage" class="modal bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form method="POST" action="{{ route('media.store') }}" role="form" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('galleries.store') }}" class="gallery" role="form" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Upload Media Image</h4>
+                    <h4 class="modal-title" id="myModalLabel">Upload Media</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                 </div>
                 <div class="modal-body">
@@ -80,4 +66,53 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    var type = $('select[name=type]');
+    $(".gallery").validate({
+        rules: {           
+            image:          {required: function(){if (type.val() =='Image') {return true}}},
+            video_thumbnail:{required: function(){if (type.val() =='Video') {return true}}},
+            video_link:     {required: function(){if (type.val() =='Video') {return true}}}
+        },
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.dropify').dropify();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("select[name=type]").change(function() {
+            if ($(this).val() == 'Image') {
+                $('div.imageField').show('slow');
+                $('div.videoField').hide('slow');
+                $('div.videoLinkField').hide('slow');
+            }else if ($(this).val() == 'Video'){
+                $('div.imageField').hide('slow');
+                $('div.videoField').show('slow');
+                $('div.videoLinkField').show('slow');
+            }
+        }).trigger('change');
+    });
+</script>
 @endsection

@@ -30,6 +30,10 @@
             @include('admin.page.settings.subHome.index')
         @elseif($page->branch->type == 'Sub Branch' && $page->template == 'FAQS')
             @include('admin.page.settings.faq.index')
+        @elseif($page->branch->type == 'Sub Branch' && $page->template == 'Image Gallery')
+            @include('admin.page.settings.image.index')
+        @elseif($page->branch->type == 'Sub Branch' && $page->template == 'Video Gallery')
+            @include('admin.page.settings.video.index')
         @else
             @include('admin.page.settings.contact.index')
         @endif

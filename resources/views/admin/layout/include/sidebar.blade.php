@@ -71,48 +71,33 @@
             <i class="icons-Control"></i><span class="hide-menu">Category</span>
         </a>
     </li>
-    
-    @can('strings-list')
     <li>
-        <a class="waves-effect waves-dark" href="{{ route('dynamic-strings.index') }}" aria-expanded="false">
-            <i class="icons-Fountain-Pen"></i><span class="hide-menu">Strings</span>
+        <a class="waves-effect waves-dark" href="{{ route('galleries.index') }}" aria-expanded="false">
+            <i class="icons-Control"></i><span class="hide-menu">Gallery</span>
         </a>
     </li>
-    @endcan
-    
-    @can('comments-list')
     <li>
-        <a class="waves-effect waves-dark" href="{{ route('comments.index') }}" aria-expanded="false">
-            <i class="fas fa-comments"></i><span class="hide-menu">Comments</span>
+        <a class="waves-effect waves-dark" href="{{ route('contacts.index') }}" aria-expanded="false">
+            <i class="icons-Envelope"></i><span class="hide-menu">Contacts</span>
         </a>
     </li>
-    @endcan
-    @can('feedback-list')
-    <li>
-        <a class="waves-effect waves-dark" href="{{ route('feedbacks.index') }}" aria-expanded="false">
-            <i class="icons-Envelope"></i><span class="hide-menu">Feedbacks</span>
-        </a>
-    </li>
-    @endcan
     <li>
         <a class="waves-effect waves-dark" href="{{ route('settings.index') }}" aria-expanded="false">
             <i class="ti-settings"></i><span class="hide-menu">Settings</span>
         </a>
     </li>
-    @can('audit-list')
+    @if(auth()->user()->type == 'Main')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('audit.index') }}" aria-expanded="false">
             <i class="icons-Time-Backup"></i><span class="hide-menu">Audits</span>
         </a>
     </li>
-    @endcan
-    @can('log-list')
     <li>
         <a class="waves-effect waves-dark" href="{{ route('logs') }}" aria-expanded="false" target="_blank">
             <i class="icons-Calendar-4"></i><span class="hide-menu">Logs</span>
         </a>
     </li>
-    @endcan
+    @endif
     <li>
         <a class="waves-effect waves-dark" href="{{ route('logout') }}" aria-expanded="false" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="far fa-circle text-success"></i><span class="hide-menu">Log Out</span>

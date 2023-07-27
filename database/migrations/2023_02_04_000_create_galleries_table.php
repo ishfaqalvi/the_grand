@@ -15,8 +15,12 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->enum('type',['Image','Video']);
             $table->string('image')->nullable();
-            $table->string('title')->nullable();
+            $table->string('video_thumbnail')->nullable();
+            $table->string('video_link')->nullable();
             $table->timestamps();
         });
     }

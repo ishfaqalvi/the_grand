@@ -26,7 +26,7 @@ class PageSeeder extends Seeder
             [
                 'branch_id' => '2',
                 'template'  => 'Home',
-                'title'     => 'Home Page',
+                'title'     => 'Bradfoard Home Page',
                 'slug'      => 'home',
                 'metaTitle' => 'The Cappa Luxury Hotel'
             ],
@@ -61,7 +61,7 @@ class PageSeeder extends Seeder
             [
                 'branch_id' => '3',
                 'template'  => 'Home',
-                'title'     => 'Home Page',
+                'title'     => 'Dewsbury Home Page',
                 'slug'      => 'home',
                 'metaTitle' => 'The Cappa Luxury Hotel'
             ]

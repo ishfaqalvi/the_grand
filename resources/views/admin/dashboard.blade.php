@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-<div class="row">
+<!-- <div class="row">
     <div class="col-lg-3 col-md-6">
         <div class="card">
             <div class="d-flex flex-row">
@@ -70,8 +70,8 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row">
+</div> -->
+<!-- <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
@@ -187,7 +187,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 @endsection

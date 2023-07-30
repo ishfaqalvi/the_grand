@@ -51,18 +51,18 @@ $(function () {
     $(window).scroll(function () {
         var $this = $(this)
             , st = $this.scrollTop()
-            , navbar = $('.cappa-header')
-            , logo = $(".cappa-header .cappa-logo> img");
+            , navbar = $('.cappa-header');
+            // , logo = $(".cappa-header .cappa-logo> img");
         if (st > 150) {
             if (!navbar.hasClass('scrolled')) {
                 navbar.addClass('scrolled');
-                logo.attr('src', websiteLogo);
+                // logo.attr('src', websiteLogo);
             }
         }
         if (st < 150) {
             if (navbar.hasClass('scrolled')) {
                 navbar.removeClass('scrolled sleep')
-                logo.attr('src', websiteLogo);
+                // logo.attr('src', websiteLogo);
             }
         }
         if (st > 350) {

@@ -17,18 +17,22 @@
             <label class="control-label text-end col-md-3 mt-3">Title</label>
             <div class="col-md-9 mt-3">
                 {{ Form::text('values[navigation_title]', $settings['navigation_title'], ['class' => 'form-control']) }}
+                <small class="form-control-feedback"> Title navigation </small>
             </div>
             <label class="control-label text-end col-md-3 mt-3">Sub Title</label>
             <div class="col-md-9 mt-3">
                 {{ Form::text('values[navigation_sub_title]', $settings['navigation_sub_title'], ['class' => 'form-control']) }}
+                <small class="form-control-feedback"> Sub title navigation </small>
             </div>
             <label class="control-label mt-3 text-end col-md-3">Contact Label</label>
             <div class="col-md-9 mt-3">
                 {{ Form::text('values[navigation_contact_lablel]', $settings['navigation_contact_lablel'], ['class' => 'form-control']) }}
+                <small class="form-control-feedback"> Contact Label of navigation </small>
             </div>
             <label class="control-label mt-3 text-end col-md-3">Contact Number</label>
             <div class="col-md-9 mt-3">
                 {{ Form::text('values[navigation_contact_number]', $settings['navigation_contact_number'], ['class' => 'form-control']) }}
+                <small class="form-control-feedback"> 855 100 4444 </small>
             </div>
         </div>
     </div>

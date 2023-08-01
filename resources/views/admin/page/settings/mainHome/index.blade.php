@@ -1,31 +1,26 @@
 <ul class="nav nav-tabs customtab2" role="tablist">
     <li class="nav-item">
         <a class="nav-link {{ $active_tab=='navigation' ? 'active' : ''}}" data-bs-toggle="tab" href="#navigation" role="tab">
-            <span class="hidden-sm-up"><i class="ti-home"></i></span>
             <span class="hidden-xs-down">Detail</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ $active_tab=='slider' ? 'active' : ''}}" data-bs-toggle="tab" href="#slider" role="tab">
-            <span class="hidden-sm-up"><i class="ti-home"></i></span>
             <span class="hidden-xs-down">Slider</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ $active_tab=='about' ? 'active' : ''}}" data-bs-toggle="tab" href="#about" role="tab">
-            <span class="hidden-sm-up"><i class="ti-home"></i></span>
             <span class="hidden-xs-down">About</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ $active_tab=='branches' ? 'active' : ''}}" data-bs-toggle="tab" href="#branches" role="tab">
-            <span class="hidden-sm-up"><i class="ti-home"></i></span>
             <span class="hidden-xs-down">Branches</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ $active_tab=='sections' ? 'active' : ''}}" data-bs-toggle="tab" href="#sections" role="tab">
-            <span class="hidden-sm-up"><i class="ti-home"></i></span>
             <span class="hidden-xs-down">Sections</span>
         </a>
     </li>

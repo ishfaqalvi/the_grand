@@ -68,7 +68,7 @@ function sliderList($id)
  */
 function headerMenus($id)
 {
-    return Menu::where([['branch_id',$id],['type','Header']])->whereNull('parent_id')->get();
+    return Menu::userBasedHeader()->whereNull('parent_id')->get();
 }
 
 /**
@@ -78,7 +78,7 @@ function headerMenus($id)
  */
 function footerMenus($id)
 {
-    return Menu::where([['branch_id',$id],['type','Footer']])->get();
+    return Menu::userBasedFooter()->get();
 }
 
 /**

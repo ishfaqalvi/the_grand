@@ -18,7 +18,7 @@ class DynamicPageController extends Controller
      */
     public function viewHomePage()
     {
-        $page          = Page::where([['template','Home'],['branch_id', 1]])->first();
+        $page          = Page::where([['template','Home'],['branch_id', 1],['status','Publish']])->first();
         $branchSetting = branchSettings($page->branch_id);
         $pageSetting   = pageSettings($page->id);
         if ($page) {
@@ -37,7 +37,7 @@ class DynamicPageController extends Controller
     {
         $branch = Branch::where('name',$subdomain)->first();
         if ($branch) {
-            $page = $branch->pages()->where('template','Home')->first();
+            $page = $branch->pages()->where([['template','Home'],['status','Publish']])->first();
             if ($page) {
                 $branchSetting = branchSettings($page->branch_id);
                 $pageSetting   = pageSettings($page->id);
@@ -55,7 +55,7 @@ class DynamicPageController extends Controller
      */
     public function viewSubdomainOtherPage($subdomain, $slug)
     {
-        $page = Page::where('slug',$slug)->first();
+        $page = Page::where([['slug',$slug],['status','Publish']])->first();
         if ($page) {
             if ($page->template != 'Home') {
                 $branchSetting = branchSettings($page->branch_id);

@@ -44,7 +44,37 @@ Route::resource('sliders', SliderController::class);
 | Menu Routes
 |--------------------------------------------------------------------------
 */
-Route::resource('menus', MenuController::class);
+Route::controller(MenuController::class)->prefix('menus')->as('menus.')->group(function(){
+    /*
+    |--------------------------------------------------------------------------
+    | Navigation Menu Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['prefix' => 'header', 'as' => 'header.'], function (){
+        Route::get('index',     'index_header' )->name('index' );
+        Route::get('create',    'create_header')->name('create');
+        Route::get('edit/{id}', 'edit_header'  )->name('edit'  );
+        Route::get('show/{id}', 'show_header'  )->name('show'  );
+    });
+    /*
+    |--------------------------------------------------------------------------
+    | Footer Menu Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['prefix' => 'footer', 'as' => 'footer.'], function (){
+        Route::get('index',     'index_footer' )->name('index' );
+        Route::get('create',    'create_footer')->name('create');
+        Route::get('edit/{id}', 'edit_footer'  )->name('edit'  );
+    });
+    /*
+    |--------------------------------------------------------------------------
+    | General Menu Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::post('store',            'store'     )->name('store'     );
+    Route::patch('update/{menu}',   'update'    )->name('update'    );
+    Route::delete('delete/{id}',    'destroy'   )->name('destroy'   );
+});
 
 /*
 |--------------------------------------------------------------------------

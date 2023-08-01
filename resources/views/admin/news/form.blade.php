@@ -1,7 +1,7 @@
 <div class="row">
     <div class="form-group col-md-4">
         {{ Form::label('page') }}
-        {{ Form::select('page_id', homePages(), $news->page_id, ['class' => 'form-control' . ($errors->has('page_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--']) }}
+        {{ Form::select('page_id', homePages(), $news->page_id, ['class' => 'form-control form-select' . ($errors->has('page_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--']) }}
         {!! $errors->first('page_id', '<div class="invalid-feedback">:message</div>') !!}
         <small class="form-control-feedback"> Example: ( Select Page Name ) </small>
     </div>
@@ -28,7 +28,7 @@
     </div>
     <div class="form-group col-md-4">
         {{ Form::label('date') }}
-        {{ Form::date('date', $news->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'placeholder' => 'Date','required']) }}
+        {{ Form::text('date', $news->date, ['class' => 'form-control' . ($errors->has('date') ? ' is-invalid' : ''), 'placeholder' => 'Date','required','id' => 'mdate']) }}
         {!! $errors->first('date', '<div class="invalid-feedback">:message</div>') !!}
         <small class="form-control-feedback"> Example: ( date 01/13/2023 ) </small>
     </div>

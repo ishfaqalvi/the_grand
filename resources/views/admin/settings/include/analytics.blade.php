@@ -9,11 +9,11 @@
             <div class="col-md-9 mt-3">
                 {{ Form::textarea('values[google_search_console_code]', $settings['google_search_console_code'], ['class' => 'form-control','rows' => '4']) }}
             </div>
-            <label class="control-label text-end col-md-3 mt-3">Footer</label>
+            <label class="control-label text-end col-md-3 mt-3">Google Aanalytics Code</label>
             <div class="col-md-9 mt-3">
                 {{ Form::textarea('values[google_analytics_code]',  $settings['google_analytics_code'], ['class' => 'form-control','rows' => '4']) }}
             </div>
-            <label class="control-label text-end col-md-3 mt-3">Copyright</label>
+            <label class="control-label text-end col-md-3 mt-3">Clarity Code</label>
             <div class="col-md-9 mt-3">
                 {{ Form::textarea('values[clarity_code]', $settings['clarity_code'], ['class' => 'form-control','rows' => '4']) }}
             </div>

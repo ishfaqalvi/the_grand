@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ asset('admin/plugins/html5-editor/bootstrap-wysihtml5.css'                ) }}"/>
     <link rel="stylesheet" href="{{ asset('admin/plugins/datatables.net-bs4/css/responsive.dataTables.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css'   ) }}"/>
+    <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css'   ) }}"/>
     <link rel="stylesheet" href="{{ asset('admin/plugins/select2/dist/css/select2.min.css'                    ) }}"/>
     <link rel="stylesheet" href="{{ asset('admin/plugins/switchery/dist/switchery.min.css'                    ) }}"/>
     <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-select/bootstrap-select.min.css'           ) }}"/>
@@ -40,7 +42,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Elite admin</p>
+            <p class="loader__label">The Grand</p>
         </div>
     </div>
     <div id="main-wrapper">
@@ -92,8 +94,8 @@
             </div>
         </div>
         <footer class="footer">
-            © 2021 Eliteadmin by themedesigner.in
-            <a href="https://www.wrappixel.com/">WrapPixel</a>
+            © 2021 Admin by dazzle.lab.com
+            <a href="http://dazzle.lab.com/" target="_blank">DazzleLab</a>
         </footer>
     </div>
     
@@ -119,6 +121,8 @@
     <script src="{{ asset('admin/plugins/tinymce/tinymce.min.js'                              ) }}"></script>
     <script src="{{ asset('admin/plugins/wizard/jquery.steps.min.js'                          ) }}"></script>
     <script src="{{ asset('admin/plugins/wizard/jquery.validate.min.js'                       ) }}"></script>
+    <script src="{{ asset('admin/plugins/moment/moment.js'                                    ) }}"></script>
+    <script src="{{ asset('admin/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
     <script src="{{ asset('admin/plugins/sweetalert2/dist/sweetalert2.all.min.js'             ) }}"></script>
     <script src="{{ asset('admin/plugins/dropify/dist/js/dropify.min.js'                      ) }}"></script>
     <script src="{{ asset('admin/plugins/knob/jquery.knob.js'                                 ) }}"></script>

@@ -17,16 +17,17 @@
 @endsection
 
 @section('content')
-<!-- <div class="row">
+<div class="row">
+    @if(auth()->user()->type == 'Main')
     <div class="col-lg-3 col-md-6">
         <div class="card">
             <div class="d-flex flex-row">
                 <div class="p-10 bg-info">
-                    <h3 class="text-white box m-b-0"><i class="fas fa-users"></i></h3>
+                    <h3 class="text-white box m-b-0"><i class="ti-layout-grid2"></i></h3>
                 </div>
                 <div class="align-self-center m-l-20">
-                    <h3 class="m-b-0">50</h3>
-                    <h5 class="text-muted m-b-0">Users</h5>
+                    <h3 class="m-b-0">{{ $data['branches'] }}</h3>
+                    <h5 class="text-muted m-b-0">Branches</h5>
                 </div>
             </div>
         </div>
@@ -38,8 +39,74 @@
                     <h3 class="text-white box m-b-0"><i class="icon-people"></i></h3>
                 </div>
                 <div class="align-self-center m-l-20">
-                    <h3 class="m-b-0">5</h3>
-                    <h5 class="text-muted m-b-0">Authors</h5>
+                    <h3 class="m-b-0">{{ $data['users'] }}</h3>
+                    <h5 class="text-muted m-b-0">Users</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="d-flex flex-row">
+                <div class="p-10 bg-danger">
+                    <h3 class="text-white box m-b-0"><i class="ti-layout-media-right-alt"></i></h3>
+                </div>
+                <div class="align-self-center m-l-20">
+                    <h3 class="m-b-0">{{ $data['sliders'] }}</h3>
+                    <h5 class="text-muted m-b-0">Slides</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="d-flex flex-row">
+                <div class="p-10 bg-warning">
+                    <h3 class="text-white box m-b-0"><i class="icons-Books"></i></h3>
+                </div>
+                <div class="align-self-center m-l-20">
+                    <h3 class="m-b-0">{{ $data['pages'] }}</h3>
+                    <h5 class="text-muted m-b-0">Pages</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="d-flex flex-row">
+                <div class="p-10 bg-primary">
+                    <h3 class="text-white box m-b-0"><i class="icons-Wrench"></i></h3>
+                </div>
+                <div class="align-self-center m-l-20">
+                    <h3 class="m-b-0">{{ $data['services'] }}</h3>
+                    <h5 class="text-muted m-b-0">Services</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="d-flex flex-row">
+                <div class="p-10 bg-warning">
+                    <h3 class="text-white box m-b-0"><i class="icons-Building"></i></h3>
+                </div>
+                <div class="align-self-center m-l-20">
+                    <h3 class="m-b-0">{{ $data['facilities'] }}</h3>
+                    <h5 class="text-muted m-b-0">Facilities</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="d-flex flex-row">
+                <div class="p-10 bg-info">
+                    <h3 class="text-white box m-b-0"><i class="icons-Newspaper"></i></h3>
+                </div>
+                <div class="align-self-center m-l-20">
+                    <h3 class="m-b-0">{{ $data['news'] }}</h3>
+                    <h5 class="text-muted m-b-0">News</h5>
                 </div>
             </div>
         </div>
@@ -48,11 +115,11 @@
         <div class="card">
             <div class="d-flex flex-row">
                 <div class="p-10 bg-danger">
-                    <h3 class="text-white box m-b-0"><i class="icons-Wrench"></i></h3>
+                    <h3 class="text-white box m-b-0"><i class="icons-Testimonal"></i></h3>
                 </div>
                 <div class="align-self-center m-l-20">
-                    <h3 class="m-b-0">30</h3>
-                    <h5 class="text-muted m-b-0">Tools</h5>
+                    <h3 class="m-b-0">{{ $data['testimonials'] }}</h3>
+                    <h5 class="text-muted m-b-0">Testimonial</h5>
                 </div>
             </div>
         </div>
@@ -64,13 +131,39 @@
                     <h3 class="text-white box m-b-0"><i class="icons-Camera-2"></i></h3>
                 </div>
                 <div class="align-self-center m-l-20">
-                    <h3 class="m-b-0">100</h3>
-                    <h5 class="text-muted m-b-0">Media</h5>
+                    <h3 class="m-b-0">{{ $data['galleryImages'] }}</h3>
+                    <h5 class="text-muted m-b-0">Gallery Image</h5>
                 </div>
             </div>
         </div>
     </div>
-</div> -->
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="d-flex flex-row">
+                <div class="p-10 bg-info">
+                    <h3 class="text-white box m-b-0"><i class="icons-File-Video"></i></h3>
+                </div>
+                <div class="align-self-center m-l-20">
+                    <h3 class="m-b-0">{{ $data['galleryVideos'] }}</h3>
+                    <h5 class="text-muted m-b-0">Gallery Video</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="d-flex flex-row">
+                <div class="p-10 bg-success">
+                    <h3 class="text-white box m-b-0"><i class="icons-Envelope"></i></h3>
+                </div>
+                <div class="align-self-center m-l-20">
+                    <h3 class="m-b-0">{{ $data['contacts'] }}</h3>
+                    <h5 class="text-muted m-b-0">Contacts</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- <div class="row">
     <div class="col-lg-12">
         <div class="card">

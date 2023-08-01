@@ -2,7 +2,7 @@
     <div class="col-6">
         <div class="form-group col-md-12">
             {{ Form::label('type') }}
-            {{ Form::select('type', ['Main Branch' => 'Main Branch', 'Sub Branch' => 'Sub Branch'], $branch->type, ['class' => 'form-control' . ($errors->has('type') ? ' is-invalid' : ''), 'placeholder' => 'Type','required','placeholder' => '--Select--']) }}
+            {{ Form::select('type', ['Main Branch' => 'Main Branch', 'Sub Branch' => 'Sub Branch'], $branch->type, ['class' => 'form-control form-select' . ($errors->has('type') ? ' is-invalid' : ''), 'placeholder' => 'Type','required','placeholder' => '--Select--']) }}
             {!! $errors->first('type', '<div class="invalid-feedback">:message</div>') !!}
             <small class="form-control-feedback"> Name of branch </small>
         </div>

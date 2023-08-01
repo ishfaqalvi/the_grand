@@ -2,6 +2,19 @@
 
 @section('title'){{$page->metaTitle ?? 'The Cappa Luxury Hotel'}}@endsection
 
+@section('head')
+    <meta name="description"content="{{ $page->metaDescription }}"/>
+    <meta name="robots"     content="{{ $page->index == 'No' ? 'noindex, nofollow' : 'index, follow' }}">
+    
+    <!-- Open Graph general -->
+    {!! $page->og_tags !!}
+    <!-- Open Graph general -->
+    
+    <!-- Schema.org for Google -->
+    {!! $page->schemas !!}
+    <!-- Schema.org for Google -->
+@endsection
+
 @section('content')
 <!-- Preloader -->
 @if($pageSetting['home_sections_pageloader'] == 'Show')

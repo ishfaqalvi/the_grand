@@ -55,6 +55,7 @@ class Page extends Model implements Auditable
         'og_tags',
         'schemas',
         'content',
+        'index',
         'status'
     ];
 

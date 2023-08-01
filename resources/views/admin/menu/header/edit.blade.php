@@ -1,19 +1,19 @@
 @extends('admin.layout.app')
 
-@section('title','Create News')
+@section('title','Edit Header Menu')
 
 @section('breadcrumb')
 <div class="col-md-5 align-self-center">
-    <h4 class="text-themecolor">Create News</h4>
+    <h4 class="text-themecolor">Edit Header Menu</h4>
 </div>
 <div class="col-md-7 align-self-center text-end">
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('news.index') }}">News</a></li>
-            <li class="breadcrumb-item active">Create</li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('menus.header.index') }}">Header Menu</a></li>
+            <li class="breadcrumb-item active">Edit</li>
         </ol>
-        <a href="{{ route('news.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+        <a href="{{ route('menus.header.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
             <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
         </a>
     </div>
@@ -23,10 +23,11 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Create News</h4>
-        <form method="POST" action="{{ route('news.store') }}" role="form" enctype="multipart/form-data" class="news">
+        <h4 class="card-title">Edit Header Menu</h4>
+        <form method="POST" action="{{ route('menus.update', $menu->id) }}" role="form" enctype="multipart/form-data" class="menu">
             @csrf
-            @include('admin.news.form')
+            {{ method_field('PATCH') }}
+            @include('admin.menu.header.form')
         </form>
     </div>
 </div>
@@ -34,7 +35,7 @@
 
 @section('scripts')
 <script>
-    $(".news").validate({
+    $(".menu").validate({
         errorClass: "text-danger",
         highlight: function (element, errorClass) {
             $(element).removeClass(errorClass)
@@ -52,8 +53,5 @@
             error.insertAfter(element)
         },
     });
-</script>
-<script>
-    $('#mdate').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
 </script>
 @endsection

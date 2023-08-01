@@ -8,20 +8,6 @@ use OwenIt\Auditing\Models\Audit;
 
 class AuditController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    function __construct()
-    {
-        $this->middleware('permission:audit-list',  ['only' => ['index']]);
-        $this->middleware('permission:audit-view',  ['only' => ['show']]);
-        $this->middleware('permission:audit-create',['only' => ['create','store']]);
-        $this->middleware('permission:audit-edit',  ['only' => ['edit','update']]);
-        $this->middleware('permission:audit-delete',['only' => ['destroy']]);
-    }
-
 	/**
      * Display a listing of the resource.
      *

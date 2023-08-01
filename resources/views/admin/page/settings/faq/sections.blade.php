@@ -7,39 +7,39 @@
         <div class="form-group row">
             <label class="control-label text-end col-md-3 mt-3">Page Loader</label>
             <div class="col-md-9 mt-3">
-                {{ Form::select('values[faq_sections_pageloader]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_pageloader'] != '' ? $settings['faq_sections_pageloader'] : 'Show', ['class' => 'form-control','required']) }}
+                {{ Form::select('values[faq_sections_pageloader]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_pageloader'] != '' ? $settings['faq_sections_pageloader'] : 'Show', ['class' => 'form-control form-select','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Page Scroll Progress</label>
             <div class="col-md-9 mt-3">
-                {{ Form::select('values[faq_sections_scrollprogress]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_scrollprogress'] != '' ? $settings['faq_sections_scrollprogress'] : 'Show', ['class' => 'form-control','required']) }}
+                {{ Form::select('values[faq_sections_scrollprogress]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_scrollprogress'] != '' ? $settings['faq_sections_scrollprogress'] : 'Show', ['class' => 'form-control form-select','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Navigation</label>
             <div class="col-md-9 mt-3">
-                {{ Form::select('values[faq_sections_navigation]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_navigation'] != '' ? $settings['faq_sections_navigation'] : 'Show', ['class' => 'form-control','required']) }}
+                {{ Form::select('values[faq_sections_navigation]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_navigation'] != '' ? $settings['faq_sections_navigation'] : 'Show', ['class' => 'form-control form-select','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Banner</label>
             <div class="col-md-9 mt-3">
-                {{ Form::select('values[faq_sections_banner]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_banner'] != '' ? $settings['faq_sections_banner'] : 'Show', ['class' => 'form-control','required']) }}
+                {{ Form::select('values[faq_sections_banner]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_banner'] != '' ? $settings['faq_sections_banner'] : 'Show', ['class' => 'form-control form-select','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Questions</label>
             <div class="col-md-9 mt-3">
-                {{ Form::select('values[faq_sections_questions]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_questions'] != '' ? $settings['faq_sections_questions'] : 'Show', ['class' => 'form-control','required']) }}
+                {{ Form::select('values[faq_sections_questions]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_questions'] != '' ? $settings['faq_sections_questions'] : 'Show', ['class' => 'form-control form-select','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Testimonial</label>
             <div class="col-md-9 mt-3">
-                {{ Form::select('values[faq_sections_testimonial]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_testimonial'] != '' ? $settings['faq_sections_testimonial'] : 'Show', ['class' => 'form-control','required']) }}
+                {{ Form::select('values[faq_sections_testimonial]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_testimonial'] != '' ? $settings['faq_sections_testimonial'] : 'Show', ['class' => 'form-control form-select','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Contact Us</label>
             <div class="col-md-9 mt-3">
-                {{ Form::select('values[faq_sections_contact_us]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_contact_us'] != '' ? $settings['faq_sections_contact_us'] : 'Show', ['class' => 'form-control','required']) }}
+                {{ Form::select('values[faq_sections_contact_us]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_contact_us'] != '' ? $settings['faq_sections_contact_us'] : 'Show', ['class' => 'form-control form-select','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Footer</label>
             <div class="col-md-9 mt-3">
-                {{ Form::select('values[faq_sections_footer]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_footer'] != '' ? $settings['faq_sections_footer'] : 'Show', ['class' => 'form-control','required']) }}
+                {{ Form::select('values[faq_sections_footer]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_footer'] != '' ? $settings['faq_sections_footer'] : 'Show', ['class' => 'form-control form-select','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Copyright</label>
             <div class="col-md-9 mt-3">
-                {{ Form::select('values[faq_sections_copyright]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_copyright'] != '' ? $settings['faq_sections_copyright'] : 'Show', ['class' => 'form-control','required']) }}
+                {{ Form::select('values[faq_sections_copyright]',['Show' => 'Show','Hide' => 'Hide'], $settings['faq_sections_copyright'] != '' ? $settings['faq_sections_copyright'] : 'Show', ['class' => 'form-control form-select','required']) }}
             </div>
         </div>
     </div>

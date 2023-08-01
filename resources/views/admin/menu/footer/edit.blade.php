@@ -1,19 +1,19 @@
 @extends('admin.layout.app')
 
-@section('title','Edit Menu')
+@section('title','Edit Footer Menu')
 
 @section('breadcrumb')
 <div class="col-md-5 align-self-center">
-    <h4 class="text-themecolor">Edit Menu</h4>
+    <h4 class="text-themecolor">Edit Footer Menu</h4>
 </div>
 <div class="col-md-7 align-self-center text-end">
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('menus.index') }}">Menu</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('menus.footer.index') }}">Footer Menu</a></li>
             <li class="breadcrumb-item active">Edit</li>
         </ol>
-        <a href="{{ route('menus.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+        <a href="{{ route('menus.footer.index') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
             <i class="fas fa-arrow-left"></i> {{ __('Back') }} 
         </a>
     </div>
@@ -23,11 +23,11 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Edit Menu</h4>
+        <h4 class="card-title">Edit Footer Menu</h4>
         <form method="POST" action="{{ route('menus.update', $menu->id) }}" role="form" enctype="multipart/form-data" class="menu">
             @csrf
             {{ method_field('PATCH') }}
-            @include('admin.menu.form')
+            @include('admin.menu.footer.form')
         </form>
     </div>
 </div>
@@ -52,17 +52,6 @@
         errorPlacement: function (error, element) {
             error.insertAfter(element)
         },
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $("select[name=type]").change(function() {
-            if ($(this).val() == 'Header') {
-                $('div.parent').show('slow');
-            }else{
-                $('div.parent').hide('slow');
-            }
-        }).trigger('change');
     });
 </script>
 @endsection

@@ -45,10 +45,26 @@ class Menu extends Model implements Auditable
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return void
      */
-    public function scopeUserBased($query)
+    public function scopeUserBasedHeader($query)
     {
         if (auth()->user()->type == 'Branch') {
-            $query->where('branch_id', auth()->user()->branch_id);
+            $query->where([['branch_id', auth()->user()->branch_id],['type','Header']]);
+        }else{
+            $query->where('type','Header');
+        }
+    }
+
+    /**
+     * Menu scope a query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeUserBasedFooter($query)
+    {
+        if (auth()->user()->type == 'Branch') {
+            $query->where([['branch_id', auth()->user()->branch_id],['type','Footer']]);
+        }else{
+            $query->where('type','Footer');
         }
     }
 

@@ -3,10 +3,7 @@
         Action
     </button>
     <div class="dropdown-menu animated lightSpeedIn dropdown-menu-end">
-        <a class="dropdown-item" href="{{ route('menus.show',$menu->id) }}">
-            <i class="fa fa-fw fa-eye"></i> Show
-        </a>
-        <a class="dropdown-item" href="{{ route('menus.edit',$menu->id) }}">
+        <a class="dropdown-item" href="{{ route('menus.footer.edit',$menu->id) }}">
             <i class="fa fa-fw fa-edit"></i> Edit
         </a>
         <form action="{{ route('menus.destroy',$menu->id) }}" method="POST">

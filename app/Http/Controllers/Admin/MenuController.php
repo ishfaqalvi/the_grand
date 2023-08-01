@@ -17,11 +17,23 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index_header()
     {
-        $menus = Menu::userBased()->get();
+        $menus = Menu::userBasedHeader()->whereNull('parent_id')->get();
 
-        return view('admin.menu.index', compact('menus'));
+        return view('admin.menu.header.index', compact('menus'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_footer()
+    {
+        $menus = Menu::userBasedFooter()->get();
+
+        return view('admin.menu.footer.index', compact('menus'));
     }
 
     /**
@@ -29,10 +41,21 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create_header()
     {
         $menu = new Menu();
-        return view('admin.menu.create', compact('menu'));
+        return view('admin.menu.header.create', compact('menu'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create_footer()
+    {
+        $menu = new Menu();
+        return view('admin.menu.footer.create', compact('menu'));
     }
 
     /**
@@ -46,9 +69,19 @@ class MenuController extends Controller
         request()->validate(Menu::$rules);
 
         $menu = Menu::create($request->all());
-
-        return redirect()->route('menus.index')
-            ->with('success', 'Menu created successfully.');
+        if ($menu->type == 'Header') {
+            if ($menu->parent_id != Null)
+            {
+                return redirect()->back()->with('success', 'Menu child created successfully.');
+            }
+            else{
+                return redirect()->route('menus.header.index')->with('success', 'Header Menu created successfully.');
+            }
+        }
+        else{
+            return redirect()->route('menus.footer.index')
+            ->with('success', 'Footer Menu created successfully.');
+        }
     }
 
     /**
@@ -57,11 +90,11 @@ class MenuController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show_header($id)
     {
         $menu = Menu::find($id);
 
-        return view('admin.menu.show', compact('menu'));
+        return view('admin.menu.header.show', compact('menu'));
     }
 
     /**
@@ -70,10 +103,22 @@ class MenuController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit_header($id)
     {
         $menu = Menu::find($id);
-        return view('admin.menu.edit', compact('menu'));
+        return view('admin.menu.header.edit', compact('menu'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit_footer($id)
+    {
+        $menu = Menu::find($id);
+        return view('admin.menu.footer.edit', compact('menu'));
     }
 
     /**
@@ -88,9 +133,19 @@ class MenuController extends Controller
         request()->validate(Menu::$rules);
 
         $menu->update($request->all());
-
-        return redirect()->route('menus.index')
-            ->with('success', 'Menu updated successfully');
+        if ($menu->type == 'Header') {
+            if ($menu->parent_id != Null)
+            {
+                return redirect()->back()->with('success', 'Menu child updated successfully.');
+            }
+            else{
+                return redirect()->route('menus.header.index')->with('success', 'Header Menu updated successfully.');
+            }
+        }
+        else{
+            return redirect()->route('menus.footer.index')
+            ->with('success', 'Footer Menu updated successfully.');
+        }
     }
 
     /**
@@ -103,10 +158,10 @@ class MenuController extends Controller
         $menu = Menu::find($id);
         if(count($menu->childItems) < 1){
             $menu->delete();
-            return redirect()->route('menus.index')
+            return redirect()->back('menus.index')
             ->with('success', 'Menu deleted successfully');
         }else{
-            return redirect()->route('menus.index')
+            return redirect()->back('menus.index')
             ->with('warning', 'Sorry! Menu Item child exists.');
         } 
     }

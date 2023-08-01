@@ -24,25 +24,21 @@
         <ul class="nav nav-tabs customtab2" role="tablist">
             <li class="nav-item">
                 <a class="nav-link {{ $active_tab=='navigation' ? 'active' : ''}}" data-bs-toggle="tab" href="#navigation" role="tab">
-                    <span class="hidden-sm-up"><i class="ti-home"></i></span>
                     <span class="hidden-xs-down">Navigation</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ $active_tab=='footer' ? 'active' : ''}}" data-bs-toggle="tab" href="#footer" role="tab">
-                    <span class="hidden-sm-up"><i class="ti-home"></i></span>
                     <span class="hidden-xs-down">Footer</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ $active_tab=='copyright' ? 'active' : ''}}" data-bs-toggle="tab" href="#copyright" role="tab">
-                    <span class="hidden-sm-up"><i class="ti-home"></i></span>
                     <span class="hidden-xs-down">Copyright</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ $active_tab=='analytics' ? 'active' : ''}}" data-bs-toggle="tab" href="#analytics" role="tab">
-                    <span class="hidden-sm-up"><i class="ti-home"></i></span>
                     <span class="hidden-xs-down">Analytics</span>
                 </a>
             </li>

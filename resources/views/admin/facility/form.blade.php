@@ -1,7 +1,7 @@
 <div class="row">
     <div class="form-group col-md-6">
         {{ Form::label('page') }}
-        {{ Form::select('page_id', homePages(), $facility->page_id, ['class' => 'form-control' . ($errors->has('page_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--']) }}
+        {{ Form::select('page_id', homePages(), $facility->page_id, ['class' => 'form-control form-select' . ($errors->has('page_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--']) }}
         {!! $errors->first('page_id', '<div class="invalid-feedback">:message</div>') !!}
         <small class="form-control-feedback"> Example: ( Select Page Name ) </small>
     </div>

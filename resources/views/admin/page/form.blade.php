@@ -1,13 +1,13 @@
 <div class="row">
     <div class="form-group col-md-6">
         {{ Form::label('template') }}
-        {{ Form::select('template', ['Home' => 'Home','Image Gallery' => 'Image Gallery','Video Gallery' => 'Video Gallery','FAQS' => 'FAQS','Contact Us' => 'Contact Us'], $page->template, ['class' => 'form-control' . ($errors->has('template') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
+        {{ Form::select('template', ['Home' => 'Home','Image Gallery' => 'Image Gallery','Video Gallery' => 'Video Gallery','FAQS' => 'FAQS','Contact Us' => 'Contact Us'], $page->template, ['class' => 'form-control form-select' . ($errors->has('template') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
         {!! $errors->first('template', '<div class="invalid-feedback">:message</div>') !!}
     </div>
     @if(auth()->user()->type == 'Main')
     <div class="form-group col-md-6">
         {{ Form::label('branch') }}
-        {{ Form::select('branch_id', branches(), $page->branch_id, ['class' => 'form-control' . ($errors->has('branch_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
+        {{ Form::select('branch_id', branches(), $page->branch_id, ['class' => 'form-control form-select' . ($errors->has('branch_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
         {!! $errors->first('branch_id', '<div class="invalid-feedback">:message</div>') !!}
     </div>
     @else
@@ -22,6 +22,11 @@
         {{ Form::label('slug') }}
         {{ Form::text('slug', $page->slug, ['class' => 'form-control' . ($errors->has('slug') ? ' is-invalid' : ''), 'placeholder' => 'Slug','required']) }}
         {!! $errors->first('slug', '<div class="invalid-feedback">:message</div>') !!}
+    </div>
+    <div class="form-group col-md-6">
+        {{ Form::label('follow_and_index') }}
+        {{ Form::select('index', ['Yes' => 'Yes','No' => 'No'], $page->index, ['class' => 'form-control form-select' . ($errors->has('index') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
+        {!! $errors->first('index', '<div class="invalid-feedback">:message</div>') !!}
     </div>
     <div class="form-group col-md-6">
         {{ Form::label('metaTitle *') }}

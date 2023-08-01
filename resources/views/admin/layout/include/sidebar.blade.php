@@ -36,10 +36,14 @@
             <i class="ti-layout-media-right-alt"></i><span class="hide-menu">Slider</span>
         </a>
     </li>
-    <li>
-        <a class="waves-effect waves-dark" href="{{ route('menus.index') }}" aria-expanded="false">
+    <li> 
+        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
             <i class="icons-Bulleted-List"></i><span class="hide-menu">Menu</span>
         </a>
+        <ul aria-expanded="false" class="collapse">
+            <li><a href="{{ route('menus.header.index')}}">Header</a></li>
+            <li><a href="{{ route('menus.footer.index')}}">Footer</a></li>
+        </ul>
     </li>
     <li>
         <a class="waves-effect waves-dark" href="{{ route('pages.index') }}" aria-expanded="false">
@@ -63,7 +67,7 @@
     </li>
     <li>
         <a class="waves-effect waves-dark" href="{{ route('testimonials.index') }}" aria-expanded="false">
-            <i class="icons-Control"></i><span class="hide-menu">Testimonial</span>
+            <i class="icons-Testimonal"></i><span class="hide-menu">Testimonial</span>
         </a>
     </li>
     <li>

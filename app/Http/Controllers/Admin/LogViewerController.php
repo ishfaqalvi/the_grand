@@ -12,18 +12,6 @@ use Illuminate\Support\Facades\Crypt;
 class LogViewerController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    function __construct()
-    {
-        $this->middleware('permission:log-list',  ['only' => ['index']]);
-        $this->middleware('permission:log-view',  ['only' => ['download']]);
-        $this->middleware('permission:log-delete',['only' => ['earlyReturn']]);
-    }
-
-    /**
      * @var \Illuminate\Http\Request
      */
     protected $request;

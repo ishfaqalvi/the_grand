@@ -4,7 +4,7 @@
 
 @section('head')
     <meta name="description"content="{{ $page->metaDescription }}"/>
-    <meta name="robots"     content="{{ $page->status == 'UnPublish' ? 'noindex, nofollow' : 'index, follow' }}">
+    <meta name="robots"     content="{{ $page->index == 'No' ? 'noindex, nofollow' : 'index, follow' }}">
     <link rel ="stylesheet" href   ="{{ asset('public/css/test.css') }}" />
 
     <style>

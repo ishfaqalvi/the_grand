@@ -7,11 +7,11 @@
         <div class="form-group row">
             <label class="control-label text-end col-md-3 mt-3">Type</label>
             <div class="col-md-9 mt-3">
-                {{ Form::select('values[home_slider_type]',['Image' => 'Image','Video' => 'Video'], $settings['home_slider_type'] != '' ? $settings['home_slider_type'] : 'Image', ['class' => 'form-control','required']) }}
+                {{ Form::select('values[home_slider_type]',['Image' => 'Image','Video' => 'Video'], $settings['home_slider_type'] != '' ? $settings['home_slider_type'] : 'Image', ['class' => 'form-control form-select','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Auto Play</label>
             <div class="col-md-9 mt-3">
-                {{ Form::select('values[home_slider_autoPlay]',['Yes' => 'Yes','No' => 'No'], $settings['home_slider_autoPlay'] != '' ? $settings['home_slider_autoPlay'] : 'Yes', ['class' => 'form-control','required']) }}
+                {{ Form::select('values[home_slider_autoPlay]',['Yes' => 'Yes','No' => 'No'], $settings['home_slider_autoPlay'] != '' ? $settings['home_slider_autoPlay'] : 'Yes', ['class' => 'form-control form-select','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Speed</label>
             <div class="col-md-9 mt-3">

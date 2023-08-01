@@ -87,8 +87,6 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        request()->validate(Category::$rules);
-
         $category->update($request->all());
 
         return redirect()->route('categories.index')

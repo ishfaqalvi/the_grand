@@ -89,10 +89,11 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $this->validate($request, [
-            'name'      => 'required',
-            'email'     => 'required|email|unique:users,email,'.$user->id,
-            'password'  => 'same:confirm-password',
-            'branch_id' => 'required'
+            'name'              => 'required',
+            'email'             => 'required|email|unique:users,email,'.$user->id,
+            'password'          => 'nullable|same:confirm_password',
+            'confirm_password'  => 'nullable|same:password',
+            'branch_id'         => 'required'
         ]);
     
         $input = $request->all();

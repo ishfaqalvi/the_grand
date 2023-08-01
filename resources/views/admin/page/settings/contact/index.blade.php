@@ -1,43 +1,36 @@
 <ul class="nav nav-tabs customtab2" role="tablist">
     <li class="nav-item">
         <a class="nav-link {{ $active_tab=='navigation' ? 'active' : ''}}" data-bs-toggle="tab" href="#navigation" role="tab">
-            <span class="hidden-sm-up"><i class="ti-home"></i></span>
             <span class="hidden-xs-down">Detail</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ $active_tab=='banner' ? 'active' : ''}}" data-bs-toggle="tab" href="#banner" role="tab">
-            <span class="hidden-sm-up"><i class="ti-home"></i></span>
             <span class="hidden-xs-down">Banner</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ $active_tab=='contact' ? 'active' : ''}}" data-bs-toggle="tab" href="#contact" role="tab">
-            <span class="hidden-sm-up"><i class="ti-home"></i></span>
             <span class="hidden-xs-down">Contact Us</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ $active_tab=='form' ? 'active' : ''}}" data-bs-toggle="tab" href="#form" role="tab">
-            <span class="hidden-sm-up"><i class="ti-home"></i></span>
             <span class="hidden-xs-down">Form</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ $active_tab=='map' ? 'active' : ''}}" data-bs-toggle="tab" href="#map" role="tab">
-            <span class="hidden-sm-up"><i class="ti-home"></i></span>
             <span class="hidden-xs-down">Google Map</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ $active_tab=='booking' ? 'active' : ''}}" data-bs-toggle="tab" href="#booking" role="tab">
-            <span class="hidden-sm-up"><i class="ti-home"></i></span>
             <span class="hidden-xs-down">Booking</span>
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link {{ $active_tab=='sections' ? 'active' : ''}}" data-bs-toggle="tab" href="#sections" role="tab">
-            <span class="hidden-sm-up"><i class="ti-home"></i></span>
             <span class="hidden-xs-down">Sections</span>
         </a>
     </li>

@@ -15,7 +15,7 @@
             </div>
             <label class="control-label text-end col-md-3 mt-3">Link</label>
             <div class="col-md-9 mt-3">
-                {{ Form::text('values[copyright_link]', $settings['copyright_link'], ['class' => 'form-control']) }}
+                {{ Form::url('values[copyright_link]', $settings['copyright_link'], ['class' => 'form-control']) }}
             </div>
         </div>
     </div>

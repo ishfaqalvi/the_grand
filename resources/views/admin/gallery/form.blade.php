@@ -2,19 +2,19 @@
     @if(auth()->user()->type == 'Main')
     <div class="form-group col-md-6">
         {{ Form::label('branch') }}
-        {{ Form::select('branch_id', branches(), '', ['class' => 'form-control' . ($errors->has('branch_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
+        {{ Form::select('branch_id', branches(), '', ['class' => 'form-control form-select' . ($errors->has('branch_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
         {!! $errors->first('branch_id', '<div class="invalid-feedback">:message</div>') !!}
     </div>
     <div class="form-group col-md-6">
         {{ Form::label('category') }}
-        {{ Form::select('category_id', categories(), '', ['class' => 'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
+        {{ Form::select('category_id', categories(), '', ['class' => 'form-control form-select' . ($errors->has('category_id') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required']) }}
         {!! $errors->first('category_id', '<div class="invalid-feedback">:message</div>') !!}
     </div>
     @else
     {{ Form::hidden('branch_id', auth()->user()->branch_id) }}
     <div class="form-group col-md-6">
         {{ Form::label('category') }}
-        {{ Form::select('category_id', categories(auth()->user()->branch_id), '', ['class' => 'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'required']) }}
+        {{ Form::select('category_id', categories(auth()->user()->branch_id), '', ['class' => 'form-control form-select' . ($errors->has('category_id') ? ' is-invalid' : ''), 'required']) }}
         {!! $errors->first('category_id', '<div class="invalid-feedback">:message</div>') !!}
     </div>
     @endif

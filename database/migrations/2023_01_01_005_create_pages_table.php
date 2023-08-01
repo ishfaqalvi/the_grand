@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('og_tags')->nullable();
             $table->text('schemas')->nullable();
             $table->text('description')->nullable();
+            $table->enum('index',['Yes','No'])->default('No');
             $table->enum('status',['Publish','UnPublish'])->default('UnPublish');
             $table->timestamps();
         });

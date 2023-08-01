@@ -8,14 +8,17 @@
             <label class="control-label text-end col-md-3 mt-3">Text</label>
             <div class="col-md-9 mt-3">
                 {{ Form::text('values[copyright_text]', $settings['copyright_text'], ['class' => 'form-control']) }}
+                <small class="form-control-feedback"> © Copyright 2023 by  </small>
             </div>
             <label class="control-label text-end col-md-3 mt-3">Link Title</label>
             <div class="col-md-9 mt-3">
                 {{ Form::text('values[copyright_link_title]', $settings['copyright_link_title'], ['class' => 'form-control']) }}
+                <small class="form-control-feedback"> DuruThemes.com</small>
             </div>
             <label class="control-label text-end col-md-3 mt-3">Link</label>
             <div class="col-md-9 mt-3">
                 {{ Form::url('values[copyright_link]', $settings['copyright_link'], ['class' => 'form-control']) }}
+                <small class="form-control-feedback"> https://www.google.com </small>
             </div>
         </div>
     </div>

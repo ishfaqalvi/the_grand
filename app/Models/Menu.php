@@ -22,7 +22,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 class Menu extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
-    
+
     static $rules = [
 		'branch_id' => 'required',
         'type'      => 'required',
@@ -47,8 +47,12 @@ class Menu extends Model implements Auditable
      */
     public function scopeUserBasedHeader($query)
     {
-        if (auth()->user()->type == 'Branch') {
-            $query->where([['branch_id', auth()->user()->branch_id],['type','Header']]);
+        if (auth()->check()) {
+            if (auth()->user()->type == 'Branch') {
+                $query->where([['branch_id', auth()->user()->branch_id],['type','Header']]);
+            }else{
+                $query->where('type','Header');
+            }
         }else{
             $query->where('type','Header');
         }
@@ -61,8 +65,12 @@ class Menu extends Model implements Auditable
      */
     public function scopeUserBasedFooter($query)
     {
-        if (auth()->user()->type == 'Branch') {
-            $query->where([['branch_id', auth()->user()->branch_id],['type','Footer']]);
+        if (auth()->check()) {
+            if (auth()->user()->type == 'Branch') {
+                $query->where([['branch_id', auth()->user()->branch_id],['type','Footer']]);
+            }else{
+                $query->where('type','Footer');
+            }
         }else{
             $query->where('type','Footer');
         }

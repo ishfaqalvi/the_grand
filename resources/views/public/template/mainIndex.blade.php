@@ -5,11 +5,11 @@
 @section('head')
     <meta name="description"content="{{ $page->metaDescription }}"/>
     <meta name="robots"     content="{{ $page->index == 'No' ? 'noindex, nofollow' : 'index, follow' }}">
-    
+
     <!-- Open Graph general -->
     {!! $page->og_tags !!}
     <!-- Open Graph general -->
-    
+
     <!-- Schema.org for Google -->
     {!! $page->schemas !!}
     <!-- Schema.org for Google -->
@@ -37,7 +37,7 @@
 @if($pageSetting['home_sections_navigation'] == 'Show')
 <div class="cappa-wrap">
     <div class="cappa-wrap-inner rooms1">
-        <nav class="cappa-menu">          
+        <nav class="cappa-menu">
             <ul>
                 <li>
                     <div class="row">
@@ -53,7 +53,7 @@
                                 <div class="item">
                                     <div class="position-re o-hidden">
                                         <img src="{{ asset($brach->thumbnail) }}" alt="">
-                                    </div> 
+                                    </div>
                                     <span class="category">{{ strtoupper($brach->label)}}</span>
                                     <div class="con">
                                         <h5>{{ strtoupper($brach->name)}}</h5>
@@ -61,7 +61,7 @@
                                         <div class="row facilities">
                                             <div class="col col-md-7"></div>
                                             <div class="col col-md-5 text-end">
-                                                <div class="permalink"> 
+                                                <div class="permalink">
                                                     {{ strtoupper($brach->url_title)}}
                                                     <i class="ti-arrow-right"></i>
                                                 </div>
@@ -127,7 +127,7 @@
                             <h4>{{ strtoupper($slide->sub_title) }}</h4>
                             <h1>{{ strtoupper($slide->title) }}</h1>
                             @if($slide->button_text != '' && $slide->link != '')
-                            <div class="butn-light mt-30 mb-30"> 
+                            <div class="butn-light mt-30 mb-30">
                                 <a href="{{ asset($slide->link) }}" target="{{ $slide->linktype == 'External' ? '_blank' : ''}}" data-scroll-nav="1">
                                     <span>{{ strtoupper($slide->button_text) }}</span>
                                 </a>
@@ -141,7 +141,7 @@
         @endforeach
     </div>
 </header>
-@endif
+@else
 <header class="header">
     <div class="video-fullscreen-wrap">
         <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
@@ -154,7 +154,7 @@
         <div class="v-middle caption overlay">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-10 offset-md-1"> 
+                        <div class="col-md-10 offset-md-1">
                             <span>
                                 <i class="star-rating"></i>
                                 <i class="star-rating"></i>
@@ -175,6 +175,7 @@
         <a href="#" data-scroll-nav="1" class=""> <i class="ti-arrow-down"></i> </a>
     </div>
 </header>
+@endif
 <!-- About -->
 @if($pageSetting['home_sections_about'] == 'Show')
 <section class="about section-padding">
@@ -229,7 +230,7 @@
                     <div class="item">
                         <div class="position-re o-hidden">
                             <img src="{{ asset($branch->thumbnail) }}" alt="">
-                        </div> 
+                        </div>
                         <span class="category">{{ strtoupper($branch->label)}}</span>
                         <div class="con">
                             <h5>{{ strtoupper($branch->name)}}</h5>
@@ -307,7 +308,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="footer-bottom-inner">
-                        <p class="footer-bottom-copy-right">{{ $branchSetting['copyright_text'] }} 
+                        <p class="footer-bottom-copy-right">{{ $branchSetting['copyright_text'] }}
                             <a href="{{ asset($branchSetting['copyright_link']) }}">
                                 {{ $branchSetting['copyright_link_title'] }}
                             </a>

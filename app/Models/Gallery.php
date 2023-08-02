@@ -27,7 +27,7 @@ class Gallery extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['branch_id','category_id','type','image','video_thumbnail','video_link'];
+    protected $fillable = ['branch_id','category_id','type','image','video_thumbnail','video_link','order'];
 
     /**
      * Set the image attribute.
@@ -42,19 +42,23 @@ class Gallery extends Model implements Auditable
 
             $destinationPath = public_path('/upload/images/gallery/images/');
 
-            $img = Image::make($image->path());
-
             // save original
-            $img->save($destinationPath.'original/'.$name);
+            Image::make($image->path())->save($destinationPath.'original/'.$name);
 
             // save resized version 1
-            $img->resize(300, 185)->save($destinationPath.'small/'.$name);
+            Image::make($image->path())->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->crop(300, 185)->save($destinationPath.'small/'.$name);
 
             // save resized version 2
-            $img->resize(450, 280)->save($destinationPath.'medium/'.$name);
+            Image::make($image->path())->resize(450, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->crop(450, 280)->save($destinationPath.'medium/'.$name);
 
             // save resized version 3
-            $img->resize(295, 390)->save($destinationPath.'large/'.$name);
+            Image::make($image->path())->resize(295, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->crop(295, 390)->save($destinationPath.'large/'.$name);
 
             $this->attributes['image'] = $name;
         }else {
@@ -75,16 +79,18 @@ class Gallery extends Model implements Auditable
 
             $destinationPath = public_path('/upload/images/gallery/thumbnail/');
 
-            $img = Image::make($thumbnail->path());
-
             // save original
-            $img->save($destinationPath.'original/'.$name);
+            Image::make($image->path())->save($destinationPath.'original/'.$name);
 
             // save resized version 1
-            $img->resize(292, 182)->save($destinationPath.'small/'.$name);
+            Image::make($image->path())->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->crop(292, 185)->save($destinationPath.'small/'.$name);
 
             // save resized version 2
-            $img->resize(450, 280)->save($destinationPath.'medium/'.$name);
+            Image::make($image->path())->resize(450, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->crop(450, 280)->save($destinationPath.'medium/'.$name);
 
             $this->attributes['video_thumbnail'] = $name;
         }else{

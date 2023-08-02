@@ -21,49 +21,56 @@ class PageSeeder extends Seeder
         		'template' 	=> 'Home',
         		'title' 	=> 'Home Page',
         		'slug' 		=> 'home',
-                'metaTitle' => 'The Cappa Luxury Hotel'
+                'metaTitle' => 'The Cappa Luxury Hotel',
+                'status'     => 'Publish'
         	],
             [
                 'branch_id' => '2',
                 'template'  => 'Home',
                 'title'     => 'Bradfoard Home Page',
                 'slug'      => 'home',
-                'metaTitle' => 'The Cappa Luxury Hotel'
+                'metaTitle' => 'The Cappa Luxury Hotel',
+                'status'     => 'Publish'
             ],
             [
                 'branch_id' => '2',
                 'template'  => 'FAQS',
                 'title'     => 'FAQS',
                 'slug'      => 'faqs',
-                'metaTitle' => 'The Cappa Luxury Hotel'
+                'metaTitle' => 'The Cappa Luxury Hotel',
+                'status'     => 'Publish'
             ],
             [
                 'branch_id' => '2',
                 'template'  => 'Contact Us',
                 'title'     => 'Contact Us',
                 'slug'      => 'contact-us',
-                'metaTitle' => 'The Cappa Luxury Hotel'
+                'metaTitle' => 'The Cappa Luxury Hotel',
+                'status'     => 'Publish'
             ],
             [
                 'branch_id' => '2',
                 'template'  => 'Image Gallery',
                 'title'     => 'Image Gallery',
                 'slug'      => 'image-gallery',
-                'metaTitle' => 'The Cappa Luxury Hotel'
+                'metaTitle' => 'The Cappa Luxury Hotel',
+                'status'     => 'Publish'
             ],
             [
                 'branch_id' => '2',
                 'template'  => 'Video Gallery',
                 'title'     => 'Video Gallery',
                 'slug'      => 'video-gallery',
-                'metaTitle' => 'The Cappa Luxury Hotel'
+                'metaTitle' => 'The Cappa Luxury Hotel',
+                'status'     => 'Publish'
             ],
             [
                 'branch_id' => '3',
                 'template'  => 'Home',
                 'title'     => 'Dewsbury Home Page',
                 'slug'      => 'home',
-                'metaTitle' => 'The Cappa Luxury Hotel'
+                'metaTitle' => 'The Cappa Luxury Hotel',
+                'status'     => 'Publish'
             ]
         ]);
     }

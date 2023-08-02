@@ -1,18 +1,10 @@
 @php($user = Auth::user())
 <ul id="sidebarnav">
     <li class="user-pro">
-        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+        <a class="waves-effect waves-dark" href="{{ route('user.profile.edit') }}" aria-expanded="false">
             <img src="{{ asset(Auth::user()->image) }}" alt="user-img" class="img-circle">
             <span class="hide-menu">{{ Auth::user()->name }}</span>
         </a>
-        <ul aria-expanded="false" class="collapse">
-            <li><a href="{{ route('user.profile.edit') }}"><i class="ti-user"></i> My Profile</a></li>
-            <li>
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <i class="fa fa-power-off"></i> Logout
-                </a>
-            </li>
-        </ul>
     </li>
     <li>
         <a class="waves-effect waves-dark" href="{{ route('dashboard') }}" aria-expanded="false">
@@ -76,9 +68,13 @@
         </a>
     </li>
     <li>
-        <a class="waves-effect waves-dark" href="{{ route('galleries.index') }}" aria-expanded="false">
-            <i class="icons-Control"></i><span class="hide-menu">Gallery</span>
+        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+            <i class="icons-Bulleted-List"></i><span class="hide-menu">Gallery</span>
         </a>
+        <ul aria-expanded="false" class="collapse">
+            <li><a href="{{ route('gallery.image.index')}}">Image</a></li>
+            <li><a href="{{ route('gallery.video.index')}}">Video</a></li>
+        </ul>
     </li>
     <li>
         <a class="waves-effect waves-dark" href="{{ route('contacts.index') }}" aria-expanded="false">
@@ -102,9 +98,4 @@
         </a>
     </li>
     @endif
-    <li>
-        <a class="waves-effect waves-dark" href="{{ route('logout') }}" aria-expanded="false" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="far fa-circle text-success"></i><span class="hide-menu">Log Out</span>
-        </a>
-    </li>
 </ul>

@@ -1,4 +1,4 @@
-p<div class="row">
+<div class="row">
     @if(auth()->user()->type == 'Main')
     <div class="form-group col-md-6">
         {{ Form::label('branch') }}

@@ -25,7 +25,7 @@
         {{ Form::label('slug') }}
         {{ Form::text('slug', $page->slug, ['class' => 'form-control' . ($errors->has('slug') ? ' is-invalid' : ''), 'placeholder' => 'Slug','required']) }}
         {!! $errors->first('slug', '<div class="invalid-feedback">:message</div>') !!}
-        <small class="form-control-feedback"> page slug </small>
+        <small class="form-control-feedback"> Page slug </small>
     </div>
     <div class="form-group col-md-6">
         {{ Form::label('follow_and_index') }}
@@ -34,16 +34,16 @@
         <small class="form-control-feedback"> Yes or No </small>
     </div>
     <div class="form-group col-md-6">
-        {{ Form::label('metaTitle *') }}
+        {{ Form::label('meta Title') }}
         {{ Form::text('metaTitle', $page->metaTitle, ['class' => 'form-control' . ($errors->has('metaTitle') ? ' is-invalid' : ''), 'placeholder' => 'Meta Title','required']) }}
         {!! $errors->first('metaTitle', '<div class="invalid-feedback">:message</div>') !!}
-        <small class="form-control-feedback"> Page metaTitle </small>
+        <small class="form-control-feedback"> Page meta title </small>
     </div>
-    <div class="form-group col-md-6">
-        {{ Form::label('metaDescription *') }}
+    <div class="form-group col-md-12">
+        {{ Form::label('meta Description') }}
         {{ Form::text('metaDescription', $page->metaDescription, ['class' => 'form-control' . ($errors->has('metaDescription') ? ' is-invalid' : ''), 'placeholder' => 'Meta Description']) }}
         {!! $errors->first('metaDescription', '<div class="invalid-feedback">:message</div>') !!}
-        <small class="form-control-feedback"> Page metaDescription </small>
+        <small class="form-control-feedback"> Page meta description </small>
     </div>
     <div class="form-group col-md-6">
         {{ Form::label('Open Graph Tags(OG Tags) *') }}
@@ -61,7 +61,7 @@
         {{ Form::label('description') }}
         {{ Form::textarea('description', $page->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'Description','rows'=>'3']) }}
         {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
-        <small class="form-control-feedback"> discription of page </small>
+        <small class="form-control-feedback"> Description of page </small>
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Submit</button>

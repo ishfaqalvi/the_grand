@@ -140,10 +140,31 @@ Route::resource('categories', CategoryController::class);
 | Media Routes
 |--------------------------------------------------------------------------
 */
-Route::controller(GalleryController::class)->prefix('gallery')->as('galleries.')->group(function () {
-	Route::get('index',		  	'index'	 )->name('index');
-	Route::post('store',		'store'	 )->name('store');
-	Route::delete('delete/{id}','destroy')->name('destroy');
+Route::controller(GalleryController::class)->prefix('gallery')->as('gallery.')->group(function () {
+    /*
+    |--------------------------------------------------------------------------
+    | Image Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['prefix' => 'image', 'as' => 'image.'], function (){
+        Route::get('index',     'index_image' )->name('index' );
+    });
+    /*
+    |--------------------------------------------------------------------------
+    | Video Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['prefix' => 'video', 'as' => 'video.'], function (){
+        Route::get('index',     'index_video' )->name('index' );
+    });
+    /*
+    |--------------------------------------------------------------------------
+    | General Menu Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::post('store',            'store'   )->name('store'     );
+    Route::patch('update/{gallery}', 'update' )->name('update'    );
+    Route::delete('delete/{id}',    'destroy' )->name('destroy'   );
 });
 
 /*

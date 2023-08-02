@@ -15,7 +15,7 @@
         {{ Form::label('icon') }}
         {{ Form::text('icon', $facility->icon, ['class' => 'form-control' . ($errors->has('icon') ? ' is-invalid' : ''), 'placeholder' => 'Icon','required']) }}
         {!! $errors->first('icon', '<div class="invalid-feedback">:message</div>') !!}
-        <small class="form-control-feedback"> Example: (flaticon-world) </small>
+        <small class="form-control-feedback">Example: (flaticon-world) <a href="https://www.flaticon.com" target="_blank"> Flaticon Icons</a></small>
     </div>
     <div class="form-group col-md-6">
         {{ Form::label('order') }}

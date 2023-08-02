@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use App\Mail\ContactFormMail;
 use App\Models\Contact;
 use App\Models\Branch;
 use App\Models\Page;
+
 
 class DynamicPageController extends Controller
 {
@@ -18,13 +21,13 @@ class DynamicPageController extends Controller
      */
     public function viewHomePage()
     {
-        $page          = Page::where([['template','Home'],['branch_id', 1],['status','Publish']])->first();
-        $branchSetting = branchSettings($page->branch_id);
-        $pageSetting   = pageSettings($page->id);
+        $page = Page::where([['template','Home'],['branch_id', 1],['status','Publish']])->first();
+        $branchSetting = branchSettings(1);
         if ($page) {
+            $pageSetting   = pageSettings($page->id);
             return view('public.template.mainIndex',compact('page','branchSetting','pageSetting'));
         }
-        return view('public.errors.404');
+        return view('public.errors.404', compact('branchSetting'));
     }
 
     /**
@@ -85,7 +88,13 @@ class DynamicPageController extends Controller
             'subject'   => 'required',
             'message'   => 'required'
         ]);
-        Contact::create($request->all());
+        $contact = Contact::create($request->all());
+        $contact->type = 'User';
+        Mail::to($contact->email)->send(new ContactFormMail($contact));
+        $settings = branchSetting($contact->branch_id);
+        $adminEmail = $settings['footer_email'];
+        $contact->type = 'Admin';
+        Mail::to($adminEmail)->send(new ContactFormMail($contact));
         return redirect()->back()->with(['contactMessage' => 'success']);
     }
 }

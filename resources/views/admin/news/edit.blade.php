@@ -54,4 +54,12 @@
         },
     });
 </script>
+<script>
+    $('#mdate').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.dropify').dropify();
+    });
+</script>
 @endsection

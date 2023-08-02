@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('video_thumbnail')->nullable();
             $table->string('video_link')->nullable();
+            $table->integer('order')->default(1);
             $table->timestamps();
         });
     }

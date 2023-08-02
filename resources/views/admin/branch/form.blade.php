@@ -4,7 +4,7 @@
             {{ Form::label('type') }}
             {{ Form::select('type', ['Main Branch' => 'Main Branch', 'Sub Branch' => 'Sub Branch'], $branch->type, ['class' => 'form-control form-select' . ($errors->has('type') ? ' is-invalid' : ''), 'placeholder' => 'Type','required','placeholder' => '--Select--']) }}
             {!! $errors->first('type', '<div class="invalid-feedback">:message</div>') !!}
-            <small class="form-control-feedback"> Name of branch </small>
+            <small class="form-control-feedback"> Select branch type </small>
         </div>
         <div class="form-group col-md-12">
             {{ Form::label('name') }}
@@ -28,7 +28,7 @@
             {{ Form::label('url_title') }}
             {{ Form::text('url_title', $branch->url_title, ['class' => 'form-control' . ($errors->has('url_title') ? ' is-invalid' : ''), 'placeholder' => 'Url Title','required']) }}
             {!! $errors->first('url_title', '<div class="invalid-feedback">:message</div>') !!}
-            <small class="form-control-feedback"> Url Title of branch </small>
+            <small class="form-control-feedback">String use for link title </small>
         </div>
     </div>
     <div class="col-6">

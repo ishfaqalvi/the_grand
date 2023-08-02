@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-9">
-                        <div class="row tab-content active" id="all"></div>
+                        <div class="tab-content active" id="all"></div>
                         @foreach(categoryList($page->branch_id) as $key => $category)
                         <div class="tab-content" id="tab{{ ++$key }}">
                             <div class="row">

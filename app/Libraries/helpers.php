@@ -118,7 +118,7 @@ function questions($id)
  */
 function images($id)
 {
-    return Gallery::where([['type','Image'],['category_id',$id]])->get();
+    return Gallery::where([['type','Image'],['category_id',$id]])->orderBy('order')->get();
 }
 
 /**
@@ -128,7 +128,7 @@ function images($id)
  */
 function videos($id)
 {
-    return Gallery::where([['type','Video'],['category_id',$id]])->get();
+    return Gallery::where([['type','Video'],['category_id',$id]])->orderBy('order')->get();
 }
 
 /**

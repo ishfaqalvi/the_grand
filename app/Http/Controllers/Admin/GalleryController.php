@@ -18,13 +18,23 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index_image()
     {
         $images = Gallery::userBasedImage()->get();
-        $videos = Gallery::userBasedVideo()->get();
-        $galleries = [$images, $videos];
 
-        return view('admin.gallery.index', compact('galleries'));
+        return view('admin.gallery.image.index', compact('images'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_video()
+    {
+        $videos = Gallery::userBasedVideo()->get();
+
+        return view('admin.gallery.video.index', compact('videos'));
     }
 
     /**
@@ -38,7 +48,20 @@ class GalleryController extends Controller
         $gallery = Gallery::create($request->all());
         $message = $gallery->type.' uploaded successfully.';
 
-        return redirect()->route('galleries.index')->with('success', $message);
+        return redirect()->back()->with('success', $message);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  Menu $menu
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Gallery $gallery)
+    {
+        $gallery->update($request->all());
+        return redirect()->back()->with('success', 'Media updated successfully.');
     }
 
     /**
@@ -52,6 +75,6 @@ class GalleryController extends Controller
         $message = $gallery->type.' deleted successfully.';
         $gallery->delete();
 
-        return redirect()->route('galleries.index')->with('success', $message);
+        return redirect()->back()->with('success', $message);
     }
 }

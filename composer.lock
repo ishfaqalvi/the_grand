@@ -4,8 +4,63 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c317de1d245e448c79ebb84b65f1b88",
+    "content-hash": "1bab0890dfe1a14ae7ef0a15b98da5ef",
     "packages": [
+        {
+            "name": "abdrzakoxa/laravel-eloquent-filter",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/abdrzakoxa/laravel-eloquent-filter.git",
+                "reference": "95332049a4c074539cde4749516362cc35be53a3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/abdrzakoxa/laravel-eloquent-filter/zipball/95332049a4c074539cde4749516362cc35be53a3",
+                "reference": "95332049a4c074539cde4749516362cc35be53a3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.19",
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^9.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Abdrzakoxa\\EloquentFilter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abderrazzak OXA",
+                    "email": "abderrazzakoxa@gmail.com"
+                }
+            ],
+            "description": "Scalable way to filter laravel model",
+            "keywords": [
+                "eloquent",
+                "filter",
+                "laravel",
+                "model",
+                "query",
+                "search"
+            ],
+            "support": {
+                "issues": "https://github.com/abdrzakoxa/laravel-eloquent-filter/issues",
+                "source": "https://github.com/abdrzakoxa/laravel-eloquent-filter/tree/1.1.0"
+            },
+            "time": "2022-04-21T03:51:52+00:00"
+        },
         {
             "name": "anhskohbo/no-captcha",
             "version": "3.5.0",
@@ -8560,5 +8615,5 @@
         "php": "^8.0.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }

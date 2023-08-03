@@ -18,11 +18,13 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index_image()
+    public function index_image(Request $request)
     {
-        $images = Gallery::userBasedImage()->get();
+        $images = Gallery::filter($request->all())->image()->userBased()->get();
+        $filters = getFilter(Gallery::image()->userBased()->get(), ['branch_id','category_id']);
+        $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
-        return view('admin.gallery.image.index', compact('images'));
+        return view('admin.gallery.image.index', compact('images','filters','userRequest'));
     }
 
     /**
@@ -30,11 +32,13 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index_video()
+    public function index_video(Request $request)
     {
-        $videos = Gallery::userBasedVideo()->get();
+        $videos = Gallery::filter($request->all())->video()->userBased()->get();
+        $filters = getFilter(Gallery::video()->userBased()->get(), ['branch_id','category_id']);
+        $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
-        return view('admin.gallery.video.index', compact('videos'));
+        return view('admin.gallery.video.index', compact('videos','filters','userRequest'));
     }
 
     /**

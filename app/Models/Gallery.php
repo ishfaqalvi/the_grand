@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use App\EloquentFilters\BranchId;
+use App\EloquentFilters\CategoryId;
+
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use Abdrzakoxa\EloquentFilter\Traits\Filterable;
 use Image;
 
 /**
@@ -19,6 +23,7 @@ use Image;
 class Gallery extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
+    use Filterable;
 
     protected $perPage = 20;
 
@@ -28,6 +33,11 @@ class Gallery extends Model implements Auditable
      * @var array
      */
     protected $fillable = ['branch_id','category_id','type','image','video_thumbnail','video_link','order'];
+
+    protected $filters = [
+        BranchId::class,
+        CategoryId::class
+    ];
 
     /**
      * Set the image attribute.
@@ -99,16 +109,14 @@ class Gallery extends Model implements Auditable
     }
 
     /**
-     * Gallery scope a query
+     * Menu scope a query
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return void
      */
-    public function scopeUserBasedImage($query)
+    public function scopeUserBased($query)
     {
         if (auth()->user()->type == 'Branch') {
-            $query->where([['branch_id', auth()->user()->branch_id],['type','Image']]);
-        }else{
-        	$query->where('type','Image');
+            $query->where('branch_id', auth()->user()->branch_id);
         }
     }
 
@@ -117,13 +125,19 @@ class Gallery extends Model implements Auditable
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return void
      */
-    public function scopeUserBasedVideo($query)
+    public function scopeImage($query)
     {
-        if (auth()->user()->type == 'Branch') {
-            $query->where([['branch_id', auth()->user()->branch_id],['type','Video']]);
-        }else{
-        	$query->where('type','Video');
-        }
+        $query->where('type','Image');
+    }
+
+    /**
+     * Gallery scope a query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeVideo($query)
+    {
+        $query->where('type','Video');
     }
 
     /**

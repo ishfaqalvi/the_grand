@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Redirect;
-use App\Http\Controllers\Admin\BranchController;
-use App\Http\Controllers\Admin\BranchSettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,66 +11,12 @@ Route::get('dashboard', DashboardController::class)->name('dashboard');
 
 /*
 |--------------------------------------------------------------------------
-| User Routes
+| Settings Routes
 |--------------------------------------------------------------------------
 */
-Route::resource('users', UserController::class);
-Route::controller(UserController::class)->prefix('user')->group(function () {
-	Route::get('profile', 		 'profileEdit'	)->name('user.profile.edit');
-    Route::post('profile',		 'profileUpdate')->name('user.profile.update');
-    Route::post('check_email', 	 'checkEmail'	)->name('user.checkEmail');
-    Route::post('check_password','checkPassword')->name('user.checkPassword');
-});
-
-/*
-|--------------------------------------------------------------------------
-| Branches Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('branches', BranchController::class);
-
-/*
-|--------------------------------------------------------------------------
-| Slider Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('sliders', SliderController::class);
-
-/*
-|--------------------------------------------------------------------------
-| Menu Routes
-|--------------------------------------------------------------------------
-*/
-Route::controller(MenuController::class)->prefix('menus')->as('menus.')->group(function(){
-    /*
-    |--------------------------------------------------------------------------
-    | Navigation Menu Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['prefix' => 'header', 'as' => 'header.'], function (){
-        Route::get('index',     'index_header' )->name('index' );
-        Route::get('create',    'create_header')->name('create');
-        Route::get('edit/{id}', 'edit_header'  )->name('edit'  );
-        Route::get('show/{id}', 'show_header'  )->name('show'  );
-    });
-    /*
-    |--------------------------------------------------------------------------
-    | Footer Menu Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['prefix' => 'footer', 'as' => 'footer.'], function (){
-        Route::get('index',     'index_footer' )->name('index' );
-        Route::get('create',    'create_footer')->name('create');
-        Route::get('edit/{id}', 'edit_footer'  )->name('edit'  );
-    });
-    /*
-    |--------------------------------------------------------------------------
-    | General Menu Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::post('store',            'store'     )->name('store'     );
-    Route::patch('update/{menu}',   'update'    )->name('update'    );
-    Route::delete('delete/{id}',    'destroy'   )->name('destroy'   );
+Route::controller(SettingController::class)->prefix('settings')->group(function () {
+    Route::get('index',     'index' )->name('settings.index');
+    Route::post('save',     'save'  )->name('settings.save');
 });
 
 /*
@@ -82,6 +25,7 @@ Route::controller(MenuController::class)->prefix('menus')->as('menus.')->group(f
 |--------------------------------------------------------------------------
 */
 Route::controller(PageController::class)->prefix('pages')->as('pages.')->group(function () {
+    Route::post('index',            'index'    )->name('index'      );
     Route::get('index',             'index'    )->name('index'      );
     Route::get('create',            'create'   )->name('create'     );
     Route::post('store',            'store'    )->name('store'      );
@@ -137,38 +81,6 @@ Route::resource('categories', CategoryController::class);
 
 /*
 |--------------------------------------------------------------------------
-| Media Routes
-|--------------------------------------------------------------------------
-*/
-Route::controller(GalleryController::class)->prefix('gallery')->as('gallery.')->group(function () {
-    /*
-    |--------------------------------------------------------------------------
-    | Image Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['prefix' => 'image', 'as' => 'image.'], function (){
-        Route::get('index',     'index_image' )->name('index' );
-    });
-    /*
-    |--------------------------------------------------------------------------
-    | Video Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::group(['prefix' => 'video', 'as' => 'video.'], function (){
-        Route::get('index',     'index_video' )->name('index' );
-    });
-    /*
-    |--------------------------------------------------------------------------
-    | General Menu Routes
-    |--------------------------------------------------------------------------
-    */
-    Route::post('store',            'store'   )->name('store'     );
-    Route::patch('update/{gallery}', 'update' )->name('update'    );
-    Route::delete('delete/{id}',    'destroy' )->name('destroy'   );
-});
-
-/*
-|--------------------------------------------------------------------------
 | Contacts Routes
 |--------------------------------------------------------------------------
 */
@@ -180,34 +92,113 @@ Route::controller(ContactController::class)->prefix('contacts')->as('contacts.')
 
 /*
 |--------------------------------------------------------------------------
-| Audit Routes
+| Slider Routes
 |--------------------------------------------------------------------------
 */
-Route::controller(AuditController::class)->prefix('audits')->group(function () {
-	Route::get('index', 		 'index')->name('audit.index');
-	Route::get('show/{id}', 	 'show')->name('audit.show');
-	Route::delete('destroy/{id}','destroy')->name('audit.destroy');
+Route::controller(SliderController::class)->prefix('sliders')->as('sliders.')->group(function(){
+
+    Route::group(['prefix' => 'image', 'as' => 'image.'], function (){
+        Route::get('index',     'indexImage' )->name('index' );
+        Route::post('index',     'indexImage' )->name('index' );
+        Route::get('create',    'createImage')->name('create');
+        Route::get('edit/{id}', 'editImage'  )->name('edit'  );
+        Route::get('show/{id}', 'showImage'  )->name('show'  );
+    });
+    
+    Route::group(['prefix' => 'video', 'as' => 'video.'], function (){
+        Route::get('index',     'indexVideo' )->name('index' );
+        Route::post('index',     'indexVideo' )->name('index' );
+        Route::get('create',    'createVideo')->name('create');
+        Route::get('edit/{id}', 'editVideo'  )->name('edit'  );
+        Route::get('show/{id}', 'showVideo'  )->name('show'  );
+    });
+    
+    Route::post('store',            'store'     )->name('store'     );
+    Route::patch('update/{slider}',   'update'    )->name('update'    );
+    Route::delete('delete/{id}',    'destroy'   )->name('destroy'   );
 });
 
 /*
 |--------------------------------------------------------------------------
-| Settings Routes
+| Menu Routes
 |--------------------------------------------------------------------------
-| All route related to overall settings of website
 */
-Route::controller(SettingController::class)->prefix('settings')->group(function () {
-	Route::get('index', 	'index'	)->name('settings.index');
-	Route::post('save', 	'save'	)->name('settings.save');
+Route::controller(MenuController::class)->prefix('menus')->as('menus.')->group(function(){
+
+    Route::group(['prefix' => 'header', 'as' => 'header.'], function (){
+        Route::get('index',     'index_header' )->name('index' );
+        Route::post('index',     'index_header' )->name('index' );
+        Route::get('create',    'create_header')->name('create');
+        Route::get('edit/{id}', 'edit_header'  )->name('edit'  );
+        Route::get('show/{id}', 'show_header'  )->name('show'  );
+    });
+    
+    Route::group(['prefix' => 'footer', 'as' => 'footer.'], function (){
+        Route::get('index',     'index_footer' )->name('index' );
+        Route::post('index',     'index_footer' )->name('index' );
+        Route::get('create',    'create_footer')->name('create');
+        Route::get('edit/{id}', 'edit_footer'  )->name('edit'  );
+    });
+    
+    Route::post('store',            'store'     )->name('store'     );
+    Route::patch('update/{menu}',   'update'    )->name('update'    );
+    Route::delete('delete/{id}',    'destroy'   )->name('destroy'   );
 });
 
 /*
 |--------------------------------------------------------------------------
-| Error Log Route
+| Gallery Routes
 |--------------------------------------------------------------------------
 */
-Route::get('logs',
-	[\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']
-)->name('logs');
+Route::controller(GalleryController::class)->prefix('gallery')->as('gallery.')->group(function (){
+    
+    Route::group(['prefix' => 'image', 'as' => 'image.'], function (){
+        Route::get('index',     'index_image' )->name('index' );
+        Route::post('index',     'index_image' )->name('index' );
+    });
+    
+    Route::group(['prefix' => 'video', 'as' => 'video.'], function (){
+        Route::get('index',     'index_video' )->name('index' );
+        Route::post('index',     'index_video' )->name('index' );
+    });
+    
+    Route::post('store',            'store'   )->name('store'     );
+    Route::patch('update/{gallery}', 'update' )->name('update'    );
+    Route::delete('delete/{id}',    'destroy' )->name('destroy'   );
+});
 
+/*
+|--------------------------------------------------------------------------
+| Domains Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'domains'], function ()
+{
+    Route::resource('users', UserController::class);
+    Route::controller(UserController::class)->prefix('user')->group(function () {
+        Route::get('profile',        'profileEdit'  )->name('user.profile.edit');
+        Route::post('profile',       'profileUpdate')->name('user.profile.update');
+        Route::post('check_email',   'checkEmail'   )->name('user.checkEmail');
+        Route::post('check_password','checkPassword')->name('user.checkPassword');
+    });
 
+    Route::resource('branches', BranchController::class);
+});
 
+/*
+|--------------------------------------------------------------------------
+| Logging Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'logging'], function ()
+{
+    Route::controller(AuditController::class)->prefix('audits')->group(function () {
+        Route::get('index',          'index')->name('audit.index');
+        Route::get('show/{id}',      'show')->name('audit.show');
+        Route::delete('destroy/{id}','destroy')->name('audit.destroy');
+    });
+
+    Route::get('logs',
+        [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']
+    )->name('logs');
+});

@@ -12,7 +12,12 @@
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                 <li class="breadcrumb-item active">{{ __('Page') }}</li>
             </ol>
-            <a href="{{ route('pages.create') }}" type="button" class="btn btn-info d-none d-lg-block m-l-15 text-white">
+            @if(auth()->user()->type == 'Main')
+            <a class="btn btn-info text-white m-l-15" data-bs-toggle="collapse" href="#filters" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fas fa-filter"></i> Filter Data
+            </a>
+            @endif
+            <a href="{{ route('pages.create') }}" type="button" class="btn btn-info d-none d-lg-block m-l-10 text-white">
                 <i class="fa fa-plus-circle"></i> Create New
             </a>
         </div>
@@ -20,6 +25,7 @@
 @endsection
 
 @section('content')
+@include('admin.page.filters')
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">{{ __('Page') }}</h4>

@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\EloquentFilters\BranchId;
+
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use Abdrzakoxa\EloquentFilter\Traits\Filterable;
 
 /**
  * Class Menu
@@ -22,6 +25,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 class Menu extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
+    use Filterable;
 
     static $rules = [
 		'branch_id' => 'required',
@@ -40,21 +44,19 @@ class Menu extends Model implements Auditable
      */
     protected $fillable = ['branch_id','type','parent_id','title','url','order'];
 
+    protected $filters = [
+        BranchId::class
+    ];
+
     /**
      * Menu scope a query
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return void
      */
-    public function scopeUserBasedHeader($query)
+    public function scopeUserBased($query)
     {
-        if (auth()->check()) {
-            if (auth()->user()->type == 'Branch') {
-                $query->where([['branch_id', auth()->user()->branch_id],['type','Header']]);
-            }else{
-                $query->where('type','Header');
-            }
-        }else{
-            $query->where('type','Header');
+        if (auth()->user()->type == 'Branch') {
+            $query->where('branch_id', auth()->user()->branch_id);
         }
     }
 
@@ -63,17 +65,19 @@ class Menu extends Model implements Auditable
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return void
      */
-    public function scopeUserBasedFooter($query)
+    public function scopeHeader($query)
     {
-        if (auth()->check()) {
-            if (auth()->user()->type == 'Branch') {
-                $query->where([['branch_id', auth()->user()->branch_id],['type','Footer']]);
-            }else{
-                $query->where('type','Footer');
-            }
-        }else{
-            $query->where('type','Footer');
-        }
+        $query->where('type','Header');
+    }
+
+    /**
+     * Menu scope a query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeFooter($query)
+    {
+        $query->where('type','Footer');
     }
 
     /**

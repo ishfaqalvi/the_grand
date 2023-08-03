@@ -55,9 +55,19 @@ function branchList()
  *
  * @return \Illuminate\Http\Response
  */
-function sliderList($id)
+function imageSliderList($id)
 {
-    return Slider::where([['branch_id',$id],['status','Publish']])->get();
+    return Slider::image()->where([['branch_id',$id],['status','Publish']])->get();
+}
+
+/**
+ * Get listing of a resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+function videoSliderList($id)
+{
+    return Slider::video()->where([['branch_id',$id],['status','Publish']])->first();
 }
 
 
@@ -68,7 +78,7 @@ function sliderList($id)
  */
 function headerMenus($id)
 {
-    return Menu::userBasedHeader()->whereNull('parent_id')->get();
+    return Menu::header()->where('branch_id',$id)->whereNull('parent_id')->get();
 }
 
 /**
@@ -78,7 +88,7 @@ function headerMenus($id)
  */
 function footerMenus($id)
 {
-    return Menu::userBasedFooter()->get();
+    return Menu::footer()->where('branch_id',$id)->get();
 }
 
 /**
@@ -118,7 +128,7 @@ function questions($id)
  */
 function images($id)
 {
-    return Gallery::where([['type','Image'],['category_id',$id]])->orderBy('order')->get();
+    return Gallery::image()->where('category_id',$id)->orderBy('order')->get();
 }
 
 /**
@@ -128,7 +138,7 @@ function images($id)
  */
 function videos($id)
 {
-    return Gallery::where([['type','Video'],['category_id',$id]])->orderBy('order')->get();
+    return Gallery::video()->where('category_id',$id)->orderBy('order')->get();
 }
 
 /**

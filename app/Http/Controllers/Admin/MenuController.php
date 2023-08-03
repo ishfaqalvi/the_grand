@@ -17,11 +17,13 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index_header()
+    public function index_header(Request $request)
     {
-        $menus = Menu::userBasedHeader()->whereNull('parent_id')->get();
+        $menus = Menu::userBased()->header()->whereNull('parent_id')->get();
+        $filters = getFilter(Menu::userBased()->header()->whereNull('parent_id')->get(), ['branch_id']);
+        $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
-        return view('admin.menu.header.index', compact('menus'));
+        return view('admin.menu.header.index', compact('menus','filters','userRequest'));
     }
 
     /**
@@ -29,11 +31,13 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index_footer()
+    public function index_footer(Request $request)
     {
-        $menus = Menu::userBasedFooter()->get();
+        $menus = Menu::userBased()->footer()->get();
+        $filters = getFilter(Menu::userBased()->footer()->get(), ['branch_id']);
+        $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
-        return view('admin.menu.footer.index', compact('menus'));
+        return view('admin.menu.footer.index', compact('menus','filters','userRequest'));
     }
 
     /**

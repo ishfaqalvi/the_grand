@@ -15,11 +15,23 @@ class SliderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexImage()
     {
-        $sliders = Slider::userBased()->get();
+        $sliders = Slider::userBased()->image()->get();
 
-        return view('admin.slider.index', compact('sliders'));
+        return view('admin.slider.image.index', compact('sliders'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexVideo()
+    {
+        $sliders = Slider::userBased()->video()->get();
+
+        return view('admin.slider.video.index', compact('sliders'));
     }
 
     /**
@@ -27,10 +39,21 @@ class SliderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createImage()
     {
         $slider = new Slider();
-        return view('admin.slider.create', compact('slider'));
+        return view('admin.slider.image.create', compact('slider'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createVideo()
+    {
+        $slider = new Slider();
+        return view('admin.slider.video.create', compact('slider'));
     }
 
     /**
@@ -44,9 +67,8 @@ class SliderController extends Controller
         request()->validate(Slider::$rules);
 
         $slider = Slider::create($request->all());
-
-        return redirect()->route('sliders.index')
-            ->with('success', 'Slider created successfully.');
+        $route = $slider->type == 'Image' ? 'sliders.image.index' : 'sliders.video.index';
+        return redirect()->route($route)->with('success', 'Slider created successfully.');
     }
 
     /**
@@ -55,11 +77,24 @@ class SliderController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showImage($id)
     {
         $slider = Slider::find($id);
 
-        return view('admin.slider.show', compact('slider'));
+        return view('admin.slider.image.show', compact('slider'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showVideo($id)
+    {
+        $slider = Slider::find($id);
+
+        return view('admin.slider.video.show', compact('slider'));
     }
 
     /**
@@ -68,11 +103,24 @@ class SliderController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editImage($id)
     {
         $slider = Slider::find($id);
 
-        return view('admin.slider.edit', compact('slider'));
+        return view('admin.slider.image.edit', compact('slider'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editVideo($id)
+    {
+        $slider = Slider::find($id);
+
+        return view('admin.slider.video.edit', compact('slider'));
     }
 
     /**
@@ -84,12 +132,20 @@ class SliderController extends Controller
      */
     public function update(Request $request, Slider $slider)
     {
-        // request()->validate(Slider::$rules);
-
+        if($request->status != '' && $slider->type =='Image')
+        {
+            $checkSlide = Slider::where([
+                ['type','Video'],
+                ['branch_id',$slider->branch_id],
+                ['status','Publish']
+            ])->first();
+            if ($checkSlide) {
+                $checkSlide->update(['status' => 'UnPublish']);
+            }
+        }
         $slider->update($request->all());
-
-        return redirect()->route('sliders.index')
-            ->with('success', 'Slider updated successfully');
+        $route = $slider->type == 'Image' ? 'sliders.image.index' : 'sliders.video.index';
+        return redirect()->route($route)->with('success', 'Slider updated successfully');
     }
 
     /**
@@ -99,9 +155,9 @@ class SliderController extends Controller
      */
     public function destroy($id)
     {
-        $slider = Slider::find($id)->delete();
-
-        return redirect()->route('sliders.index')
-            ->with('success', 'Slider deleted successfully');
+        $slider = Slider::find($id);
+        $route = $slider->type == 'Image' ? 'sliders.image.index' : 'sliders.video.index';
+        $slider->delete();
+        return redirect()->route($route)->with('success', 'Slider deleted successfully');
     }
 }

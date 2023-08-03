@@ -59,3 +59,12 @@ function categories($id =null)
     }
     return $categories;
 }
+
+function getFilter($collection, $filterables)
+{
+    foreach($filterables as $filterable) 
+    {
+        $filters[$filterable] = $collection->whereNotNull($filterable)->where($filterable, '!=', 0)->unique($filterable);
+    }
+    return $filters;
+}

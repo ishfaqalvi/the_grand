@@ -109,6 +109,26 @@ class Slider extends Model
     }
 
     /**
+     * Gallery scope a query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeImage($query)
+    {
+        $query->where('type','Image');
+    }
+
+    /**
+     * Gallery scope a query
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeVideo($query)
+    {
+        $query->where('type','Video');
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function branch()

@@ -23,11 +23,13 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pages = Page::userBased()->get();
+        $pages = Page::filter($request->all())->userBased()->get();
+        $filters = getFilter(Page::userBased()->get(), ['branch_id','template','status']);
+        $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
-        return view('admin.page.index', compact('pages'));
+        return view('admin.page.index', compact('pages','filters','userRequest'));
     }
 
     /**

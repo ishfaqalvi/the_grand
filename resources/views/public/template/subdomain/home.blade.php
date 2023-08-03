@@ -62,25 +62,30 @@
 @endif
 <!-- Slider -->
 @if($pageSetting['home_sections_slider'] == 'Show')
-<header class="header slider-fade">
-    <div class="owl-carousel owl-theme">
-        @foreach(sliderList($page->branch_id) as $key => $slide)
-        <div class="text-center item bg-img" data-overlay-dark="2" data-background="{{ asset($slide->image)}}">
-            <div class="v-middle caption">
+    @php($videoSlide = videoSliderList($page->branch_id))
+    @if($pageSetting['home_slider_type'] == 'Video' && isset($videoSlide))
+    <header class="header">
+        <div class="video-fullscreen-wrap">
+            <div class="video-fullscreen-video" data-overlay-dark="6">
+                <video playsinline="" autoplay="" loop="" muted="">
+                    <source src="{{ asset($videoSlide->video)}}" type="video/mp4" autoplay="" loop="" muted="">
+                </video>
+            </div>
+            <div class="v-middle caption overlay">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-10 offset-md-1">
                             <span>
-                                @for ($i = 0; $i < $slide->stars; $i++)
+                                @for ($i = 0; $i < $videoSlide->stars; $i++)
                                     <i class="star-rating"></i>
                                 @endfor
                             </span>
-                            <h4>{{ strtoupper($slide->sub_title) }}</h4>
-                            <h1>{{ strtoupper($slide->title) }}</h1>
-                            @if($slide->button_text != '' && $slide->link != '')
-                            <div class="butn-light mt-30 mb-30"> 
-                                <a href="{{ asset($slide->link) }}" target="{{ $slide->linktype == 'External' ? '_blank' : ''}}" data-scroll-nav="1">
-                                    <span>{{ strtoupper($slide->button_text) }}</span>
+                            <h4>{{ strtoupper($videoSlide->sub_title) }}</h4>
+                            <h1>{{ strtoupper($videoSlide->title) }}</h1>
+                            @if($videoSlide->button_text != '' && $videoSlide->link != '')
+                            <div class="butn-light mt-30 mb-30">
+                                <a href="{{ asset($videoSlide->link) }}" target="{{ $videoSlide->linktype == 'External' ? '_blank' : ''}}" data-scroll-nav="2">
+                                    <span>{{ strtoupper($videoSlide->button_text) }}</span>
                                 </a>
                             </div>
                             @endif
@@ -89,43 +94,43 @@
                 </div>
             </div>
         </div>
-        @endforeach
-    </div>
-</header>
-@endif
-<header class="header">
-    <div class="video-fullscreen-wrap">
-        <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
-        <div class="video-fullscreen-video" data-overlay-dark="6">
-            <video playsinline="" autoplay="" loop="" muted="">
-                <source src="https://duruthemes.com/demo/html/cappa/video.mp4" type="video/mp4" autoplay="" loop="" muted="">
-                <source src="https://duruthemes.com/demo/html/cappa/video.webm" type="video/webm" autoplay="" loop="" muted="">
-            </video>
+        <div class="arrow bounce text-center">
+            <a href="#" data-scroll-nav="1" class=""> <i class="ti-arrow-down"></i> </a>
         </div>
-        <div class="v-middle caption overlay">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-10 offset-md-1"> 
-                            <span>
-                                <i class="star-rating"></i>
-                                <i class="star-rating"></i>
-                                <i class="star-rating"></i>
-                                <i class="star-rating"></i>
-                                <i class="star-rating"></i>
-                            </span>
-                            <h4>Luxury Hotel & Best Resort</h4>
-                            <h1>Enjoy a Luxury Experience</h1>
-                            <div class="butn-dark"> <a href="#" data-scroll-nav="2"><span>Rooms & Suites</span></a> </div>
+    </header>
+    @else
+    <header class="header slider-fade">
+        <div class="owl-carousel owl-theme">
+            @foreach(imageSliderList($page->branch_id) as $key => $slide)
+            <div class="text-center item bg-img" data-overlay-dark="2" data-background="{{ asset($slide->image)}}">
+                <div class="v-middle caption">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1">
+                                <span>
+                                    @for ($i = 0; $i < $slide->stars; $i++)
+                                        <i class="star-rating"></i>
+                                    @endfor
+                                </span>
+                                <h4>{{ strtoupper($slide->sub_title) }}</h4>
+                                <h1>{{ strtoupper($slide->title) }}</h1>
+                                @if($slide->button_text != '' && $slide->link != '')
+                                <div class="butn-light mt-30 mb-30">
+                                    <a href="{{ asset($slide->link) }}" target="{{ $slide->linktype == 'External' ? '_blank' : ''}}" data-scroll-nav="1">
+                                        <span>{{ strtoupper($slide->button_text) }}</span>
+                                    </a>
+                                </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-    </div>
-    <!-- arrow down -->
-    <div class="arrow bounce text-center">
-        <a href="#" data-scroll-nav="1" class=""> <i class="ti-arrow-down"></i> </a>
-    </div>
-</header>
+            @endforeach
+        </div>
+    </header>
+    @endif
+@endif
 <!-- About -->
 @if($pageSetting['home_sections_about'] == 'Show')
 <section class="about section-padding">

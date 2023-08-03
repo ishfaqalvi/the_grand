@@ -12,6 +12,11 @@
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">{{ __('Image Gallery') }}</li>
         </ol>
+        @if(auth()->user()->type == 'Main')
+        <a class="btn btn-info text-white m-l-15" data-bs-toggle="collapse" href="#filters" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fas fa-filter"></i> Filter Data
+        </a>
+        @endif
         <a data-bs-toggle="modal" data-bs-target="#addImage" type="button" class="btn btn-info d-none d-sm-block text-white m-l-15">
             <i class="fa fa-plus-circle"></i> Upload File
         </a>
@@ -19,6 +24,7 @@
 </div>
 @endsection
 @section('content')
+@include('admin.gallery.image.filters')
 <div class="card">
     <div class="card-body p-b-0">
         <h4 class="card-title">Image Gallery</h4>

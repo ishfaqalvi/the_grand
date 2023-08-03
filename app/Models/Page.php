@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
+use App\EloquentFilters\BranchId;
+use App\EloquentFilters\Template;
+use App\EloquentFilters\Status;
+
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use Abdrzakoxa\EloquentFilter\Traits\Filterable;
 use Image;
 
 /**
@@ -29,6 +34,7 @@ use Image;
 class Page extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
+    use Filterable;
 
     static $rules = [
 		'title'       => 'required',
@@ -57,6 +63,12 @@ class Page extends Model implements Auditable
         'content',
         'index',
         'status'
+    ];
+
+    protected $filters = [
+        BranchId::class,
+        Template::class,
+        Status::class
     ];
 
     /**

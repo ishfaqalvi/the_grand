@@ -44,8 +44,8 @@ class DashboardController extends Controller
             'facilities'    => Facility::userBased()->count(),
             'news'          => News::userBased()->count(),
             'testimonials'  => Testimonial::userBased()->count(),
-            'galleryImages' => Gallery::userBasedImage()->count(),
-            'galleryVideos' => Gallery::userBasedVideo()->count(),
+            'galleryImages' => Gallery::userBased()->image()->count(),
+            'galleryVideos' => Gallery::userBased()->video()->count(),
             'contacts'      => Contact::userBased()->count(),
         ];
 

@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\EloquentFilters\BranchId;
+use App\EloquentFilters\Status;
+use Abdrzakoxa\EloquentFilter\Traits\Filterable;
+use OwenIt\Auditing\Contracts\Auditable;
 use Image;
 
 /**
@@ -22,9 +26,10 @@ use Image;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Testimonial extends Model
+class Testimonial extends Model implements Auditable
 {
-    
+    use \OwenIt\Auditing\Auditable;
+    use Filterable;
     static $rules = [
 		'branch_id'=> 'required',
         'name'     => 'required',
@@ -34,7 +39,7 @@ class Testimonial extends Model
 		'order'    => 'required'
     ];
 
-    protected $perPage = 20;
+    protected $filters = [BranchId::class, Status::class];
 
     /**
      * Attributes that should be mass-assignable.
@@ -52,11 +57,9 @@ class Testimonial extends Model
     public function setImageAttribute($image)
     {
         if ($image) {
-            $filenamewithextension = $image->getClientOriginalName();
-            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-            $filenametostore = 'upload/images/testimonial/'.time().'.webp';
-            $img = Image::make($image)->encode('webp', 90)->resize(70,70);   
-            $img->save(public_path($filenametostore));
+            $extension = $image->getClientOriginalExtension();
+            $filenametostore = 'upload/images/testimonial/'.uniqid().".".$extension;
+            $img = Image::make($image)->resize(70,70)->save(public_path($filenametostore));
             $this->attributes['image'] = $filenametostore;
         }else{
             unset($this->attributes['image']);

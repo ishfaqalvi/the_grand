@@ -112,6 +112,7 @@
 <!-- Slider -->
 @if($pageSetting['home_sections_slider'] == 'Show')
     @php($videoSlide = videoSliderList($page->branch_id))
+    @php($imageSlides = imageSliderList($page->branch_id))
     @if($pageSetting['home_slider_type'] == 'Video' && isset($videoSlide))
     <header class="header">
         <div class="video-fullscreen-wrap">
@@ -147,10 +148,10 @@
             <a href="#" data-scroll-nav="1" class=""> <i class="ti-arrow-down"></i> </a>
         </div>
     </header>
-    @else
+    @elseif($pageSetting['home_slider_type'] == 'Image' && count($imageSlides) > 0)
     <header class="header slider-fade">
         <div class="owl-carousel owl-theme">
-            @foreach(imageSliderList($page->branch_id) as $key => $slide)
+            @foreach($imageSlides as $key => $slide)
             <div class="text-center item bg-img" data-overlay-dark="2" data-background="{{ asset($slide->image)}}">
                 <div class="v-middle caption">
                     <div class="container">

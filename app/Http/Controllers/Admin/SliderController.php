@@ -15,11 +15,13 @@ class SliderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexImage()
+    public function indexImage(Request $request)
     {
-        $sliders = Slider::userBased()->image()->get();
+        $sliders = Slider::filter($request->all())->userBased()->image()->get();
+        $filters = getFilter(Slider::userBased()->image()->get(), ['branch_id','status']);
+        $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
-        return view('admin.slider.image.index', compact('sliders'));
+        return view('admin.slider.image.index', compact('sliders','filters','userRequest'));
     }
 
     /**
@@ -27,11 +29,13 @@ class SliderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexVideo()
+    public function indexVideo(Request $request)
     {
-        $sliders = Slider::userBased()->video()->get();
+        $sliders = Slider::filter($request->all())->userBased()->video()->get();
+        $filters = getFilter(Slider::userBased()->video()->get(), ['branch_id','status']);
+        $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
-        return view('admin.slider.video.index', compact('sliders'));
+        return view('admin.slider.video.index', compact('sliders','filters','userRequest'));
     }
 
     /**

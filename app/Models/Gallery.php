@@ -25,7 +25,6 @@ class Gallery extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
     use Filterable;
 
-    protected $perPage = 20;
 
     /**
      * Attributes that should be mass-assignable.
@@ -48,7 +47,8 @@ class Gallery extends Model implements Auditable
     public function setImageAttribute($image)
     {
         if ($image) {
-            $name = time().'.'.$image->getClientOriginalExtension();
+            $extension = $image->getClientOriginalExtension();
+            $name = uniqid().".".$extension;
 
             $destinationPath = public_path('/upload/images/gallery/images/');
 
@@ -85,7 +85,8 @@ class Gallery extends Model implements Auditable
     public function setVideoThumbnailAttribute($thumbnail)
     {
         if ($thumbnail) {
-            $name = time().'.'.$thumbnail->getClientOriginalExtension();
+            $extension = $thumbnail->getClientOriginalExtension();
+            $name = uniqid().".".$extension;
 
             $destinationPath = public_path('/upload/images/gallery/thumbnail/');
 

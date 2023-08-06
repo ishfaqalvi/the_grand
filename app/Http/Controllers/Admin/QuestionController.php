@@ -17,12 +17,13 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $questions = Question::userBased()->paginate();
+        $questions = Question::filter($request->all())->userBased()->get();
+        $filters = getFilter(Question::userBased()->get(), ['branch_id','status']);
+        $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
-        return view('admin.question.index', compact('questions'))
-            ->with('i', (request()->input('page', 1) - 1) * $questions->perPage());
+        return view('admin.question.index', compact('questions','filters','userRequest'));
     }
 
     /**
@@ -44,8 +45,6 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Question::$rules);
-
         $question = Question::create($request->all());
 
         return redirect()->route('questions.index')
@@ -87,8 +86,6 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        request()->validate(Question::$rules);
-
         $question->update($request->all());
 
         return redirect()->route('questions.index')

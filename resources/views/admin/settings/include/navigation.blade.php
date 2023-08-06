@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('settings.save') }}" class="form-horizontal form-bordered navigation" role="form" enctype="multipart/form-data">
+<form method="POST" action="{{ route('settings.save') }}" class="form-horizontal form-bordered validate" role="form" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="tab" value="navigation">
     <input type="hidden" name="settable_type" value="Branch">
@@ -16,22 +16,22 @@
             </div>
             <label class="control-label text-end col-md-3 mt-3">Title</label>
             <div class="col-md-9 mt-3">
-                {{ Form::text('values[navigation_title]', $settings['navigation_title'], ['class' => 'form-control']) }}
+                {{ Form::text('values[navigation_title]', $settings['navigation_title'], ['class' => 'form-control','required']) }}
                 <small class="form-control-feedback"> Title navigation </small>
             </div>
             <label class="control-label text-end col-md-3 mt-3">Sub Title</label>
             <div class="col-md-9 mt-3">
-                {{ Form::text('values[navigation_sub_title]', $settings['navigation_sub_title'], ['class' => 'form-control']) }}
+                {{ Form::text('values[navigation_sub_title]', $settings['navigation_sub_title'], ['class' => 'form-control','required']) }}
                 <small class="form-control-feedback"> Sub title navigation </small>
             </div>
             <label class="control-label mt-3 text-end col-md-3">Contact Label</label>
             <div class="col-md-9 mt-3">
-                {{ Form::text('values[navigation_contact_lablel]', $settings['navigation_contact_lablel'], ['class' => 'form-control']) }}
+                {{ Form::text('values[navigation_contact_lablel]', $settings['navigation_contact_lablel'], ['class' => 'form-control','required']) }}
                 <small class="form-control-feedback"> Contact Label of navigation </small>
             </div>
             <label class="control-label mt-3 text-end col-md-3">Contact Number</label>
             <div class="col-md-9 mt-3">
-                {{ Form::text('values[navigation_contact_number]', $settings['navigation_contact_number'], ['class' => 'form-control']) }}
+                {{ Form::text('values[navigation_contact_number]', $settings['navigation_contact_number'], ['class' => 'form-control','required']) }}
                 <small class="form-control-feedback"> 855 100 4444 </small>
             </div>
         </div>
@@ -49,30 +49,3 @@
         </div>
     </div>
 </form>
-@section('scripts')
-<script>
-    $(".navigation").validate({
-        errorClass: "text-danger",
-        highlight: function (element, errorClass) {
-            $(element).removeClass(errorClass)
-            $(element).parent().addClass('has-danger');
-            $(element).addClass('form-control-danger');
-        },
-        unhighlight: function (element, errorClass) {
-            $(element).removeClass(errorClass)
-            $(element).parent().removeClass('has-danger');
-            $(element).removeClass('form-control-danger');
-            $(element).parent().addClass('has-success');
-            $(element).addClass('form-control-success');
-        },
-        errorPlacement: function (error, element) {
-            error.insertAfter(element)
-        },
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('.dropify').dropify();
-    });
-</script>
-@endsection

@@ -12,11 +12,17 @@
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
             <li class="breadcrumb-item active">Contacts</li>
         </ol>
+        @if(auth()->user()->type == 'Main')
+        <a class="btn btn-info text-white m-l-15" data-bs-toggle="collapse" href="#filters" aria-expanded="false" aria-controls="collapseExample">
+            <i class="fas fa-filter"></i> Filter Data
+        </a>
+        @endif
     </div>
 </div>
 @endsection
 
 @section('content')
+@include('admin.contact.filters')
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">{{ __('Contacts') }}</h4>

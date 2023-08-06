@@ -1,9 +1,9 @@
 <div class="card collapse {{ !is_null($userRequest) ? 'show' : ''}}" id="filters">
     <div class="card-body">
-        <form action="{{ route('pages.index')}}" method="post">
+        <form action="{{ route('categories.index')}}" method="post">
             @csrf
             <div class="row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     {{ Form::label('Branch') }}
                     <select name="branch_id" class="form-control form-select">
                         <option value="">--Select--</option>
@@ -12,16 +12,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group col-md-4">
-                    {{ Form::label('Template') }}
-                    <select name="template" class="form-control form-select">
-                        <option value="">--Select--</option>
-                        @foreach($filters['template'] as $item)
-                            <option value="{{$item->template}}" {{ !is_null($userRequest) ? ($userRequest->template == $item->template? 'selected' : '') : ''}}>{{$item->template}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     {{ Form::label('Status') }}
                     <select name="status" class="form-control form-select">
                         <option value="">--Select--</option>

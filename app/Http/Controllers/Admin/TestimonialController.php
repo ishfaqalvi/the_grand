@@ -17,11 +17,13 @@ class TestimonialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $testimonials = Testimonial::userBased()->get();
+        $testimonials = Testimonial::filter($request->all())->userBased()->get();
+        $filters = getFilter(Testimonial::userBased()->get(), ['branch_id','status']);
+        $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
-        return view('admin.testimonial.index', compact('testimonials'));
+        return view('admin.testimonial.index', compact('testimonials','filters','userRequest'));
     }
 
     /**

@@ -17,12 +17,13 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::paginate();
+        $categories = Category::filter($request->all())->get();
+        $filters = getFilter(Category::get(), ['branch_id','status']);
+        $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
-        return view('admin.category.index', compact('categories'))
-            ->with('i', (request()->input('page', 1) - 1) * $categories->perPage());
+        return view('admin.category.index', compact('categories','filters','userRequest'));
     }
 
     /**

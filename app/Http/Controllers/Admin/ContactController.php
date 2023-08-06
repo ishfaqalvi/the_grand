@@ -17,11 +17,13 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = Contact::userBased()->get();
+        $contacts = Contact::filter($request->all())->userBased()->get();
+        $filters = getFilter(Contact::userBased()->get(), ['branch_id','status']);
+        $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
-        return view('admin.contact.index', compact('contacts'));
+        return view('admin.contact.index', compact('contacts','filters','userRequest'));
     }
 
     /**

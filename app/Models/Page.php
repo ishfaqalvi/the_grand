@@ -5,10 +5,9 @@ namespace App\Models;
 use App\EloquentFilters\BranchId;
 use App\EloquentFilters\Template;
 use App\EloquentFilters\Status;
-
+use Abdrzakoxa\EloquentFilter\Traits\Filterable;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-use Abdrzakoxa\EloquentFilter\Traits\Filterable;
 use Image;
 
 /**

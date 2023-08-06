@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('settings.save') }}" class="form-horizontal form-bordered" role="form" enctype="multipart/form-data">
+<form method="POST" action="{{ route('settings.save') }}" class="form-horizontal form-bordered validate" role="form" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="tab" value="analytics">
     <input type="hidden" name="settable_type" value="Branch">
@@ -7,7 +7,7 @@
         <div class="form-group row">
             <label class="control-label text-end col-md-3 mt-3">Googel Search Console Code</label>
             <div class="col-md-9 mt-3">
-                {{ Form::textarea('values[google_search_console_code]', $settings['google_search_console_code'], ['class' => 'form-control','rows' => '4']) }}
+                {{ Form::textarea('values[google_search_console_code]', $settings['google_search_console_code'], ['class' => 'form-control','rows' => '4','required']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Google Aanalytics Code</label>
             <div class="col-md-9 mt-3">

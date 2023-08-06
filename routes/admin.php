@@ -42,42 +42,96 @@ Route::controller(PageController::class)->prefix('pages')->as('pages.')->group(f
 | Services Routes
 |--------------------------------------------------------------------------
 */
-Route::resource('services', ServiceController::class);
+Route::controller(ServiceController::class)->prefix('services')->as('services.')->group(function(){
+    Route::post('index',            'index'    )->name('index'      );
+    Route::get('index',             'index'    )->name('index'      );
+    Route::get('create',            'create'   )->name('create'     );
+    Route::post('store',            'store'    )->name('store'      );
+    Route::get('show/{id}',         'show'     )->name('show'       );
+    Route::get('edit/{id}',         'edit'     )->name('edit'       );
+    Route::patch('update/{service}','update'   )->name('update'     );
+    Route::delete('destroy/{id}',   'destroy'  )->name('destroy'    );
+});
 
 /*
 |--------------------------------------------------------------------------
 | Facilities Routes
 |--------------------------------------------------------------------------
 */
-Route::resource('facilities', FacilityController::class);
+Route::controller(FacilityController::class)->prefix('facilities')->as('facilities.')->group(function(){
+    Route::post('index',             'index'    )->name('index'      );
+    Route::get('index',              'index'    )->name('index'      );
+    Route::get('create',             'create'   )->name('create'     );
+    Route::post('store',             'store'    )->name('store'      );
+    Route::get('show/{id}',          'show'     )->name('show'       );
+    Route::get('edit/{id}',          'edit'     )->name('edit'       );
+    Route::patch('update/{facility}','update'   )->name('update'     );
+    Route::delete('destroy/{id}',    'destroy'  )->name('destroy'    );
+});
 
 /*
 |--------------------------------------------------------------------------
 | News Routes
 |--------------------------------------------------------------------------
 */
-Route::resource('news', NewsController::class);
+Route::controller(NewsController::class)->prefix('news')->as('news.')->group(function(){
+    Route::post('index',            'index'    )->name('index'      );
+    Route::get('index',             'index'    )->name('index'      );
+    Route::get('create',            'create'   )->name('create'     );
+    Route::post('store',            'store'    )->name('store'      );
+    Route::get('show/{id}',         'show'     )->name('show'       );
+    Route::get('edit/{id}',         'edit'     )->name('edit'       );
+    Route::patch('update/{news}',   'update'   )->name('update'     );
+    Route::delete('destroy/{id}',   'destroy'  )->name('destroy'    );
+});
 
 /*
 |--------------------------------------------------------------------------
 | Testimonials Routes
 |--------------------------------------------------------------------------
 */
-Route::resource('testimonials', TestimonialController::class);
+Route::controller(TestimonialController::class)->prefix('testimonials')->as('testimonials.')->group(function(){
+    Route::post('index',                'index'    )->name('index'      );
+    Route::get('index',                 'index'    )->name('index'      );
+    Route::get('create',                'create'   )->name('create'     );
+    Route::post('store',                'store'    )->name('store'      );
+    Route::get('show/{id}',             'show'     )->name('show'       );
+    Route::get('edit/{id}',             'edit'     )->name('edit'       );
+    Route::patch('update/{testimonial}','update'   )->name('update'     );
+    Route::delete('destroy/{id}',       'destroy'  )->name('destroy'    );
+});
 
 /*
 |--------------------------------------------------------------------------
 | Questions Routes
 |--------------------------------------------------------------------------
 */
-Route::resource('questions', QuestionController::class);
+Route::controller(QuestionController::class)->prefix('questions')->as('questions.')->group(function(){
+    Route::post('index',             'index'    )->name('index'      );
+    Route::get('index',              'index'    )->name('index'      );
+    Route::get('create',             'create'   )->name('create'     );
+    Route::post('store',             'store'    )->name('store'      );
+    Route::get('show/{id}',          'show'     )->name('show'       );
+    Route::get('edit/{id}',          'edit'     )->name('edit'       );
+    Route::patch('update/{question}','update'   )->name('update'     );
+    Route::delete('destroy/{id}',    'destroy'  )->name('destroy'    );
+});
 
 /*
 |--------------------------------------------------------------------------
 | Category Routes
 |--------------------------------------------------------------------------
 */
-Route::resource('categories', CategoryController::class);
+Route::controller(CategoryController::class)->prefix('categories')->as('categories.')->group(function(){
+    Route::post('index',                'index'    )->name('index'      );
+    Route::get('index',                 'index'    )->name('index'      );
+    Route::get('create',                'create'   )->name('create'     );
+    Route::post('store',                'store'    )->name('store'      );
+    Route::get('show/{id}',             'show'     )->name('show'       );
+    Route::get('edit/{id}',             'edit'     )->name('edit'       );
+    Route::patch('update/{category}',   'update'   )->name('update'     );
+    Route::delete('destroy/{id}',       'destroy'  )->name('destroy'    );
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +140,7 @@ Route::resource('categories', CategoryController::class);
 */
 Route::controller(ContactController::class)->prefix('contacts')->as('contacts.')->group(function () {
     Route::get('index',          'index'  )->name('index'  );
+    Route::post('index',          'index' )->name('index'  );
     Route::get('show/{id}',      'show'   )->name('show'   );
     Route::delete('destroy/{id}','destroy')->name('destroy');
 });

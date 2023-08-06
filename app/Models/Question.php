@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\EloquentFilters\BranchId;
+use App\EloquentFilters\Status;
+use Abdrzakoxa\EloquentFilter\Traits\Filterable;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**   
  * Class Question
@@ -20,8 +24,10 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Question extends Model
+class Question extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+    use Filterable;
     
     static $rules = [
 		'title' => 'required',
@@ -30,7 +36,7 @@ class Question extends Model
 		'status' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $filters = [BranchId::class, Status::class];
 
     /**
      * Attributes that should be mass-assignable.

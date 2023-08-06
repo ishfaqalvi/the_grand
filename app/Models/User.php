@@ -57,7 +57,8 @@ class User extends Authenticatable implements Auditable
     public function setImageAttribute($image)
     {
         if ($image) {
-            $filename = time().'.'.$image->getClientOriginalExtension();
+            $extension = $image->getClientOriginalExtension();
+            $filename = uniqid().".".$extension;
             $image->move('upload/images/profile/', $filename);
             $name = "upload/images/profile/".$filename;
             $this->attributes['image'] = $filename;

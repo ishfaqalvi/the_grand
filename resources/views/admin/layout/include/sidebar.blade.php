@@ -51,6 +51,11 @@
             <i class="icons-Envelope"></i><span class="hide-menu">Contacts</span>
         </a>
     </li>
+    <li class="@if (str_contains($url, '/questions')) active @endif">
+        <a class="waves-effect waves-dark" href="{{ route('questions.index') }}" aria-expanded="false">
+            <i class="icons-Ask"></i><span class="hide-menu">Questions</span>
+        </a>
+    </li>
     <li class="@if (str_contains($url, '/sliders')) active @endif">
         <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
             <i class="ti-layout-media-right-alt"></i><span class="hide-menu">Slider</span>

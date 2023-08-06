@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\EloquentFilters\BranchId;
+use App\EloquentFilters\Status;
+use Abdrzakoxa\EloquentFilter\Traits\Filterable;
+use OwenIt\Auditing\Contracts\Auditable;
 use Image;
 
 /**
@@ -26,8 +30,10 @@ use Image;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Slider extends Model
+class Slider extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+    use Filterable;
     
     static $rules = [
 		'type'       => 'required',
@@ -40,7 +46,7 @@ class Slider extends Model
 		'order'      => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $filters = [BranchId::class, Status::class];
 
     /**
      * Attributes that should be mass-assignable.
@@ -71,7 +77,8 @@ class Slider extends Model
     public function setImageAttribute($image)
     {
         if ($image) {
-            $name = 'upload/images/sliders/'.time().$image->getClientOriginalName();
+            $extension = $image->getClientOriginalExtension();
+            $name = 'upload/images/sliders/'.uniqid().".".$extension;
             $img = Image::make($image)->resize(1920, 1200)->save(public_path($name));
             $this->attributes['image'] = $name;
         }else{

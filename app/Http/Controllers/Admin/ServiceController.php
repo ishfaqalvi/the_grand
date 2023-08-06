@@ -16,11 +16,13 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $services = Service::userBased()->get();
+        $services = Service::filter($request->all())->userBased()->get();
+        $filters = getFilter(Service::userBased()->get(), ['page_id','status']);
+        $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
-        return view('admin.service.index', compact('services'));
+        return view('admin.service.index', compact('services','filters','userRequest'));
     }
 
     /**

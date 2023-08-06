@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use OwenIt\Auditing\Contracts\Auditable;
 use Image;
 
 /**
@@ -19,8 +20,9 @@ use Image;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Branch extends Model
+class Branch extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     
     static $rules = [
 		'type'      => 'required',
@@ -48,7 +50,11 @@ class Branch extends Model
     public function setThumbnailAttribute($image)
     {
         if ($image) {
-            $name = 'upload/images/branches/'.time().$image->getClientOriginalName();
+            // Get file's original extension
+            $extension = $image->getClientOriginalExtension();
+
+            // Create unique file name
+            $name = 'upload/images/branches/'.uniqid().".".$extension;
             $img = Image::make($image)->resize(545, 360)->save(public_path($name));
             $this->attributes['thumbnail'] = $name;
         }else{

@@ -3,7 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\EloquentFilters\BranchId;
+use App\EloquentFilters\Status;
+use Abdrzakoxa\EloquentFilter\Traits\Filterable;
+use OwenIt\Auditing\Contracts\Auditable;
 /**
  * Class Contact
  *
@@ -21,8 +24,10 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Contact extends Model
+class Contact extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+    use Filterable;
     
     static $rules = [
 		'branch_id' => 'required',
@@ -33,7 +38,7 @@ class Contact extends Model
 		'message'   => 'required'
     ];
 
-    protected $perPage = 20;
+    protected $filters = [BranchId::class, Status::class];
 
     /**
      * Attributes that should be mass-assignable.

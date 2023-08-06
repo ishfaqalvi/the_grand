@@ -16,11 +16,13 @@ class FacilityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $facilities = Facility::userBased()->get();
+        $facilities = Facility::filter($request->all())->userBased()->get();
+        $filters = getFilter(Facility::userBased()->get(), ['page_id','status']);
+        $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
-        return view('admin.facility.index', compact('facilities'));
+        return view('admin.facility.index', compact('facilities','filters','userRequest'));
     }
 
     /**

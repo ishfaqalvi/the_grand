@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\EloquentFilters\BranchId;
+use App\EloquentFilters\Status;
+use Abdrzakoxa\EloquentFilter\Traits\Filterable;
+use OwenIt\Auditing\Contracts\Auditable;
 use Image;
 
 /**
@@ -23,8 +27,10 @@ use Image;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Category extends Model
+class Category extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+    use Filterable;
     
     static $rules = [
 		'branch_id' => 'required',
@@ -34,7 +40,7 @@ class Category extends Model
 		'order' => 'required',
     ];
 
-    protected $perPage = 20;
+    protected $filters = [BranchId::class, Status::class];
 
     /**
      * Attributes that should be mass-assignable.
@@ -64,9 +70,9 @@ class Category extends Model
     public function setImageAttribute($image)
     {
         if ($image) {
-            $name = 'upload/images/category/'.time().$image->getClientOriginalName();
-            $img = Image::make($image)->resize(570,380);   
-            $img->save(public_path($name));
+            $extension = $image->getClientOriginalExtension();
+            $name = 'upload/images/category/'.uniqid().".".$extension;
+            $img = Image::make($image)->resize(570,380)->save(public_path($name));
             $this->attributes['image'] = $name;
         }else{
             unset($this->attributes['image']);

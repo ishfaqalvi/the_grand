@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\EloquentFilters\PageId;
+use App\EloquentFilters\Status;
+use Abdrzakoxa\EloquentFilter\Traits\Filterable;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * Class Facility
@@ -21,8 +25,10 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Facility extends Model
+class Facility extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+    use Filterable;
     
     static $rules = [
 		'page_id'     => 'required',
@@ -32,7 +38,7 @@ class Facility extends Model
 		'order'       => 'required'
     ];
 
-    protected $perPage = 20;
+    protected $filters = [PageId::class, Status::class];
 
     /**
      * Attributes that should be mass-assignable.

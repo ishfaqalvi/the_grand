@@ -19,7 +19,7 @@ class MenuController extends Controller
      */
     public function index_header(Request $request)
     {
-        $menus = Menu::userBased()->header()->whereNull('parent_id')->get();
+        $menus = Menu::filter($request->all())->userBased()->header()->whereNull('parent_id')->get();
         $filters = getFilter(Menu::userBased()->header()->whereNull('parent_id')->get(), ['branch_id']);
         $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
@@ -33,7 +33,7 @@ class MenuController extends Controller
      */
     public function index_footer(Request $request)
     {
-        $menus = Menu::userBased()->footer()->get();
+        $menus = Menu::filter($request->all())->userBased()->footer()->get();
         $filters = getFilter(Menu::userBased()->footer()->get(), ['branch_id']);
         $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 

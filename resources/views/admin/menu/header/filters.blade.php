@@ -1,11 +1,11 @@
 <div class="card collapse {{ !is_null($userRequest) ? 'show' : ''}}" id="filters">
     <div class="card-body">
-        <form action="{{ route('pages.index')}}" method="post">
+        <form action="{{ route('menus.header.index')}}" method="post">
             @csrf
             <div class="row">
                 <div class="form-group col-md-6">
                     {{ Form::label('Branch') }}
-                    <select name="branch_id" class="form-control">
+                    <select name="branch_id" class="form-control form-select">
                         <option value="">--Select--</option>
                         @foreach($filters['branch_id'] as $item)
                             <option value="{{$item->branch_id}}" {{ !is_null($userRequest) ? ($userRequest->branch_id == $item->branch_id? 'selected' : '') : ''}}>{{$item->branch->name}}</option>

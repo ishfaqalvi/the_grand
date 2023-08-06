@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\EloquentFilters\PageId;
+use App\EloquentFilters\Status;
+use Abdrzakoxa\EloquentFilter\Traits\Filterable;
+use OwenIt\Auditing\Contracts\Auditable;
 use Image;
 
 /**
@@ -25,9 +29,11 @@ use Image;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class News extends Model
+class News extends Model implements Auditable
 {
-    
+    use \OwenIt\Auditing\Auditable;
+    use Filterable;
+
     static $rules = [
 		'page_id'     => 'required',
         'heading'     => 'required',
@@ -38,7 +44,7 @@ class News extends Model
 		'order'       => 'required'
     ];
 
-    protected $perPage = 20;
+    protected $filters = [PageId::class, Status::class];
 
     /**
      * Attributes that should be mass-assignable.
@@ -56,21 +62,14 @@ class News extends Model
     public function setImageAttribute($image)
     {
         if ($image) {
-            $filenamewithextension = $image->getClientOriginalName();
-            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-            $filenametostore = 'upload/images/news/'.time().'.webp';
-            $img = Image::make($image)->encode('webp', 90)->resize(352,469);   
-            $img->save(public_path($filenametostore));
+            $extension = $image->getClientOriginalExtension();
+            $filenametostore = 'upload/images/news/'.uniqid().".".$extension;
+            $img = Image::make($image)->resize(352,469)->save(public_path($filenametostore));
             $this->attributes['image'] = $filenametostore;
         }else{
             unset($this->attributes['image']);
         }
     }
-
-    // public function getDateAttribute($value)
-    // {
-        
-    // }
 
     /**
      * News scope a query

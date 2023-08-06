@@ -49,7 +49,10 @@ class SettingController extends Controller
         foreach($request->file() as $key => $file){
             if ($image = $request->file($key)) 
             {
-                $name = 'upload/images/settings/'.time().$image->getClientOriginalName();
+                // Get file's original extension
+                $extension = $image->getClientOriginalExtension();
+                // Create unique file name
+                $name = 'upload/images/settings/'.uniqid().".".$extension;
                 $img = Image::make($image)->resize($input['size'][$key]['x'] , $input['size'][$key]['y'])->save(public_path($name));
             }
             $input['key'] = $key;

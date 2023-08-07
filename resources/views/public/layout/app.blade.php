@@ -37,7 +37,7 @@
     <script src="{{ asset('public/js/select2.js                 ') }}"></script>
     <script src="{{ asset('public/js/datepicker.js              ') }}"></script>
     <script src="{{ asset('public/js/smooth-scroll.min.js       ') }}"></script>
-    <script src="{{ asset('public/js/custom.js                  ') }}"></script>
+    <script src="{{ asset('public/js/common.js                  ') }}"></script>
 
     {!! $branchSetting['google_search_console_code'] !!}
 

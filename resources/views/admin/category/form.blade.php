@@ -17,17 +17,29 @@
                 {!! $errors->first('title', '<div class="invalid-feedback">:message</div>') !!}
                 <small class="form-control-feedback"> Title of category </small>
             </div>
-            <div class="form-group col-md-12">
-                {{ Form::label('link') }}
-                {{ Form::text('link', $category->link, ['class' => 'form-control' . ($errors->has('link') ? ' is-invalid' : ''), 'placeholder' => 'Link']) }}
-                {!! $errors->first('link', '<div class="invalid-feedback">:message</div>') !!}
-                <small class="form-control-feedback"> Category link url </small>
+            <div class="form-group col-md-6">
+                {{ Form::label('image_link') }}
+                {{ Form::text('image_link', $category->image_link, ['class' => 'form-control' . ($errors->has('image_link') ? ' is-invalid' : ''), 'placeholder' => 'Image Link']) }}
+                {!! $errors->first('image_link', '<div class="invalid-feedback">:message</div>') !!}
+                <small class="form-control-feedback"> Image gallery page slug </small>
             </div>
-            <div class="form-group col-md-12">
-                {{ Form::label('link_title') }}
-                {{ Form::text('link_title', $category->link_title, ['class' => 'form-control' . ($errors->has('link_title') ? ' is-invalid' : ''), 'placeholder' => 'Link Title']) }}
-                {!! $errors->first('link_title', '<div class="invalid-feedback">:message</div>') !!}
-                <small class="form-control-feedback"> Category link title </small>
+            <div class="form-group col-md-6">
+                {{ Form::label('image_link_title') }}
+                {{ Form::text('image_link_title', $category->image_link_title, ['class' => 'form-control' . ($errors->has('image_link_title') ? ' is-invalid' : ''), 'placeholder' => 'Image Link Title']) }}
+                {!! $errors->first('image_link_title', '<div class="invalid-feedback">:message</div>') !!}
+                <small class="form-control-feedback"> Image gallery link title </small>
+            </div>
+            <div class="form-group col-md-6">
+                {{ Form::label('video_link') }}
+                {{ Form::text('video_link', $category->video_link, ['class' => 'form-control' . ($errors->has('video_link') ? ' is-invalid' : ''), 'placeholder' => 'Video Link']) }}
+                {!! $errors->first('video_link', '<div class="invalid-feedback">:message</div>') !!}
+                <small class="form-control-feedback"> Video gallery page slug </small>
+            </div>
+            <div class="form-group col-md-6">
+                {{ Form::label('video_link_title') }}
+                {{ Form::text('video_link_title', $category->video_link_title, ['class' => 'form-control' . ($errors->has('video_link_title') ? ' is-invalid' : ''), 'placeholder' => 'Video Link Title']) }}
+                {!! $errors->first('video_link_title', '<div class="invalid-feedback">:message</div>') !!}
+                <small class="form-control-feedback"> Video gallery link title </small>
             </div>
             <div class="form-group col-md-6">
                {{ Form::label('label') }}

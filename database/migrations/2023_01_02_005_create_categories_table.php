@@ -19,9 +19,11 @@ return new class extends Migration
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->string('title');
             $table->string('image');
-            $table->string('link');
             $table->string('label');
-            $table->string('link_title');
+            $table->string('image_link');
+            $table->string('image_link_title');
+            $table->string('video_link');
+            $table->string('video_link_title');
             $table->integer('order');
             $table->string('status')->default('UnPublish');
             $table->timestamps();

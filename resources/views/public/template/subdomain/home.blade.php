@@ -181,7 +181,7 @@
         <div class="row">
             @foreach(categoryList($page->branch_id) as $category)
             <div class="col-md-6">
-                <a href="{{ asset($category->link) }}">
+                
                     <div class="item">
                         <div class="position-re o-hidden">
                             <img src="{{ asset($category->image) }}" alt="">
@@ -193,10 +193,17 @@
                             <div class="row facilities">
                                 <div class="col col-md-7"></div>
                                 <div class="col col-md-5 text-end">
+                                    <a href="{{ asset($category->image_link).'?tab='.preg_replace('/[^a-zA-Z0-9\s]/', '', str_replace(' ', '-', $category->title)) }}">
                                     <div class="permalink">
-                                        {{ strtoupper($category->link_title)}}
-                                        <i class="ti-arrow-right"></i>
+                                        {{ strtoupper($category->image_link_title)}}
                                     </div>
+                                    </a>
+                                    <span style="border-left: 0.2em solid #e4a853; height: 13px; margin-right: 5px;"></span>
+                                    <a href="{{ asset($category->video_link).'?tab='.preg_replace('/[^a-zA-Z0-9\s]/', '', str_replace(' ', '-', $category->title)) }}">
+                                    <div class="permalink">
+                                        {{ strtoupper($category->video_link_title)}}
+                                    </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>

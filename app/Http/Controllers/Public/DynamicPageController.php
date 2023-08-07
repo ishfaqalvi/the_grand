@@ -91,7 +91,7 @@ class DynamicPageController extends Controller
         $contact = Contact::create($request->all());
         $contact->type = 'User';
         Mail::to($contact->email)->send(new ContactFormMail($contact));
-        $settings = branchSetting($contact->branch_id);
+        $settings = branchSettings($contact->branch_id);
         $adminEmail = $settings['footer_email'];
         $contact->type = 'Admin';
         Mail::to($adminEmail)->send(new ContactFormMail($contact));

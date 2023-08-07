@@ -47,7 +47,18 @@ class Category extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['branch_id','title','image','link','link_title','label','order','status'];
+    protected $fillable = [
+        'branch_id',
+        'title',
+        'image',
+        'image_link',
+        'image_link_title',
+        'video_link',
+        'video_link_title',
+        'label',
+        'order',
+        'status'
+    ];
 
     /**
      * Service scope a query

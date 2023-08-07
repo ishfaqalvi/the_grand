@@ -35,7 +35,6 @@
                     <th>No</th>
                     <th>Image</th>
                     <th>Title</th>
-                    <th>Link</th>
                     <th>Label</th>
                     <th>Order</th>
                     <th>Branch</th>
@@ -47,14 +46,14 @@
                 @foreach($categories as  $key => $category)
                     <tr class="align-items-center">
                         <td>{{ ++$key }}</td>  
-                        <td><img src="{{ asset($category->image) }}" style="height: 40px; width: 75px;"></td>                        
+                        <td>
+                            <img src="{{ asset($category->image) }}" style="height: 40px; width: 75px;">
+                        </td>                    
                         <td>{{ $category->title }}</td>
-                        <td>{{ $category->link }}</td>
                         <td>{{ $category->label }}</td>
                         <td>{{ $category->order }}</td>
                         <td>{{ $category->branch->name }}</td>
                         <td>{{ $category->status }}</td>
-
                         <td>@include('admin.category.actions')</td>
                     </tr>
                 @endforeach

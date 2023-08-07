@@ -687,29 +687,28 @@ var form = $('.contact__form'),
   })();
 
 // Slider Grid Background owlCarousel *
-    $('.slider-grid-bg .owl-carousel').owlCarousel({
-        loop: true,
-        margin: 30,
-        mouseDrag: true,
-        autoplay: false,
-        dots: true,
-        nav: false,
-        navText: ["<span class='lnr ti-angle-left'></span>","<span class='lnr ti-angle-right'></span>"],
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1,
-                dots: true,
-                nav: false
-            },
-            600: {
-                items: 2,
-                dots: true,
-                nav: false
-            },
-            1000: {
-                items: 3
-            }
+$('.slider-grid-bg .owl-carousel').owlCarousel({
+    loop: true,
+    margin: 30,
+    mouseDrag: true,
+    autoplay: false,
+    dots: true,
+    nav: false,
+    navText: ["<span class='lnr ti-angle-left'></span>","<span class='lnr ti-angle-right'></span>"],
+    responsiveClass: true,
+    responsive: {
+        0: {
+            items: 1,
+            dots: true,
+            nav: false
+        },
+        600: {
+            items: 2,
+            dots: true,
+            nav: false
+        },
+        1000: {
+            items: 3
         }
-    });
-    
+    }
+});

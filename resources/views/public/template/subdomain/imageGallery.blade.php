@@ -63,9 +63,9 @@
 <!-- Header Banner -->
 @if($pageSetting['img_sections_banner'] == 'Show')
 <div 
-	class="banner-header section-padding valign bg-img bg-fixed" 
-	data-overlay-dark="4" 
-	data-background="{{ asset($pageSetting['img_banner_bg_image']) }}">
+    class="banner-header section-padding valign bg-img bg-fixed" 
+    data-overlay-dark="4" 
+    data-background="{{ asset($pageSetting['img_banner_bg_image']) }}">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-left caption mt-90">
@@ -102,9 +102,9 @@
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-9">
-                        <div class="tab-content active" id="all"></div>
+                        <div class="tab-content {{ request()->get('tab') ? '' : 'active'}}" id="all"></div>
                         @foreach(categoryList($page->branch_id) as $key => $category)
-                        <div class="tab-content" id="tab{{ ++$key }}">
+                        <div class="tab-content {{ request()->get('tab') == preg_replace('/[^a-zA-Z0-9\s]/', '', str_replace(' ', '-', $category->title)) ? 'active' : ''}}" id="tab{{ ++$key }}">
                             <div class="row">
                                 @foreach(images($category->id) as $index => $image)
                                     @if($index % 8 < 3) <!-- First 3 images pattern -->

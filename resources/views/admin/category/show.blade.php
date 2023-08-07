@@ -39,8 +39,20 @@
                     <td>{{ $category->label }}</td>
                 </tr>
                 <tr>
-                    <td class="card-title">Link</td>
-                    <td>{{ $category->link }}</td>
+                    <td class="card-title">Image Page Slug</td>
+                    <td>{{ $category->image_link }}</td>
+                </tr>
+                <tr>
+                    <td class="card-title">Image Link Title</td>
+                    <td>{{ $category->image_link_title }}</td>
+                </tr>
+                <tr>
+                    <td class="card-title">Video Page Slug</td>
+                    <td>{{ $category->video_link }}</td>
+                </tr>
+                <tr>
+                    <td class="card-title">Video Link Title</td>
+                    <td>{{ $category->video_link_title }}</td>
                 </tr>
                 <tr>
                     <td class="card-title">Order</td>

@@ -76,7 +76,7 @@ class Service extends Model implements Auditable
         if ($image) {
             $extension = $image->getClientOriginalExtension();
             $filenametostore = 'upload/images/services/'.uniqid().".".$extension;
-            $img = Image::make($image)->resize(570,380)->save(public_path($filenametostore));
+            $img = Image::make($image)->crop(570,380)->save(public_path($filenametostore));
             $this->attributes['image'] = $filenametostore;
         }else{
             unset($this->attributes['image']);

@@ -64,7 +64,7 @@ class News extends Model implements Auditable
         if ($image) {
             $extension = $image->getClientOriginalExtension();
             $filenametostore = 'upload/images/news/'.uniqid().".".$extension;
-            $img = Image::make($image)->resize(352,469)->save(public_path($filenametostore));
+            $img = Image::make($image)->crop(352,469)->save(public_path($filenametostore));
             $this->attributes['image'] = $filenametostore;
         }else{
             unset($this->attributes['image']);

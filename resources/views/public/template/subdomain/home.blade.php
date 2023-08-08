@@ -238,7 +238,24 @@
                             <div class="cont text-left">
                                 <div class="info"><h6>{{ $service->sub_heading }}</h6></div>
                                 <h4>{{ $service->heading }}</h4>
-                                <p>{{ $service->description }}</p>
+                                @if(strlen($service->description) > 200)
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p>{{ substr($service->description, 0, 200) .'...' }}
+                                            <div class="collapse" id="collapse_{{$key}}">
+                                                {{ substr($service->description, 200) }}
+                                            </div>
+                                            <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_{{$key}}" aria-expanded="false" aria-controls="collapse_{{$key}}">
+                                                More Detail
+                                            </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>  
+                                @else
+                                    <p>{{ $service->description }}</p>
+                                @endif
                                 @if($service->link != '' && $service->button_title != '')
                                 <div class="butn-dark"> 
                                     <a href="{{ asset($service->link) }}"><span>
@@ -257,7 +274,24 @@
                             <div class="cont text-left">
                                 <div class="info"><h6>{{ $service->sub_heading }}</h6></div>
                                 <h4>{{ $service->heading }}</h4>
-                                <p>{{ $service->description }}</p>
+                                @if(strlen($service->description) > 200)
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p>{{ substr($service->description, 0, 200) .'...' }}
+                                            <div class="collapse" id="collapse_{{$key}}">
+                                                {{ substr($service->description, 200) }}
+                                            </div>
+                                            <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_{{$key}}" aria-expanded="false" aria-controls="collapse_{{$key}}">
+                                                More Detail
+                                            </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>  
+                                @else
+                                    <p>{{ $service->description }}</p>
+                                @endif
                                 @if($service->link != '' && $service->button_title != '')
                                 <div class="butn-dark"> 
                                     <a href="{{ asset($service->link) }}"><span>

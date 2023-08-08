@@ -83,7 +83,7 @@ class Category extends Model implements Auditable
         if ($image) {
             $extension = $image->getClientOriginalExtension();
             $name = 'upload/images/category/'.uniqid().".".$extension;
-            $img = Image::make($image)->resize(570,380)->save(public_path($name));
+            $img = Image::make($image)->crop(570,380)->save(public_path($name));
             $this->attributes['image'] = $name;
         }else{
             unset($this->attributes['image']);

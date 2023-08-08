@@ -59,7 +59,7 @@ class Testimonial extends Model implements Auditable
         if ($image) {
             $extension = $image->getClientOriginalExtension();
             $filenametostore = 'upload/images/testimonial/'.uniqid().".".$extension;
-            $img = Image::make($image)->resize(70,70)->save(public_path($filenametostore));
+            $img = Image::make($image)->crop(70,70)->save(public_path($filenametostore));
             $this->attributes['image'] = $filenametostore;
         }else{
             unset($this->attributes['image']);

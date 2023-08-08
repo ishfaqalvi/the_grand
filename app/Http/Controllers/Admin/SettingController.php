@@ -53,7 +53,7 @@ class SettingController extends Controller
                 $extension = $image->getClientOriginalExtension();
                 // Create unique file name
                 $name = 'upload/images/settings/'.uniqid().".".$extension;
-                $img = Image::make($image)->resize($input['size'][$key]['x'] , $input['size'][$key]['y'])->save(public_path($name));
+                $img = Image::make($image)->crop($input['size'][$key]['x'] , $input['size'][$key]['y'])->save(public_path($name));
             }
             $input['key'] = $key;
             $input['value'] = $name;

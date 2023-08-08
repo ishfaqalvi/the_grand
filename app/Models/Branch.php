@@ -52,10 +52,10 @@ class Branch extends Model implements Auditable
         if ($image) {
             // Get file's original extension
             $extension = $image->getClientOriginalExtension();
-
+ 
             // Create unique file name
             $name = 'upload/images/branches/'.uniqid().".".$extension;
-            $img = Image::make($image)->resize(545, 360)->save(public_path($name));
+            $img = Image::make($image)->crop(545,360)->save(public_path($name));
             $this->attributes['thumbnail'] = $name;
         }else{
             unset($this->attributes['thumbnail']);

@@ -150,8 +150,11 @@ class PageController extends Controller
         foreach($request->file() as $key => $file){
             if ($image = $request->file($key)) 
             {
-                $name = 'upload/images/pages/settings/'.time().$image->getClientOriginalName();
-                $img = Image::make($image)->resize($input['size'][$key]['x'] , $input['size'][$key]['y'])->save(public_path($name));
+                // Get file's original extension
+                $extension = $image->getClientOriginalExtension();
+                // Create unique file name
+                $name = 'upload/images/pages/settings/'.uniqid().".".$extension;
+                $img = Image::make($image)->crop($input['size'][$key]['x'] , $input['size'][$key]['y'])->save(public_path($name));
             }
             $input['key'] = $key;
             $input['value'] = $name;

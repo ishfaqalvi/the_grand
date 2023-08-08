@@ -56,19 +56,13 @@ class Gallery extends Model implements Auditable
             Image::make($image->path())->save($destinationPath.'original/'.$name);
 
             // save resized version 1
-            Image::make($image->path())->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->crop(300, 185)->save($destinationPath.'small/'.$name);
+            Image::make($image->path())->crop(300, 185)->save($destinationPath.'small/'.$name);
 
             // save resized version 2
-            Image::make($image->path())->resize(450, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->crop(450, 280)->save($destinationPath.'medium/'.$name);
+            Image::make($image->path())->crop(450, 280)->save($destinationPath.'medium/'.$name);
 
             // save resized version 3
-            Image::make($image->path())->resize(295, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->crop(295, 390)->save($destinationPath.'large/'.$name);
+            Image::make($image->path())->crop(295, 390)->save($destinationPath.'large/'.$name);
 
             $this->attributes['image'] = $name;
         }else {

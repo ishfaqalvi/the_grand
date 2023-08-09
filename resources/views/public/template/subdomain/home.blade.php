@@ -198,7 +198,7 @@
                                         {{ strtoupper($category->image_link_title)}}
                                     </div>
                                     </a>
-                                    <span style="border-left: 0.2em solid #e4a853; height: 13px; margin-right: 5px;"></span>
+                                    <span style="border-left: 0.2em solid #e4a853; height: 13px; margin: 0 8px 0 5px;"></span>
                                     <a href="{{ asset($category->video_link).'?tab='.preg_replace('/[^a-zA-Z0-9\s]/', '', str_replace(' ', '-', $category->title)) }}">
                                     <div class="permalink">
                                         {{ strtoupper($category->video_link_title)}}
@@ -246,7 +246,7 @@
                                             <div class="collapse" id="collapse_{{$key}}">
                                                 {{ $service->detail }}
                                             </div>
-                                            <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_{{$key}}" aria-expanded="false" aria-controls="collapse_{{$key}}">
+                                            <a class="more-detail" href="#" data-bs-toggle="collapse" data-bs-target="#collapse_{{$key}}" aria-expanded="false" aria-controls="collapse_{{$key}}">
                                                 More Detail
                                             </a>
                                             @endif
@@ -280,7 +280,7 @@
                                             <div class="collapse" id="collapse_{{$key}}">
                                                 {{ $service->detail }}
                                             </div>
-                                            <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_{{$key}}" aria-expanded="false" aria-controls="collapse_{{$key}}">
+                                            <a class="more-detail" href="#" data-bs-toggle="collapse" data-bs-target="#collapse_{{$key}}" aria-expanded="false" aria-controls="collapse_{{$key}}">
                                                 More Detail
                                             </a>
                                             @endif
@@ -356,7 +356,7 @@
                                     <p class="text-secondary">{{ $pageSetting['home_booking_card_desc'] }}</p>
                                 </div>
                                 <div class="col-md-12">
-                                    <a href="{{ $pageSetting['home_booking_card_btn_url']}}" class="btn-form1-submit mt-15">
+                                    <a href="{{ $pageSetting['home_booking_card_btn_url']}}" class="btn-form1-submit mt-15 text-center">
                                         {{ strtoupper($pageSetting['home_booking_card_btn_title']) }}
                                     </a>
                                 </div>
@@ -488,7 +488,7 @@
                     </button>
                 </a>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 d-flex align-items-stretch">
                 <div class="pricing-card">
                     <img src="{{ asset($pageSetting['home_contact_us_card1_image']) }}" alt="">
                     <div class="desc">
@@ -508,7 +508,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 d-flex align-items-stretch">
                 <div class="pricing-card">
                     <img src="{{ asset($pageSetting['home_contact_us_card2_image']) }}" alt="">
                     <div class="desc">

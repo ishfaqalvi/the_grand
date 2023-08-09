@@ -156,7 +156,7 @@
                     </button>
                 </a>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 d-flex align-items-stretch">
                 <div class="pricing-card">
                     <img src="{{ asset($pageSetting['faq_contact_us_card1_image']) }}" alt="">
                     <div class="desc">
@@ -176,7 +176,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 d-flex align-items-stretch">
                 <div class="pricing-card">
                     <img src="{{ asset($pageSetting['faq_contact_us_card2_image']) }}" alt="">
                     <div class="desc">

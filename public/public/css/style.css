@@ -3030,6 +3030,7 @@ hr.border-2 {
     position: relative;
     z-index: 1;
     margin-bottom: 30px;
+    width: 100%;
     line-height: 1;
     border: 1px solid #2b2b2b;
 }
@@ -3174,6 +3175,12 @@ hr {
   position: absolute;
   top: 50%;
   left: 0px;
+}
+.services a.more-detail {
+    color: #aa8453;
+}
+.services a.more-detail:hover {
+    color: #fff ;
 }
 .services .content .cont .more:hover {
    color: #222; 

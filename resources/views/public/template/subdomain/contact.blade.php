@@ -225,7 +225,7 @@
                                     <p class="text-secondary">{{ $pageSetting['contact_booking_card_desc'] }}</p>
                                 </div>
                                 <div class="col-md-12">
-                                    <a href="{{ $pageSetting['contact_booking_card_btn_url']}}" class="btn-form1-submit mt-15">
+                                    <a href="{{ $pageSetting['contact_booking_card_btn_url']}}" class="btn-form1-submit text-center mt-15">
                                         {{ strtoupper($pageSetting['contact_booking_card_btn_title']) }}
                                     </a>
                                 </div>

@@ -40,6 +40,7 @@ class Service extends Model implements Auditable
 		'link'        => 'required',
         'button_title'=> 'required',
 		'description' => 'required',
+        'detail'      => 'required',
 		'order'       => 'required',
     ];
 
@@ -50,7 +51,18 @@ class Service extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['page_id','image','heading','sub_heading','link','button_title','description','order','status'];
+    protected $fillable = [
+        'page_id',
+        'image',
+        'heading',
+        'sub_heading',
+        'link',
+        'button_title',
+        'description',
+        'detail',
+        'order',
+        'status'
+    ];
 
     /**
      * Service scope a query

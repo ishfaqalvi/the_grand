@@ -90,10 +90,12 @@
                     <div class="col-lg-2 col-md-3">
                         <div class="widget sticky-top">
                             <ul class="tags tabs">
-                                <li><button class="tab-button text-light" data-target="all">All</button></li>
+                                <li class="tab-items {{ request()->get('tab') ? '' : 'active'}}">
+                                    <button class="tab-button text-light" data-target="all">All</button>
+                                </li>
                                 @foreach(categoryList($page->branch_id) as $key => $category)
-                                <li>
-                                    <button class="tab-button text-light" data-target="tab{{ ++$key }}">
+                                <li class="tab-items {{ request()->get('tab') == preg_replace('/[^a-zA-Z0-9\s]/', '', str_replace(' ', '-', $category->title)) ? 'active' : ''}}">
+                                    <button class="tab-button text-light" data-target="tab{{ $key }}">
                                         {{ $category->title }}
                                     </button>
                                 </li>
@@ -110,7 +112,7 @@
                                     @if($index % 5 < 2) <!-- First 2 video pattern -->
                                     <div class="col-md-6">
                                         <div class="vid-area mb-15">
-                                            <a href="" class="pt-0 mt-0">
+                                            <a href="{{ $video->video_link}}" class="vid pt-0 mt-0">
                                                 <div class="vid-icon">
                                                     <img src="{{ asset('upload/images/gallery/thumbnail/medium/'.$video->video_thumbnail) }}" alt="Vimeo">
                                                     <a class="video-gallery-button vid" href="{{ $video->video_link}}">
@@ -125,7 +127,7 @@
                                     @else <!-- Next 3 images pattern -->
                                     <div class="col-md-4">
                                         <div class="vid-area mb-15">
-                                            <a href="" class="pt-0 mt-0">
+                                            <a href="{{ $video->video_link}}" class="vid pt-0 mt-0">
                                                 <div class="vid-icon">
                                                     <img src="{{ asset('upload/images/gallery/thumbnail/small/'.$video->video_thumbnail) }}" alt="Vimeo">
                                                     <a class="video-gallery-button vid" href="{{ $video->video_link}}">
@@ -166,7 +168,10 @@
                 document.querySelectorAll('.tab-content').forEach(function(tab) {
                     tab.classList.remove('active');
                 });
-
+                document.querySelectorAll('.tab-items').forEach(function(tab) {
+                    tab.classList.remove('active');
+                });
+                button.parentElement.classList.add('active');
                 document.getElementById(target).classList.add('active');
             });
         });
@@ -230,39 +235,39 @@
                     </button>
                 </a>
             </div>
-            <div class="col-md-8">
-                <div class="owl-carousel owl-theme">
-                    <div class="pricing-card">
-                        <img src="{{ asset($pageSetting['video_contact_us_card1_image']) }}" alt="">
-                        <div class="desc">
-                            <div class="name">{{ $pageSetting['video_contact_us_card1_title'] }}</div>
-                            <p class="text-secondary">{{ $pageSetting['video_contact_us_card1_desc'] }}</p>
-                            @if($pageSetting['video_contact_us_card1_phone_title'] != '' && $pageSetting['video_contact_us_card1_phone'] != '')
-                            <div class="reservations">
-                                <div class="icon"><span class="flaticon-call"></span></div>
-                                <div class="text">
-                                    <p class="color-2">{{ $pageSetting['video_contact_us_card1_phone_title'] }}</p> 
-                                    <a href="tel:{{ $pageSetting['video_contact_us_card1_phone'] }}">
-                                        {{ $pageSetting['video_contact_us_card1_phone'] }}
-                                    </a>
-                                </div>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="pricing-card">
-                        <img src="{{ asset($pageSetting['video_contact_us_card2_image']) }}" alt="">
-                        <div class="desc">
-                            <div class="name">{{ $pageSetting['video_contact_us_card2_title'] }}</div>
-                            <p class="text-secondary">{{ $pageSetting['video_contact_us_card2_desc'] }}</p>
-                            @if($pageSetting['video_contact_us_card2_btn_url'] != '' && $pageSetting['video_contact_us_card2_btn_title'] != '')
-                            <div class="col-md-12" style="text-align: center;">
-                                <a href="{{ asset($pageSetting['video_contact_us_card2_btn_url']) }}" class="btn-form1-submit">
-                                    {{ strtoupper($pageSetting['video_contact_us_card2_btn_title']) }}
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <img src="{{ asset($pageSetting['video_contact_us_card1_image']) }}" alt="">
+                    <div class="desc">
+                        <div class="name">{{ $pageSetting['video_contact_us_card1_title'] }}</div>
+                        <p class="text-secondary">{{ $pageSetting['video_contact_us_card1_desc'] }}</p>
+                        @if($pageSetting['video_contact_us_card1_phone_title'] != '' && $pageSetting['video_contact_us_card1_phone'] != '')
+                        <div class="reservations">
+                            <div class="icon"><span class="flaticon-call"></span></div>
+                            <div class="text">
+                                <p class="color-2">{{ $pageSetting['video_contact_us_card1_phone_title'] }}</p> 
+                                <a href="tel:{{ $pageSetting['video_contact_us_card1_phone'] }}">
+                                    {{ $pageSetting['video_contact_us_card1_phone'] }}
                                 </a>
                             </div>
-                            @endif
                         </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <img src="{{ asset($pageSetting['video_contact_us_card2_image']) }}" alt="">
+                    <div class="desc">
+                        <div class="name">{{ $pageSetting['video_contact_us_card2_title'] }}</div>
+                        <p class="text-secondary">{{ $pageSetting['video_contact_us_card2_desc'] }}</p>
+                        @if($pageSetting['video_contact_us_card2_btn_url'] != '' && $pageSetting['video_contact_us_card2_btn_title'] != '')
+                        <div class="col-md-12" style="text-align: center;">
+                            <a href="{{ asset($pageSetting['video_contact_us_card2_btn_url']) }}" class="btn-form1-submit">
+                                {{ strtoupper($pageSetting['video_contact_us_card2_btn_title']) }}
+                            </a>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

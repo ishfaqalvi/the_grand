@@ -373,7 +373,6 @@
     font-size: 15px;
     line-height: 1.5em;
 }
-
 .tabs_images .widget ul li a {
     color: rgba(255,255,255,0.5);
 }
@@ -407,6 +406,10 @@
 }
 .tabs_images ul.tags li:hover,
 .tabs_images ul.tags li a:hover {
+    background-color: #aa8453;
+    color: #fff;
+}
+.tabs_images ul.tags .active {
     background-color: #aa8453;
     color: #fff;
 }

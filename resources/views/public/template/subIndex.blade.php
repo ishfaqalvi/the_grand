@@ -5,7 +5,7 @@
 @section('head')
     <meta name="description"content="{{ $page->metaDescription }}"/>
     <meta name="robots"     content="{{ $page->index == 'No' ? 'noindex, nofollow' : 'index, follow' }}">
-    <link rel ="stylesheet" href   ="{{ asset('public/css/test.css') }}" />
+    <link rel ="stylesheet" href   ="{{ asset('public/css/custom.css') }}" />
 
     <style>
         .tab-content {

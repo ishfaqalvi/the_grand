@@ -54,7 +54,7 @@
                                     <div class="position-re o-hidden">
                                         <img src="{{ asset($brach->thumbnail) }}" alt="">
                                     </div>
-                                    <span class="category">{{ strtoupper($brach->label)}}</span>
+                                    <!-- <span class="category">{{ strtoupper($brach->label)}}</span> -->
                                     <div class="con">
                                         <h5>{{ strtoupper($brach->name)}}</h5>
                                         <div class="line"></div>

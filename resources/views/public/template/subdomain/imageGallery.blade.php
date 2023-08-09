@@ -90,10 +90,12 @@
                     <div class="col-lg-2 col-md-3">
                         <div class="widget sticky-top">
                             <ul class="tags tabs">
-                                <li><button class="tab-button text-light" data-target="all">All</button></li>
+                                <li class="tab-items {{ request()->get('tab') ? '' : 'active'}}">
+                                    <button class="tab-button text-light" data-target="all">All</button>
+                                </li>
                                 @foreach(categoryList($page->branch_id) as $key => $category)
-                                <li>
-                                    <button class="tab-button text-light" data-target="tab{{ ++$key }}">
+                                <li class="tab-items {{ request()->get('tab') == preg_replace('/[^a-zA-Z0-9\s]/', '', str_replace(' ', '-', $category->title)) ? 'active' : ''}}">
+                                    <button class="tab-button text-light" data-target="tab{{ $key }}">
                                         {{ $category->title }}
                                     </button>
                                 </li>
@@ -104,7 +106,7 @@
                     <div class="col-lg-10 col-md-9">
                         <div class="tab-content {{ request()->get('tab') ? '' : 'active'}}" id="all"></div>
                         @foreach(categoryList($page->branch_id) as $key => $category)
-                        <div class="tab-content {{ request()->get('tab') == preg_replace('/[^a-zA-Z0-9\s]/', '', str_replace(' ', '-', $category->title)) ? 'active' : ''}}" id="tab{{ ++$key }}">
+                        <div class="tab-content {{ request()->get('tab') == preg_replace('/[^a-zA-Z0-9\s]/', '', str_replace(' ', '-', $category->title)) ? 'active' : ''}}" id="tab{{ $key }}">
                             <div class="row">
                                 @foreach(images($category->id) as $index => $image)
                                     @if($index % 8 < 3) <!-- First 3 images pattern -->
@@ -166,7 +168,10 @@
                 document.querySelectorAll('.tab-content').forEach(function(tab) {
                     tab.classList.remove('active');
                 });
-
+                document.querySelectorAll('.tab-items').forEach(function(tab) {
+                    tab.classList.remove('active');
+                });
+                button.parentElement.classList.add('active');
                 document.getElementById(target).classList.add('active');
             });
         });
@@ -230,39 +235,39 @@
                     </button>
                 </a>
             </div>
-            <div class="col-md-8">
-                <div class="owl-carousel owl-theme">
-                    <div class="pricing-card">
-                        <img src="{{ asset($pageSetting['img_contact_us_card1_image']) }}" alt="">
-                        <div class="desc">
-                            <div class="name">{{ $pageSetting['img_contact_us_card1_title'] }}</div>
-                            <p class="text-secondary">{{ $pageSetting['img_contact_us_card1_desc'] }}</p>
-                            @if($pageSetting['img_contact_us_card1_phone_title'] != '' && $pageSetting['img_contact_us_card1_phone'] != '')
-                            <div class="reservations">
-                                <div class="icon"><span class="flaticon-call"></span></div>
-                                <div class="text">
-                                    <p class="color-2">{{ $pageSetting['img_contact_us_card1_phone_title'] }}</p> 
-                                    <a href="tel:{{ $pageSetting['img_contact_us_card1_phone'] }}">
-                                        {{ $pageSetting['img_contact_us_card1_phone'] }}
-                                    </a>
-                                </div>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="pricing-card">
-                        <img src="{{ asset($pageSetting['img_contact_us_card2_image']) }}" alt="">
-                        <div class="desc">
-                            <div class="name">{{ $pageSetting['img_contact_us_card2_title'] }}</div>
-                            <p class="text-secondary">{{ $pageSetting['img_contact_us_card2_desc'] }}</p>
-                            @if($pageSetting['img_contact_us_card2_btn_url'] != '' && $pageSetting['img_contact_us_card2_btn_title'] != '')
-                            <div class="col-md-12" style="text-align: center;">
-                                <a href="{{ asset($pageSetting['img_contact_us_card2_btn_url']) }}" class="btn-form1-submit">
-                                    {{ strtoupper($pageSetting['img_contact_us_card2_btn_title']) }}
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <img src="{{ asset($pageSetting['img_contact_us_card1_image']) }}" alt="">
+                    <div class="desc">
+                        <div class="name">{{ $pageSetting['img_contact_us_card1_title'] }}</div>
+                        <p class="text-secondary">{{ $pageSetting['img_contact_us_card1_desc'] }}</p>
+                        @if($pageSetting['img_contact_us_card1_phone_title'] != '' && $pageSetting['img_contact_us_card1_phone'] != '')
+                        <div class="reservations">
+                            <div class="icon"><span class="flaticon-call"></span></div>
+                            <div class="text">
+                                <p class="color-2">{{ $pageSetting['img_contact_us_card1_phone_title'] }}</p> 
+                                <a href="tel:{{ $pageSetting['img_contact_us_card1_phone'] }}">
+                                    {{ $pageSetting['img_contact_us_card1_phone'] }}
                                 </a>
                             </div>
-                            @endif
                         </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <img src="{{ asset($pageSetting['img_contact_us_card2_image']) }}" alt="">
+                    <div class="desc">
+                        <div class="name">{{ $pageSetting['img_contact_us_card2_title'] }}</div>
+                        <p class="text-secondary">{{ $pageSetting['img_contact_us_card2_desc'] }}</p>
+                        @if($pageSetting['img_contact_us_card2_btn_url'] != '' && $pageSetting['img_contact_us_card2_btn_title'] != '')
+                        <div class="col-md-12" style="text-align: center;">
+                            <a href="{{ asset($pageSetting['img_contact_us_card2_btn_url']) }}" class="btn-form1-submit">
+                                {{ strtoupper($pageSetting['img_contact_us_card2_btn_title']) }}
+                            </a>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

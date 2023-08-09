@@ -57,7 +57,7 @@ function branchList()
  */
 function imageSliderList($id)
 {
-    return Slider::image()->where([['branch_id',$id],['status','Publish']])->get();
+    return Slider::image()->where([['branch_id',$id],['status','Publish']])->orderBy('order')->get();
 }
 
 /**
@@ -78,7 +78,7 @@ function videoSliderList($id)
  */
 function headerMenus($id)
 {
-    return Menu::header()->where('branch_id',$id)->whereNull('parent_id')->get();
+    return Menu::header()->where('branch_id',$id)->whereNull('parent_id')->orderBy('order')->get();
 }
 
 /**
@@ -88,7 +88,7 @@ function headerMenus($id)
  */
 function footerMenus($id)
 {
-    return Menu::footer()->where('branch_id',$id)->get();
+    return Menu::footer()->where('branch_id',$id)->orderBy('order')->get();
 }
 
 /**
@@ -252,7 +252,7 @@ function pagekeys()
         'home_sections_facilities'    => '',
         'home_sections_news'          => '',
         'home_sections_testimonial'   => '',
-        'home_sections_contact_us'   => '',
+        'home_sections_contact_us'    => '',
         'home_sections_footer'        => '',
         'home_sections_copyright'     => '',
 

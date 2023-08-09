@@ -220,18 +220,16 @@
                             <h4>{{ $pageSetting['contact_booking_title'] }}</h4>
                         </div>
                         <div class="booking-inner clearfix">
-                            <form action="rooms2.html" class="form1 clearfix">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p class="text-secondary">{{ $pageSetting['contact_booking_card_desc'] }}</p>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn-form1-submit mt-15">
-                                            {{ strtoupper($pageSetting['contact_booking_card_btn_title']) }}
-                                        </button>
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-secondary">{{ $pageSetting['contact_booking_card_desc'] }}</p>
                                 </div>
-                            </form>
+                                <div class="col-md-12">
+                                    <a href="{{ $pageSetting['contact_booking_card_btn_url']}}" class="btn-form1-submit mt-15">
+                                        {{ strtoupper($pageSetting['contact_booking_card_btn_title']) }}
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

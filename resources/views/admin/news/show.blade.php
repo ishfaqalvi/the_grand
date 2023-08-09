@@ -47,10 +47,6 @@
                     <td>{{ $news->url }}</td>
                 </tr>
                 <tr>
-                    <td class="card-title">Description</td>
-                    <td>{{ $news->description }}</td>
-                </tr>
-                <tr>
                     <td class="card-title">Order</td>
                     <td>{{ $news->order }}</td>
                 </tr>
@@ -65,6 +61,10 @@
                 <tr>
                     <td class="card-title">Status</td>
                     <td>{{ $news->status }}</td>
+                </tr>
+                <tr>
+                    <td class="card-title">Description</td>
+                    <td>{{ $news->description }}</td>
                 </tr>
             </tbody>
         </table>

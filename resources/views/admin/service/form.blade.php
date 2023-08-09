@@ -49,8 +49,14 @@
     </div>
     <div class="form-group col-md-12">
         {{ Form::label('description') }}
-        {{ Form::textarea('description', $service->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'Description','rows' => '4','required']) }}
+        {{ Form::textarea('description', $service->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'Description','rows' => '2','required']) }}
         {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
+        <small class="form-control-feedback"> Example: ( Short Description .... ) </small>
+    </div>
+    <div class="form-group col-md-12">
+        {{ Form::label('detail') }}
+        {{ Form::textarea('detail', $service->detail, ['class' => 'form-control' . ($errors->has('detail') ? ' is-invalid' : ''), 'placeholder' => 'Detail','rows' => '5','required']) }}
+        {!! $errors->first('detail', '<div class="invalid-feedback">:message</div>') !!}
         <small class="form-control-feedback"> Example: ( Detail .... ) </small>
     </div>
     <div class="box-footer mt20">

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('link');
             $table->string('button_title');
             $table->text('description');
+            $table->text('detail');
             $table->integer('order')->default(1);
             $table->string('status')->default('UnPublish');
             $table->timestamps();

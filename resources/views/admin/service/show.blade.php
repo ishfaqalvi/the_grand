@@ -58,6 +58,10 @@
                     <td class="card-title">Description</td>
                     <td>{{ $service->description }}</td>
                 </tr>
+                <tr>
+                    <td class="card-title">Detail</td>
+                    <td>{{ $service->detail }}</td>
+                </tr>
             </tbody>
         </table>
     </div>

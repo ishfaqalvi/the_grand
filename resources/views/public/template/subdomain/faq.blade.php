@@ -156,39 +156,39 @@
                     </button>
                 </a>
             </div>
-            <div class="col-md-8">
-                <div class="owl-carousel owl-theme">
-                    <div class="pricing-card">
-                        <img src="{{ asset($pageSetting['faq_contact_us_card1_image']) }}" alt="">
-                        <div class="desc">
-                            <div class="name">{{ $pageSetting['faq_contact_us_card1_title'] }}</div>
-                            <p class="text-secondary">{{ $pageSetting['faq_contact_us_card1_desc'] }}</p>
-                            @if($pageSetting['faq_contact_us_card1_phone_title'] != '' && $pageSetting['faq_contact_us_card1_phone'] != '')
-                            <div class="reservations">
-                                <div class="icon"><span class="flaticon-call"></span></div>
-                                <div class="text">
-                                    <p class="color-2">{{ $pageSetting['faq_contact_us_card1_phone_title'] }}</p> 
-                                    <a href="tel:{{ $pageSetting['faq_contact_us_card1_phone'] }}">
-                                        {{ $pageSetting['faq_contact_us_card1_phone'] }}
-                                    </a>
-                                </div>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="pricing-card">
-                        <img src="{{ asset($pageSetting['faq_contact_us_card2_image']) }}" alt="">
-                        <div class="desc">
-                            <div class="name">{{ $pageSetting['faq_contact_us_card2_title'] }}</div>
-                            <p class="text-secondary">{{ $pageSetting['faq_contact_us_card2_desc'] }}</p>
-                            @if($pageSetting['faq_contact_us_card2_btn_url'] != '' && $pageSetting['faq_contact_us_card2_btn_title'] != '')
-                            <div class="col-md-12" style="text-align: center;">
-                                <a href="{{ asset($pageSetting['faq_contact_us_card2_btn_url']) }}" class="btn-form1-submit">
-                                    {{ strtoupper($pageSetting['faq_contact_us_card2_btn_title']) }}
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <img src="{{ asset($pageSetting['faq_contact_us_card1_image']) }}" alt="">
+                    <div class="desc">
+                        <div class="name">{{ $pageSetting['faq_contact_us_card1_title'] }}</div>
+                        <p class="text-secondary">{{ $pageSetting['faq_contact_us_card1_desc'] }}</p>
+                        @if($pageSetting['faq_contact_us_card1_phone_title'] != '' && $pageSetting['faq_contact_us_card1_phone'] != '')
+                        <div class="reservations">
+                            <div class="icon"><span class="flaticon-call"></span></div>
+                            <div class="text">
+                                <p class="color-2">{{ $pageSetting['faq_contact_us_card1_phone_title'] }}</p> 
+                                <a href="tel:{{ $pageSetting['faq_contact_us_card1_phone'] }}">
+                                    {{ $pageSetting['faq_contact_us_card1_phone'] }}
                                 </a>
                             </div>
-                            @endif
                         </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <img src="{{ asset($pageSetting['faq_contact_us_card2_image']) }}" alt="">
+                    <div class="desc">
+                        <div class="name">{{ $pageSetting['faq_contact_us_card2_title'] }}</div>
+                        <p class="text-secondary">{{ $pageSetting['faq_contact_us_card2_desc'] }}</p>
+                        @if($pageSetting['faq_contact_us_card2_btn_url'] != '' && $pageSetting['faq_contact_us_card2_btn_title'] != '')
+                        <div class="col-md-12" style="text-align: center;">
+                            <a href="{{ asset($pageSetting['faq_contact_us_card2_btn_url']) }}" class="btn-form1-submit">
+                                {{ strtoupper($pageSetting['faq_contact_us_card2_btn_title']) }}
+                            </a>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -26,6 +26,7 @@ class ServiceSeeder extends Seeder
                 'order'       => '1',
                 'status'      => 'Publish',
                 'description' => 'Restaurant inilla duiman at elit finibus viverra nec a lacus themo the nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru the ivite dianne onen nivami acsestion augue artine.',
+                'detail'      => 'Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat. Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.'
             ],
             [
                 'page_id'     => '2',
@@ -37,6 +38,7 @@ class ServiceSeeder extends Seeder
                 'order'       => '2',
                 'status'      => 'Publish',
                 'description' => 'Spa center inilla duiman at elit finibus viverra nec a lacus themo the nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru the ivite dianne onen nivami acsestion augue artine.',
+                'detail'      => 'Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat. Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.'
             ],
             [
                 'page_id'     => '2',
@@ -48,6 +50,7 @@ class ServiceSeeder extends Seeder
                 'order'       => '3',
                 'status'      => 'Publish',
                 'description' => 'Restaurant inilla duiman at elit finibus viverra nec a lacus themo the nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru the ivite dianne onen nivami acsestion augue artine.',
+                'detail'      => 'Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat. Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.'
             ],
             [
                 'page_id'     => '2',
@@ -59,6 +62,7 @@ class ServiceSeeder extends Seeder
                 'order'       => '4',
                 'status'      => 'Publish',
                 'description' => 'The health club & pool at elit finibus viverra nec a lacus themo the nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru the ivite dianne onen nivami acsestion augue artine.',
+                'detail'      => 'Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat. Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.'
             ],
         ]);
     }

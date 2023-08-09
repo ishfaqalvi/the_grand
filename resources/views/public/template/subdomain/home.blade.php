@@ -238,24 +238,22 @@
                             <div class="cont text-left">
                                 <div class="info"><h6>{{ $service->sub_heading }}</h6></div>
                                 <h4>{{ $service->heading }}</h4>
-                                @if(strlen($service->description) > 200)
                                 <div class="container">
                                     <div class="row">
                                         <div class="col">
-                                            <p>{{ substr($service->description, 0, 200) .'...' }}
+                                            <p>{{ $service->description }}
+                                            @if($service->detail)
                                             <div class="collapse" id="collapse_{{$key}}">
-                                                {{ substr($service->description, 200) }}
+                                                {{ $service->detail }}
                                             </div>
                                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_{{$key}}" aria-expanded="false" aria-controls="collapse_{{$key}}">
                                                 More Detail
                                             </a>
+                                            @endif
                                             </p>
                                         </div>
                                     </div>
-                                </div>  
-                                @else
-                                    <p>{{ $service->description }}</p>
-                                @endif
+                                </div>
                                 @if($service->link != '' && $service->button_title != '')
                                 <div class="butn-dark"> 
                                     <a href="{{ asset($service->link) }}"><span>
@@ -274,24 +272,22 @@
                             <div class="cont text-left">
                                 <div class="info"><h6>{{ $service->sub_heading }}</h6></div>
                                 <h4>{{ $service->heading }}</h4>
-                                @if(strlen($service->description) > 200)
                                 <div class="container">
                                     <div class="row">
                                         <div class="col">
-                                            <p>{{ substr($service->description, 0, 200) .'...' }}
+                                            <p>{{ $service->description }}
+                                            @if($service->detail)
                                             <div class="collapse" id="collapse_{{$key}}">
-                                                {{ substr($service->description, 200) }}
+                                                {{ $service->detail }}
                                             </div>
                                             <a href="#" data-bs-toggle="collapse" data-bs-target="#collapse_{{$key}}" aria-expanded="false" aria-controls="collapse_{{$key}}">
                                                 More Detail
                                             </a>
+                                            @endif
                                             </p>
                                         </div>
                                     </div>
-                                </div>  
-                                @else
-                                    <p>{{ $service->description }}</p>
-                                @endif
+                                </div> 
                                 @if($service->link != '' && $service->button_title != '')
                                 <div class="butn-dark"> 
                                     <a href="{{ asset($service->link) }}"><span>
@@ -355,18 +351,16 @@
                             <h4>{{ $pageSetting['home_booking_title'] }}</h4>
                         </div>
                         <div class="booking-inner clearfix">
-                            <form action="rooms2.html" class="form1 clearfix">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p class="text-secondary">{{ $pageSetting['home_booking_card_desc'] }}</p>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn-form1-submit mt-15">
-                                            {{ strtoupper($pageSetting['home_booking_card_btn_title']) }}
-                                        </button>
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-secondary">{{ $pageSetting['home_booking_card_desc'] }}</p>
                                 </div>
-                            </form>
+                                <div class="col-md-12">
+                                    <a href="{{ $pageSetting['home_booking_card_btn_url']}}" class="btn-form1-submit mt-15">
+                                        {{ strtoupper($pageSetting['home_booking_card_btn_title']) }}
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -387,7 +381,7 @@
         </div>
         <div class="row">
             @foreach($page->facilities as $key => $facility)
-            <div class="col-md-4">
+            <div class="col-md-4 d-flex align-items-stretch">
                 <div class="single-facility animate-box" data-animate-effect="fadeInUp">
                     <span class="{{ $facility->icon }}"></span>
                     <h5>{{ $facility->title }}</h5>
@@ -494,39 +488,39 @@
                     </button>
                 </a>
             </div>
-            <div class="col-md-8">
-                <div class="owl-carousel owl-theme">
-                    <div class="pricing-card">
-                        <img src="{{ asset($pageSetting['home_contact_us_card1_image']) }}" alt="">
-                        <div class="desc">
-                            <div class="name">{{ $pageSetting['home_contact_us_card1_title'] }}</div>
-                            <p class="text-secondary">{{ $pageSetting['home_contact_us_card1_desc'] }}</p>
-                            @if($pageSetting['home_contact_us_card1_phone_title'] != '' && $pageSetting['home_contact_us_card1_phone'] != '')
-                            <div class="reservations">
-                                <div class="icon"><span class="flaticon-call"></span></div>
-                                <div class="text">
-                                    <p class="color-2">{{ $pageSetting['home_contact_us_card1_phone_title'] }}</p> 
-                                    <a href="tel:{{ $pageSetting['home_contact_us_card1_phone'] }}">
-                                        {{ $pageSetting['home_contact_us_card1_phone'] }}
-                                    </a>
-                                </div>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="pricing-card">
-                        <img src="{{ asset($pageSetting['home_contact_us_card2_image']) }}" alt="">
-                        <div class="desc">
-                            <div class="name">{{ $pageSetting['home_contact_us_card2_title'] }}</div>
-                            <p class="text-secondary">{{ $pageSetting['home_contact_us_card2_desc'] }}</p>
-                            @if($pageSetting['home_contact_us_card2_btn_url'] != '' && $pageSetting['home_contact_us_card2_btn_title'] != '')
-                            <div class="col-md-12" style="text-align: center;">
-                                <a href="{{ asset($pageSetting['home_contact_us_card2_btn_url']) }}" class="btn-form1-submit">
-                                    {{ strtoupper($pageSetting['home_contact_us_card2_btn_title']) }}
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <img src="{{ asset($pageSetting['home_contact_us_card1_image']) }}" alt="">
+                    <div class="desc">
+                        <div class="name">{{ $pageSetting['home_contact_us_card1_title'] }}</div>
+                        <p class="text-secondary">{{ $pageSetting['home_contact_us_card1_desc'] }}</p>
+                        @if($pageSetting['home_contact_us_card1_phone_title'] != '' && $pageSetting['home_contact_us_card1_phone'] != '')
+                        <div class="reservations">
+                            <div class="icon"><span class="flaticon-call"></span></div>
+                            <div class="text">
+                                <p class="color-2">{{ $pageSetting['home_contact_us_card1_phone_title'] }}</p> 
+                                <a href="tel:{{ $pageSetting['home_contact_us_card1_phone'] }}">
+                                    {{ $pageSetting['home_contact_us_card1_phone'] }}
                                 </a>
                             </div>
-                            @endif
                         </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <img src="{{ asset($pageSetting['home_contact_us_card2_image']) }}" alt="">
+                    <div class="desc">
+                        <div class="name">{{ $pageSetting['home_contact_us_card2_title'] }}</div>
+                        <p class="text-secondary">{{ $pageSetting['home_contact_us_card2_desc'] }}</p>
+                        @if($pageSetting['home_contact_us_card2_btn_url'] != '' && $pageSetting['home_contact_us_card2_btn_title'] != '')
+                        <div class="col-md-12" style="text-align: center;">
+                            <a href="{{ asset($pageSetting['home_contact_us_card2_btn_url']) }}" class="btn-form1-submit">
+                                {{ strtoupper($pageSetting['home_contact_us_card2_btn_title']) }}
+                            </a>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

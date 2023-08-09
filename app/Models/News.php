@@ -51,7 +51,17 @@ class News extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['page_id','heading','sub_heading','image','date','url','description','order','status'];
+    protected $fillable = [
+        'page_id',
+        'heading',
+        'sub_heading',
+        'image',
+        'date',
+        'url',
+        'description',
+        'order',
+        'status'
+    ];
 
     /**
      * Set the image attribute.

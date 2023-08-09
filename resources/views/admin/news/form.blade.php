@@ -51,7 +51,7 @@
         {{ Form::label('description') }}
         {{ Form::textarea('description', $news->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'Description','rows' => '4','required']) }}
         {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
-        <small class="form-control-feedback"> Example: ( Detail .... ) </small>
+        <small class="form-control-feedback"> Example: ( Descritpion .... ) </small>
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Submit</button>

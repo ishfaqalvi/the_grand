@@ -33,9 +33,17 @@
             <div class="col-md-9 mt-3">
                 {{ Form::text('values[contact_form_palceholder_message]', $settings['contact_form_palceholder_message'], ['class' => 'form-control','required']) }}
             </div>
-            <label class="control-label text-end col-md-3 mt-3">On Submitt Message</label>
+            <label class="control-label text-end col-md-3 mt-3">On Submit Message</label>
             <div class="col-md-9 mt-3">
                 {{ Form::text('values[contact_form_return_message]', $settings['contact_form_return_message'], ['class' => 'form-control','required']) }}
+            </div>
+            <label class="control-label text-end col-md-3 mt-3">Email Thanku Message</label>
+            <div class="col-md-9 mt-3">
+                {{ Form::textarea('values[contact_form_email_thanku_message]', $settings['contact_form_email_thanku_message'], ['class' => 'form-control','required','rows'=>'2']) }}
+            </div>
+            <label class="control-label text-end col-md-3 mt-3">Email Processing Time Message</label>
+            <div class="col-md-9 mt-3">
+                {{ Form::textarea('values[contact_form_email_processing_time_message]', $settings['contact_form_email_processing_time_message'], ['class' => 'form-control','required','rows'=>'2']) }}
             </div>
         </div>
     </div>

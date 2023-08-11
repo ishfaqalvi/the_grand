@@ -39,7 +39,7 @@ class Branch extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['type','name','label','url','url_title','thumbnail'];
+    protected $fillable = ['type','name','label','url','url_title','thumbnail','status'];
 
     /**
      * Set the image attribute.

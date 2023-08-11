@@ -793,6 +793,16 @@ class PageSettingsSeeder extends Seeder
                 'settable_id'   => '4',
                 'key'           => 'contact_form_return_message',
                 'value'         => 'Your message was sent successfully.',
+            ],[
+                'settable_type' => 'Page',
+                'settable_id'   => '4',
+                'key'           => 'contact_form_email_thanku_message',
+                'value'         => 'Thank you for reaching out to us. This email is to confirm that we have received your message. Here are the details of your submission:',
+            ],[
+                'settable_type' => 'Page',
+                'settable_id'   => '4',
+                'key'           => 'contact_form_email_processing_time_message',
+                'value'         => 'Please allow us up to 48 hours to process your request and respond. If your inquiry is urgent, please call our customer service team at our toll-free number.',
             ],
             [
                 'settable_type' => 'Page',

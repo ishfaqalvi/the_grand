@@ -318,6 +318,8 @@ function pagekeys()
         'contact_form_palceholder_subject' => '',
         'contact_form_palceholder_message' => '',
         'contact_form_return_message' => '',
+        'contact_form_email_thanku_message' => '',
+        'contact_form_email_processing_time_message' => '',
 
         'contact_google_map_url' => '',
 

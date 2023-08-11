@@ -33,12 +33,14 @@ class ContactFormMail extends Mailable
     public function build()
     {
         return $this->view('admin.contact.email')->with([
-            'name'   => $this->contact['name'],
-            'email'  => $this->contact['email'],
-            'number' => $this->contact['number'],
-            'subject'=> $this->contact['subject'],
-            'type'   => $this->contact['type'],
-            'text'   => $this->contact['message']
+            'name'          => $this->contact['name'],
+            'email'         => $this->contact['email'],
+            'number'        => $this->contact['number'],
+            'subject'       => $this->contact['subject'],
+            'type'          => $this->contact['type'],
+            'thankuMessage' => $this->contact['thankuMessage'],
+            'processingTime'=> $this->contact['processingTime'],
+            'text'          => $this->contact['message']
         ]);
     }
 }

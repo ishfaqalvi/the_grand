@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('url');
             $table->string('url_title');
             $table->string('thumbnail');
+            $table->string('status')->default('UnPublish');
             $table->timestamps();
         });
     }

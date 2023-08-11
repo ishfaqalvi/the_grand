@@ -9,6 +9,26 @@
         <a class="dropdown-item" href="{{ route('branches.edit',$branch->id) }}">
             <i class="fa fa-fw fa-edit"></i> Edit
         </a>
+        @if($branch->status == 'UnPublish')
+            <form action="{{ route('branches.update',$branch->id) }}" method="POST">
+                @csrf
+                {{ method_field('PATCH') }}
+                <input type="hidden" name="status" value="Publish">
+                <button type="submit" class="dropdown-item publish-confirm">
+                    <i class="fas fa-upload"></i> Publish
+                </button>
+            </form>
+        @endif
+        @if($branch->status == 'Publish')
+            <form action="{{ route('branches.update',$branch->id) }}" method="POST">
+                @csrf
+                {{ method_field('PATCH') }}
+                <input type="hidden" name="status" value="UnPublish">
+                <button type="submit" class="dropdown-item unpublish-confirm">
+                    <i class="fas fa-download"></i> UnPublish
+                </button>
+            </form>
+        @endif
         <form action="{{ route('branches.destroy',$branch->id) }}" method="POST">
             @csrf
             @method('DELETE')

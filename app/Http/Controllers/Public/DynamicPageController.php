@@ -38,7 +38,7 @@ class DynamicPageController extends Controller
      */
     public function viewSubdomainHomePage($subdomain)
     {
-        $branch = Branch::where('name',$subdomain)->first();
+        $branch = Branch::where('name',$subdomain)->where('status','Publish')->first();
         if ($branch) {
             $page = $branch->pages()->where([['template','Home'],['status','Publish']])->first();
             if ($page) {
@@ -46,9 +46,11 @@ class DynamicPageController extends Controller
                 $pageSetting   = pageSettings($page->id);
                 return view('public.template.subIndex',compact('page','branchSetting','pageSetting'));
             }
-            return view('public.errors.404');
+            $branchSetting = branchSettings(1);
+            return view('public.errors.404', compact('branchSetting'));
         }
-        return view('public.errors.404');
+        $branchSetting = branchSettings(1);
+        return view('public.errors.404', compact('branchSetting'));
     }
 
     /**
@@ -58,17 +60,23 @@ class DynamicPageController extends Controller
      */
     public function viewSubdomainOtherPage($subdomain, $slug)
     {
-        $page = Page::where([['slug',$slug],['status','Publish']])->first();
-        if ($page) {
-            if ($page->template != 'Home') {
-                $branchSetting = branchSettings($page->branch_id);
-                $pageSetting   = pageSettings($page->id);
-                return view('public.template.subIndex',compact('page','branchSetting','pageSetting'));
+        $branch = Branch::where('name',$subdomain)->where('status','Publish')->first();
+        if($branch){
+            $page = Page::where([['slug',$slug],['status','Publish']])->first();
+            if ($page) {
+                if ($page->template != 'Home') {
+                    $branchSetting = branchSettings($page->branch_id);
+                    $pageSetting   = pageSettings($page->id);
+                    return view('public.template.subIndex',compact('page','branchSetting','pageSetting'));
+                }else{
+                    return redirect()->route('subdomain');    
+                }
             }else{
-                return redirect()->route('subdomain');    
+                return redirect()->route('subdomain');
             }
         }else{
-            return redirect()->route('subdomain');
+            $branchSetting = branchSettings(1);
+            return view('public.errors.404', compact('branchSetting'));
         }
     }
 
@@ -89,9 +97,11 @@ class DynamicPageController extends Controller
             'message'   => 'required'
         ]);
         $contact = Contact::create($request->all());
-        $contact->type = 'User';
-        Mail::to($contact->email)->send(new ContactFormMail($contact));
         $settings = branchSettings($contact->branch_id);
+        $contact->type = 'User';
+        $contact->thankuMessage = $settings['contact_form_email_thanku_message'];
+        $contact->processingTime = $settings['contact_form_email_processing_time_message'];
+        Mail::to($contact->email)->send(new ContactFormMail($contact));
         $adminEmail = $settings['footer_email'];
         $contact->type = 'Admin';
         Mail::to($adminEmail)->send(new ContactFormMail($contact));

@@ -32,6 +32,7 @@
                     <th>Label</th>
                     <th>Url</th>
                     <th>Url Title</th>
+                    <th>Status</th>
                     <th width="10px">Actions</th>
                 </tr>
             </thead>
@@ -44,6 +45,7 @@
                         <td>{{ $branch->label }}</td>
                         <td>{{ $branch->url }}</td>
                         <td>{{ $branch->url_title }}</td>
+                        <td>{{ $branch->status }}</td>
                         <td>@include('admin.branch.actions')</td>
                     </tr>
                 @endforeach

@@ -106,7 +106,7 @@
                     <div class="col-lg-10 col-md-9">
                         <div class="row tab-content {{ request()->get('tab') ? '' : 'active'}}" id="all"></div>
                         @foreach(categoryList($page->branch_id) as $key => $category)
-                        <div class="tab-content {{ request()->get('tab') === preg_replace('/[^a-zA-Z0-9\s]/', '', str_replace(' ', '-', $category->title)) ? 'active' : ''}}" id="tab{{ ++$key }}">
+                        <div class="tab-content {{ request()->get('tab') === preg_replace('/[^a-zA-Z0-9\s]/', '', str_replace(' ', '-', $category->title)) ? 'active' : ''}}" id="tab{{ $key }}">
                             <div class="row">
                                 @foreach(videos($category->id) as $index => $video)
                                     @if($index % 5 < 2) <!-- First 2 video pattern -->

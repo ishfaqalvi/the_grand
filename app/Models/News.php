@@ -7,7 +7,7 @@ use App\EloquentFilters\PageId;
 use App\EloquentFilters\Status;
 use Abdrzakoxa\EloquentFilter\Traits\Filterable;
 use OwenIt\Auditing\Contracts\Auditable;
-use Image;
+use claviska\SimpleImage;
 
 /**
  * Class News
@@ -73,9 +73,11 @@ class News extends Model implements Auditable
     {
         if ($image) {
             $extension = $image->getClientOriginalExtension();
-            $filenametostore = 'upload/images/news/'.uniqid().".".$extension;
-            $img = Image::make($image)->crop(352,469)->save(public_path($filenametostore));
-            $this->attributes['image'] = $filenametostore;
+            $name = 'upload/images/news/'.uniqid().".".$extension;
+
+            $simpleImage = new SimpleImage();
+            $simpleImage->fromFile($image)->resize(352,469)->toFile($name, 'image/jpeg');
+            $this->attributes['image'] = $name;
         }else{
             unset($this->attributes['image']);
         }

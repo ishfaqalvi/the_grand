@@ -47,7 +47,7 @@ function pageSettings($id)
  */
 function branchList()
 {
-    return Branch::where('type','Sub Branch')->get();
+    return Branch::where([['type','Sub Branch'],['status','Publish']])->get();
 }
 
 /**

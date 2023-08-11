@@ -7,7 +7,7 @@ use App\EloquentFilters\BranchId;
 use App\EloquentFilters\Status;
 use Abdrzakoxa\EloquentFilter\Traits\Filterable;
 use OwenIt\Auditing\Contracts\Auditable;
-use Image;
+use claviska\SimpleImage;
 
 /**
  * Class Testimonial
@@ -58,9 +58,10 @@ class Testimonial extends Model implements Auditable
     {
         if ($image) {
             $extension = $image->getClientOriginalExtension();
-            $filenametostore = 'upload/images/testimonial/'.uniqid().".".$extension;
-            $img = Image::make($image)->crop(70,70)->save(public_path($filenametostore));
-            $this->attributes['image'] = $filenametostore;
+            $name = 'upload/images/testimonial/'.uniqid().".".$extension;
+            $simpleImage = new SimpleImage();
+            $simpleImage->fromFile($image)->resize(70,70)->toFile($name, 'image/jpeg');
+            $this->attributes['image'] = $name;
         }else{
             unset($this->attributes['image']);
         }

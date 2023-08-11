@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Abdrzakoxa\EloquentFilter\Traits\Filterable;
 use Image;
+use claviska\SimpleImage;
 
 /**
  * Class Gallery
@@ -56,13 +57,16 @@ class Gallery extends Model implements Auditable
             Image::make($image->path())->save($destinationPath.'original/'.$name);
 
             // save resized version 1
-            Image::make($image->path())->crop(300, 185)->save($destinationPath.'small/'.$name);
+            $smallImage = new SimpleImage();
+            $smallImage->fromFile($image)->resize(300,185)->toFile($destinationPath.'small/'.$name, 'image/jpeg');
 
             // save resized version 2
-            Image::make($image->path())->crop(450, 280)->save($destinationPath.'medium/'.$name);
+            $mediumImage = new SimpleImage();
+            $mediumImage->fromFile($image)->resize(450, 280)->toFile($destinationPath.'medium/'.$name, 'image/jpeg');
 
             // save resized version 3
-            Image::make($image->path())->crop(295, 390)->save($destinationPath.'large/'.$name);
+            $largeImage = new SimpleImage();
+            $largeImage->fromFile($image)->resize(295, 390)->toFile($destinationPath.'large/'.$name, 'image/jpeg');
 
             $this->attributes['image'] = $name;
         }else {
@@ -76,10 +80,10 @@ class Gallery extends Model implements Auditable
      * @param  string  $value
      * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
-    public function setVideoThumbnailAttribute($thumbnail)
+    public function setVideoThumbnailAttribute($image)
     {
-        if ($thumbnail) {
-            $extension = $thumbnail->getClientOriginalExtension();
+        if ($image) {
+            $extension = $image->getClientOriginalExtension();
             $name = uniqid().".".$extension;
 
             $destinationPath = public_path('/upload/images/gallery/thumbnail/');
@@ -88,15 +92,13 @@ class Gallery extends Model implements Auditable
             Image::make($image->path())->save($destinationPath.'original/'.$name);
 
             // save resized version 1
-            Image::make($image->path())->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->crop(292, 185)->save($destinationPath.'small/'.$name);
+            $smallImage = new SimpleImage();
+            $smallImage->fromFile($image)->resize(292, 185)->toFile($destinationPath.'small/'.$name, 'image/jpeg');
 
             // save resized version 2
-            Image::make($image->path())->resize(450, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->crop(450, 280)->save($destinationPath.'medium/'.$name);
-
+            $mediumImage = new SimpleImage();
+            $mediumImage->fromFile($image)->resize(450, 280)->toFile($destinationPath.'medium/'.$name, 'image/jpeg');
+            
             $this->attributes['video_thumbnail'] = $name;
         }else{
             unset($this->attributes['video_thumbnail']);

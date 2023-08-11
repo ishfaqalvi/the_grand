@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
-use Image;
+use claviska\SimpleImage;
 
 
 class SettingController extends Controller
@@ -53,7 +53,8 @@ class SettingController extends Controller
                 $extension = $image->getClientOriginalExtension();
                 // Create unique file name
                 $name = 'upload/images/settings/'.uniqid().".".$extension;
-                $img = Image::make($image)->crop($input['size'][$key]['x'] , $input['size'][$key]['y'])->save(public_path($name));
+                $simpleImage = new SimpleImage();
+                $simpleImage->fromFile($image)->resize($input['size'][$key]['x'] , $input['size'][$key]['y'])->toFile($name, 'image/jpeg');
             }
             $input['key'] = $key;
             $input['value'] = $name;

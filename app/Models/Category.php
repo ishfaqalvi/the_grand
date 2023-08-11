@@ -7,7 +7,7 @@ use App\EloquentFilters\BranchId;
 use App\EloquentFilters\Status;
 use Abdrzakoxa\EloquentFilter\Traits\Filterable;
 use OwenIt\Auditing\Contracts\Auditable;
-use Image;
+use claviska\SimpleImage;
 
 /**
  * Class Category
@@ -83,7 +83,8 @@ class Category extends Model implements Auditable
         if ($image) {
             $extension = $image->getClientOriginalExtension();
             $name = 'upload/images/category/'.uniqid().".".$extension;
-            $img = Image::make($image)->crop(570,380)->save(public_path($name));
+            $simpleImage = new SimpleImage();
+            $simpleImage->fromFile($image)->resize(570,380)->toFile($name, 'image/jpeg');
             $this->attributes['image'] = $name;
         }else{
             unset($this->attributes['image']);

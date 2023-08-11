@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
-use Image;
+use claviska\SimpleImage;
 use Carbon\Carbon;
 use App\Models\Page;
 use App\Models\Branch;
@@ -154,7 +154,8 @@ class PageController extends Controller
                 $extension = $image->getClientOriginalExtension();
                 // Create unique file name
                 $name = 'upload/images/pages/settings/'.uniqid().".".$extension;
-                $img = Image::make($image)->crop($input['size'][$key]['x'] , $input['size'][$key]['y'])->save(public_path($name));
+                $simpleImage = new SimpleImage();
+                $simpleImage->fromFile($image)->resize($input['size'][$key]['x'] , $input['size'][$key]['y'])->toFile($name, 'image/jpeg');
             }
             $input['key'] = $key;
             $input['value'] = $name;

@@ -7,6 +7,7 @@ use App\EloquentFilters\PageId;
 use App\EloquentFilters\Status;
 use Abdrzakoxa\EloquentFilter\Traits\Filterable;
 use OwenIt\Auditing\Contracts\Auditable;
+use claviska\SimpleImage;
 
 /**
  * Class Facility
@@ -45,7 +46,30 @@ class Facility extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['page_id','icon','title','description','order','status'];
+    protected $fillable = ['page_id','icon','image','title','description','order','status'];
+
+    /**
+     * Set the image attribute.
+     *
+     * @param  string  $value
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    public function setImageAttribute($image)
+    {
+        if ($image) {
+            // Get file's original extension
+            $extension = $image->getClientOriginalExtension();
+  
+            // Create unique file name
+            $name = 'upload/images/facility/'.uniqid().".".$extension;
+
+            $simpleImage = new SimpleImage();
+            $simpleImage->fromFile($image)->resize(45,45)->toFile($name, 'image/jpeg');
+            $this->attributes['image'] = $name;
+        }else{
+            unset($this->attributes['image']);
+        }
+    }
 
     /**
      * Facility scope a query

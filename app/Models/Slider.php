@@ -7,7 +7,7 @@ use App\EloquentFilters\BranchId;
 use App\EloquentFilters\Status;
 use Abdrzakoxa\EloquentFilter\Traits\Filterable;
 use OwenIt\Auditing\Contracts\Auditable;
-use Image;
+use claviska\SimpleImage;
 
 /**
  * Class Slider
@@ -79,7 +79,8 @@ class Slider extends Model implements Auditable
         if ($image) {
             $extension = $image->getClientOriginalExtension();
             $name = 'upload/images/sliders/'.uniqid().".".$extension;
-            $img = Image::make($image)->crop(1920, 1200)->save(public_path($name));
+            $simpleImage = new SimpleImage();
+            $simpleImage->fromFile($image)->resize(1920, 1200)->toFile($name, 'image/jpeg');
             $this->attributes['image'] = $name;
         }else{
             unset($this->attributes['image']);

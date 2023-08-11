@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "abdrzakoxa/laravel-eloquent-filter": "^1.1",
         "anhskohbo/no-captcha": "^3.5",
+        "claviska/simpleimage": "^4.0",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
         "laravel/framework": "^9.19",

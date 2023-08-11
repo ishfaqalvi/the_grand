@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use OwenIt\Auditing\Contracts\Auditable;
-use Image;
+use claviska\SimpleImage;
 
 /**
  * Class Branch
@@ -52,10 +52,12 @@ class Branch extends Model implements Auditable
         if ($image) {
             // Get file's original extension
             $extension = $image->getClientOriginalExtension();
- 
+  
             // Create unique file name
             $name = 'upload/images/branches/'.uniqid().".".$extension;
-            $img = Image::make($image)->crop(545,360)->save(public_path($name));
+
+            $simpleImage = new SimpleImage();
+            $simpleImage->fromFile($image)->resize(545,360)->toFile($name, 'image/jpeg');
             $this->attributes['thumbnail'] = $name;
         }else{
             unset($this->attributes['thumbnail']);

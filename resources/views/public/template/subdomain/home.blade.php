@@ -381,14 +381,23 @@
         </div>
         <div class="row">
             @foreach($page->facilities as $key => $facility)
+            @if(isset($facility->image) && $facility->icon == '')
+            <div class="col-md-4">
+                <div class="single-facility animate-box" data-animate-effect="fadeInUp">
+                    <img src="{{ asset($facility->image) }}" alt="">
+                    <h5>{{ $facility->title }}</h5>
+                    <p>{{ $facility->description }}</p>
+                </div>
+            </div>
+            @else
             <div class="col-md-4 d-flex align-items-stretch">
                 <div class="single-facility animate-box" data-animate-effect="fadeInUp">
                     <span class="{{ $facility->icon }}"></span>
                     <h5>{{ $facility->title }}</h5>
                     <p>{{ $facility->description }}</p>
-                    <div class="facility-shape"> <span class="{{ $facility->icon }}"></span> </div>
                 </div>
             </div>
+            @endif
             @endforeach
         </div>
     </div>

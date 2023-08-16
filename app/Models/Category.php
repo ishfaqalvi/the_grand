@@ -35,7 +35,6 @@ class Category extends Model implements Auditable
     static $rules = [
 		'branch_id' => 'required',
 		'title' => 'required',
-		'link' => 'required',
 		'label' => 'required',
 		'order' => 'required',
     ];

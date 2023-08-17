@@ -32,11 +32,11 @@ class Facility extends Model implements Auditable
     use Filterable;
     
     static $rules = [
-		'page_id'     => 'required',
+        'page_id'     => 'required',
         'icon'        => 'required',
-		'title'       => 'required',
-		'description' => 'required',
-		'order'       => 'required'
+        'title'       => 'required',
+        'description' => 'required',
+        'order'       => 'required'
     ];
 
     protected $filters = [PageId::class, Status::class];
@@ -60,12 +60,10 @@ class Facility extends Model implements Auditable
             // Get file's original extension
             $extension = $image->getClientOriginalExtension();
   
-            // Create unique file name
-            $name = 'upload/images/facility/'.uniqid().".".$extension;
-
-            $simpleImage = new SimpleImage();
-            $simpleImage->fromFile($image)->resize(45,45)->toFile($name, 'image/jpeg');
-            $this->attributes['image'] = $name;
+            $name = uniqid().".".$extension;
+            $path = 'upload/images/facility/';
+            $image->move($path, $name);
+            $this->attributes['image'] = $path.$name;
         }else{
             unset($this->attributes['image']);
         }

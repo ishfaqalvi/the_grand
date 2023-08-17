@@ -69,10 +69,14 @@ class DynamicPageController extends Controller
                     $pageSetting   = pageSettings($page->id);
                     return view('public.template.subIndex',compact('page','branchSetting','pageSetting'));
                 }else{
-                    return redirect()->route('subdomain');    
+                    // return redirect()->route('subdomain');   
+                    $branchSetting = branchSettings(1);
+            return view('public.errors.404', compact('branchSetting')); 
                 }
             }else{
-                return redirect()->route('subdomain');
+                // return redirect()->route('subdomain');
+                $branchSetting = branchSettings(1);
+            return view('public.errors.404', compact('branchSetting'));
             }
         }else{
             $branchSetting = branchSettings(1);

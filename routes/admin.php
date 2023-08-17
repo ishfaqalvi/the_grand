@@ -257,3 +257,7 @@ Route::group(['prefix' => 'logging'], function ()
         [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']
     )->name('logs');
 });
+
+Route::any('{query}', function () {
+    return redirect('/');
+})->where('query', '.*');

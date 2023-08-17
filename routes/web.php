@@ -57,3 +57,8 @@ Route::domain('{subdomain}.' . env('APP_DOMAIN', 'websitecms.test'))->group(func
 Route::domain(env('APP_DOMAIN', 'websitecms.test'))->group(function () {
     Route::get('/', [DynamicPageController::class, 'viewHomePage'])->name('home');
 });
+
+
+Route::any('{query}', function () {
+    return redirect('/');
+})->where('query', '.*');

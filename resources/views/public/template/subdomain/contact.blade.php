@@ -266,20 +266,20 @@
                         <p class="footer-contact-text">{{ $branchSetting['footer_address'] }}</p>
                         <div class="footer-contact-info">
                             @if($branchSetting['footer_phone_number'] != '')
-                            <p class="footer-contact-phone"><span class="flaticon-call"></span>
-                                {{ $branchSetting['footer_phone_number'] }}
-                            </p>
+                                <p class="footer-contact-phone"><span class="flaticon-call"></span>
+                                    <a href="tel:{{ $branchSetting['footer_phone_number'] }}">{{ $branchSetting['footer_phone_number'] }}</a>
+                                </p>
                             @endif
                             @if($branchSetting['footer_email'] != '')
-                            <p class="footer-contact-mail">{{ $branchSetting['footer_email'] }}</p>
+                                <a href="mailto:{{ $branchSetting['footer_email'] }}" class="footer-contact-mail">{{ $branchSetting['footer_email'] }}</a>
                             @endif
                         </div>
                         <div class="footer-about-social-list">
-                            <a href="{{ $branchSetting['footer_instagram_link'] }}"><i class="ti-instagram"></i></a>
-                            <a href="{{ $branchSetting['footer_twitter_link'] }}"><i class="ti-twitter"></i></a>
-                            <a href="{{ $branchSetting['footer_youtube_link'] }}"><i class="ti-youtube"></i></a>
-                            <a href="{{ $branchSetting['footer_facebook_link'] }}"><i class="ti-facebook"></i></a>
-                            <a href="{{ $branchSetting['footer_pinterest_link'] }}"><i class="ti-pinterest"></i></a>
+                            <a href="{{ $branchSetting['footer_instagram_link'] }}" target="blank"><i class="ti-instagram"></i></a>
+                            <a href="{{ $branchSetting['footer_twitter_link'] }}" target="blank"><i class="ti-twitter"></i></a>
+                            <a href="{{ $branchSetting['footer_youtube_link'] }}" target="blank"><i class="ti-youtube"></i></a>
+                            <a href="{{ $branchSetting['footer_facebook_link'] }}" target="blank"><i class="ti-facebook"></i></a>
+                            <a href="{{ $branchSetting['footer_pinterest_link'] }}" target="blank"><i class="ti-pinterest"></i></a>
                         </div>
                     </div>
                 </div>
@@ -291,13 +291,18 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6 text-start">
                     <div class="footer-bottom-inner">
                         <p class="footer-bottom-copy-right">{{ $branchSetting['copyright_text'] }} 
-                            <a href="{{ asset($branchSetting['copyright_link']) }}">
+                            <a href="{{ asset($branchSetting['copyright_link']) }}" target="blank">
                                 {{ $branchSetting['copyright_link_title'] }}
                             </a>
                         </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-end">
+                    <div class="footer-bottom-inner">
+                        <p class="footer-bottom-copy-right">Developed with ❤️ by <a href="https://www.dazzle-lab.com/"  target="blank">Dazzle Lab</a></p>
                     </div>
                 </div>
             </div>

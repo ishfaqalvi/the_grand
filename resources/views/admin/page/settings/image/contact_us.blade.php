@@ -23,7 +23,7 @@
             </div>
             <label class="control-label text-end col-md-3 mt-3">Description</label>
             <div class="col-md-9 mt-3">
-                {{ Form::textarea('values[img_contact_us_desc]', $settings['img_contact_us_desc'], ['class' => 'form-control','required','rows' => '3']) }}
+                {{ Form::textarea('values[img_contact_us_desc]', $settings['img_contact_us_desc'], ['class' => 'form-control','required','rows' => '3','id'=>'img_contact_us_desc']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">First Card Thumbnail</label>
             <div class="col-md-9 mt-3">
@@ -48,7 +48,7 @@
             </div>
             <label class="control-label text-end col-md-3 mt-3">First Card Description</label>
             <div class="col-md-9 mt-3">
-                {{ Form::textarea('values[img_contact_us_card1_desc]', $settings['img_contact_us_card1_desc'], ['class' => 'form-control','required','rows' => '3']) }}
+                {{ Form::textarea('values[img_contact_us_card1_desc]', $settings['img_contact_us_card1_desc'], ['class' => 'form-control','required','rows' => '3','id'=>'img_contact_us_card1_desc']) }}
             </div>
             <label class="control-label text-end col-md-3 mt-3">Second Card Thumbnail</label>
             <div class="col-md-9 mt-3">
@@ -73,7 +73,7 @@
             </div>
             <label class="control-label text-end col-md-3 mt-3">Second Card Description</label>
             <div class="col-md-9 mt-3">
-                {{ Form::textarea('values[img_contact_us_card2_desc]', $settings['img_contact_us_card2_desc'], ['class' => 'form-control','required','rows' => '3']) }}
+                {{ Form::textarea('values[img_contact_us_card2_desc]', $settings['img_contact_us_card2_desc'], ['class' => 'form-control','required','rows' => '3','id'=>'img_contact_us_card2_desc']) }}
             </div>
         </div>
     </div>

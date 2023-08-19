@@ -73,6 +73,34 @@
                 if (result.value === true)  $(this).closest("form").submit();
             });
         });
+        $(".publish-confirm").click(function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This branch will be displayed on website after this!",
+                type: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Publish it!'
+            }).then((result) => {
+                if (result.value === true)  $(this).closest("form").submit();
+            });
+        });
+        $(".unpublish-confirm").click(function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This branch will not displayed on website after this!",
+                type: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, UnPublish it!'
+            }).then((result) => {
+                if (result.value === true)  $(this).closest("form").submit();
+            });
+        });
     });
 </script>
 @endsection

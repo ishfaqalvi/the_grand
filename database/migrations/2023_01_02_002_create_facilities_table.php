@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('page_id')->references('id')->on('pages')->onDelete('cascade');
+            $table->string('title');
+            $table->string('type');
             $table->string('icon')->nullable();
             $table->string('image')->nullable();
-            $table->string('title');
             $table->text('description');
             $table->integer('order')->default(1);
             $table->string('status')->default('UnPublish');

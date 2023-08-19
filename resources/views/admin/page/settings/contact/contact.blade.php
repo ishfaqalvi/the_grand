@@ -1,6 +1,6 @@
-<form method="POST" action="{{ route('pages.settings') }}" class="form-horizontal form-bordered testimonial" role="form" enctype="multipart/form-data">
+<form method="POST" action="{{ route('pages.settings') }}" class="form-horizontal form-bordered contact" role="form" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="tab" value="testimonial">
+    <input type="hidden" name="tab" value="contact">
     <input type="hidden" name="settable_type" value="Page">
     <input type="hidden" name="settable_id" value="{{ $page->id }}">
     <div class="form-body">
@@ -35,7 +35,7 @@
             </div>
             <label class="control-label text-end col-md-3 mt-3">Description</label>
             <div class="col-md-9 mt-3">
-                {{ Form::textarea('values[contact_contactUs_desc]', $settings['contact_contactUs_desc'], ['class' => 'form-control','required','rows' => '3']) }}
+                {{ Form::textarea('values[contact_contactUs_desc]', $settings['contact_contactUs_desc'], ['class' => 'form-control','required','rows' => '3','id'=>'contact_contactUs_desc']) }}
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
 </form>
 @section('scripts')
 <script>
-    $(".testimonial").validate({
+    $(".contact").validate({
         errorClass: "text-danger",
         highlight: function (element, errorClass) {
             $(element).removeClass(errorClass)

@@ -45,7 +45,7 @@
             </div>
             <label class="control-label mt-3 text-end col-md-3">Description</label>
             <div class="col-md-9 mt-3">
-                {{ Form::textarea('values[home_about_description]', $settings['home_about_description'], ['class' => 'form-control','required']) }}
+                {{ Form::textarea('values[home_about_description]', $settings['home_about_description'], ['class' => 'form-control','required','id' => 'home_about_description']) }}
             </div>
         </div>
     </div>
@@ -86,6 +86,76 @@
 <script>
     $(document).ready(function() {
         $('.dropify').dropify();
+        if ($("#home_about_description").length > 0) {
+            tinymce.init({
+                selector: "textarea#home_about_description",
+                theme: "modern",
+                height: 150,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+
+            });
+        }
+        if ($("#home_booking_card_desc").length > 0) {
+            tinymce.init({
+                selector: "textarea#home_booking_card_desc",
+                theme: "modern",
+                height: 150,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+
+            });
+        }
+        if ($("#home_contact_us_desc").length > 0) {
+            tinymce.init({
+                selector: "textarea#home_contact_us_desc",
+                theme: "modern",
+                height: 150,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+
+            });
+        }
+        if ($("#home_contact_us_card1_desc").length > 0) {
+            tinymce.init({
+                selector: "textarea#home_contact_us_card1_desc",
+                theme: "modern",
+                height: 150,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+
+            });
+        }
+        if ($("#home_contact_us_card2_desc").length > 0) {
+            tinymce.init({
+                selector: "textarea#home_contact_us_card2_desc",
+                theme: "modern",
+                height: 150,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+
+            });
+        }
     });
 </script>
 @endsection

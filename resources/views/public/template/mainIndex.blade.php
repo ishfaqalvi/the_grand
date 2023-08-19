@@ -194,7 +194,7 @@
                 </span>
                 <div class="section-subtitle">{{ strtoupper($pageSetting['home_about_sub_title']) }}</div>
                 <div class="section-title">{{ $pageSetting['home_about_title'] }}</div>
-                <p>{{ $pageSetting['home_about_description'] }}</p>
+                <p>{!! $pageSetting['home_about_description'] !!}</p>
                 <!-- call -->
                 @if($pageSetting['home_about_contact_label'] != '' && $pageSetting['home_about_contact_number'])
                 <div class="reservations">
@@ -267,7 +267,7 @@
                 <div class="col-md-4">
                     <div class="footer-column footer-about">
                         <h3 class="footer-title">{{ $branchSetting['footer_first_lable'] }}</h3>
-                        <p class="footer-about-text">{{ $branchSetting['footer_description'] }}</p>
+                        <p class="footer-about-text">{!! $branchSetting['footer_description'] !!}</p>
                     </div>
                 </div>
                 <div class="col-md-3 offset-md-1">

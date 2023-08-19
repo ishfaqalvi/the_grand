@@ -19,7 +19,7 @@ class NewsController extends Controller
      */
     public function index(Request $request)
     {
-        $news = News::filter($request->all())->userBased()->get();
+        $news = News::filter($request->all())->userBased()->orderBy('order', 'asc')->get();
         $filters = getFilter(News::userBased()->get(), ['page_id','status']);
         $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 

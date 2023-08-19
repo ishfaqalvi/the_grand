@@ -9,7 +9,7 @@
 <div class="col-md-7 align-self-center text-end">
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('facilities.index') }}">Facility</a></li>
             <li class="breadcrumb-item active">Edit</li>
         </ol>
@@ -35,6 +35,7 @@
 
 @section('scripts')
 <script>
+    var type = $('select[name=type]');
     $(".facility").validate({
         errorClass: "text-danger",
         highlight: function (element, errorClass) {
@@ -52,11 +53,28 @@
         errorPlacement: function (error, element) {
             error.insertAfter(element)
         },
+        rules: {
+            type:{required: true},            
+            icon:{required: function(){if (type.val() =='Icon') {return true}}},
+            image:{required: function(){if (type.val() =='Image') {return true}}}
+        }
     });
 </script>
 <script>
     $(document).ready(function() {
         $('.dropify').dropify();
+        $('#type').on('change', function (e) {
+            if (this.value == 'Icon') {
+                $('div.icon').show('slow');
+                $('div.image').hide('slow');
+            }else if(this.value == 'Image'){
+                $('div.icon').hide('slow');
+                $('div.image').show('slow');
+            }else{
+                $('div.icon').hide('slow');
+                $('div.image').hide('slow');
+            }
+        }).trigger('change');
     });
 </script>
 @endsection

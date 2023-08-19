@@ -144,7 +144,7 @@
                 </span>
                 <div class="section-subtitle">{{ strtoupper($pageSetting['home_about_sub_title']) }}</div>
                 <div class="section-title">{{ $pageSetting['home_about_title'] }}</div>
-                <p>{{ $pageSetting['home_about_description'] }}</p>
+                <p>{!! $pageSetting['home_about_description'] !!}</p>
                 <!-- call -->
                 @if($pageSetting['home_about_contact_label'] != '' && $pageSetting['home_about_contact_number'])
                 <div class="reservations">
@@ -241,10 +241,10 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col">
-                                            <p>{{ $service->description }}
+                                            <p>{!! $service->description !!}
                                             @if($service->detail)
                                             <div class="collapse" id="collapse_{{$key}}">
-                                                {{ $service->detail }}
+                                                {!! $service->detail !!}
                                             </div>
                                             <a class="more-detail" href="#" data-bs-toggle="collapse" data-bs-target="#collapse_{{$key}}" aria-expanded="false" aria-controls="collapse_{{$key}}">
                                                 More Detail
@@ -275,10 +275,10 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col">
-                                            <p>{{ $service->description }}
+                                            <p>{!! $service->description !!}
                                             @if($service->detail)
                                             <div class="collapse" id="collapse_{{$key}}">
-                                                {{ $service->detail }}
+                                                {!! $service->detail !!}
                                             </div>
                                             <a class="more-detail" href="#" data-bs-toggle="collapse" data-bs-target="#collapse_{{$key}}" aria-expanded="false" aria-controls="collapse_{{$key}}">
                                                 More Detail
@@ -353,7 +353,7 @@
                         <div class="booking-inner clearfix">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p class="text-secondary">{{ $pageSetting['home_booking_card_desc'] }}</p>
+                                    <p class="text-secondary">{!! $pageSetting['home_booking_card_desc'] !!}</p>
                                 </div>
                                 <div class="col-md-12">
                                     <a href="{{ $pageSetting['home_booking_card_btn_url']}}" class="btn-form1-submit mt-15 text-center" target="blank">
@@ -381,7 +381,7 @@
         </div>
         <div class="row">
             @foreach($page->facilities as $key => $facility)
-            @if(isset($facility->image) && $facility->icon == '')
+            @if($facility->type == 'Image')
             <div class="col-md-4">
                 <div class="single-facility animate-box" data-animate-effect="fadeInUp">
                     <img src="{{ asset($facility->image) }}" alt="">
@@ -389,7 +389,8 @@
                     <p>{{ $facility->description }}</p>
                 </div>
             </div>
-            @else
+            @endif
+            @if($facility->type == 'Icon')
             <div class="col-md-4 d-flex align-items-stretch">
                 <div class="single-facility animate-box" data-animate-effect="fadeInUp">
                     <span class="{{ $facility->icon }}"></span>
@@ -490,7 +491,7 @@
                     <span>{{ strtoupper($pageSetting['home_contact_us_sub_title']) }}</span>
                 </div>
                 <div class="section-title">{{ $pageSetting['home_contact_us_title'] }}</div>
-                <p class="color-2">{{ $pageSetting['home_contact_us_desc'] }}</p>
+                <p class="color-2">{!! $pageSetting['home_contact_us_desc'] !!}</p>
                 <a href="{{ asset($pageSetting['home_contact_us_btn_url']) }}" target="blank">
                     <button type="submit" class="btn-form1-submit mt-15 px-3">
                         {{ strtoupper($pageSetting['home_contact_us_btn_title']) }}
@@ -502,7 +503,7 @@
                     <img src="{{ asset($pageSetting['home_contact_us_card1_image']) }}" alt="">
                     <div class="desc">
                         <div class="name">{{ $pageSetting['home_contact_us_card1_title'] }}</div>
-                        <p class="text-secondary">{{ $pageSetting['home_contact_us_card1_desc'] }}</p>
+                        <p class="text-secondary">{!! $pageSetting['home_contact_us_card1_desc'] !!}</p>
                         @if($pageSetting['home_contact_us_card1_phone_title'] != '' && $pageSetting['home_contact_us_card1_phone'] != '')
                         <div class="reservations">
                             <div class="icon"><span class="flaticon-call"></span></div>
@@ -522,7 +523,7 @@
                     <img src="{{ asset($pageSetting['home_contact_us_card2_image']) }}" alt="">
                     <div class="desc">
                         <div class="name">{{ $pageSetting['home_contact_us_card2_title'] }}</div>
-                        <p class="text-secondary">{{ $pageSetting['home_contact_us_card2_desc'] }}</p>
+                        <p class="text-secondary">{!! $pageSetting['home_contact_us_card2_desc'] !!}</p>
                         @if($pageSetting['home_contact_us_card2_btn_url'] != '' && $pageSetting['home_contact_us_card2_btn_title'] != '')
                         <div class="col-md-12" style="text-align: center;">
                             <a href="{{ asset($pageSetting['home_contact_us_card2_btn_url']) }}" target="blank" class="btn-form1-submit">
@@ -546,7 +547,7 @@
                 <div class="col-md-4">
                     <div class="footer-column footer-about">
                         <h3 class="footer-title">{{ $branchSetting['footer_first_lable'] }}</h3>
-                        <p class="footer-about-text">{{ $branchSetting['footer_description'] }}</p>
+                        <p class="footer-about-text">{!! $branchSetting['footer_description'] !!}</p>
                     </div>
                 </div>
                 <div class="col-md-3 offset-md-1">

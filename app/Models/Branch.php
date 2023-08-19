@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use OwenIt\Auditing\Contracts\Auditable;
-use claviska\SimpleImage;
+use Spatie\Image\Image;
+use Spatie\Image\Manipulations;
 
 /**
  * Class Branch
@@ -50,15 +51,17 @@ class Branch extends Model implements Auditable
     public function setThumbnailAttribute($image)
     {
         if ($image) {
-            // Get file's original extension
             $extension = $image->getClientOriginalExtension();
-  
-            // Create unique file name
-            $name = 'upload/images/branches/'.uniqid().".".$extension;
+            $name = uniqid().".".$extension;
 
-            $simpleImage = new SimpleImage();
-            $simpleImage->fromFile($image)->resize(545,360)->toFile($name, 'image/jpeg');
-            $this->attributes['thumbnail'] = $name;
+            $path = public_path('upload/images/branches/');
+            $finalPath = $path.$name;
+            $image->move($path, $name);
+
+            Image::load($finalPath)
+                ->fit(Manipulations::FIT_CROP, 545,360)
+                ->save($finalPath);
+            $this->attributes['thumbnail'] = $finalPath;
         }else{
             unset($this->attributes['thumbnail']);
         }

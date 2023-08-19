@@ -18,7 +18,7 @@ class FacilityController extends Controller
      */
     public function index(Request $request)
     {
-        $facilities = Facility::filter($request->all())->userBased()->get();
+        $facilities = Facility::filter($request->all())->userBased()->orderBy('order', 'asc')->get();
         $filters = getFilter(Facility::userBased()->get(), ['page_id','status']);
         $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 

@@ -40,7 +40,7 @@
             </div>
             <label class="control-label text-end col-md-3 mt-3">Card Description</label>
             <div class="col-md-9 mt-3">
-                {{ Form::textarea('values[home_booking_card_desc]', $settings['home_booking_card_desc'], ['class' => 'form-control','required','rows' => '3']) }}
+                {{ Form::textarea('values[home_booking_card_desc]', $settings['home_booking_card_desc'], ['class' => 'form-control','required','rows' => '3','id'=>'home_booking_card_desc']) }}
             </div>
         </div>
     </div>

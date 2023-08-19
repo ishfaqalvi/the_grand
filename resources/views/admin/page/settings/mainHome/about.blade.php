@@ -45,7 +45,7 @@
             </div>
             <label class="control-label mt-3 text-end col-md-3">Description</label>
             <div class="col-md-9 mt-3">
-                {{ Form::textarea('values[home_about_description]', $settings['home_about_description'], ['class' => 'form-control','required']) }}
+                {{ Form::textarea('values[home_about_description]', $settings['home_about_description'], ['class' => 'form-control','required','id' => 'mymce']) }}
             </div>
         </div>
     </div>
@@ -85,44 +85,21 @@
 </script>
 <script>
     $(document).ready(function() {
-        // Basic
         $('.dropify').dropify();
+        if ($("#mymce").length > 0) {
+            tinymce.init({
+                selector: "textarea#mymce",
+                theme: "modern",
+                height: 150,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
 
-        // Translated
-        $('.dropify-fr').dropify({
-            messages: {
-                default: 'Glissez-déposez un fichier ici ou cliquez',
-                replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
-                remove: 'Supprimer',
-                error: 'Désolé, le fichier trop volumineux'
-            }
-        });
-
-        // Used events
-        var drEvent = $('#input-file-events').dropify();
-
-        drEvent.on('dropify.beforeClear', function(event, element) {
-            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
-        });
-
-        drEvent.on('dropify.afterClear', function(event, element) {
-            alert('File deleted');
-        });
-
-        drEvent.on('dropify.errors', function(event, element) {
-            console.log('Has Errors');
-        });
-
-        var drDestroy = $('#input-file-to-destroy').dropify();
-        drDestroy = drDestroy.data('dropify')
-        $('#toggleDropify').on('click', function(e) {
-            e.preventDefault();
-            if (drDestroy.isDropified()) {
-                drDestroy.destroy();
-            } else {
-                drDestroy.init();
-            }
-        })
+            });
+        }
     });
 </script>
 @endsection

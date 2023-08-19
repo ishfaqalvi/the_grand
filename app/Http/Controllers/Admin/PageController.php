@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
-use claviska\SimpleImage;
 use Carbon\Carbon;
 use App\Models\Page;
 use App\Models\Branch;
@@ -11,7 +10,8 @@ use App\Models\Setting;
 use App\Models\Language;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Spatie\Image\Image;
+use Spatie\Image\Manipulations;
 /**
  * Class PageController
  * @package App\Http\Controllers
@@ -153,19 +153,21 @@ class PageController extends Controller
                 // Get file's original extension
                 $extension = $image->getClientOriginalExtension();
                 // Create unique file name
-                $name = 'upload/images/pages/settings/'.uniqid().".".$extension;
-                $simpleImage = new SimpleImage();
-                $simpleImage->fromFile($image)->resize($input['size'][$key]['x'] , $input['size'][$key]['y'])->toFile($name, 'image/jpeg');
+                $name = uniqid().".".$extension;
+                $path = 'upload/images/pages/settings/';
+                $saveImage = 'upload/images/pages/settings/'.$name;
+                $image->move($path, $name);
+                Image::load($saveImage)
+                    ->fit(Manipulations::FIT_CROP, $input['size'][$key]['x'], $input['size'][$key]['y'])
+                    ->save(public_path($saveImage));
             }
-            $input['key'] = $key;
-            $input['value'] = $name;
             $check_record = Setting::where([
                 ['settable_type', $request->settable_type],
                 ['settable_id', $request->settable_id],
                 ['key', $key]
             ])->first();
             if ($check_record) {
-                $check_record->update(['value'=> $name]);
+                $check_record->update(['value'=> $saveImage]);
             }else{
                 Setting::create($input);
             }

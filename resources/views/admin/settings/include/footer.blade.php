@@ -22,7 +22,7 @@
             </div>
             <label class="control-label text-end col-md-3 mt-3">Description</label>
             <div class="col-md-9 mt-3">
-                {{ Form::textarea('values[footer_description]', $settings['footer_description'], ['class' => 'form-control','rows' => '2','required']) }}
+                {{ Form::textarea('values[footer_description]', $settings['footer_description'], ['class' => 'form-control','rows' => '2','required','id' => 'mymce']) }}
                 <small class="form-control-feedback"> website detail </small>
             </div>
         </div>

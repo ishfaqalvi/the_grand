@@ -19,7 +19,7 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::filter($request->all())->get();
+        $categories = Category::filter($request->all())->orderBy('order', 'asc')->get();
         $filters = getFilter(Category::get(), ['branch_id','status']);
         $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 

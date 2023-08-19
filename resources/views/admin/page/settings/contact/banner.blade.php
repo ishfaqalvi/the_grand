@@ -61,6 +61,32 @@
 <script>
     $(document).ready(function() {
         $('.dropify').dropify();
+        if ($("#contact_contactUs_desc").length > 0) {
+            tinymce.init({
+                selector: "textarea#contact_contactUs_desc",
+                theme: "modern",
+                height: 150,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+            });
+        }
+        if ($("#contact_booking_card_desc").length > 0) {
+            tinymce.init({
+                selector: "textarea#contact_booking_card_desc",
+                theme: "modern",
+                height: 150,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+            });
+        }
     });
 </script>
 @endsection

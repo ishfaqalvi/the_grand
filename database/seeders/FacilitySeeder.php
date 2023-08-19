@@ -18,6 +18,7 @@ class FacilitySeeder extends Seeder
         DB::table('facilities')->insert([
         	[
         		'page_id' 		=> '2',
+                'type'          => 'Icon',
         		'icon' 			=> 'flaticon-world',
         		'title' 		=> 'Pick Up & Drop',
         		'order' 		=> '1',
@@ -26,6 +27,7 @@ class FacilitySeeder extends Seeder
         	],
         	[
         		'page_id' 		=> '2',
+                'type'          => 'Icon',
         		'icon' 			=> 'flaticon-car',
         		'title' 		=> 'Parking Space',
         		'order' 		=> '2',
@@ -34,6 +36,7 @@ class FacilitySeeder extends Seeder
         	],
         	[
         		'page_id' 		=> '2',
+                'type'          => 'Icon',
         		'icon' 			=> 'flaticon-bed',
         		'title' 		=> 'Room Service',
         		'order' 		=> '3',
@@ -41,6 +44,7 @@ class FacilitySeeder extends Seeder
         		'description' 	=> 'Room tincidunt nis ace park norttito sit amet space, mus nellentesque habitant.',
         	],[
         		'page_id' 		=> '2',
+                'type'          => 'Icon',
         		'icon' 			=> 'flaticon-swimming',
         		'title' 		=> 'Swimming Pool',
         		'order' 		=> '4',
@@ -48,13 +52,16 @@ class FacilitySeeder extends Seeder
         		'description' 	=> 'Swimming pool tincidunt nise ace park norttito sit space, mus nellentesque habitant.',
         	],[
         		'page_id' 		=> '2',
+                'type'          => 'Icon',
         		'icon' 			=> 'flaticon-wifi',
         		'title' 		=> 'Fibre Internet',
         		'order' 		=> '5',
         		'status' 		=> 'Publish',
         		'description' 	=> 'Wifi tincidunt nis ace park norttito sit amet space, mus nellentesque habitant.',
-        	],[
+        	],
+            [
         		'page_id' 		=> '2',
+                'type'          => 'Icon',
         		'icon' 			=> 'flaticon-breakfast',
         		'title' 		=> 'Breakfast',
         		'order' 		=> '6',

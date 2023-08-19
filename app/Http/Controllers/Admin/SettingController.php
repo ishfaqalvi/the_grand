@@ -5,7 +5,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 use claviska\SimpleImage;
-
+use League\Glide\ServerFactory;
+use Spatie\Image\Image;
+use Spatie\Image\Manipulations;
 
 class SettingController extends Controller
 {
@@ -52,19 +54,21 @@ class SettingController extends Controller
                 // Get file's original extension
                 $extension = $image->getClientOriginalExtension();
                 // Create unique file name
-                $name = 'upload/images/settings/'.uniqid().".".$extension;
-                $simpleImage = new SimpleImage();
-                $simpleImage->fromFile($image)->resize($input['size'][$key]['x'] , $input['size'][$key]['y'])->toFile($name, 'image/jpeg');
+                $name = uniqid().".".$extension;
+                $path = 'upload/images/settings/';
+                $saveImage = 'upload/images/settings/'.$name;
+                $image->move($path, $name);
+                Image::load($saveImage)
+                    ->fit(Manipulations::FIT_CROP, $input['size'][$key]['x'], $input['size'][$key]['y'])
+                    ->save(public_path($saveImage));
             }
-            $input['key'] = $key;
-            $input['value'] = $name;
             $check_record = Setting::where([
                 ['settable_type', $request->settable_type],
                 ['settable_id', $request->settable_id],
                 ['key', $key]
             ])->first();
             if ($check_record) {
-                $check_record->update(['value'=> $name]);
+                $check_record->update(['value'=> $saveImage]);
             }else{
                 Setting::create($input);
             }

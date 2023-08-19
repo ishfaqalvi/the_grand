@@ -228,7 +228,7 @@
                     <span>{{ strtoupper($pageSetting['img_contact_us_sub_title']) }}</span>
                 </div>
                 <div class="section-title">{{ $pageSetting['img_contact_us_title'] }}</div>
-                <p class="color-2">{{ $pageSetting['img_contact_us_desc'] }}</p>
+                <p class="color-2">{!! $pageSetting['img_contact_us_desc'] !!}</p>
                 <a href="{{ asset($pageSetting['img_contact_us_btn_url']) }}" target="blank">
                     <button type="submit" class="btn-form1-submit mt-15 px-3">
                         {{ strtoupper($pageSetting['img_contact_us_btn_title']) }}
@@ -240,7 +240,7 @@
                     <img src="{{ asset($pageSetting['img_contact_us_card1_image']) }}" alt="">
                     <div class="desc">
                         <div class="name">{{ $pageSetting['img_contact_us_card1_title'] }}</div>
-                        <p class="text-secondary">{{ $pageSetting['img_contact_us_card1_desc'] }}</p>
+                        <p class="text-secondary">{!! $pageSetting['img_contact_us_card1_desc'] !!}</p>
                         @if($pageSetting['img_contact_us_card1_phone_title'] != '' && $pageSetting['img_contact_us_card1_phone'] != '')
                         <div class="reservations">
                             <div class="icon"><span class="flaticon-call"></span></div>
@@ -260,7 +260,7 @@
                     <img src="{{ asset($pageSetting['img_contact_us_card2_image']) }}" alt="">
                     <div class="desc">
                         <div class="name">{{ $pageSetting['img_contact_us_card2_title'] }}</div>
-                        <p class="text-secondary">{{ $pageSetting['img_contact_us_card2_desc'] }}</p>
+                        <p class="text-secondary">{!! $pageSetting['img_contact_us_card2_desc'] !!}</p>
                         @if($pageSetting['img_contact_us_card2_btn_url'] != '' && $pageSetting['img_contact_us_card2_btn_title'] != '')
                         <div class="col-md-12" style="text-align: center;">
                             <a href="{{ asset($pageSetting['img_contact_us_card2_btn_url']) }}" class="btn-form1-submit" target="blank">
@@ -284,7 +284,7 @@
                 <div class="col-md-4">
                     <div class="footer-column footer-about">
                         <h3 class="footer-title">{{ $branchSetting['footer_first_lable'] }}</h3>
-                        <p class="footer-about-text">{{ $branchSetting['footer_description'] }}</p>
+                        <p class="footer-about-text">{!! $branchSetting['footer_description'] !!}</p>
                     </div>
                 </div>
                 <div class="col-md-3 offset-md-1">

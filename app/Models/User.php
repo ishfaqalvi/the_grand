@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use OwenIt\Auditing\Contracts\Auditable;
+use Spatie\Image\Image;
+use Spatie\Image\Manipulations;
 
 class User extends Authenticatable implements Auditable
 {
@@ -58,10 +60,16 @@ class User extends Authenticatable implements Auditable
     {
         if ($image) {
             $extension = $image->getClientOriginalExtension();
-            $filename = uniqid().".".$extension;
-            $image->move('upload/images/profile/', $filename);
-            $name = "upload/images/profile/".$filename;
-            $this->attributes['image'] = $filename;
+            $name = uniqid().".".$extension;
+
+            $path = public_path('upload/images/profile/');
+            $finalPath = $path.$name;
+            $image->move($path, $name);
+
+            Image::load($finalPath)
+                ->fit(Manipulations::FIT_CROP, 140,140)
+                ->save($finalPath);
+            $this->attributes['image'] = $finalPath;
         }else{
             unset($this->attributes['image']);
         }

@@ -17,7 +17,7 @@ class SliderController extends Controller
      */
     public function indexImage(Request $request)
     {
-        $sliders = Slider::filter($request->all())->userBased()->image()->get();
+        $sliders = Slider::filter($request->all())->userBased()->image()->orderBy('order', 'asc')->get();
         $filters = getFilter(Slider::userBased()->image()->get(), ['branch_id','status']);
         $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 
@@ -31,7 +31,7 @@ class SliderController extends Controller
      */
     public function indexVideo(Request $request)
     {
-        $sliders = Slider::filter($request->all())->userBased()->video()->get();
+        $sliders = Slider::filter($request->all())->userBased()->video()->orderBy('order', 'asc')->get();
         $filters = getFilter(Slider::userBased()->video()->get(), ['branch_id','status']);
         $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 

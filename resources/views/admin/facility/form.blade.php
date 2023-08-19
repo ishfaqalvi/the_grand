@@ -14,12 +14,6 @@
                 <small class="form-control-feedback"> Example: (Restaurant ...) </small>
             </div>
             <div class="form-group">
-                {{ Form::label('icon') }}
-                {{ Form::text('icon', $facility->icon, ['class' => 'form-control' . ($errors->has('icon') ? ' is-invalid' : ''), 'placeholder' => 'Icon']) }}
-                {!! $errors->first('icon', '<div class="invalid-feedback">:message</div>') !!}
-                <small class="form-control-feedback">Example: (flaticon-world) <a href="https://www.flaticon.com" target="_blank"> Flaticon Icons</a></small>
-            </div>
-            <div class="form-group">
                 {{ Form::label('order') }}
                 {{ Form::number('order', $facility->order, ['class' => 'form-control' . ($errors->has('order') ? ' is-invalid' : ''), 'placeholder' => 'Order','required','min'=>'1']) }}
                 {!! $errors->first('order', '<div class="invalid-feedback">:message</div>') !!}
@@ -28,9 +22,21 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="form-group col-md-12">
+        <div class="form-group">
+            {{ Form::label('type') }}
+            {{ Form::select('type', ['Icon'=>'Icon','Image' => 'Image'], $facility->type ?? 'Icon', ['class' => 'form-control form-select' . ($errors->has('type') ? ' is-invalid' : ''), 'placeholder' => '--Select--','required','id'=>'type']) }}
+            {!! $errors->first('type', '<div class="invalid-feedback">:message</div>') !!}
+            <small class="form-control-feedback"> Example: ( Select Type ) </small>
+        </div>
+        <div class="form-group icon">
+            {{ Form::label('icon') }}
+            {{ Form::text('icon', $facility->icon, ['class' => 'form-control' . ($errors->has('icon') ? ' is-invalid' : ''), 'placeholder' => 'Icon']) }}
+            {!! $errors->first('icon', '<div class="invalid-feedback">:message</div>') !!}
+            <small class="form-control-feedback">Example: (flaticon-world) <a href="https://www.flaticon.com" target="_blank"> Flaticon Icons</a></small>
+        </div>
+        <div class="form-group col-md-12 image" style="display: none;">
             {{ Form::label('image') }}
-            {{ Form::file('image', ['class' => 'form-control dropify' . ($errors->has('image') ? ' is-invalid' : ''), 'accept'=> 'image/png,image/jpg,image/jpeg','data-default-file' => isset($facility->image) ? asset($facility->image) : '', 'data-height' => '350']) }}
+            {{ Form::file('image', ['class' => 'form-control dropify' . ($errors->has('image') ? ' is-invalid' : ''), 'accept'=> 'image/png,image/jpg,image/jpeg','data-default-file' => isset($facility->image) ? asset($facility->image) : '', 'data-height' => '150']) }}
             {!! $errors->first('image', '<div class="invalid-feedback">:message</div>') !!}
             <small class="form-control-feedback"> Image for facility size(width = 45px , height = 45px)</small>
         </div>

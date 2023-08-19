@@ -1,42 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/fav_icon.png') }}">
-    <title>@yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('admin/icons/font-awesome/css/all.min.css'                          ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/morrisjs/morris.css'                                 ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/toast-master/css/jquery.toast.css'                   ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/datatables.net-bs4/css/dataTables.bootstrap4.css'    ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/html5-editor/bootstrap-wysihtml5.css'                ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/datatables.net-bs4/css/responsive.dataTables.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css'   ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css'   ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/select2/dist/css/select2.min.css'                    ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/switchery/dist/switchery.min.css'                    ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-select/bootstrap-select.min.css'           ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css'         ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/bootstrap-touchspin/bootstrap-touchspin.min.css'     ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/wizard/steps.css'                                    ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/multiselect/css/multi-select.css'                    ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/sweetalert2/dist/sweetalert2.min.css'                ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/dropify/dist/css/dropify.min.css'                    ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/multiselect/css/multi-select.css'                    ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/css/pages/user-card.css'                                     ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/Magnific-Popup-master/magnific-popup.css'            ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/css/style.css'                                               ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/css/pages/dashboard1.css'                                    ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/css/pages/widget-page.css'                                   ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/css/pages/widget-page.css'                                   ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/css/pages/widget-page.css'                                   ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css'       ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/chartist-js/dist/chartist-init.css'                  ) }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/plugins/chartist-js/dist/chartist.min.css'                   ) }}"/>
+    @include('admin.layout.include.head')
 </head>
 <body class="skin-blue fixed-layout">
     <div class="preloader">
@@ -98,46 +63,8 @@
             <a href="http://dazzle.lab.com/" target="_blank">DazzleLab</a>
         </footer>
     </div>
-    
-    <script src="{{ asset('admin/plugins/jquery/dist/jquery.min.js'                           ) }}"></script>
-    <script src="{{ asset('admin/plugins/bootstrap/dist/js/bootstrap.bundle.min.js'           ) }}"></script>
-    <script src="{{ asset('admin/js/perfect-scrollbar.jquery.min.js'                          ) }}"></script>
-    <script src="{{ asset('admin/js/waves.js'                                                 ) }}"></script>
-    <script src="{{ asset('admin/js/sidebarmenu.js'                                           ) }}"></script>
-    <script src="{{ asset('admin/plugins/sticky-kit-master/dist/sticky-kit.min.js'            ) }}"></script>
-    <script src="{{ asset('admin/plugins/jquery-sparkline/jquery.sparkline.min.js'            ) }}"></script>
-    <script src="{{ asset('admin/plugins/switchery/dist/switchery.min.js'                     ) }}"></script>
-    <script src="{{ asset('admin/plugins/select2/dist/js/select2.full.min.js'                 ) }}"></script>
-    <script src="{{ asset('admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js'      ) }}"></script>
-    <script src="{{ asset('admin/plugins/bootstrap-touchspin/bootstrap-touchspin.js'          ) }}"></script>
-    <script src="{{ asset('admin/plugins/multiselect/js/jquery.multi-select.js'               ) }}"></script>
-    <script src="{{ asset('admin/plugins/raphael/raphael-min.js'                              ) }}"></script>
-    <script src="{{ asset('admin/plugins/morrisjs/morris.min.js'                              ) }}"></script>
-    <script src="{{ asset('admin/plugins/toast-master/js/jquery.toast.js'                     ) }}"></script>
-    <script src="{{ asset('admin/js/pages/validation.js'                                      ) }}"></script>
-    <script src="{{ asset('admin/plugins/datatables.net/js/jquery.dataTables.min.js'          ) }}"></script>
-    <script src="{{ asset('admin/plugins/datatables.net-bs4/js/dataTables.responsive.min.js'  ) }}"></script>
-    <script src="{{ asset('admin/plugins/dff/dff.js'                                          ) }}"></script>
-    <script src="{{ asset('admin/plugins/tinymce/tinymce.min.js'                              ) }}"></script>
-    <script src="{{ asset('admin/plugins/wizard/jquery.steps.min.js'                          ) }}"></script>
-    <script src="{{ asset('admin/plugins/wizard/jquery.validate.min.js'                       ) }}"></script>
-    <script src="{{ asset('admin/plugins/moment/moment.js'                                    ) }}"></script>
-    <script src="{{ asset('admin/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
-    <script src="{{ asset('admin/plugins/sweetalert2/dist/sweetalert2.all.min.js'             ) }}"></script>
-    <script src="{{ asset('admin/plugins/dropify/dist/js/dropify.min.js'                      ) }}"></script>
-    <script src="{{ asset('admin/plugins/knob/jquery.knob.js'                                 ) }}"></script>
-    <script src="{{ asset('admin/plugins/Magnific-Popup-master/jquery.magnific-popup.min.js'  ) }}"></script>
-    <script src="{{ asset('admin/plugins/Magnific-Popup-master/jquery.magnific-popup-init.js' ) }}"></script>
-    <script src="{{ asset('admin/plugins/chartist-js/dist/chartist.min.js'                    ) }}"></script>
-    <script src="{{ asset('admin/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js')  }}"></script>
-    <script src="{{ asset('admin/plugins/sparkline/jquery.sparkline.min.js'                   ) }}"></script>
-    <script src="{{ asset('admin/js/pages/widget-charts.js'                                   ) }}"></script>
-    <script src="{{ asset('admin/plugins/flot/excanvas.js'                                    ) }}"></script>
-    <script src="{{ asset('admin/plugins/flot/jquery.flot.js'                                 ) }}"></script>
-    <script src="{{ asset('admin/plugins/flot/jquery.flot.time.js'                            ) }}"></script>
-    <script src="{{ asset('admin/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js'          ) }}"></script>
-    <script src="{{ asset('admin/plugins/sparkline/jquery.sparkline.min.js'          ) }}"></script>
-    
+    @include('admin.layout.include.script')
+
     @yield('scripts')
     <script src="{{ asset('admin/js/custom.min.js') }}"></script>
     <script>

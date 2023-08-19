@@ -8,8 +8,8 @@ use App\EloquentFilters\CategoryId;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Abdrzakoxa\EloquentFilter\Traits\Filterable;
-use Image;
-use claviska\SimpleImage;
+use Spatie\Image\Image;
+use Spatie\Image\Manipulations;
 
 /**
  * Class Gallery
@@ -51,22 +51,20 @@ class Gallery extends Model implements Auditable
             $extension = $image->getClientOriginalExtension();
             $name = uniqid().".".$extension;
 
+            $originalPath = public_path('/upload/images/gallery/images/original/');
             $destinationPath = public_path('/upload/images/gallery/images/');
 
-            // save original
-            Image::make($image->path())->save($destinationPath.'original/'.$name);
+            $image->move($originalPath, $name);
 
-            // save resized version 1
-            $smallImage = new SimpleImage();
-            $smallImage->fromFile($image)->resize(300,185)->toFile($destinationPath.'small/'.$name, 'image/jpeg');
-
-            // save resized version 2
-            $mediumImage = new SimpleImage();
-            $mediumImage->fromFile($image)->resize(450, 280)->toFile($destinationPath.'medium/'.$name, 'image/jpeg');
-
-            // save resized version 3
-            $largeImage = new SimpleImage();
-            $largeImage->fromFile($image)->resize(295, 390)->toFile($destinationPath.'large/'.$name, 'image/jpeg');
+            Image::load($originalPath.$name)
+                ->fit(Manipulations::FIT_CROP, 300,185)
+                ->save($destinationPath.'small/'.$name);
+            Image::load($originalPath.$name)
+                ->fit(Manipulations::FIT_CROP, 450, 280)
+                ->save($destinationPath.'medium/'.$name);
+            Image::load($originalPath.$name)
+                ->fit(Manipulations::FIT_CROP, 295, 390)
+                ->save($destinationPath.'large/'.$name);
 
             $this->attributes['image'] = $name;
         }else {
@@ -86,18 +84,17 @@ class Gallery extends Model implements Auditable
             $extension = $image->getClientOriginalExtension();
             $name = uniqid().".".$extension;
 
+            $originalPath = public_path('/upload/images/gallery/thumbnail/original/');
             $destinationPath = public_path('/upload/images/gallery/thumbnail/');
 
-            // save original
-            Image::make($image->path())->save($destinationPath.'original/'.$name);
+            $image->move($originalPath, $name);
 
-            // save resized version 1
-            $smallImage = new SimpleImage();
-            $smallImage->fromFile($image)->resize(292, 185)->toFile($destinationPath.'small/'.$name, 'image/jpeg');
-
-            // save resized version 2
-            $mediumImage = new SimpleImage();
-            $mediumImage->fromFile($image)->resize(450, 280)->toFile($destinationPath.'medium/'.$name, 'image/jpeg');
+            Image::load($originalPath.$name)
+                ->fit(Manipulations::FIT_CROP, 292, 185)
+                ->save($destinationPath.'small/'.$name);
+            Image::load($originalPath.$name)
+                ->fit(Manipulations::FIT_CROP, 450, 280)
+                ->save($destinationPath.'medium/'.$name);
             
             $this->attributes['video_thumbnail'] = $name;
         }else{

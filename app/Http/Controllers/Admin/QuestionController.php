@@ -19,7 +19,7 @@ class QuestionController extends Controller
      */
     public function index(Request $request)
     {
-        $questions = Question::filter($request->all())->userBased()->get();
+        $questions = Question::filter($request->all())->userBased()->orderBy('order', 'asc')->get();
         $filters = getFilter(Question::userBased()->get(), ['branch_id','status']);
         $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 

@@ -9,7 +9,7 @@
 <div class="col-md-7 align-self-center text-end">
     <div class="d-flex justify-content-end align-items-center">
         <ol class="breadcrumb justify-content-end">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('facilities.index') }}">Facility</a></li>
             <li class="breadcrumb-item active">Show</li>
         </ol>

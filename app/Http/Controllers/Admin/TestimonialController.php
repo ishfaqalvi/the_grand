@@ -19,7 +19,7 @@ class TestimonialController extends Controller
      */
     public function index(Request $request)
     {
-        $testimonials = Testimonial::filter($request->all())->userBased()->get();
+        $testimonials = Testimonial::filter($request->all())->userBased()->orderBy('order', 'asc')->get();
         $filters = getFilter(Testimonial::userBased()->get(), ['branch_id','status']);
         $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 

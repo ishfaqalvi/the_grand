@@ -83,7 +83,7 @@
             @if($pageSetting['contact_sections_contactUs'] == 'Show')
             <div class="col-md-6 mb-60">
                 <h3>{{ $pageSetting['contact_contactUs_title'] }}</h3>
-                <p>{{ $pageSetting['contact_contactUs_desc'] }}</p>
+                <p>{!! $pageSetting['contact_contactUs_desc'] !!}</p>
                 @if($pageSetting['contact_contactUs_phone_label'] != '' && $pageSetting['contact_contactUs_phone_number'] != '')
                 <div class="reservations mb-30">
                     <div class="icon"><span class="flaticon-call"></span></div>
@@ -222,7 +222,7 @@
                         <div class="booking-inner clearfix">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p class="text-secondary">{{ $pageSetting['contact_booking_card_desc'] }}</p>
+                                    <p class="text-secondary">{!! $pageSetting['contact_booking_card_desc'] !!}</p>
                                 </div>
                                 <div class="col-md-12">
                                     <a href="{{ $pageSetting['contact_booking_card_btn_url']}}" class="btn-form1-submit text-center mt-15">
@@ -247,7 +247,7 @@
                 <div class="col-md-4">
                     <div class="footer-column footer-about">
                         <h3 class="footer-title">{{ $branchSetting['footer_first_lable'] }}</h3>
-                        <p class="footer-about-text">{{ $branchSetting['footer_description'] }}</p>
+                        <p class="footer-about-text">{!! $branchSetting['footer_description'] !!}</p>
                     </div>
                 </div>
                 <div class="col-md-3 offset-md-1">

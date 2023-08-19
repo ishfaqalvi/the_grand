@@ -18,7 +18,7 @@ class ServiceController extends Controller
      */
     public function index(Request $request)
     {
-        $services = Service::filter($request->all())->userBased()->get();
+        $services = Service::filter($request->all())->userBased()->orderBy('order', 'asc')->get();
         $filters = getFilter(Service::userBased()->get(), ['page_id','status']);
         $request->method() == 'POST' ? $userRequest = $request : $userRequest = null;
 

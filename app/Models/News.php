@@ -76,13 +76,13 @@ class News extends Model implements Auditable
             $extension = $image->getClientOriginalExtension();
             $name = uniqid().".".$extension;
 
-            $path = public_path('upload/images/news/');
+            $path = 'upload/images/news/';
             $finalPath = $path.$name;
             $image->move($path, $name);
 
             Image::load($finalPath)
                 ->fit(Manipulations::FIT_CROP, 352,469)
-                ->save($finalPath);
+                ->save(public_path($finalPath));
             $this->attributes['image'] = $finalPath;
         }else{
             unset($this->attributes['image']);

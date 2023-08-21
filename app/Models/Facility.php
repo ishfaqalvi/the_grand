@@ -61,13 +61,13 @@ class Facility extends Model implements Auditable
             $extension = $image->getClientOriginalExtension();
             $name = uniqid().".".$extension;
 
-            $path = public_path('upload/images/facility/');
+            $path = 'upload/images/facility/';
             $finalPath = $path.$name;
             $image->move($path, $name);
 
             Image::load($finalPath)
                 ->fit(Manipulations::FIT_CROP, 45,45)
-                ->save($finalPath);
+                ->save(public_path($finalPath));
             $this->attributes['image'] = $finalPath;
         }else{
             unset($this->attributes['image']);

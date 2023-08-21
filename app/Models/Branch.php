@@ -54,13 +54,13 @@ class Branch extends Model implements Auditable
             $extension = $image->getClientOriginalExtension();
             $name = uniqid().".".$extension;
 
-            $path = public_path('upload/images/branches/');
+            $path = 'upload/images/branches/';
             $finalPath = $path.$name;
             $image->move($path, $name);
 
             Image::load($finalPath)
                 ->fit(Manipulations::FIT_CROP, 545,360)
-                ->save($finalPath);
+                ->save(public_path($finalPath));
             $this->attributes['thumbnail'] = $finalPath;
         }else{
             unset($this->attributes['thumbnail']);

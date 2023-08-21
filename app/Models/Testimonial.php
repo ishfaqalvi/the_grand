@@ -67,7 +67,7 @@ class Testimonial extends Model implements Auditable
 
             Image::load($finalPath)
                 ->fit(Manipulations::FIT_CROP, 70,70)
-                ->save($finalPath);
+                ->save(public_path($finalPath));
             $this->attributes['image'] = $finalPath;
         }else{
             unset($this->attributes['image']);

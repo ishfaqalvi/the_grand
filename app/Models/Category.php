@@ -84,13 +84,13 @@ class Category extends Model implements Auditable
             $extension = $image->getClientOriginalExtension();
             $name = uniqid().".".$extension;
 
-            $path = public_path('upload/images/category/');
+            $path = 'upload/images/category/';
             $finalPath = $path.$name;
             $image->move($path, $name);
 
             Image::load($finalPath)
                 ->fit(Manipulations::FIT_CROP, 570,380)
-                ->save($finalPath);
+                ->save(public_path($finalPath));
             $this->attributes['image'] = $finalPath;
         }else{
             unset($this->attributes['image']);

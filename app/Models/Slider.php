@@ -80,14 +80,14 @@ class Slider extends Model implements Auditable
         if ($image) {
             $extension = $image->getClientOriginalExtension();
             $name = uniqid().".".$extension;
-
-            $path = public_path('upload/images/sliders/');
+ 
+            $path = 'upload/images/sliders/';
             $finalPath = $path.$name;
             $image->move($path, $name);
 
             Image::load($finalPath)
                 ->fit(Manipulations::FIT_CROP, 1920, 1200)
-                ->save($finalPath);
+                ->save(public_path($finalPath));
             $this->attributes['image'] = $finalPath;
         }else{
             unset($this->attributes['image']);

@@ -35,7 +35,6 @@
                     <th>No</th>
                     <th>Name</th>
                     <th>Image</th>
-                    <th>Message</th>
                     <th>Order</th>
                     <th>Branch</th>
                     <th>Status</th>
@@ -49,7 +48,6 @@
                         
                         <td>{{ $testimonial->name }}</td>
                         <td><img src="{{ asset($testimonial->image) }}" style="height: 40px; width: 70px;"></td>
-                        <td>{{ $testimonial->message }}</td>
                         <td>{{ $testimonial->order }}</td>                    
                         <td>{{ $testimonial->branch->name }}</td>
                         <td>{{ $testimonial->status }}</td>

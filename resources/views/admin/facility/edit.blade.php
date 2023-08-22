@@ -36,6 +36,7 @@
 @section('scripts')
 <script>
     var type = $('select[name=type]');
+    var image = {{ $facility->image }};
     $(".facility").validate({
         errorClass: "text-danger",
         highlight: function (element, errorClass) {
@@ -56,7 +57,7 @@
         rules: {
             type:{required: true},            
             icon:{required: function(){if (type.val() =='Icon') {return true}}},
-            image:{required: function(){if (type.val() =='Image') {return true}}}
+            image:{required: function(){if (type.val() =='Image' && image == '') {return true}}}
         }
     });
 </script>

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('image');
             $table->string('heading');
             $table->string('sub_heading');
-            $table->string('link');
-            $table->string('button_title');
+            $table->string('link')->nullable();
+            $table->string('button_title')->nullable();
             $table->text('description');
             $table->text('detail');
             $table->integer('order')->default(1);

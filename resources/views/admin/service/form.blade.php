@@ -21,13 +21,13 @@
             </div>
             <div class="form-group col-md-12">
                 {{ Form::label('link') }}
-                {{ Form::text('link', $service->link, ['class' => 'form-control' . ($errors->has('link') ? ' is-invalid' : ''), 'placeholder' => 'link','required']) }}
+                {{ Form::text('link', $service->link, ['class' => 'form-control' . ($errors->has('link') ? ' is-invalid' : ''), 'placeholder' => 'link']) }}
                 {!! $errors->first('link', '<div class="invalid-feedback">:message</div>') !!}
                 <small class="form-control-feedback"> Example: (Page link .....) </small>
             </div>
             <div class="form-group col-md-6">
                 {{ Form::label('button_title') }}
-                {{ Form::text('button_title', $service->button_title, ['class' => 'form-control' . ($errors->has('button_title') ? ' is-invalid' : ''), 'placeholder' => 'Button Title','required']) }}
+                {{ Form::text('button_title', $service->button_title, ['class' => 'form-control' . ($errors->has('button_title') ? ' is-invalid' : ''), 'placeholder' => 'Button Title']) }}
                 {!! $errors->first('button_title', '<div class="invalid-feedback">:message</div>') !!}
                 <small class="form-control-feedback"> Example: (Service Button Title .....) </small>
             </div>

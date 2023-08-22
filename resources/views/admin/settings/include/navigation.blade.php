@@ -10,9 +10,9 @@
                 @php($navigation_logo = $settings['navigation_logo']) 
                 {{ Form::file('navigation_logo', ['class' => 'form-control dropify' . ($errors->has('navigation_logo') ? ' is-invalid' : ''), $navigation_logo ? '': 'required','accept'=> 'image/png,image/jpg,image/jpeg','data-default-file' => $navigation_logo != '' ? asset($navigation_logo) : '']) }}
                 {!! $errors->first('navigation_logo', '<div class="invalid-feedback">:message</div>') !!}
-                <small class="form-control-feedback"> Logo size(width = 320 , height = 76)</small>
+                <small class="form-control-feedback"> Logo size(width = 320 , height = 100)</small>
                 <input type="hidden" name="size[navigation_logo][x]" value="320">
-                <input type="hidden" name="size[navigation_logo][y]" value="76">
+                <input type="hidden" name="size[navigation_logo][y]" value="100">
             </div>
             <label class="control-label text-end col-md-3 mt-3">Title</label>
             <div class="col-md-9 mt-3">

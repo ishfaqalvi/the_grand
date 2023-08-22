@@ -188,7 +188,7 @@
                     <div class="testimonials-box">
                         <div class="head-box">
                             <h6>{{ strtoupper($pageSetting['contact_booking_sub_title']) }}</h6>
-                            <h4>{{ $pageSetting['contact_booking_card_title'] }}</h4>
+                            <h4>{{ $pageSetting['contact_booking_title'] }}</h4>
                             <div class="line"></div>
                         </div>
                         <div class="owl-carousel owl-theme">
@@ -217,7 +217,7 @@
                     <div class="booking-box">
                         <div class="head-box">
                             <h6>{{ strtoupper($pageSetting['contact_booking_card_sub_title']) }}</h6>
-                            <h4>{{ $pageSetting['contact_booking_title'] }}</h4>
+                            <h4>{{ $pageSetting['contact_booking_card_title'] }}</h4>
                         </div>
                         <div class="booking-inner clearfix">
                             <div class="row">

@@ -312,11 +312,41 @@
                             @endif
                         </div>
                         <div class="footer-about-social-list">
-                            <a href="{{ $branchSetting['footer_instagram_link'] }}" target="blank"><i class="ti-instagram"></i></a>
-                            <a href="{{ $branchSetting['footer_twitter_link'] }}" target="blank"><i class="ti-twitter"></i></a>
-                            <a href="{{ $branchSetting['footer_youtube_link'] }}" target="blank"><i class="ti-youtube"></i></a>
-                            <a href="{{ $branchSetting['footer_facebook_link'] }}" target="blank"><i class="ti-facebook"></i></a>
-                            <a href="{{ $branchSetting['footer_pinterest_link'] }}" target="blank"><i class="ti-pinterest"></i></a>
+                            @if($branchSetting['footer_instagram_link'] != '')
+                            <a href="{{ $branchSetting['footer_instagram_link'] }}" target="blank">
+                                <i class="ti-instagram"></i>
+                            </a>
+                            @endif
+                            @if($branchSetting['footer_snapchat_link'] != '')
+                            <a href="{{ $branchSetting['footer_snapchat_link'] }}" target="blank">
+                                <i class="fa fa-snapchat-ghost" aria-hidden="true"></i>
+                            </a>
+                            @endif
+                            @if($branchSetting['footer_tiktok_link'] != '')
+                            <a href="{{ $branchSetting['footer_tiktok_link'] }}" target="blank">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                            @endif
+                            @if($branchSetting['footer_twitter_link'] != '')
+                            <a href="{{ $branchSetting['footer_twitter_link'] }}" target="blank">
+                                <i class="ti-twitter"></i>
+                            </a>
+                            @endif
+                            @if($branchSetting['footer_youtube_link'] != '')
+                            <a href="{{ $branchSetting['footer_youtube_link'] }}" target="blank">
+                                <i class="ti-youtube"></i>
+                            </a>
+                            @endif
+                            @if($branchSetting['footer_facebook_link'] != '')
+                            <a href="{{ $branchSetting['footer_facebook_link'] }}" target="blank">
+                                <i class="ti-facebook"></i>
+                            </a>
+                            @endif
+                            @if($branchSetting['footer_pinterest_link'] != '')
+                            <a href="{{ $branchSetting['footer_pinterest_link'] }}" target="blank">
+                                <i class="ti-pinterest"></i>
+                            </a>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -382,7 +382,7 @@
         <div class="row">
             @foreach($page->facilities as $key => $facility)
             @if($facility->type == 'Image')
-            <div class="col-md-4">
+            <div class="col-md-4 d-flex align-items-stretch">
                 <div class="single-facility animate-box" data-animate-effect="fadeInUp">
                     <img src="{{ asset($facility->image) }}" alt="">
                     <h5>{{ $facility->title }}</h5>

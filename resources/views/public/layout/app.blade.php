@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
     <link rel="stylesheet" href="{{ asset('public/css/plugins.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/css/style.css') }}"/>
+    <script src="https://kit.fontawesome.com/f328341f8b.js" crossorigin="anonymous"></script>
     @yield('head')
 </head>
 <body>

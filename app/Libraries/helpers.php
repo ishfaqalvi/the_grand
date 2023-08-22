@@ -162,6 +162,8 @@ function branchkeys()
         'footer_phone_number'       => '',
         'footer_email'              => '',
         'footer_instagram_link'     => '',
+        'footer_snapchat_link'      => '',
+        'footer_tiktok_link'        => '',
         'footer_twitter_link'       => '',
         'footer_youtube_link'       => '',
         'footer_facebook_link'      => '',

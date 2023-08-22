@@ -50,6 +50,16 @@
                 {{ Form::url('values[footer_instagram_link]', $settings['footer_instagram_link'], ['class' => 'form-control','required']) }}
                 <small class="form-control-feedback"> https://www.instagram.com </small>
             </div>
+            <label class="control-label text-end col-md-3 mt-3">Snapchat Link</label>
+            <div class="col-md-9 mt-3">
+                {{ Form::url('values[footer_snapchat_link]', $settings['footer_snapchat_link'], ['class' => 'form-control','required']) }}
+                <small class="form-control-feedback"> https://www.instagram.com </small>
+            </div>
+            <label class="control-label text-end col-md-3 mt-3">Tik Tok Link</label>
+            <div class="col-md-9 mt-3">
+                {{ Form::url('values[footer_tiktok_link]', $settings['footer_tiktok_link'], ['class' => 'form-control','required']) }}
+                <small class="form-control-feedback"> https://www.instagram.com </small>
+            </div>
             <label class="control-label text-end col-md-3 mt-3">Twitter Link</label>
             <div class="col-md-9 mt-3">
                 {{ Form::url('values[footer_twitter_link]', $settings['footer_twitter_link'], ['class' => 'form-control','required']) }}

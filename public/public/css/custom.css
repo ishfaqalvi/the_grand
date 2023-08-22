@@ -428,3 +428,8 @@
         margin-bottom: 10px;
     }
 }
+
+.facilties .single-facility img{
+    width: auto !important;
+    margin-bottom: 20px;
+}

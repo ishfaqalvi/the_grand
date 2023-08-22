@@ -348,7 +348,7 @@
                     <div class="booking-box">
                         <div class="head-box">
                             <h6>{{ strtoupper($pageSetting['home_booking_card_sub_title']) }}</h6>
-                            <h4>{{ $pageSetting['home_booking_title'] }}</h4>
+                            <h4>{{ $pageSetting['home_booking_card_title'] }}</h4>
                         </div>
                         <div class="booking-inner clearfix">
                             <div class="row">

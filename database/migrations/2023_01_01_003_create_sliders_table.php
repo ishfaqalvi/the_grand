@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('video')->nullable();
             $table->enum('linktype',['Internal','External']);
-            $table->string('link');
-            $table->string('button_text');
+            $table->string('link')->nullable();
+            $table->string('button_text')->nullable();
             $table->integer('stars');
             $table->integer('order');
             $table->string('status')->default('UnPublish');

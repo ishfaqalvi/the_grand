@@ -32,13 +32,13 @@
             </div>
             <div class="form-group col-md-6">
                 {{ Form::label('link') }}
-                {{ Form::text('link', $slider->link, ['class' => 'form-control' . ($errors->has('link') ? ' is-invalid' : ''), 'placeholder' => 'Link','required']) }}
+                {{ Form::text('link', $slider->link, ['class' => 'form-control' . ($errors->has('link') ? ' is-invalid' : ''), 'placeholder' => 'Link']) }}
                 {!! $errors->first('link', '<div class="invalid-feedback">:message</div>') !!}
                 <small class="form-control-feedback"> https://www.youtube.com/ </small>
             </div>
             <div class="form-group col-md-6">
                 {{ Form::label('button_text') }}
-                {{ Form::text('button_text', $slider->button_text, ['class' => 'form-control' . ($errors->has('button_text') ? ' is-invalid' : ''), 'placeholder' => 'Button Text','required']) }}
+                {{ Form::text('button_text', $slider->button_text, ['class' => 'form-control' . ($errors->has('button_text') ? ' is-invalid' : ''), 'placeholder' => 'Button Text']) }}
                 {!! $errors->first('button_text', '<div class="invalid-feedback">:message</div>') !!}
                 <small class="form-control- feedback"> Button of slide </small>
             </div>

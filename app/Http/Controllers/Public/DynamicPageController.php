@@ -98,7 +98,8 @@ class DynamicPageController extends Controller
             'email'     => 'required',
             'number'    => 'required',
             'subject'   => 'required',
-            'message'   => 'required'
+            'message'   => 'required',
+            'g-recaptcha-response' => 'required|captcha'
         ]);
         $contact = Contact::create($request->all());
         $settings = branchSettings($contact->branch_id);

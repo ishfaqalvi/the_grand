@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('public/css/plugins.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/css/style.css') }}"/>
     <script src="https://kit.fontawesome.com/f328341f8b.js" crossorigin="anonymous"></script>
+    {!! NoCaptcha::renderJs() !!}
     @yield('head')
 </head>
 <body>

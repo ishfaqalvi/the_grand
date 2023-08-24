@@ -104,7 +104,47 @@
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-9">
-                        <div class="row tab-content {{ request()->get('tab') ? '' : 'active'}}" id="all"></div>
+                        <div class="tab-content {{ request()->get('tab') ? '' : 'active'}}" id="all">
+                            <div class="row">
+                            @php($index = 0)
+                            @foreach(categoryList($page->branch_id) as $key => $category)
+                                @foreach(videos($category->id) as $video)
+                                    @if($index % 5 < 2) <!-- First 2 video pattern -->
+                                    <div class="col-md-6">
+                                        <div class="vid-area mb-15">
+                                            <a href="{{ $video->video_link}}" class="vid pt-0 mt-0">
+                                                <div class="vid-icon">
+                                                    <img src="{{ asset('upload/images/gallery/thumbnail/medium/'.$video->video_thumbnail) }}" alt="Vimeo">
+                                                    <a class="video-gallery-button vid" href="{{ $video->video_link}}">
+                                                        <span class="video-gallery-polygon">
+                                                            <i class="ti-control-play"></i>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    @else <!-- Next 3 images pattern -->
+                                    <div class="col-md-4">
+                                        <div class="vid-area mb-15">
+                                            <a href="{{ $video->video_link}}" class="vid pt-0 mt-0">
+                                                <div class="vid-icon">
+                                                    <img src="{{ asset('upload/images/gallery/thumbnail/small/'.$video->video_thumbnail) }}" alt="Vimeo">
+                                                    <a class="video-gallery-button vid" href="{{ $video->video_link}}">
+                                                        <span class="video-gallery-polygon">
+                                                            <i class="ti-control-play"></i>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @php($index++)
+                                @endforeach
+                            @endforeach
+                            </div>
+                        </div>
                         @foreach(categoryList($page->branch_id) as $key => $category)
                         <div class="tab-content {{ request()->get('tab') === preg_replace('/[^a-zA-Z0-9\s]/', '', str_replace(' ', '-', $category->title)) ? 'active' : ''}}" id="tab{{ $key }}">
                             <div class="row">
@@ -152,13 +192,7 @@
 </section>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var tabs = document.querySelectorAll('.tab-content:not(#all)');
-        var allTab = document.getElementById('all');
-
-        tabs.forEach(function(tab) {
-            allTab.innerHTML += tab.innerHTML;
-        });
-
+        var tabs = document.querySelectorAll('.tab-content');
         var tabButtons = document.querySelectorAll('.tab-button');
 
         tabButtons.forEach(function(button) {

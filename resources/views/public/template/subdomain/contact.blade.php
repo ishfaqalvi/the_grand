@@ -143,6 +143,7 @@
                     </div>
                     @endif
                     <!-- form elements -->
+                    <input type="hidden" name="page_id" value="{{ $page->id }}">
                     <input type="hidden" name="branch_id" value="{{ $page->branch_id }}">
                     <div class="row">
                         <div class="col-md-6 form-group">

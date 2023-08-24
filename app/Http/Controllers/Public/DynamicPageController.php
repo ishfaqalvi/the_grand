@@ -102,7 +102,7 @@ class DynamicPageController extends Controller
             'g-recaptcha-response' => 'required|captcha'
         ]);
         $contact = Contact::create($request->all());
-        $settings = branchSettings($contact->branch_id);
+        $settings = pageSettings($request->page_id);
         $contact->type = 'User';
         $contact->thankuMessage = $settings['contact_form_email_thanku_message'];
         $contact->processingTime = $settings['contact_form_email_processing_time_message'];

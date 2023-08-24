@@ -104,7 +104,47 @@
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-9">
-                        <div class="tab-content {{ request()->get('tab') ? '' : 'active'}}" id="all"></div>
+                        <div class="tab-content {{ request()->get('tab') ? '' : 'active'}}" id="all">
+                            <div class="row">
+                                @php($index = 0)
+                                @foreach(categoryList($page->branch_id) as $key => $category)
+                                @foreach(images($category->id) as $image)
+                                    @if($index % 8 < 3) <!-- First 3 images pattern -->
+                                    <div class="col-md-4 gallery-item">
+                                        <a href="{{ asset('upload/images/gallery/images/original/'.$image->image) }}" title="" class="img-zoom">
+                                            <div class="gallery-box">
+                                                <div class="gallery-img">
+                                                    <img src="{{ asset('upload/images/gallery/images/small/'.$image->image) }}" class="img-fluid mx-auto d-block" alt="work-img"> 
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    @elseif($index % 8 < 5) <!-- Next 2 images pattern -->
+                                    <div class="col-md-6 gallery-item">
+                                        <a href="{{ asset('upload/images/gallery/images/original/'.$image->image) }}" title="" class="img-zoom">
+                                            <div class="gallery-box">
+                                                <div class="gallery-img">
+                                                    <img src="{{ asset('upload/images/gallery/images/medium/'.$image->image) }}" class="img-fluid mx-auto d-block" alt="work-img">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    @else <!-- Next 3 images pattern -->
+                                    <div class="col-md-4 gallery-item">
+                                        <a href="{{ asset('upload/images/gallery/images/original/'.$image->image) }}" title="" class="img-zoom">
+                                            <div class="gallery-box">
+                                                <div class="gallery-img">
+                                                    <img src="{{ asset('upload/images/gallery/images/large/'.$image->image) }}" class="img-fluid mx-auto d-block" alt="work-img">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    @endif
+                                    @php($index++)
+                                @endforeach
+                                @endforeach
+                            </div>
+                        </div>
                         @foreach(categoryList($page->branch_id) as $key => $category)
                         <div class="tab-content {{ request()->get('tab') == preg_replace('/[^a-zA-Z0-9\s]/', '', str_replace(' ', '-', $category->title)) ? 'active' : ''}}" id="tab{{ $key }}">
                             <div class="row">
@@ -152,13 +192,7 @@
 </section>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var tabs = document.querySelectorAll('.tab-content:not(#all)');
-        var allTab = document.getElementById('all');
-
-        tabs.forEach(function(tab) {
-            allTab.innerHTML += tab.innerHTML;
-        });
-
+        var tabs = document.querySelectorAll('.tab-content');
         var tabButtons = document.querySelectorAll('.tab-button');
 
         tabButtons.forEach(function(button) {

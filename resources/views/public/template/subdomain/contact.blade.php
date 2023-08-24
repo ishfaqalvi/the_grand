@@ -160,6 +160,9 @@
                         <div class="col-md-12 form-group">
                             <textarea name="message" id="message" cols="30" rows="4" placeholder="{{ $pageSetting['contact_form_palceholder_message'] }} *" required></textarea>
                         </div>
+                        <div class="col-md-12 form-group">
+                            {!! NoCaptcha::display() !!}
+                        </div>
                         <div class="col-md-12">
                             <button type="submit" class="butn-dark2"><span>{{ $pageSetting['contact_form_btn_title'] }}</span></button>
                         </div>

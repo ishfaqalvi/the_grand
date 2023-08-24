@@ -121,7 +121,7 @@
             <div class="col-md-5 mb-30 offset-md-1">
                 <h3>{{ $pageSetting['contact_form_title'] }}</h3>
                 <form method="post"  action="{{ route('contactUs.store')}}">
-                    @csrf
+                    {!! csrf_field() !!}
                     <!-- form error -->
                     @if ($errors->any())
                         <div class="alert alert-danger" role="alert">

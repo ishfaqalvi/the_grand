@@ -25,7 +25,7 @@ Route::controller(SettingController::class)->prefix('settings')->group(function 
 |--------------------------------------------------------------------------
 */
 Route::controller(PageController::class)->prefix('pages')->as('pages.')->group(function () {
-    Route::post('index',            'index'    )->name('index'      );
+    Route::post('index',            'index'    )->name('filter'     );
     Route::get('index',             'index'    )->name('index'      );
     Route::get('create',            'create'   )->name('create'     );
     Route::post('store',            'store'    )->name('store'      );
@@ -43,7 +43,7 @@ Route::controller(PageController::class)->prefix('pages')->as('pages.')->group(f
 |--------------------------------------------------------------------------
 */
 Route::controller(ServiceController::class)->prefix('services')->as('services.')->group(function(){
-    Route::post('index',            'index'    )->name('index'      );
+    Route::post('index',            'index'    )->name('filter'     );
     Route::get('index',             'index'    )->name('index'      );
     Route::get('create',            'create'   )->name('create'     );
     Route::post('store',            'store'    )->name('store'      );
@@ -59,7 +59,7 @@ Route::controller(ServiceController::class)->prefix('services')->as('services.')
 |--------------------------------------------------------------------------
 */
 Route::controller(FacilityController::class)->prefix('facilities')->as('facilities.')->group(function(){
-    Route::post('index',             'index'    )->name('index'      );
+    Route::post('index',             'index'    )->name('filter'     );
     Route::get('index',              'index'    )->name('index'      );
     Route::get('create',             'create'   )->name('create'     );
     Route::post('store',             'store'    )->name('store'      );
@@ -75,7 +75,7 @@ Route::controller(FacilityController::class)->prefix('facilities')->as('faciliti
 |--------------------------------------------------------------------------
 */
 Route::controller(NewsController::class)->prefix('news')->as('news.')->group(function(){
-    Route::post('index',            'index'    )->name('index'      );
+    Route::post('index',            'index'    )->name('filter'     );
     Route::get('index',             'index'    )->name('index'      );
     Route::get('create',            'create'   )->name('create'     );
     Route::post('store',            'store'    )->name('store'      );
@@ -91,7 +91,7 @@ Route::controller(NewsController::class)->prefix('news')->as('news.')->group(fun
 |--------------------------------------------------------------------------
 */
 Route::controller(TestimonialController::class)->prefix('testimonials')->as('testimonials.')->group(function(){
-    Route::post('index',                'index'    )->name('index'      );
+    Route::post('index',                'index'    )->name('filter'     );
     Route::get('index',                 'index'    )->name('index'      );
     Route::get('create',                'create'   )->name('create'     );
     Route::post('store',                'store'    )->name('store'      );
@@ -107,7 +107,7 @@ Route::controller(TestimonialController::class)->prefix('testimonials')->as('tes
 |--------------------------------------------------------------------------
 */
 Route::controller(QuestionController::class)->prefix('questions')->as('questions.')->group(function(){
-    Route::post('index',             'index'    )->name('index'      );
+    Route::post('index',             'index'    )->name('filter'     );
     Route::get('index',              'index'    )->name('index'      );
     Route::get('create',             'create'   )->name('create'     );
     Route::post('store',             'store'    )->name('store'      );
@@ -123,7 +123,7 @@ Route::controller(QuestionController::class)->prefix('questions')->as('questions
 |--------------------------------------------------------------------------
 */
 Route::controller(CategoryController::class)->prefix('categories')->as('categories.')->group(function(){
-    Route::post('index',                'index'    )->name('index'      );
+    Route::post('index',                'index'    )->name('filter'     );
     Route::get('index',                 'index'    )->name('index'      );
     Route::get('create',                'create'   )->name('create'     );
     Route::post('store',                'store'    )->name('store'      );
@@ -139,7 +139,7 @@ Route::controller(CategoryController::class)->prefix('categories')->as('categori
 |--------------------------------------------------------------------------
 */
 Route::controller(ContactController::class)->prefix('contacts')->as('contacts.')->group(function () {
-    Route::get('index',          'index'  )->name('index'  );
+    Route::get('index',          'index'  )->name('filter' );
     Route::post('index',          'index' )->name('index'  );
     Route::get('show/{id}',      'show'   )->name('show'   );
     Route::delete('destroy/{id}','destroy')->name('destroy');
@@ -154,7 +154,7 @@ Route::controller(SliderController::class)->prefix('sliders')->as('sliders.')->g
 
     Route::group(['prefix' => 'image', 'as' => 'image.'], function (){
         Route::get('index',     'indexImage' )->name('index' );
-        Route::post('index',     'indexImage' )->name('index' );
+        Route::post('index',     'indexImage')->name('filter');
         Route::get('create',    'createImage')->name('create');
         Route::get('edit/{id}', 'editImage'  )->name('edit'  );
         Route::get('show/{id}', 'showImage'  )->name('show'  );
@@ -162,15 +162,15 @@ Route::controller(SliderController::class)->prefix('sliders')->as('sliders.')->g
     
     Route::group(['prefix' => 'video', 'as' => 'video.'], function (){
         Route::get('index',     'indexVideo' )->name('index' );
-        Route::post('index',     'indexVideo' )->name('index' );
+        Route::post('index',     'indexVideo')->name('filter');
         Route::get('create',    'createVideo')->name('create');
         Route::get('edit/{id}', 'editVideo'  )->name('edit'  );
         Route::get('show/{id}', 'showVideo'  )->name('show'  );
     });
     
-    Route::post('store',            'store'     )->name('store'     );
-    Route::patch('update/{slider}',   'update'    )->name('update'    );
-    Route::delete('delete/{id}',    'destroy'   )->name('destroy'   );
+    Route::post('store',            'store'  )->name('store'  );
+    Route::patch('update/{slider}', 'update' )->name('update' );
+    Route::delete('delete/{id}',    'destroy')->name('destroy');
 });
 
 /*
@@ -182,7 +182,7 @@ Route::controller(MenuController::class)->prefix('menus')->as('menus.')->group(f
 
     Route::group(['prefix' => 'header', 'as' => 'header.'], function (){
         Route::get('index',     'index_header' )->name('index' );
-        Route::post('index',     'index_header' )->name('index' );
+        Route::post('index',    'index_header' )->name('filter');
         Route::get('create',    'create_header')->name('create');
         Route::get('edit/{id}', 'edit_header'  )->name('edit'  );
         Route::get('show/{id}', 'show_header'  )->name('show'  );
@@ -190,7 +190,7 @@ Route::controller(MenuController::class)->prefix('menus')->as('menus.')->group(f
     
     Route::group(['prefix' => 'footer', 'as' => 'footer.'], function (){
         Route::get('index',     'index_footer' )->name('index' );
-        Route::post('index',     'index_footer' )->name('index' );
+        Route::post('index',    'index_footer' )->name('filter');
         Route::get('create',    'create_footer')->name('create');
         Route::get('edit/{id}', 'edit_footer'  )->name('edit'  );
     });
@@ -208,18 +208,18 @@ Route::controller(MenuController::class)->prefix('menus')->as('menus.')->group(f
 Route::controller(GalleryController::class)->prefix('gallery')->as('gallery.')->group(function (){
     
     Route::group(['prefix' => 'image', 'as' => 'image.'], function (){
-        Route::get('index',     'index_image' )->name('index' );
-        Route::post('index',     'index_image' )->name('index' );
+        Route::get('index',     'index_image')->name('index' );
+        Route::post('index',    'index_image')->name('filter');
     });
     
     Route::group(['prefix' => 'video', 'as' => 'video.'], function (){
-        Route::get('index',     'index_video' )->name('index' );
-        Route::post('index',     'index_video' )->name('index' );
+        Route::get('index',     'index_video')->name('index' );
+        Route::post('index',    'index_video')->name('filter');
     });
     
-    Route::post('store',            'store'   )->name('store'     );
-    Route::patch('update/{gallery}', 'update' )->name('update'    );
-    Route::delete('delete/{id}',    'destroy' )->name('destroy'   );
+    Route::post('store',            'store'   )->name('store'  );
+    Route::patch('update/{gallery}', 'update' )->name('update' );
+    Route::delete('delete/{id}',    'destroy' )->name('destroy');
 });
 
 /*

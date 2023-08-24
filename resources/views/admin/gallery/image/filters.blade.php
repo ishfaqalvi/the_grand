@@ -1,6 +1,6 @@
 <div class="card collapse {{ !is_null($userRequest) ? 'show' : ''}}" id="filters">
     <div class="card-body">
-        <form action="{{ route('gallery.image.index')}}" method="post">
+        <form action="{{ route('gallery.image.filter')}}" method="post">
             @csrf
             <div class="row">
                 <div class="form-group col-md-6">

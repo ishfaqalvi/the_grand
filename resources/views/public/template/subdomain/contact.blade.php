@@ -120,7 +120,7 @@
             @if($pageSetting['contact_sections_form'] == 'Show')
             <div class="col-md-5 mb-30 offset-md-1">
                 <h3>{{ $pageSetting['contact_form_title'] }}</h3>
-                <form method="post"  action="{{ route('contactUs.store')}}">
+                <form method="post"  action="{{ $page->branch->url.'contact_us/store' }}">
                     {!! csrf_field() !!}
                     <!-- form error -->
                     @if ($errors->any())

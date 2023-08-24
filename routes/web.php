@@ -35,9 +35,9 @@ Route::group(['middleware' => ['auth']], function() {
 | Dynamic Page Routes
 |--------------------------------------------------------------------------
 */
-Route::controller(DynamicPageController::class)->group(function(){
-	Route::post('contact_us/store', 'contactUsStore')->name('contactUs.store');
-});
+// Route::controller(DynamicPageController::class)->group(function(){
+// 	Route::post('contact_us/store', 'contactUsStore')->name('contactUs.store');
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +47,7 @@ Route::controller(DynamicPageController::class)->group(function(){
 Route::domain('{subdomain}.' . env('APP_DOMAIN', 'websitecms.test'))->group(function () {
     Route::get('/', 	 [DynamicPageController::class, 'viewSubdomainHomePage' ])->name('subdomain');
     Route::get('/{slug}',[DynamicPageController::class, 'viewSubdomainOtherPage'])->name('subdomainPage');
+    Route::post('contact_us/store', [DynamicPageController::class,'contactUsStore'])->name('contactUs.store');
 });
 
 /*

@@ -57,12 +57,6 @@
         {!! $errors->first('schemas', '<div class="invalid-feedback">:message</div>') !!}
         <small class="form-control-feedback"> Schema Markup of page </small>
     </div>
-    <div class="form-group col-md-12">
-        {{ Form::label('description') }}
-        {{ Form::textarea('description', $page->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'Description','rows'=>'3']) }}
-        {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
-        <small class="form-control-feedback"> Description of page </small>
-    </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>

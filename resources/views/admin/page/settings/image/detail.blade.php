@@ -24,9 +24,5 @@
             <td class="card-title">Status</td>
             <td>{{ $page->status }}</td>
         </tr>
-        <tr>
-            <td class="card-title">Content</td>
-            <td>{{ $page->content }}</td>
-        </tr>
     </tbody>
 </table>

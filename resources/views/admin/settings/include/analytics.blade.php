@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('settings.save') }}" class="form-horizontal form-bordered validate" role="form" enctype="multipart/form-data">
+<form method="POST" action="{{ route('settings.save') }}" class="form-horizontal form-bordered analytics" role="form" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="tab" value="analytics">
     <input type="hidden" name="settable_type" value="Branch">

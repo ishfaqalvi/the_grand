@@ -34,7 +34,6 @@ class Facility extends Model implements Auditable
     
     static $rules = [
         'page_id'     => 'required',
-        'icon'        => 'required',
         'title'       => 'required',
         'description' => 'required',
         'order'       => 'required'

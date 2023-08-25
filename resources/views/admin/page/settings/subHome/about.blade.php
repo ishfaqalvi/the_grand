@@ -82,6 +82,150 @@
             error.insertAfter(element)
         },
     });
+    $(".booking").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
+    $(".category").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
+    $(".contact_us").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
+    $(".facilities").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
+    $(".news").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
+    $(".service").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
+    $(".slider").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
+    $(".testimonial").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
 </script>
 <script>
     $(document).ready(function() {

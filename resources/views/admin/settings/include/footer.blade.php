@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('settings.save') }}" class="form-horizontal form-bordered validate" role="form" enctype="multipart/form-data">
+<form method="POST" action="{{ route('settings.save') }}" class="form-horizontal form-bordered footer" role="form" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="tab" value="footer">
     <input type="hidden" name="settable_type" value="Branch">
@@ -95,3 +95,98 @@
         </div>
     </div>
 </form>
+@section('scripts')
+<script>
+    $(".navigation").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
+    $(".footer").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
+    $(".copyright").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
+    $(".analytics").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.dropify').dropify();
+        if ($("#mymce").length > 0) {
+            tinymce.init({
+                selector: "textarea#mymce",
+                theme: "modern",
+                height: 150,
+                plugins: [
+                    "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "save table contextmenu directionality emoticons template paste textcolor"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+
+            });
+        }
+    });
+</script>
+@endsection

@@ -64,7 +64,43 @@
 </form>
 @section('scripts')
 <script>
+    $(".slider").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
     $(".about").validate({
+        errorClass: "text-danger",
+        highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().addClass('has-danger');
+            $(element).addClass('form-control-danger');
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+            $(element).parent().removeClass('has-danger');
+            $(element).removeClass('form-control-danger');
+            $(element).parent().addClass('has-success');
+            $(element).addClass('form-control-success');
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        },
+    });
+    $(".branches").validate({
         errorClass: "text-danger",
         highlight: function (element, errorClass) {
             $(element).removeClass(errorClass)

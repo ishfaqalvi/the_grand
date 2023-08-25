@@ -160,13 +160,16 @@ class MenuController extends Controller
     public function destroy($id)
     {
         $menu = Menu::find($id);
-        if(count($menu->childItems) < 1){
+        if ($menu->parent_id != '') {
             $menu->delete();
-            return redirect()->back('menus.index')
-            ->with('success', 'Menu deleted successfully');
+            return redirect()->back()->with('success', 'Menu deleted successfully');
+        }
+        if(count($menu->childItems) < 1){
+            dd('no');
+            $menu->delete();
+            return redirect()->back()->with('success', 'Menu deleted successfully');
         }else{
-            return redirect()->back('menus.index')
-            ->with('warning', 'Sorry! Menu Item child exists.');
+            return redirect()->back()->with('warning', 'Sorry! Menu Item child exists.');
         } 
     }
 }

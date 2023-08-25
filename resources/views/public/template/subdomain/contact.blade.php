@@ -162,7 +162,6 @@
                             <textarea name="message" id="message" cols="30" rows="4" placeholder="{{ $pageSetting['contact_form_palceholder_message'] }} *" required></textarea>
                         </div>
                         <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Captcha</label>
                             <div class="col-md-6">
                                 {!! app('captcha')->display() !!}
                                 @if ($errors->has('g-recaptcha-response'))

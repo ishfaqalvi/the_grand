@@ -55,7 +55,7 @@
                                     <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editChild{{$key}}">
                                         <i class="fa fa-fw fa-edit"></i> Edit
                                     </a>
-                                    <form action="{{ route('menus.destroy',$menu->id) }}" method="POST">
+                                    <form action="{{ route('menus.destroy',$child->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="dropdown-item sa-confirm">

@@ -62,6 +62,8 @@ class SettingController extends Controller
                     ->fit(Manipulations::FIT_CROP, $input['size'][$key]['x'], $input['size'][$key]['y'])
                     ->save(public_path($saveImage));
             }
+            $input['key'] = $key;
+            $input['value'] = $saveImage;
             $check_record = Setting::where([
                 ['settable_type', $request->settable_type],
                 ['settable_id', $request->settable_id],

@@ -165,7 +165,6 @@ class MenuController extends Controller
             return redirect()->back()->with('success', 'Menu deleted successfully');
         }
         if(count($menu->childItems) < 1){
-            dd('no');
             $menu->delete();
             return redirect()->back()->with('success', 'Menu deleted successfully');
         }else{

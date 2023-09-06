@@ -255,11 +255,11 @@
                                     </div>
                                 </div>
                                 @if($service->link != '' && $service->button_title != '')
-                                <div class="butn-dark"> 
+                                <!-- <div class="butn-dark"> 
                                     <a href="{{ asset($service->link) }}"><span>
                                         {{ strtoupper($service->button_title) }}    
                                     </span></a>
-                                </div>
+                                </div> -->
                                 @endif
                             </div>
                         </div>
@@ -289,11 +289,11 @@
                                     </div>
                                 </div> 
                                 @if($service->link != '' && $service->button_title != '')
-                                <div class="butn-dark"> 
+                                <!-- <div class="butn-dark"> 
                                     <a href="{{ asset($service->link) }}"><span>
                                         {{ strtoupper($service->button_title) }}    
                                     </span></a>
-                                </div>
+                                </div> -->
                                 @endif
                             </div>
                         </div>
